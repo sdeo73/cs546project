@@ -1,0 +1,13 @@
+{
+    "genderMissing" : "Gender missing.",
+    "dobMissing" : "Date of birth missing.",
+    "userIDMissing" : "User ID missing.",
+    "mealPrefMissing" : "Meal Preferences missing.",
+    "tourTypeMissing" : "Tour type missing.",
+    "nTravelersMissing" : "No. of travelers missing.",
+    "specialNeedsMissing" : "Special needs are missing.",
+    "budgetMissing" : "Budget missing.",
+    "destinationMissing" : "Destination missing.",
+    "travelDatesMissing" : "Travel dates missing.",
+    "userPrefCreationError": "Sorry, your preferences were not saved. Please try again later!"
+}
