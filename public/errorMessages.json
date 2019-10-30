@@ -1,0 +1,8 @@
+{
+    "firstNameMissing": "First name is required!",
+    "lastNameMissing": "Last name is required!",
+    "emailMissing": "Email is required!",
+    "passwordMissing": "Password is required!",
+    "nationalityMissing": "Nationality is required!",
+    "userCreationError": "Account creation failed! Please try again later."
+}
