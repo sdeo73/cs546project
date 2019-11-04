@@ -1,10 +1,9 @@
-const login = require('./login');
+const loginRoutes = require('./login');
 
 const constructorMethod = app => {
-    app.use("/login", login);
-  
+    app.use("/", loginRoutes);
     app.use("*", (req, res) => {
-      res.sendStatus(404);
+      res.status(404).json({error: 'Not found'});
     });
 };
   
