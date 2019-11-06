@@ -1,29 +1,4 @@
-#firstNameMissing{
-    display: none;
-    color: red;
-}
-
-#lastNameMissing{
-    display: none;
-    color: red;
-}
-
-#emailMissing{
-    display: none;
-    color: red;
-}
-
-#passwordMissing{
-    display: none;
-    color: red;
-}
-
-#repasswordMissing{
-    display: none;
-    color: red;
-}
-
-#nationalityMissing{
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing{
     display: none;
     color: red;
 }

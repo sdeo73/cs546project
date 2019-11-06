@@ -26,7 +26,6 @@ router.post('/', async (req, res) => {
         if(inserted == true){
             res.status(200).redirect("../login");
         }else{
-            //res.status(400).render('', {hasErrors: true, errors: inserted});
             res.status(400).json({error: inserted});
         }
     } catch (error) {
