@@ -1,7 +1,7 @@
 const errorMessages = require('../public/errorMessages');
 const mongoCollections = require('../config/mongoCollections');
-const ObjectId = require('mongodb').ObjectId;
 const users = mongoCollections.users;
+const passwordHash = require('password-hash');
 
 async function addUser(firstName, lastName, email, password, nationality){
     let errors = [];
@@ -15,18 +15,16 @@ async function addUser(firstName, lastName, email, password, nationality){
         errors.push(errorMessages.passwordMissing);
     if(!nationality)
         errors.push(errorMessages.nationalityMissing);
-
+        
     if(errors.length > 0) return errors;
 
     const userCollection = await users();
-
-    nationality = nationality.split(',');
 
     let newUser = {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: password,
+        password: await passwordHash.generate(password),
         nationality: nationality
     }
 
