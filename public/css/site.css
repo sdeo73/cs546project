@@ -1,0 +1,125 @@
+.new_login_form
+{
+    position: center;
+    text-align: center;
+}
+
+
+.h6
+{
+    color:white;
+   
+
+}
+
+h3
+{
+ color:darkred;
+ text-align: center;
+ text-emphasis: weight;
+ font-weight:bolder;
+ background-color: white;
+ font-family: 'Sofia';
+ line-height: 32px;
+ font-size: 25px;
+}
+
+p{
+    color:white;
+}
+
+.foot
+{
+    color:darkred;
+ text-align: center;
+ text-emphasis: weight;
+ font-weight:bolder;
+ background-color: white;
+
+ line-height: 15px;
+ 
+}
+
+
+.email
+{   
+    color:white;
+    font-weight: 900px;;
+    font-size: 20px;
+    background-color:black;
+    text-align: center;
+    width: 300px;
+  border: 15px solid darkred;
+  padding: 50px;
+  margin-left: 360px;
+
+}
+
+.button
+{
+    background-color:darkred; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+body
+{background-color:black;}
+
+
+
+
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+    left: 0;
+
+}
+
+.back
+{margin-left:360px;}
+
+/* front pane, placed above back */
+.front {
+	z-index: 4;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}

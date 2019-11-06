@@ -1,0 +1,7 @@
+{
+    "emailMissing": "Email is required!",
+    "passwordMissing": "Password is required!",
+    "userCreationError": "Account creation failed! Please try again later.",
+    "incorrectUserEmail": "Provided user email does not exist in the database",
+    "incorrectUserPassword": "Incorrect user password was provided"
+}

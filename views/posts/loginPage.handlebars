@@ -1,0 +1,67 @@
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <main>
+
+  <link rel="stylesheet" href="/public/site.css" type="text/css">
+  
+  <section>
+      <header>
+       <!-- <h6{{tab_title}}</h6>-->
+        <h3 style="font-family:sofia;">Lazy Traveller</h3>
+      </header>
+      <br><br>
+      <center>
+      <form id="loginForm" action="/login" class="new_login_form">
+        <label for="userEmail">
+          
+          
+   <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+          
+    
+            <div class = "email">
+            Email:<br>
+          <input id = "userEmail" type="text" name="user_email"  class="full-width-input">
+          <br><br>
+             
+            </label>
+            <label for="userPass">
+          
+            Password:<br>
+            <input id = "userPass" type="text" name="user_password" class="full-width-input">
+            <br><br>
+            
+          </label>
+        <button type="submit" formmethod="post" class="button">LOG IN</button>
+
+        </div>
+
+        </div>
+        <div class="back">
+      <p>LOG IN</p>
+		</div>
+	</div>
+</div>
+        <div id="noEmail"> 
+          <p>No email was provided</p>
+        </div>
+        <div id="noPassword"> 
+          <p>No password was provided</p>
+        </div>
+        <div id="invalidEmailFormat"> 
+          <p>Invalid email format was provided</p>
+        </div>
+      </form>
+      </div>
+      </div>
+      <br>
+      <br>
+      <footer>
+        <div class = "foot">
+          <p>&copy; Lazy Traveller</p>
+        </div>
+      </footer>
+  </section>
+
+
+</main>
