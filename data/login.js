@@ -45,12 +45,29 @@ let exportedMethods = {
 
         if(errors.length > 0) return errors;
         const userCollection = await users();
-        const insertSession = await userCollection.updateOne({_id: object_id}, {$set: updateAnimal});
-        if (insertSession.modifiedCount === 0) {
-            errors.push(errorMessages.sessionInsertionErr);
+
+        const updateSession = await userCollection.updateOne({_id: ObjectId(userID)}, {$addToSet: {sessionID: sessionID}});
+        if (updateSession.modifiedCount === 0) {
+            errors.push(errorMessages.sessionUpdateErr);
         }
         if(errors.length > 0) return errors;
 
+    },
+
+    /** */
+    async removeSessionID(userID, sessionID) {
+        let errors = [];
+        if (!userID) {
+            errors.push(errorMessages.noUserIDWasProvided);
+        }
+        if (!sessionID) {
+            errors.push(errorMessages.noSessionID);
+        }
+        const userCollection = await users();
+        const updateSession = await userCollection.updateOne({_id: ObjectId(userID)}, {$pull: {sessionID: sessionID}});
+        if (updateSession.modifiedCount === 0) {
+            errors.push(errorMessages.sessionUpdateErr);
+        }
     },
 
     /** 
@@ -65,8 +82,8 @@ let exportedMethods = {
             // firstName: firstName,
             // lastName: lastName,
             email: user_email,
-            password: await passwordHash.generate(user_pass)
-            // nationality: nationality
+            password: await passwordHash.generate(user_pass),
+            sessionID: []
         }
 
         const insertInfo = await userCollection.insertOne(newUser);

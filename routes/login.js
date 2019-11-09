@@ -41,7 +41,6 @@ router.post('/login', async (req, res) => {
         if (validPass) {
             //sets the AuthCookie value to session id
             req.session.AuthCookie = req.sessionID;
-            req.session.user_id = currentUser._id;
             //inserts the session id to user collection
             loginData.insertSessionID(currentUser._id, req.sessionID);
 
@@ -63,7 +62,7 @@ router.get('/logout', async (req, res) => {
         //Expire the cookies and render the logoutPage
         req.session.destroy(res.render('pages/logoutPage', {tab_title: "Logout Successfully Page"}));
         //removes the session id from the user collection
-
+        // loginData.removeSessionID(req)
     } catch (err) {
         return res.status(404).json(err);
     }
