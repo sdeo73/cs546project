@@ -1,7 +1,7 @@
 <main>
   <section>
       <header>
-        <h1>{{tab_title}}</h1>
+        <h1>{{title}}</h1>
       </header>
       <form id="loginForm" action="/login" class="new_login_form">
         <label for="userEmail">
@@ -24,6 +24,9 @@
         <div id="invalidEmailFormat"> 
           <p>Invalid email format was provided</p>
         </div>
+        {{#if hasErrors}}
+        <p>{{error}}</p>
+        {{/if}}
       </form>
   </section>
 </main>
