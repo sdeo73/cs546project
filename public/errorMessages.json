@@ -3,5 +3,11 @@
     "passwordMissing": "Password is required!",
     "userCreationError": "Account creation failed! Please try again later.",
     "incorrectUserEmail": "Provided user email does not exist in the database",
-    "incorrectUserPassword": "Incorrect user password was provided"
+    "incorrectUserPassword": "Incorrect user password was provided",
+    "noUserIDWasProvided": "User id was not provided",
+    "noEmailWasProvided": "Email was not provided",
+    "noPasswordWasProvided": "Password was not provided",
+    "invalidEmail": "Invalid email format was provided",
+    "noSessionID": "Session id was not provided",
+    "sessionInsertionErr": "Could not insert session ID into user collection"
 }
