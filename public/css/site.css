@@ -1,0 +1,4 @@
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing{
+    display: none;
+    color: red;
+}
