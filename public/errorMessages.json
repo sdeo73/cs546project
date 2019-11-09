@@ -9,5 +9,10 @@
     "noPasswordWasProvided": "Password was not provided",
     "invalidEmail": "Invalid email format was provided",
     "noSessionID": "Session id was not provided",
-    "sessionUpdateErr": "Could not update session ID into user collection"
+    "sessionUpdateErr": "Could not update session ID into user collection",
+    "firstNameMissing": "First name is required!",
+    "lastNameMissing": "Last name is required!",
+    "repasswordMissing": "Re-enter password missing!",
+    "nationalityMissing": "Nationality is required!",
+    "userCreationError": "Account creation failed! Please try again later."
 }
