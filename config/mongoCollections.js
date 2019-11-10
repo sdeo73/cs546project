@@ -1,6 +1,7 @@
-const dbConnection = require('./mongoConnection');
 
-const getCollectionFn = (collection) => {
+const dbConnection = require("./mongoConnection");
+
+const getCollectionFn = collection => {
   let _col = undefined;
 
   return async () => {
@@ -14,5 +15,6 @@ const getCollectionFn = (collection) => {
 };
 
 module.exports = {
-  userPreferences: getCollectionFn('userPreferences'),
+  users: getCollectionFn("users"),
+  userPreferences: getCollectionFn("userPreferences")
 };

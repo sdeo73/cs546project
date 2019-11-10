@@ -9,5 +9,20 @@
     "budgetMissing" : "Budget missing.",
     "destinationMissing" : "Destination missing.",
     "travelDatesMissing" : "Travel dates missing.",
-    "userPrefCreationError": "Sorry, your preferences were not saved. Please try again later!"
+    "userPrefCreationError": "Sorry, your preferences were not saved. Please try again later!",
+    "emailMissing": "Email is required!",
+    "passwordMissing": "Password is required!",
+    "incorrectUserEmail": "Provided user email does not exist in the database",
+    "incorrectUserPassword": "Incorrect user password was provided",
+    "noUserIDWasProvided": "User id was not provided",
+    "noEmailWasProvided": "Email was not provided",
+    "noPasswordWasProvided": "Password was not provided",
+    "invalidEmail": "Invalid email format was provided",
+    "noSessionID": "Session id was not provided",
+    "sessionUpdateErr": "Could not update session ID into user collection",
+    "firstNameMissing": "First name is required!",
+    "lastNameMissing": "Last name is required!",
+    "repasswordMissing": "Re-enter password missing!",
+    "nationalityMissing": "Nationality is required!",
+    "userCreationError": "Account creation failed! Please try again later."
 }

@@ -1,11 +1,15 @@
-const userPrefRoutes = require("./userPreferences");
+
+const signup = require('./signup');
+const loginRoutes = require('./login');
 
 const constructorMethod = app => {
-  app.use("/preferences", userPrefRoutes);
-
-  app.use("*", (req, res) => {
-    res.sendStatus(404);
-  });
+    app.use("/", loginRoutes);
+    app.use("/signup", signup);
+    app.use("/preferences", userPrefRoutes);
+  
+    app.use("*", (req, res) => {
+      res.sendStatus(404);
+    });
 };
 
 module.exports = constructorMethod;
