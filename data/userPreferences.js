@@ -1,24 +1,20 @@
 const ObjectId = require('mongodb').ObjectID;
 const mongoCollections = require('../config/mongoCollections');
-const userPref = mongoCollections.userPreferences;
+const users = mongoCollections.users;
 const error = require('../public/errorMessages');
 
-async function addUserPreferences(gender, dob, userID, mealPreference, tourType, nTravelers, specialNeeds, budget, destination, travelDates) {
+async function addUserPreferences(gender, dob, mealPreference, tourType, nTravelers, specialNeeds, budget, destination, travelDateStart, travelDateEnd, userID) {
     let errors = [];
     if (!gender) {
         errors.push(error.genderMissing);
     } if (!dob) {
         errors.push(error.dobMissing);
-    } if (!userID) {
-        errors.push(error.userIDMissing);
     } if (!mealPreference) {
         errors.push(error.mealPrefMissing)
     } if (!tourType) {
         errors.push(error.tourTypeMissing);
     } if (!nTravelers) {
         errors.push(error.nTravelersMissing);
-    } if (!specialNeeds) {
-        errors.push(error.specialNeedsMissing);
     } if (!budget) {
         errors.push(error.budgetMissing);
     } if (!destination) {
@@ -28,23 +24,30 @@ async function addUserPreferences(gender, dob, userID, mealPreference, tourType,
     } if (errors.length > 0) {
         return errors;
     }
-    const userPrefCollection = await userPref();
+    const usersCollection = await users();
 
-    let newUserPref = {
-        gender: gender,
-        dob: new Date(dob),
-        userID: userID,
-        mealPreference: mealPreference,
-        tourType: tourType.split(','),
+    let userPreferences = {
+        mealPreference: {
+        vegan: mealPreference.includes("vegan"),
+		vegetarian: mealPreference.includes("vegetarian"),
+		whiteMeat: mealPreference.includes("whiteMeat"),
+		redMeat: mealPreference.includes("redMeat"),
+		seafood: mealPreference.includes("seafood"),
+		eggs: mealPreference.includes("eggs")
+        },
+        tourType: tourType,
         noOfTravelers: nTravelers,
-        specialNeeds: specialNeeds.split(','),
+        specialNeeds: specialNeeds,
         budget: budget,
         destination: destination,
-        travelDates: travelDates
+        travelDates: {
+            start: travelDateStart,
+            end: travelDateEnd
+        }
     };
 
-    const userPrefObject = await userPrefCollection.insertOne(newUserPref);
-    if (userPrefObject.insertedCount === 0) {
+    const userObject = await usersCollection.updateOne({_id: userID}, {$set: {gender: gender, dob: dob, userPreferences: userPreferences}});
+    if (userObject.insertedCount === 0) {
         throw new Error(error.userPrefCreationError);
     } else {
         return true;
