@@ -80,127 +80,148 @@
             "name": "Burj Khalifa - Level 124 + 125",
             "location": "1 Sheikh Mohammed bin Rashid Blvd",
             "type": "Sightseeing",
-            "avgCostPerPerson": 41
+            "avgCostPerPerson": 41,
+            "avgTimeSpent": 2
         },
         {
             "name": "Burj Khalifa - Level 124 + 125 + 148",
             "location": "1 Sheikh Mohammed bin Rashid Blvd",
             "type": "Sightseeing",
-            "avgCostPerPerson": 103
+            "avgCostPerPerson": 103,
+            "avgTimeSpent": 2
         },
         {
             "name": "Burj Khalifa - Level 152 + 153 + 154",
             "location": "1 Sheikh Mohammed bin Rashid Blvd",
             "type": "Sightseeing",
-            "avgCostPerPerson": 165
+            "avgCostPerPerson": 165,
+            "avgTimeSpent": 2
         },
         {
             "name": "The Dubai Mall",
             "location": "Financial Center Rd, Along Sheikh Zayed Road, next to Burj Khalifa tower",
             "type": "Leisure",
-            "avgCostPerPerson": 0
+            "avgCostPerPerson": 0,
+            "avgTimeSpent": 8
         },
         {
             "name": "Burj Al Arab",
             "location": "Jumeirah St - Dubai",
             "type": "Luxury",
-            "avgCostPerPerson": 1640
+            "avgCostPerPerson": 0,
+            "avgTimeSpent": 1
         },
         {
             "name": "Atlantis - The Palm",
             "location": "Crescent Road",
             "type": "Luxury",
-            "avgCostPerPerson": 434
+            "avgCostPerPerson": 0,
+            "avgTimeSpent": 4
         },
         {
             "name": "Aquaventure",
             "location": "Atlantis The Palm - Crescent Road",
             "type": "Entertainment",
-            "avgCostPerPerson": 80
+            "avgCostPerPerson": 80,
+            "avgTimeSpent": 8
         },
         {
             "name": "Wild Wadi",
             "location": "Jumeirah Street, Opp. Burj Al Arab",
             "type": "Entertainment",
-            "avgCostPerPerson": 80
+            "avgCostPerPerson": 80,
+            "avgTimeSpent": 8
         },
         {
             "name": "Ski Dubai",
             "location": "Sheikh Zayed Road, Mall of the Emirates",
             "type": "Entertainment",
-            "avgCostPerPerson": 61
+            "avgCostPerPerson": 61,
+            "avgTimeSpent": 3
         },
         {
             "name": "Dubai Frame",
             "location": "Sheikh Rashid Road, Zabeel Park, Gate 4",
             "type": "Sightseeing",
-            "avgCostPerPerson": 21
+            "avgCostPerPerson": 21,
+            "avgTimeSpent": 1.5
         },
         {
             "name": "Bollywood Parks Dubai",
             "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
             "type": "Entertainment",
-            "avgCostPerPerson": 47
+            "avgCostPerPerson": 47,
+            "avgTimeSpent": 8
         },
         {
             "name": "Motiongate Dubai",
             "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
             "type": "Entertainment",
-            "avgCostPerPerson": 75
+            "avgCostPerPerson": 75,
+            "avgTimeSpent": 8
         },
         {
             "name": "Legoland Dubai",
             "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
             "type": "Entertainment",
-            "avgCostPerPerson": 75
+            "avgCostPerPerson": 75,
+            "avgTimeSpent": 8
         },
         {
             "name": "Legoland Water Park",
             "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
             "type": "Entertainment",
-            "avgCostPerPerson": 75
+            "avgCostPerPerson": 75,
+            "avgTimeSpent": 8
         },
         {
             "name": "Global Village",
             "location": "Sheikh Mohammed Bin Zayed Road",
             "type": "Entertainment",
-            "avgCostPerPerson": 4
+            "avgCostPerPerson": 4,
+            "avgTimeSpent": 7
         },
         {
             "name": "Dubai Gold Souk",
             "location": "Al Dhagaya, Deira",
             "type": "Sighseeing",
-            "avgCostPerPerson": 0
+            "avgCostPerPerson": 0,
+            "avgTimeSpent": 2
         },
         {
             "name": "Skydive Dubai - The Palm",
             "location": "Al Seyahi St",
             "type": "Adventure Sports",
-            "avgCostPerPerson": 600
+            "avgCostPerPerson": 600,
+            "avgTimeSpent": 3
         },
         {
             "name": "Skydive Dubai - Desert Campus",
             "location": "Al Seyahi St",
             "type": "Adventure Sports",
-            "avgCostPerPerson": 462
+            "avgCostPerPerson": 462,
+            "avgTimeSpent": 3
         },
         {
             "name": "Sheikh Zayed Grand Mosque",
             "location": "Sheikh Rashid Bin Saeed St - Abu Dhabi",
             "type": "Sightseeing",
-            "avgCostPerPerson": 0
+            "avgCostPerPerson": 0,
+            "avgTimeSpent": 1
         },
         {
             "name": "Ferrari World",
             "location": "Yas Island, Abu Dhabi",
             "type": "Entertainment",
-            "avgCostPerPerson": 80
+            "avgCostPerPerson": 80,
+            "avgTimeSpent": 8
         },
         {
             "name": "Yas Waterworld",
             "location": "Yas Island, Abu Dhabi",
             "type": "Entertainment",
-            "avgCostPerPerson": 70
+            "avgCostPerPerson": 70,
+            "avgTimeSpent": 8
         }
     ],
     "countryCustoms": {
