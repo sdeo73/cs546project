@@ -1,0 +1,8 @@
+[{
+	"type": "hiking",
+	"items": ["Backpack", "Hiking boots", "First aid kit", "GPS or compass", "Tent", "Sunscreen", "Extra clothing", "Flashlight and batteries", "Insect repellant", "Toilet paper", "Snacks","Water Bottle", "Pocket Knife", "Sanitizer","Power Bank"]
+},
+{
+    "type": "winter",
+    "items": ["Heavy Winter Coat", "Sweaters","Snow boots", "Rain Jacket", "Thermals", "Wool socks", "Gloves", "Scarf","Beanie","Balaclava","Moisturizer","Chapstick"]
+}]

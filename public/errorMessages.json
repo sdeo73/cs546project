@@ -24,5 +24,6 @@
     "lastNameMissing": "Last name is required!",
     "repasswordMissing": "Re-enter password missing!",
     "nationalityMissing": "Nationality is required!",
-    "userCreationError": "Account creation failed! Please try again later."
+    "userCreationError": "Account creation failed! Please try again later.",
+    "userDoesNotExist": "User does not exist."
 }

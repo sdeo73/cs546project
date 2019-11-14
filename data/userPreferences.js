@@ -3,6 +3,19 @@ const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const error = require('../public/errorMessages');
 
+async function checkUserPreferenceExists(userID) {
+    const usersCollection = await users();
+    const user = await usersCollection.findOne({_id: new ObjectId(userID)});
+    if(user==null) {
+        throw new Error(error.userDoesNotExist); 
+    }
+    if('userPreferences' in user) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 async function addUserPreferences(gender, dob, mealPreference, tourType, nTravelers, specialNeeds, budget, destination, travelDateStart, travelDateEnd, userID) {
     let errors = [];
     if (!gender) {
@@ -19,7 +32,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, nTravel
         errors.push(error.budgetMissing);
     } if (!destination) {
         errors.push(error.destinationMissing);
-    } if (!travelDates) {
+    } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
     } if (errors.length > 0) {
         return errors;
@@ -46,7 +59,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, nTravel
         }
     };
 
-    const userObject = await usersCollection.updateOne({_id: userID}, {$set: {gender: gender, dob: dob, userPreferences: userPreferences}});
+    const userObject = await usersCollection.updateOne({_id: new ObjectId(userID)}, {$set: {gender: gender, dob: dob, userPreferences: userPreferences}});
     if (userObject.insertedCount === 0) {
         throw new Error(error.userPrefCreationError);
     } else {
@@ -56,5 +69,5 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, nTravel
 
 
 module.exports = {
-    addUserPreferences
+    addUserPreferences, checkUserPreferenceExists
 }

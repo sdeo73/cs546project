@@ -21,14 +21,14 @@ router.post('/home', async(req,res) => {
         } else {
             specialNeeds = userPrefInput.specialNeeds;
         }
-        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender,userPrefInput.dob,userPrefInput.mealPref,userPrefInput.tourType,userPrefInput.nTravelers, specialNeeds, userPrefInput.budget,userPrefInput.destination, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
+        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender,userPrefInput.dob,userPrefInput.mealPref,userPrefInput.tourType,userPrefInput.nTravelers, specialNeeds, userPrefInput.budget,userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
         if(userPref!==true) {
             return res.status(400).json({error: userPref});
         } else {
             return res.status(200).json({inserted: true});
         }
     } catch (e) {
-        return res.status(404).json({error: e});
+        return res.status(404).json({error: e.message});
     }
 })
 
