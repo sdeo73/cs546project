@@ -1,5 +1,4 @@
 {
-	"_id": "5d93f38389a490113aa11c11",
 	"d_name": "Copenhagen",
 	"country": "Denmark",
 	"weather": [
@@ -205,8 +204,8 @@
         "restricted": [],
         "vaccinations": ["Hepatitis A", "Hepatitis B", "Rabies"],
         "cashLimit": 11000,
-        "prohibitedItems": ["5vjlel8893020f23dad348d1", "5vjlel8893020f23dad348d"],
-        "laws": ["5vj093848820f23dad348d1",   "5vj093848820f23dad348d2"]
+        "prohibitedItems": [],
+        "laws": []
     }
 }
 
