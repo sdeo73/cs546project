@@ -8,7 +8,6 @@ const crypto = require('crypto');
         console.log("start inserting user");
         // const user1 = await loginPage.insertUserData("testing@SpeechGrammarList.com", "#*$*flwlelfle");
         const user2 = await loginPage.insertUserData("test03@gmail.com", "1234");
-        console.log(user2);
         // const user1_output = await loginPage.loginValidation("testing3@SpeechGrammarList.com", "#*$*flwlelfle");
         // console.log("user1_output = " + user1_output);
 

@@ -16,3 +16,4 @@ module.exports = async () => {
 
   return _db;
 };
+

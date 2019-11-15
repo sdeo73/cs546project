@@ -1,3 +1,4 @@
+
 const dbConnection = require("./mongoConnection");
 
 const getCollectionFn = collection => {
@@ -13,8 +14,6 @@ const getCollectionFn = collection => {
   };
 };
 
-/* Now, you can list your collections here: */
 module.exports = {
-  users: getCollectionFn("users"),
-  userPreferences: getCollectionFn("userPreferences")
+  users: getCollectionFn("users")
 };

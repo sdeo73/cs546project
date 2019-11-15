@@ -1,4 +1,12 @@
-#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing{
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing,
+ #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #destination-missing,
+ #mealPref-missing, #tourType-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
+ #endDate-missing, #invalid-dates {
     display: none;
     color: red;
+}
+
+#preferences-form input,#preferences-form select {
+     margin-top: 10px;
+     margin-bottom: 10px;
 }

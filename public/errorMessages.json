@@ -1,7 +1,17 @@
 {
+    "genderMissing" : "Gender missing.",
+    "dobMissing" : "Date of birth missing.",
+    "userIDMissing" : "User ID missing.",
+    "mealPrefMissing" : "Meal Preferences missing.",
+    "tourTypeMissing" : "Tour type missing.",
+    "nTravelersMissing" : "No. of travelers missing.",
+    "specialNeedsMissing" : "Special needs are missing.",
+    "budgetMissing" : "Budget missing.",
+    "destinationMissing" : "Destination missing.",
+    "travelDatesMissing" : "Travel dates missing.",
+    "userPrefCreationError": "Sorry, your preferences were not saved. Please try again later!",
     "emailMissing": "Email is required!",
     "passwordMissing": "Password is required!",
-    "userCreationError": "Account creation failed! Please try again later.",
     "incorrectUserEmail": "Provided user email does not exist in the database",
     "incorrectUserPassword": "Incorrect user password was provided",
     "noUserIDWasProvided": "User id was not provided",
@@ -14,5 +24,7 @@
     "lastNameMissing": "Last name is required!",
     "repasswordMissing": "Re-enter password missing!",
     "nationalityMissing": "Nationality is required!",
-    "userCreationError": "Account creation failed! Please try again later."
+    "userCreationError": "Account creation failed! Please try again later.",
+    "userDoesNotExist": "User does not exist.",
+    "userIDInvalid": "User ID is invalid."
 }
