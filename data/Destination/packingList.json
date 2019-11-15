@@ -1,8 +1,18 @@
-[{
-	"type": "hiking",
-	"items": ["Backpack", "Hiking boots", "First aid kit", "GPS or compass", "Tent", "Sunscreen", "Extra clothing", "Flashlight and batteries", "Insect repellant", "Toilet paper", "Snacks","Water Bottle", "Pocket Knife", "Sanitizer","Power Bank"]
-},
-{
-    "type": "winter",
-    "items": ["Heavy Winter Coat", "Sweaters","Snow boots", "Rain Jacket", "Thermals", "Wool socks", "Gloves", "Scarf","Beanie","Balaclava","Moisturizer","Chapstick"]
-}]
+[
+    {
+        "type": "hiking",
+        "items": ["Backpack", "Hiking boots", "First aid kit", "GPS or compass", "Tent", "Sunscreen", "Extra clothing", "Flashlight and batteries", "Insect repellant", "Toilet paper", "Snacks","Water Bottle", "Pocket Knife", "Sanitizer","Power Bank"]
+    },
+    {
+        "type": "winter",
+        "items": ["Heavy Winter Coat", "Sweaters","Snow boots", "Rain Jacket", "Thermals", "Wool socks", "Gloves", "Scarf","Beanie","Balaclava","Moisturizer","Chapstick"]
+    },
+    {
+        "type": "business",
+        "items": ["Formal shirts","Formal trousers","Leather shoes","Ties","Formal suits","Business cards","Formal socks","Laptop bag", "File holder", "Office pen", "Notepad", "Laptop", "Pen-drive", "Hard-drive", "Laser pointer", "Wireless earbuds"]
+    },
+    {
+        "type": "summer",
+        "items": ["Sunglasses","Sunscreen","Swimwear","Go-pro","Water","Wet-wipes","Hat","Thermos","White clothes","Beach Towel","Light umbrella"]
+    }
+]
