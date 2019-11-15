@@ -31,8 +31,6 @@ router.post('/', async (req, res) => {
     try {
         const user_email = req.body.user_email;
         const user_pass = req.body.user_password;
-        console.log(`email = ${user_email}`);
-        console.log(`password = ${user_pass}`);
         const currentUser = await loginData.getHashPassword(user_email);
 
         let validPass = false;

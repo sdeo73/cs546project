@@ -4,6 +4,14 @@ const users = mongoCollections.users;
 const error = require('../public/errorMessages');
 
 async function checkUserPreferenceExists(userID) {
+    let errors = [];
+    if(!userID) {
+        errors.push(error.noUserIDWasProvided);
+    } if(!ObjectId.isValid(userID)) {
+        errors.push(error.userIDInvalid);
+    } if(errors.length>0) {
+        return errors;
+    }
     const usersCollection = await users();
     const user = await usersCollection.findOne({_id: new ObjectId(userID)});
     if(user==null) {
@@ -28,6 +36,8 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, nTravel
         errors.push(error.tourTypeMissing);
     } if (!nTravelers) {
         errors.push(error.nTravelersMissing);
+    } if(!specialNeeds) {
+        errors.push(error.specialNeedsMissing);
     } if (!budget) {
         errors.push(error.budgetMissing);
     } if (!destination) {
@@ -60,7 +70,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, nTravel
     };
 
     const userObject = await usersCollection.updateOne({_id: new ObjectId(userID)}, {$set: {gender: gender, dob: dob, userPreferences: userPreferences}});
-    if (userObject.insertedCount === 0) {
+    if (userObject.updatedCount === 0) {
         throw new Error(error.userPrefCreationError);
     } else {
         return true;

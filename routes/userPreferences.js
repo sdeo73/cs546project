@@ -13,7 +13,6 @@ router.get('/preferences', async(req,res) => {
 
 router.post('/home', async(req,res) => {
     try {
-        console.log(req.body);
         let userPrefInput = req.body;
         let specialNeeds;
         if(!userPrefInput.specialNeeds) {
@@ -28,7 +27,7 @@ router.post('/home', async(req,res) => {
             return res.status(200).json({inserted: true});
         }
     } catch (e) {
-        return res.status(404).json({error: e.message});
+        return res.status(400).json({error: e.message});
     }
 })
 

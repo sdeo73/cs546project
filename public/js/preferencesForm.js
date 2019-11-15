@@ -11,9 +11,9 @@ $(function(){ //Referred from https://stackoverflow.com/questions/43274559/how-d
     if(day < 10)
         day = '0' + day.toString();
     
-    var maxDate = year + '-' + month + '-' + day;
-    $('#travelStart-input').attr('min', maxDate);
-    $('#travelEnd-input').attr('min', maxDate);
+    var minDate = year + '-' + month + '-' + day;
+    $('#travelStart-input').attr('min', minDate);
+    $('#travelEnd-input').attr('min', minDate);
 });
 
 form.addEventListener("submit", event => {
@@ -116,6 +116,9 @@ form.addEventListener("submit", event => {
         event.preventDefault();
         $("#invalid-dates").show();
         errors = true;
+    } else {
+        event.preventDefault();
+        $("#invalid-dates").hide();
     }
 
     if (!errors) {

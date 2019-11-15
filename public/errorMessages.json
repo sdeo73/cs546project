@@ -25,5 +25,6 @@
     "repasswordMissing": "Re-enter password missing!",
     "nationalityMissing": "Nationality is required!",
     "userCreationError": "Account creation failed! Please try again later.",
-    "userDoesNotExist": "User does not exist."
+    "userDoesNotExist": "User does not exist.",
+    "userIDInvalid": "User ID is invalid."
 }
