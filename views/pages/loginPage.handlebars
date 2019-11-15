@@ -1,0 +1,32 @@
+<main>
+  <section>
+      <header>
+        <h1>{{title}}</h1>
+      </header>
+      <form id="loginForm" action="/login" class="new_login_form">
+        <label for="userEmail">
+            Email:<br><br>
+          <input id = "userEmail" type="text" name="user_email" placeholder="Please input your email here" class="full-width-input">
+          <br><br>
+        </label>
+        <label for="userPass">
+            Password:<br><br>
+          <input id = "userPass" type="password" name="user_password" placeholder="Please input your password here" class="full-width-input">
+          <br><br>
+        </label>
+        <button type="submit" formmethod="post">Submit</button>
+        <div id="noEmail"> 
+          <p>No email was provided</p>
+        </div>
+        <div id="noPassword"> 
+          <p>No password was provided</p>
+        </div>
+        <div id="invalidEmailFormat"> 
+          <p>Invalid email format was provided</p>
+        </div>
+        {{#if hasErrors}}
+        <p>{{error}}</p>
+        {{/if}}
+      </form>
+  </section>
+</main>

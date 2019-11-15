@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             if (req.session.invalidPass) {
                 hasErrors = true;
             }
-            res.render('posts/loginPage', {title: "Login Page", hasErrors: hasErrors, error: req.session.invalidPass});
+            res.render('pages/loginPage', {title: "Login Page", hasErrors: hasErrors, error: req.session.invalidPass});
         }
         return res.status(200);
     } catch (error) {
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
             loginData.insertSessionID(currentUser._id, req.sessionID);
 
             //redirect to home page
-            res.render('posts/loginSuccess', {title: "Successfully Login", user_email: user_email, user_pass: user_pass});
+            res.render('pages/loginSuccess', {title: "Successfully Login", user_email: user_email, user_pass: user_pass});
             return res.status(200);
         } else {
             req.session.invalidPass = "Invalid username or password was provided";
@@ -68,7 +68,7 @@ router.get('/logout', async (req, res) => {
         //removes the session id from the user collection
         await loginData.removeSessionID(req.session.userID, req.session.AuthCookie);
         //Expire the cookies and render the logoutPage
-        req.session.destroy(res.render('posts/loginPage', {title: "Logout Successfully Page"}));
+        req.session.destroy(res.render('pages/loginPage', {title: "Logout Successfully Page"}));
     } catch (err) {
         return res.status(404).json(err);
     }
