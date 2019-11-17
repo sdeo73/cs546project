@@ -6,7 +6,6 @@
     $("#noPassword").hide();
     $("#invalidEmailFormat").hide();
 
-
     if (loginForm) {
         loginForm.addEventListener("submit", event => {
             // event.preventDefault();
