@@ -4,17 +4,23 @@
  #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #destination-missing,
  #mealPref-missing, #tourType-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
  #endDate-missing, #invalid-dates, #noPassword, #noEmail {
-    display: none;
-    font-size: 15px;
-    font-family: 'Titillium Web', sans-serif;
-    font-weight: bold;
-    color: red;
+     display: none;
+     font-size: 15px;
+     font-family: 'Titillium Web', sans-serif;
+     font-weight: bold;
+     color: red;
+     text-align: center;
 }
 
 .error-msg {
      background-color: #a0c0d4;
      padding: 5px;
      margin: 5px;
+     width: 300px;
+     margin-left: auto;
+     margin-right: auto;
+     display: inline-block;
+    
 }
 
 body {
@@ -51,7 +57,7 @@ h1 {
      box-shadow: 5px 10px 18px #888888;
      background-color: #80b5d8;
      display: inline-block;
-     text-align: center;
+     text-align: initial;
 }
 
 #signupForm,#loginForm{
@@ -63,12 +69,11 @@ h1 {
     box-shadow: 5px 10px 18px #888888;
     background-color: #80b5d8;
     display: inline-block;
-    text-align: center;
 }
 
 #signupForm label, #loginForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], 
 label[for=mealPref-input], label[for=tourType-input], label[for=travelers-input], label[for=specialNeeds-input],
-label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input]{
+label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: white;
      display: inline-block;
      font-family: 'Amatic SC', cursive;
@@ -78,12 +83,21 @@ label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input
      width: 150px;
 }
 
+label[for=gender-input], label[for=dob-input], label[for=countryId], 
+label[for=mealPref-input], label[for=tourType-input], label[for=travelers-input], label[for=specialNeeds-input],
+label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
+     text-align: right;
+     margin-left: 6%;
+}
+
 #signupForm input, #loginForm input{
      padding: 5px;
 }
 
 #preferences-form input {
-     margin: 8px;
+     display: inline-block;
+     text-align: left;
+
 }
 
 #signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder {
@@ -145,5 +159,8 @@ input[id=dob-input],input[id=travelStart-input],input[id=travelEnd-input] {
 }
 
 #preferences-form button[type=submit] {
+     text-align: center;
+     display: block;
+     margin: 0 auto;
      margin-top: 20px;
 }
