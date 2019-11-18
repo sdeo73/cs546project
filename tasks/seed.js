@@ -29,7 +29,7 @@ const destinationsData = require('../data/destinations');
             "avgTimeSpent": 10,
             "accessibility": true
         };
-        console.log(await destinationsData.addThingToDest("5dd1a4e279a4e504042dc960", newThing));
+        console.log(await destinationsData.addThingToDo("5dd1a4e279a4e504042dc960", newThing));
         console.log("Finished database query");
     } catch (err) {
         console.log(err);

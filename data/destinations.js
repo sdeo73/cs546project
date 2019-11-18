@@ -282,7 +282,7 @@ let exportedMethods = {
 
         return this.getDestinationById(destinationId);
     },
-    async addThingToDest(destinationId, newThing) {
+    async addThingToDo(destinationId, newThing) {
         let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
