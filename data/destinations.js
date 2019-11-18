@@ -40,7 +40,7 @@ let exportedMethods = {
      * @param {*} countryCustoms an object with multiple country customs
      * @returns destination the newly created destination object
      */
-    async createDestination(d_name, country, weather, thingsToDo, restaurants, countryCustoms) {
+    async addDestination(d_name, country, weather, thingsToDo, restaurants, countryCustoms) {
         let errors = [];
         //validates number of arguments
         if (arguments.length != 6) {
@@ -68,8 +68,12 @@ let exportedMethods = {
 
         if(errors.length > 0) return errors;
 
+        //checks if destination already exists
+
+
         //crreates new destination
         const destinationsCollection = await destinations();
+        destinationsCollection.createIndex({"d_name":1},{unique:true});
         let newDestination = {
             d_name: d_name,
             country: country,
@@ -111,15 +115,36 @@ let exportedMethods = {
         if(errors.length > 0) return errors;
         return singleDestination;
     },
-    async updateDestination(destinationId) {
+    /** */
+    async updateDestination(destinationId, destination) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!destination || typeof(destination) != "object") {
+            errors.push(errorMessages.InvalidDestinationObject);
+        }
+        if(errors.length > 0) return errors;
 
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$set: destination});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+        return await this.getDestinationById(destinationId);
     },
     /**
      * Removes a specfic destination data with id equal to the provided one.
      * Throws error if invalid destination id was provided.
      * @param {*} destinationId 
      */
-    async deleteDestination(destinationId) {
+    async deleteDestinationById(destinationId) {
         let errors = [];
         //validates number of arguments
         if (arguments.length != 1) {
@@ -132,7 +157,7 @@ let exportedMethods = {
         if(errors.length > 0) return errors;
 
         const destinationsCollection = await destinations();
-        const removedDestination = await destinationsCollection.removeOne({_id: ObjectId()});
+        const removedDestination = await destinationsCollection.removeOne({_id: ObjectId(destinationId)});
         if (removedDestination.deletedCount == 0) {
             errors.push(errorMessages.InvalidDestinationId);
         }
@@ -140,23 +165,214 @@ let exportedMethods = {
 
         return removedDestination;
     },
-    async addLaw(lawId,destinationId) {
-
+    /** 
+     * Gets all the destination data within the destinations collection then returns
+     * them as an array.
+    */
+    async getAllDestinations() {
+        if (arguments.length != 0) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        const destinationsCollection = await destinations();
+        const allDestinations = await destinationsCollection.find({}).toArray();
+        
+        return allDestinations;
     },
-    async addProhibitedItem(itemId,destinationId) {
+    async addLaw(destinationId, lawId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
 
+        if (!lawId || typeof(lawId) != "string" || lawId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if(errors.length > 0) return errors;
+
+        //add the law to destination.countryCustoms
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {"countryCustoms.laws": lawId}});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return this.getDestinationById(destinationId);        
     },
-    async addPackingList(packingListID, destinationId) {
+    async addProhibitedItem(destinationId, itemId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
 
+        if (!itemId || typeof(itemId) != "string" || itemId.length == 0) {
+            errors.push(errorMessages.InvalidProhibitedItemId);
+        }
+        if(errors.length > 0) return errors;
+
+        //add the new item into prohibited item array
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {"countryCustoms.prohibitedItems": itemId}});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return this.getDestinationById(destinationId);
+    },
+    async addPackingList(destinationId, packingListID) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+
+        if (!packingListID || typeof(packingListID) != "string" || packingListID.length == 0) {
+            errors.push(errorMessages.InvalidPackingList);
+        }
+        if(errors.length > 0) return errors;
+
+        //add the new packing list
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {packingList: packingListID}});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return this.getDestinationById(destinationId);
+    },
+    async addRestaurantToDest(destinationId, newRestaurant) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!newRestaurant || typeof(newRestaurant) != "object") {
+            errors.push(errorMessages.InvalidRestaurantObject);
+        }
+
+        if(errors.length > 0) return errors;
+
+        //add new restaurant to the destination
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {restaurants: newRestaurant}});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return this.getDestinationById(destinationId);
+    },
+    async addThingToDest(destinationId, newThing) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!newThing || typeof(newThing) != "object") {
+            errors.push(errorMessages.InvalidThingToDoObject);
+        }
+
+        if(errors.length > 0) return errors;
+
+        //add new restaurant to the destination
+        const destinationsCollection = await destinations();
+        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {thingsToDo: newThing}});
+        if (updatedDestination.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return this.getDestinationById(destinationId);
     },
     async getAllLaws(destinationId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 1) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
 
+        if(errors.length > 0) return errors;
+
+        //add the law to destination.countryCustoms
+        const destinationsCollection = await destinations();
+        const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
+        if (singleDestination == null) {
+            errors.push(errorMessages.DestinationNotFound);
+        }
+        if(errors.length > 0) return errors;
+        return singleDestination.countryCustoms.laws;
     },
-    async getProhibitedItems(destinationId) {
+    async getAllProhibitedItems(destinationId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 1) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
 
+        if(errors.length > 0) return errors;
+
+        //add the law to destination.countryCustoms
+        const destinationsCollection = await destinations();
+        const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
+        if (singleDestination == null) {
+            errors.push(errorMessages.DestinationNotFound);
+        }
+        if(errors.length > 0) return errors;
+        return singleDestination.countryCustoms.prohibitedItems;
     },
-    async getPackingList(destinationId) {
+    async getAllPackingList(destinationId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 1) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
 
+        if(errors.length > 0) return errors;
+
+        //add the law to destination.countryCustoms
+        const destinationsCollection = await destinations();
+        const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
+        if (singleDestination == null) {
+            errors.push(errorMessages.DestinationNotFound);
+        }
+        if(errors.length > 0) return errors;
+        return singleDestination.packingList;
     }
 };
 

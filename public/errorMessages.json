@@ -36,6 +36,13 @@
     "InvalidcountryCustomsObject": "Invalid countryCustoms object was provided",
     "DestinationInsertionError": "Could not create new destination in mongo database",
     "InvalidDestinationId": "Invalid destination id was provided",
+    "InvalidDestinationObject": "Invalid destination object was provided",
     "DestinationNotFound": "No destination found with the provided id",
-    "DestinationRemovalError": "Could not remove destination from mongo database"
+    "DestinationRemovalError": "Could not remove destination from mongo database",
+    "UpdateDestinationError": "Could not update destination in mongo database",
+    "InvalidLawId": "Invalid law id was provided",
+    "InvalidProhibitedItemId": "Invalid prohibited item id was provided",
+    "InvalidPackingList": "Invalid packing list was provided",
+    "InvalidRestaurantObject": "Invalid restaurant object was provided",
+    "InvalidThingToDoObject": "Invalid thingToDo object was provided"
 }
