@@ -1,6 +1,5 @@
 <div class="preferenceForm">
     <main>
-        <h1>Tell us what you like</h1>
         <form action="/home" method="POST" id="preferences-form">
             <label for="gender-input"> Gender: </label>
             <label for="g1">Male</label>
@@ -56,20 +55,32 @@
 
             <label for="tourType-input">Tour type: </label>
             <label for="tourType1">Business</label>
-            <input type="checkbox" name="tourType" value="business" id="tourType1">
+            <input type="radio" name="tourType" value="business" id="tourType1">
             <label for="tourType2">Hiking</label>
-            <input type="checkbox" name="tourType" value="hiking" id="tourType2">
+            <input type="radio" name="tourType" value="hiking" id="tourType2">
             <label for="tourType3">Scenic</label>
-            <input type="checkbox" name="tourType" value="scenic" id="tourType3">
+            <input type="radio" name="tourType" value="scenic" id="tourType3">
             <label for="tourType4">Adventure Sports</label>
-            <input type="checkbox" name="tourType" value="adventureSports" id="tourType4">
+            <input type="radio" name="tourType" value="adventureSports" id="tourType4">
             <label for="tourType5">Historical</label>
-            <input type="checkbox" name="tourType" value="historical" id="tourType5">
+            <input type="radio" name="tourType" value="historical" id="tourType5">
             <label for="tourType6">Sightseeing</label>
-            <input type="checkbox" name="tourType" value="sightseeing" id="tourType6"><br>
+            <input type="radio" name="tourType" value="sightseeing" id="tourType6"><br>
             <div class="error-msg" id="tourType-missing">
                 <i class="fa fa-times-circle"></i>
-                Select at least one tour type!
+               Tour type is required!
+            </div>
+
+            <label for="tourActivity-input"> Tour Activity: </label>
+            <label for="tourActivity1">Relaxed</label>
+            <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1">
+            <label for="tourActivity2">Moderate</label>
+            <input type="radio" name="tourActivity" value="moderate" id="tourActivity2">
+            <label for="tourActivity3">High</label>
+            <input type="radio" name="tourActivity" value="high" id="tourActivity3"><br>
+            <div class="error-msg" id="activity-missing">
+                <i class="fa fa-times-circle"></i>
+               Tour Activity is required!
             </div>
 
 
@@ -90,8 +101,8 @@
             <label for="specialNeeds4">Sensory Impaired</label>
             <input type="checkbox" name="specialNeeds" value="sensoryImpaired" id="specialNeeds4"><br>
 
-            <label for="budget-input">Budget: </label>
-            <input type="number" name="budget" id="budget-input" placeholder="Enter your budget"><br>
+            <label for="budget-input">Budget per person: </label>
+            <input type="number" name="budget" id="budget-input" placeholder="Enter your budget" min=2000><br>
             <div class="error-msg" id="budget-missing">
                 <i class="fa fa-times-circle"></i>
                 Budget is required!
@@ -114,6 +125,11 @@
             <div class="error-msg" id="invalid-dates">
                 <i class="fa fa-times-circle"></i>
                 Error! Travel start date cannot be ahead of end date.
+            </div>
+
+             <div class="error-msg" id="number-of-dates">
+                <i class="fa fa-times-circle"></i>
+                Error! Maximum travel time is two weeks (14 days).
             </div>
 
             <button type="submit">Submit</button>

@@ -5,7 +5,7 @@ const userPrefData = data.userPreferences;
 
 router.get('/preferences', async(req,res) => {
     try {
-        res.status(200).render('pages/userPreferencesForm' , {partial: "preferences-scripts"});
+        res.status(200).render('pages/userPreferencesForm' , {title: "Tell Us What You Like", partial: "preferences-scripts"});
     } catch (e) {
         return res.status(404).json({error: e.message});
     }
