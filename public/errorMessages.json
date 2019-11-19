@@ -26,5 +26,15 @@
     "nationalityMissing": "Nationality is required!",
     "userCreationError": "Account creation failed! Please try again later.",
     "userDoesNotExist": "User does not exist.",
-    "userIDInvalid": "User ID is invalid."
+    "userIDInvalid": "User ID is invalid.",
+    "noArguments":"Error. Function takes no arguments.",
+    "lawsCollectionEmpty": "Laws collection is empty.",
+    "lawIdMissing": "Law ID is missing.",
+    "lawIDInvalid": "Law ID is invalid.",
+    "lawNotFound": "Law not found.",
+    "lawDescriptionMissing": "Law description is missing.",
+    "lawDescriptionInvalid": "Law description is invalid.",
+    "lawCreationError": "Law creation failed! Please try again later.",
+    "lawUpdationError": "Law updation failed! Please try again later.",
+    "lawNotDeleted": "Law deletion failed! Please try again later."
 }
