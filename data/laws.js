@@ -105,6 +105,10 @@ async function deleteLawById(lawId) {
         errors.push(errorMessages.lawIDInvalid);
     }
 
+    if (errors.length > 0) {
+        return errors;
+    }
+
     const lawsCollection = await laws();
     const lawToDelete =  await lawsCollection.findOne({'_id':new ObjectId(lawId)});
     if(lawToDelete===null) {
