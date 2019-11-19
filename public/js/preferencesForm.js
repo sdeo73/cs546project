@@ -1,16 +1,16 @@
 const form = document.getElementById("preferences-form");
 
-$(function(){ //Referred from https://stackoverflow.com/questions/43274559/how-do-i-restrict-past-dates-in-html5-input-type-date
+$(function () { //Referred from https://stackoverflow.com/questions/43274559/how-do-i-restrict-past-dates-in-html5-input-type-date
     var dtToday = new Date();
-    
+
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
     var year = dtToday.getFullYear();
-    if(month < 10)
+    if (month < 10)
         month = '0' + month.toString();
-    if(day < 10)
+    if (day < 10)
         day = '0' + day.toString();
-    
+
     var minDate = year + '-' + month + '-' + day;
     $('#travelStart-input').attr('min', minDate);
     $('#travelEnd-input').attr('min', minDate);
@@ -51,6 +51,7 @@ form.addEventListener("submit", event => {
         $("#destination-missing").hide();
     }
 
+
     const mealPrefChecked = $('input[id^=mealPref]:checked').length;
     if (mealPrefChecked == 0) {
         event.preventDefault();
@@ -61,8 +62,8 @@ form.addEventListener("submit", event => {
         $("#mealPref-missing").hide();
     }
 
-    const tourTypeChecked = $('input[id^=tourType]:checked').length;
-    if (tourTypeChecked == 0) {
+    const tourTypeChecked = document.querySelector('input[name="tourType"]:checked');
+    if (!tourTypeChecked) {
         event.preventDefault();
         $("#tourType-missing").show();
         errors = true;
@@ -70,6 +71,17 @@ form.addEventListener("submit", event => {
         event.preventDefault();
         $("#tourType-missing").hide();
     }
+
+    const tourActivityChecked = document.querySelector('input[name="tourActivity"]:checked');
+    if (!tourActivityChecked) {
+        event.preventDefault();
+        $("#activity-missing").show();
+        errors = true;
+    } else {
+        event.preventDefault();
+        $("#activity-missing").hide();
+    }
+
 
     const noOfTravelersInput = document.getElementById("travelers-input").value;
     if (!noOfTravelersInput) {
@@ -112,6 +124,7 @@ form.addEventListener("submit", event => {
         $("#endDate-missing").hide();
     }
 
+    //Check if travel end date is ahead of travel start date
     if (travelEndInput < travelStartInput) {
         event.preventDefault();
         $("#invalid-dates").show();
@@ -119,6 +132,18 @@ form.addEventListener("submit", event => {
     } else {
         event.preventDefault();
         $("#invalid-dates").hide();
+    }
+
+    //Check if travel time is not more than two weeks
+    var timeDifference= new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
+    var numberOfDays = timeDifference / (1000 * 3600 * 24); 
+    if(numberOfDays > 14){
+        event.preventDefault();
+        $("#number-of-dates").show();
+        errors = true;
+    } else {
+        event.preventDefault();
+        $("#number-of-dates").hide();
     }
 
     if (!errors) {
