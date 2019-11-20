@@ -15,9 +15,5 @@ module.exports = async () => {
   }
 
   return _db;
-<<<<<<< HEAD
-};
-=======
 };
 
->>>>>>> 818ef8e16899fc852e074cc3ffeeb698257214e8
