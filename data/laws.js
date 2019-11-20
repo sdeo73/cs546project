@@ -4,12 +4,9 @@ const laws = mongoCollections.laws;
 const errorMessages = require('../public/errorMessages');
 
 async function getAllLaws() {
-    let errors = [];
     if (arguments.length > 0) {
-        error.push(errorMessages.noArguments);
-    } if (errors.length > 0) {
-        return errors;
-    }
+        throw new Error(errorMessages.noArguments);
+    } 
 
     const lawsCollection = await laws();
     var allLaws = await lawsCollection.find({}).toArray();
@@ -21,16 +18,11 @@ async function getAllLaws() {
 }
 
 async function getLawById(lawId) {
-    let errors = [];
     if (lawId === undefined) {
-        errors.push(errorMessages.lawIDMissing);
+        throw new Error(errorMessages.lawIDMissing);
     } else if (!ObjectId.isValid(lawId)) {
-        errors.push(errorMessages.lawIDInvalid);
+        throw new Error(errorMessages.lawIDInvalid);
     }
-    if (errors.length > 0) {
-        return errors;
-    }
-
     const lawsCollection = await laws();
     var law = await lawsCollection.findOne({ '_id': new ObjectId(lawId) });
     if (law === null || law === undefined) {
@@ -42,15 +34,10 @@ async function getLawById(lawId) {
 }
 
 async function createLaw(description) {
-    let errors = [];
     if (description === undefined) {
-        errors.push(errorMessages.lawDescriptionMissing)
+        throw new Error(errorMessages.lawDescriptionMissing)
     } else if (typeof description !== 'string') {
-        errors.push(errorMessages.lawDescriptionInvalid)
-    }
-
-    if (errors.length > 0) {
-        return errors;
+        throw new Error(errorMessages.lawDescriptionInvalid)
     }
     const lawsCollection = await laws();
     lawsCollection.createIndex({"description":1},{unique: true});
@@ -68,23 +55,15 @@ async function createLaw(description) {
 }
 
 async function updateLaw(lawId, newDescription) {
-    let errors = [];
     if (lawId === undefined) {
-        errors.push(errorMessages.lawIDMissing);
+        throw new Error(errorMessages.lawIDMissing);
     } else if (!ObjectId.isValid(lawId)) {
-        errors.push(errorMessages.lawIDInvalid);
-    }
-
-    if (newDescription === undefined) {
-        errors.push(errorMessages.lawDescriptionMissing)
+        throw new Error(errorMessages.lawIDInvalid);
+    } else if (newDescription === undefined) {
+        throw new Error(errorMessages.lawDescriptionMissing)
     } else if (typeof newDescription !== 'string') {
-        errors.push(errorMessages.lawDescriptionInvalid)
+        throw new Error(errorMessages.lawDescriptionInvalid)
     }
-
-    if (errors.length > 0) {
-        return errors;
-    }
-
     const lawsCollection = await laws();
     const lawToUpdate =  await lawsCollection.findOne({'_id':new ObjectId(lawId)});
     if(lawToUpdate===null) {
@@ -99,17 +78,11 @@ async function updateLaw(lawId, newDescription) {
 }
 
 async function deleteLawById(lawId) {
-    let errors = [];
     if (lawId === undefined) {
-        errors.push(errorMessages.lawIDMissing);
+        throw new Error(errorMessages.lawIDMissing);
     } else if (!ObjectId.isValid(lawId)) {
-        errors.push(errorMessages.lawIDInvalid);
+        throw new Error(errorMessages.lawIDInvalid);
     }
-
-    if (errors.length > 0) {
-        return errors;
-    }
-
     const lawsCollection = await laws();
     const lawToDelete =  await lawsCollection.findOne({'_id':new ObjectId(lawId)});
     if(lawToDelete===null) {
