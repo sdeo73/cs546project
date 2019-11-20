@@ -17,5 +17,6 @@ const getCollectionFn = collection => {
 module.exports = {
   users: getCollectionFn("users"),
   laws: getCollectionFn("laws"),
-  prohibitedItems: getCollectionFn("prohibitedItems")
+  prohibitedItems: getCollectionFn("prohibitedItems"),
+  packing: getCollectionFn("packing")
 };
