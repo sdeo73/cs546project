@@ -1,11 +1,31 @@
+let nationality= 1;
+
 document.getElementById("addNationalities").addEventListener("click", event =>{
     event.preventDefault();
     var $dropdown = $("#nationality").clone();
     console.log($dropdown);
-    $dropdown.removeAttr('id');
+    nationality++;
+    $dropdown.attr('id', "nationality"+nationality);
     $dropdown.children().last().remove(); //Remove + button from appended dropdown
+    $dropdown.append("<button type= \"button\" class = \"deleteNationalities\" id = \"deleteNationality_"+nationality+"\">x</button>")
     $("#nationalities").append($dropdown);
 });
+
+
+
+$(document).on('click', '.deleteNationalities', function (event) {
+    let id = event.target.id;
+    console.log(id);
+    
+    let split_id = id.split('_');
+    let delete_id = split_id[1];
+    console.log(delete_id);
+    let nationality_to_delete = "nationality"+delete_id;
+    $("#"+nationality_to_delete).remove();
+    console.log(nationality_to_delete);
+    this.remove();
+});
+
 
 $('#signupForm').submit( function(ev) {
     ev.preventDefault();

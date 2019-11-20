@@ -132,6 +132,13 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
      color: #4a8ab4;
 }
 
+.deleteNationalities{
+    margin-left: 10px;
+    font-size: 16px;
+    color: #4a8ab4;
+}
+
+
 #nationalities li select, .countries, .states, .cities {
      font-size: 20px;
      text-align-last: center;
