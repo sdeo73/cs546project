@@ -1,7 +1,7 @@
 const ObjectId = require('mongodb').ObjectID;
 const mongoCollections = require('../config/mongoCollections');
 const packing = mongoCollections.packing;
-const errorMessages = require('./public/errorMessages');
+const errorMessages = require('../public/errorMessages');
 
 async function createPackingList(type, items){
     if(!type || !items) throw new Error(errorMessages.packingListArgumentMissing);
