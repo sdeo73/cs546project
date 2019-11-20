@@ -53,6 +53,7 @@ async function createProhibitedItem(itemName) {
         return errors;
     }
     const prohibitedItemsCollection = await prohibitedItems();
+    prohibitedItemsCollection.createIndex({"item_name":1},{unique: true});
     let newItem = {
         item_name: itemName
     };

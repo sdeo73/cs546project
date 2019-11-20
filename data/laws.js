@@ -53,6 +53,7 @@ async function createLaw(description) {
         return errors;
     }
     const lawsCollection = await laws();
+    lawsCollection.createIndex({"description":1},{unique: true});
     let newLaw = {
         description: description
     };

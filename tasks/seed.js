@@ -1,20 +1,47 @@
 const loginPage = require('../data/login');
 const passwordHash = require('password-hash');
+const laws = require("../data/Destination/laws.json");
+const prohibitedItems = require("../data/Destination/prohibitedItems.json");
+const lawFunctions = require('../data/laws');
+const prohibitedItemFunctions = require('../data/prohibitedItems');
+const connection = require("../config/mongoConnection");
 // const objectHash = require('object-hash');
 const crypto = require('crypto');
 
 (async() => {
     try {
-        console.log("start inserting user");
-        // const user1 = await loginPage.insertUserData("testing@SpeechGrammarList.com", "#*$*flwlelfle");
-        const user2 = await loginPage.insertUserData("test03@gmail.com", "1234");
-        // const user1_output = await loginPage.loginValidation("testing3@SpeechGrammarList.com", "#*$*flwlelfle");
-        // console.log("user1_output = " + user1_output);
+        //Keeping below commented code in order to create a user for testing
+        // const user1 = await loginPage.insertUserData("test03@gmail.com", "1234");
 
-        // console.log(`hashPass = ${await passwordHash.generate("12345", sha1)}`);
-        // console.log(`hashPass = ${await passwordHash.generate("12345", sha1)}`);
-        // console.log(passwordHash.verify("#*$*flwlelfle", "sha1$aa9e9970$1$8f02ed24a2e15caf45f8279c31d31a13b5f4570c"));
+        let index;
+        //Insert all laws from laws.JSON into the database
+        for(index in laws) {
+            try {
+                await lawFunctions.createLaw(laws[index].description);
+            } catch (error) {
+                if(error.name=="MongoError" && error.code==11000) { //Error message and code in case of duplicate insertion
+                    index++; //Skip duplicate entry and continue
+                }
+            }
+        }
+
+        //Insert all prohibited items from prohibitedItems.JSON into the database
+        for(index in prohibitedItems) {
+            try {
+                await prohibitedItemFunctions.createProhibitedItem(prohibitedItems[index].item_name);
+            } catch (error) {
+                if(error.name=="MongoError" && error.code==11000) {//Error message and code in case of duplicate insertion
+                    index++; //Skip duplicate entry and continue
+                }
+            }
+        }
+
+        await prohibitedItemFunctions.deleteProhibitedItem("5dd481532bd9e47097a78e5a");
+
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
     }
+
+    const db = await connection();
+    await db.serverConfig.close();
 })();
