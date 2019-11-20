@@ -73,7 +73,6 @@ let exportedMethods = {
      * @return destination object
     */
     async getDestinationById(destinationId) {
-        
         //validates number of arguments
         if (arguments.length != 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
@@ -112,7 +111,7 @@ let exportedMethods = {
         const destinationsCollection = await destinations();
         const removedDestination = await destinationsCollection.removeOne({_id: ObjectId(destinationId)});
         if (!removedDestination || removedDestination.deletedCount == 0) {
-            throw new Error(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.DestinationRemovalError);
         }
         
         return removedDestination;
@@ -149,7 +148,7 @@ let exportedMethods = {
         }
 
         if (!lawId || typeof(lawId) != "string" || lawId.length == 0) {
-            throw new Error(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidLawId);
         }
 
         //add the law to destination.countryCustoms
