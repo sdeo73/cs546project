@@ -26,8 +26,11 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
+    "geodist": "^0.2.1",
     "handlebars": "^4.5.2",
     "mongodb": "^3.3.4",
-    "password-hash": "^1.2.2"
+    "node-geocoder": "^3.25.0",
+    "password-hash": "^1.2.2",
+    "zomato-api": "^0.1.2"
   }
 }
