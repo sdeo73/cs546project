@@ -6,8 +6,8 @@ const ObjectId = require("mongodb").ObjectID;
 let exportedMethods = {
     /**
      * Creates a new destination data and inserts it into the destinations collection.
-     * Then returns the inserted destination object.
-     * Throws error if invalid arguments were provided or insertion failed.
+     * Then returns the inserted destination object. Throws errors if invalid arguments
+     * were provided or insertion failed.
      * @param {*} d_name destination string name
      * @param {*} country destination country string name
      * @param {*} weather an array of weather data
@@ -17,38 +17,32 @@ let exportedMethods = {
      * @returns destination the newly created destination object
      */
     async addDestination(d_name, country, weather, thingsToDo, restaurants, countryCustoms) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 6) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!d_name || typeof(d_name) != "string" || d_name.length == 0) {
-            errors.push(errorMessages.InvalidDestinationName);
+            throw new Error(errorMessages.InvalidDestinationName);
         }   
         if (!country || typeof(country) != "string" || country.length == 0) {
-            errors.push(errorMessages.InvalidCountryName);
+            throw new Error(errorMessages.InvalidCountryName);
         }
         if (!weather || !Array.isArray(weather)) {
-            errors.push(errorMessages.InvalidWeatherArray);
+            throw new Error(errorMessages.InvalidWeatherArray);
         }
         if (!thingsToDo || !Array.isArray(thingsToDo)) {
-            errors.push(errorMessages.InvalidThingsToDoArray);
+            throw new Error(errorMessages.InvalidThingsToDoArray);
         }
         if (!restaurants || !Array.isArray(restaurants)) {
-            errors.push(errorMessages.InvalidRestaurantsArray);
+            throw new Error(errorMessages.InvalidRestaurantsArray);
         }
         if (!countryCustoms || typeof(countryCustoms) != "object") {
-            errors.push(errorMessages.InvalidcountryCustomsObject);
+            throw new Error(errorMessages.InvalidcountryCustomsObject);
         }
 
-        if(errors.length > 0) return errors;
-
-        //checks if destination already exists
-
-
-        //crreates new destination
         const destinationsCollection = await destinations();
+        //prevenets duplicated destination object to be inserted into the database
         destinationsCollection.createIndex({"d_name":1},{unique:true});
         let newDestination = {
             d_name: d_name,
@@ -60,400 +54,344 @@ let exportedMethods = {
             countryCustoms: countryCustoms
         };
         const insertedDestination = await destinationsCollection.insertOne(newDestination);
+        
         //checks if destination data was inserted correctly
-        if (insertedDestination.insertedCount === 0) {
-            errors.push(errorMessages.DestinationInsertionError);
+        if (!insertedDestination || insertedDestination.insertedCount === 0) {
+            throw new Error(errorMessages.DestinationInsertionError);
         }
-
-        if(errors.length > 0) return errors;
+        
         //gets the inserted animal and returns it
         const newId = insertedDestination.insertedId;
         const destinationResult = await this.getDestinationById(newId.toString()); 
         return destinationResult; 
     },
+    /** 
+     * Finds the destination object that has the same id as the provided one.
+     * Returns the destination object found else throws error if invalid argument type
+     * was provided or no destination object was found.
+     * @param destinationId destination string
+     * @return destination object
+    */
     async getDestinationById(destinationId) {
-        let errors = [];
+        
         //validates number of arguments
         if (arguments.length != 1) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidCountryName);
+            throw new Error(errorMessages.InvalidCountryName);
         }
-        if(errors.length > 0) return errors;
+        
         //gets the specific destination
         const destinationsCollection = await destinations();
         const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
-        if (singleDestination == null) {
-            errors.push(errorMessages.DestinationNotFound);
+        if (!singleDestination) {
+            throw new Error(errorMessages.DestinationNotFound);
         }
-        if(errors.length > 0) return errors;
+        
         return singleDestination;
     },
     /**
-     * Removes a specfic destination data with id equal to the provided one.
-     * Throws error if invalid destination id was provided.
+     * Removes a specfic destination object with id equal to the provided one.
+     * Throws error if invalid destination id was provided or deletion failed.
      * @param {*} destinationId 
+     * @returns destination object 
      */
     async deleteDestinationById(destinationId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 1) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-        if(errors.length > 0) return errors;
 
+        //removes the destination from the database
         const destinationsCollection = await destinations();
         const removedDestination = await destinationsCollection.removeOne({_id: ObjectId(destinationId)});
-        if (removedDestination.deletedCount == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+        if (!removedDestination || removedDestination.deletedCount == 0) {
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-        if(errors.length > 0) return errors;
-
+        
         return removedDestination;
     },
     /** 
      * Gets all the destination data within the destinations collection then returns
-     * them as an array.
+     * them as an array. Throws error if argument is provided.
+     * @returns an array of destination objects
     */
     async getAllDestinations() {
         if (arguments.length != 0) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         const destinationsCollection = await destinations();
         const allDestinations = await destinationsCollection.find({}).toArray();
         
         return allDestinations;
     },
+    /**
+     * Adds the provided law id to a specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed..
+     * 
+     * @param destinationId destionation id in string format
+     * @param lawId law id in string format
+     */
     async addLaw(destinationId, lawId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
 
         if (!lawId || typeof(lawId) != "string" || lawId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-        if(errors.length > 0) return errors;
 
         //add the law to destination.countryCustoms
         const destinationsCollection = await destinations();
         const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {"countryCustoms.laws": lawId}});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!updatedDestination || updatedDestination.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-
         return this.getDestinationById(destinationId);        
     },
+    /**
+     * Adds the provided prohibited item id to a specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string format
+     * @param itemId item id in string format
+     */
     async addProhibitedItem(destinationId, itemId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-
         if (!itemId || typeof(itemId) != "string" || itemId.length == 0) {
-            errors.push(errorMessages.InvalidProhibitedItemId);
+            throw new Error(errorMessages.InvalidProhibitedItemId);
         }
-        if(errors.length > 0) return errors;
 
         //add the new item into prohibited item array
         const destinationsCollection = await destinations();
         const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {"countryCustoms.prohibitedItems": itemId}});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!updatedDestination || updatedDestination.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-
         return this.getDestinationById(destinationId);
     },
-    async addPackingList(destinationId, packingListID) {
-        let errors = [];
-        //validates number of arguments
-        if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
-        }
-        //validates arguments type
-        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
-        }
-
-        if (!packingListID || typeof(packingListID) != "string" || packingListID.length == 0) {
-            errors.push(errorMessages.InvalidPackingListId);
-        }
-        if(errors.length > 0) return errors;
-
-        //add the new packing list
-        const destinationsCollection = await destinations();
-        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {packingList: packingListID}});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
-        }
-        if(errors.length > 0) return errors;
-
-        return this.getDestinationById(destinationId);
-    },
+    /**
+     * Adds the provided restaurant object to a specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string format
+     * @param newRestaurant new restaurant object
+     */
     async addRestaurantToDest(destinationId, newRestaurant) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!newRestaurant || typeof(newRestaurant) != "object") {
-            errors.push(errorMessages.InvalidRestaurantObject);
+            throw new Error(errorMessages.InvalidRestaurantObject);
         }
-
-        if(errors.length > 0) return errors;
-
         //add new restaurant to the destination
         const destinationsCollection = await destinations();
         const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {restaurants: newRestaurant}});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!updatedDestination || updatedDestination.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-
+    
         return this.getDestinationById(destinationId);
     },
+    /**
+     * Adds the provided thingToDo object into a specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string format
+     * @param newThing new newThing object
+     */
     async addThingToDo(destinationId, newThing) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!newThing || typeof(newThing) != "object") {
-            errors.push(errorMessages.InvalidThingToDoObject);
+            throw new Error(errorMessages.InvalidThingToDoObject);
         }
-
-        if(errors.length > 0) return errors;
-
         //add new restaurant to the destination
         const destinationsCollection = await destinations();
         const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$addToSet: {thingsToDo: newThing}});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!updatedDestination || updatedDestination.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
 
         return this.getDestinationById(destinationId);
     },
+    /**
+     * Gets all the laws of a specific destination. 
+     * Throws error if invalid number of arguments are provided or query failed.
+     * @param destinationId destionation id in string format
+     */
     async getAllLaws(destinationId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 1) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-
-        if(errors.length > 0) return errors;
 
         //add the law to destination.countryCustoms
         const destinationsCollection = await destinations();
         const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
-        if (singleDestination == null) {
-            errors.push(errorMessages.DestinationNotFound);
+        if (!singleDestination) {
+            throw new Error(errorMessages.DestinationNotFound);
         }
-        if(errors.length > 0) return errors;
+        
         return singleDestination.countryCustoms.laws;
     },
+    /**
+     * Gets all the prohibited items of a specific destination. 
+     * Throws error if invalid number of arguments are provided or query failed.
+     * @param destinationId destionation id in string format
+     */
     async getAllProhibitedItems(destinationId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 1) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
-
-        if(errors.length > 0) return errors;
-
         //add the law to destination.countryCustoms
         const destinationsCollection = await destinations();
         const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
-        if (singleDestination == null) {
-            errors.push(errorMessages.DestinationNotFound);
+        if (!singleDestination) {
+            throw new Error(errorMessages.DestinationNotFound);
         }
-        if(errors.length > 0) return errors;
         return singleDestination.countryCustoms.prohibitedItems;
     },
-    async getAllPackingList(destinationId) {
-        let errors = [];
-        //validates number of arguments
-        if (arguments.length != 1) {
-            errors.push(errorMessages.wrongNumberOfArguments);
-        }
-        //validates arguments type
-        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
-        }
-
-        if(errors.length > 0) return errors;
-
-        //add the law to destination.countryCustoms
-        const destinationsCollection = await destinations();
-        const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
-        if (singleDestination == null) {
-            errors.push(errorMessages.DestinationNotFound);
-        }
-        if(errors.length > 0) return errors;
-        return singleDestination.packingList;
-    },
+    /**
+     * Removes a specific law with matching id within specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string 
+     * @param lawId law id in string format
+     */
     async removeLawById(destinationId, lawId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!lawId || typeof(lawId) != "string" || lawId.length == 0) {
-            errors.push(errorMessages.InvalidLawId);
+            throw new Error(errorMessages.InvalidLawId);
         }
-
-        if(errors.length > 0) return errors;
-
+        //removes the law
         const destinationsCollection = await destinations();
-
         const removedLaw = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"countryCustoms.laws": lawId}});
-        if (removedLaw.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!removedLaw || removedLaw.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-
         return lawId;
     },
+    /**
+     * Removes a prohibited item with matching id within specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string 
+     * @param itemId prohibited id in string format
+     */
     async removeProhibitedItem(destinationId, itemId) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!itemId || typeof(itemId) != "string" || itemId.length == 0) {
-            errors.push(errorMessages.InvalidProhibitedItemId);
+            throw new Error(errorMessages.InvalidProhibitedItemId);
         }
-
-        if(errors.length > 0) return errors;
 
         const destinationsCollection = await destinations();
-
         const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"countryCustoms.prohibitedItems": itemId}});
-        if (removedItem.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!removedItem || removedItem.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
 
         return itemId;
     },
-    async removePackingList(destinationId, packingId) {
-        let errors = [];
-        //validates number of arguments
-        if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
-        }
-        //validates arguments type
-        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
-        }
-        if (!packingId || typeof(packingId) != "string" || packingId.length == 0) {
-            errors.push(errorMessages.InvalidPackingListId);
-        }
-
-        if(errors.length > 0) return errors;
-
-        const destinationsCollection = await destinations();
-
-        const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {packingList: packingId}});
-        if (removedItem.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
-        }
-        if(errors.length > 0) return errors;
-
-        return packingId;
-    },
+    /**
+     * Removes a restaurant with matching name within specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string 
+     * @param restaurantName restaurant name in string format
+     */
     async removeRestaurant(destinationId, restaurantName) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!restaurantName || typeof(restaurantName) != "string" || restaurantName.length == 0) {
-            errors.push(errorMessages.InvalidRestaurantName);
+            throw new Error(errorMessages.InvalidRestaurantName);
         }
 
-        if(errors.length > 0) return errors;
-
+        //removes the restaurant from destination object
         const destinationsCollection = await destinations();
-        console.log("start querying");
         const removedRestaurant = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"restaurants": {"name": restaurantName}}});
-        if (removedRestaurant.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+        if (!removedRestaurant || removedRestaurant.modifiedCount === 0) {
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-        console.log(`restaurantName = ${restaurantName}`);
         return restaurantName;
     },
+    /**
+     * Removes a specific thingToDo matching name within specific destination. 
+     * Throws error if invalid number of arguments are provided or update failed.
+     * @param destinationId destionation id in string 
+     * @param newThing thingToDo name in string format
+     */
     async removeThingToDo(destinationId, newThing) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw new Error(errorMessages.wrongNumberOfArguments);
         }
         //validates arguments type
         if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
+            throw new Error(errorMessages.InvalidDestinationId);
         }
         if (!newThing || typeof(newThing) != "string" || newThing.length == 0) {
-            errors.push(errorMessages.InvalidThingsToDoName);
+            throw new Error(errorMessages.InvalidThingsToDoName);
         }
 
-        if(errors.length > 0) return errors;
-
+        //removes the thingToDo objecct
         const destinationsCollection = await destinations();
-
         const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"thingsToDo": {"name": newThing}}});
         if (removedItem.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
+            throw new Error(errorMessages.UpdateDestinationError);
         }
-        if(errors.length > 0) return errors;
-
         return newThing;
     }
 };
