@@ -115,30 +115,6 @@ let exportedMethods = {
         if(errors.length > 0) return errors;
         return singleDestination;
     },
-    /** */
-    async updateDestination(destinationId, destination) {
-        let errors = [];
-        //validates number of arguments
-        if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
-        }
-        //validates arguments type
-        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
-            errors.push(errorMessages.InvalidDestinationId);
-        }
-        if (!destination || typeof(destination) != "object") {
-            errors.push(errorMessages.InvalidDestinationObject);
-        }
-        if(errors.length > 0) return errors;
-
-        const destinationsCollection = await destinations();
-        const updatedDestination = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$set: destination});
-        if (updatedDestination.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateDestinationError);
-        }
-        if(errors.length > 0) return errors;
-        return await this.getDestinationById(destinationId);
-    },
     /**
      * Removes a specfic destination data with id equal to the provided one.
      * Throws error if invalid destination id was provided.
@@ -242,7 +218,7 @@ let exportedMethods = {
         }
 
         if (!packingListID || typeof(packingListID) != "string" || packingListID.length == 0) {
-            errors.push(errorMessages.InvalidPackingList);
+            errors.push(errorMessages.InvalidPackingListId);
         }
         if(errors.length > 0) return errors;
 
@@ -373,6 +349,136 @@ let exportedMethods = {
         }
         if(errors.length > 0) return errors;
         return singleDestination.packingList;
+    },
+    async removeLawById(destinationId, lawId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!lawId || typeof(lawId) != "string" || lawId.length == 0) {
+            errors.push(errorMessages.InvalidLawId);
+        }
+
+        if(errors.length > 0) return errors;
+
+        const destinationsCollection = await destinations();
+
+        const removedLaw = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"countryCustoms.laws": lawId}});
+        if (removedLaw.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return lawId;
+    },
+    async removeProhibitedItem(destinationId, itemId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!itemId || typeof(itemId) != "string" || itemId.length == 0) {
+            errors.push(errorMessages.InvalidProhibitedItemId);
+        }
+
+        if(errors.length > 0) return errors;
+
+        const destinationsCollection = await destinations();
+
+        const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"countryCustoms.prohibitedItems": itemId}});
+        if (removedItem.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return itemId;
+    },
+    async removePackingList(destinationId, packingId) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!packingId || typeof(packingId) != "string" || packingId.length == 0) {
+            errors.push(errorMessages.InvalidPackingListId);
+        }
+
+        if(errors.length > 0) return errors;
+
+        const destinationsCollection = await destinations();
+
+        const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {packingList: packingId}});
+        if (removedItem.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return packingId;
+    },
+    async removeRestaurant(destinationId, restaurantName) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!restaurantName || typeof(restaurantName) != "string" || restaurantName.length == 0) {
+            errors.push(errorMessages.InvalidRestaurantName);
+        }
+
+        if(errors.length > 0) return errors;
+
+        const destinationsCollection = await destinations();
+        console.log("start querying");
+        const removedRestaurant = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"restaurants": {"name": restaurantName}}});
+        if (removedRestaurant.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+        console.log(`restaurantName = ${restaurantName}`);
+        return restaurantName;
+    },
+    async removeThingToDo(destinationId, newThing) {
+        let errors = [];
+        //validates number of arguments
+        if (arguments.length != 2) {
+            errors.push(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            errors.push(errorMessages.InvalidDestinationId);
+        }
+        if (!newThing || typeof(newThing) != "string" || newThing.length == 0) {
+            errors.push(errorMessages.InvalidThingsToDoName);
+        }
+
+        if(errors.length > 0) return errors;
+
+        const destinationsCollection = await destinations();
+
+        const removedItem = await destinationsCollection.updateOne({_id: ObjectId(destinationId)}, {$pull: {"thingsToDo": {"name": newThing}}});
+        if (removedItem.modifiedCount === 0) {
+            errors.push(errorMessages.UpdateDestinationError);
+        }
+        if(errors.length > 0) return errors;
+
+        return newThing;
     }
 };
 
