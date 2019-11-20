@@ -9,7 +9,7 @@ async function getAllProhibitedItems() {
     }
 
     const prohibitedItemsCollection = await prohibitedItems();
-    var allItems = await prohibitedItemsCollection.find({}).toArray();
+    const allItems = await prohibitedItemsCollection.find({}).toArray();
     if (allItems.length < 1) {
         throw new Error(errorMessages.itemsCollectionEmpty);
     } else {
@@ -18,15 +18,17 @@ async function getAllProhibitedItems() {
 }
 
 async function getProhibitedItemById(itemId) {
-    if (itemId === undefined) {
+    if(arguments.length!==1) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    } else if (!itemId) {
         throw new Error(errorMessages.itemIDMissing);
     } else if (!ObjectId.isValid(itemId)) {
         throw new Error(errorMessages.itemIDInvalid);
     }
 
     const prohibitedItemsCollection = await prohibitedItems();
-    var pItem = await prohibitedItemsCollection.findOne({ '_id': new ObjectId(itemId) });
-    if (pItem === null || pItem === undefined) {
+    const pItem = await prohibitedItemsCollection.findOne({ '_id': new ObjectId(itemId) });
+    if (!pItem) {
         throw new Error(errorMessages.itemNotFound);
     } else {
         return pItem;
@@ -35,7 +37,9 @@ async function getProhibitedItemById(itemId) {
 }
 
 async function createProhibitedItem(itemName) {
-    if (itemName === undefined) {
+    if(arguments.length!==1) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    } else if (!itemName) {
         throw new Error(errorMessages.itemNameMissing)
     } else if (typeof itemName !== 'string') {
         throw new Error(errorMessages.itemNameInvalid)
@@ -46,7 +50,7 @@ async function createProhibitedItem(itemName) {
         item_name: itemName
     };
     const pItemObject = await prohibitedItemsCollection.insertOne(newItem);
-    if (pItemObject.insertedCount === 0) {
+    if (!pItemObject || pItemObject.insertedCount === 0) {
         throw new Error(errorMessages.itemCreationError);
     } else {
         const pItemId = pItemObject.insertedId;
@@ -56,11 +60,13 @@ async function createProhibitedItem(itemName) {
 }
 
 async function updateProhibitedItem(itemId, newItemName) {
-    if (itemId === undefined) {
+    if(arguments.length!==2) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    } else if (!itemId) {
         throw new Error(errorMessages.itemIDMissing);
     } else if (!ObjectId.isValid(itemId)) {
         throw new Error(errorMessages.itemIDInvalid);
-    } else if (newItemName === undefined) {
+    } else if (!newItemName) {
         throw new Error(errorMessages.itemNameMissing)
     } else if (typeof newItemName !== 'string') {
         throw new Error(errorMessages.itemNameInvalid)
@@ -68,11 +74,11 @@ async function updateProhibitedItem(itemId, newItemName) {
 
     const prohibitedItemsCollection = await prohibitedItems();
     const itemToUpdate = await prohibitedItemsCollection.findOne({ '_id': new ObjectId(itemId) });
-    if (itemToUpdate === null) {
+    if (!itemToUpdate) {
         throw new Error(errorMessages.itemNotFound);
     } else {
         const updatedItem = await prohibitedItemsCollection.updateOne(itemToUpdate, { $set: { item_name: newItemName } });
-        if (updatedItem.modifiedCount === 0) {
+        if (!updatedItem || updatedItem.modifiedCount === 0) {
             throw new Error(errorMessages.itemUpdationError);
         }
         return this.getProhibitedItemById(itemId);
@@ -80,7 +86,9 @@ async function updateProhibitedItem(itemId, newItemName) {
 }
 
 async function deleteProhibitedItem(itemId) {
-    if (itemId === undefined) {
+    if(arguments.length!==1) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    } else if (!itemId) {
         throw new Error(errorMessages.itemIDMissing);
     } else if (!ObjectId.isValid(itemId)) {
         throw new Error(errorMessages.itemIDInvalid);
@@ -88,11 +96,11 @@ async function deleteProhibitedItem(itemId) {
 
     const prohibitedItemsCollection = await prohibitedItems();
     const itemToDelete = await prohibitedItemsCollection.findOne({ '_id': new ObjectId(itemId) });
-    if (itemToDelete === null) {
+    if (!itemToDelete) {
         throw new Error(errorMessages.itemNotFound);
     } else {
         const itemDeleted = prohibitedItemsCollection.deleteOne({ '_id': new ObjectId(itemId) });
-        if (itemDeleted.deletedCount === 0) {
+        if (!itemDeleted || itemDeleted.deletedCount === 0) {
             throw new Error(errorMessages.itemsNotDeleted);
         } else {
             return itemToDelete;
