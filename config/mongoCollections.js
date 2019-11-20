@@ -1,4 +1,3 @@
-
 const dbConnection = require("./mongoConnection");
 
 const getCollectionFn = collection => {
@@ -16,6 +15,7 @@ const getCollectionFn = collection => {
 
 module.exports = {
   users: getCollectionFn("users"),
+  destinations: getCollectionFn("destinations"),
   laws: getCollectionFn("laws"),
   prohibitedItems: getCollectionFn("prohibitedItems"),
   packing: getCollectionFn("packing")
