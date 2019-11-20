@@ -40,20 +40,69 @@ async function getPackingList(type){
     return packingList.items;
 }
 
-async function addItemToPackingList(type, items){
+async function addItemsToPackingList(type, items){
     if(!type || !items) throw new Error("Argument Missing!");
-    if(typeof type !== 'string' || !Array.isArray(items)) throw new Error("Argument not of correct type!");
+    if(typeof type !== 'string') throw new Error("Argument not of correct type!");
+
+    if(typeof items == 'string'){
+        const packingCollection = await packing();
+        const updationInfo = await packingCollection.updateOne({"type": type}, {$addToSet: {items: items}});
+
+        if(!updationInfo) throw new Error("Update Failed!");
+        if(updationInfo.updatedCount == 0) throw new Error("No packing list exists with that type!");
+
+        return true;
+    }else if(Array.isArray(items)){
+        const packingCollection = await packing();
+        const updationInfo = await packingCollection.updateOne({"type": type}, {$addToSet: {items: {$each: items}}});
+
+        if(!updationInfo) throw new Error("Update Failed!");
+        if(updationInfo.updatedCount == 0) throw new Error("No packing list exists with that type!");
+
+        return true;
+    }else{
+        throw new Error("Argument not of correct type!");
+    }
+}
+
+async function deletePackingList(type){
+    if(!type) throw new Error("Type not entered!");
+    if(typeof type !== 'string') throw new Error("Type is not of proper type!");
 
     const packingCollection = await packing();
+    const deletionInfo = await packingCollection.removeOne({"type": type});
 
-    const updationInfo = await packingCollection.updateOne({"type": type}, {$addToSet: {items: {$each: items}}});
-
-    if(!updationInfo) throw new Error("Update Failed");
-    if(updationInfo.updatedCount == 0) throw new Error("No packing list exists with that type!");
+    if(!deletionInfo) throw new Error("Delete Failed!");
+    if(deletionInfo.deletedCount ==0) throw new Error("No packing list exists with that type!");
 
     return true;
 }
 
-module.exports = {createPackingList, getPackingList, addItemToPackingList};
+async function removeItemsFromPackingList(type, items){
+    if(!type || !items) throw new Error("Argument Missing!");
+    if(typeof type !== 'string') throw new Error("Argument not of correct type!");
+
+    if(typeof items == 'string'){
+        const packingCollection = await packing();
+        const updationInfo = await packingCollection.updateOne({"type": type}, {$pull: {items: items}});
+
+        if(!updationInfo) throw new Error("Removal Failed!");
+        if(updationInfo.updatedCount == 0) throw new Error("No packing list exists with that type!");
+
+        return true;
+    }else if(Array.isArray(items)){
+        const packingCollection = await packing();
+        const updationInfo = await packingCollection.updateOne({"type": type}, {$pull: {items: {$each: items}}});
+
+        if(!updationInfo) throw new Error("Removal Failed!");
+        if(updationInfo.updatedCount == 0) throw new Error("No packing list exists with that type!");
+
+        return true;
+    }else{
+        throw new Error("Argument not of correct type!");
+    }
+}
+
+module.exports = {createPackingList, getPackingList, addItemsToPackingList, deletePackingList, removeItemsFromPackingList};
 
 
