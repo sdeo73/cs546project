@@ -122,20 +122,22 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
      list-style: none;
 }
 
-#nationalities li:first-child{
-     padding-left: 42px;
-}
-
 #addNationalities {
      margin-left: 10px;
-     font-size: 20px;
+     font-size: 16px;
      color: #4a8ab4;
+     border: none;
 }
 
 .deleteNationalities{
     margin-left: 10px;
     font-size: 16px;
     color: #4a8ab4;
+    border: none;
+}
+
+#nationalities li select {
+    margin-bottom: 7px;
 }
 
 
