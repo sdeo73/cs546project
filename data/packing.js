@@ -20,9 +20,7 @@ async function createPackingList(type, items){
 
     const insertInfo = await packingCollection.insertOne(newList);
 
-    if(insertInfo == null) throw new Error(errorMessages.packingListAddError);
-
-    if (insertInfo.insertedCount === 0) throw new Error(errorMessages.packingListAddError);
+    if(insertInfo == null || insertInfo.insertedCount === 0) throw new Error(errorMessages.packingListAddError);
 
     return true;
 
@@ -49,16 +47,14 @@ async function addItemsToPackingList(type, items){
         const packingCollection = await packing();
         const updationInfo = await packingCollection.updateOne({"type": type}, {$addToSet: {items: items}});
 
-        if(!updationInfo) throw new Error(errorMessages.packingListItemUpdateError);
-        if(updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemUpdateError);
+        if(!updationInfo || updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemUpdateError);
 
         return true;
     }else if(Array.isArray(items)){
         const packingCollection = await packing();
         const updationInfo = await packingCollection.updateOne({"type": type}, {$addToSet: {items: {$each: items}}});
 
-        if(!updationInfo) throw new Error(errorMessages.packingListItemUpdateError);
-        if(updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemUpdateError);
+        if(!updationInfo || updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemUpdateError);
 
         return true;
     }else{
@@ -73,8 +69,7 @@ async function deletePackingList(type){
     const packingCollection = await packing();
     const deletionInfo = await packingCollection.removeOne({"type": type});
 
-    if(!deletionInfo) throw new Error(errorMessages.packingListDeleteFailed);
-    if(deletionInfo.deletedCount ==0) throw new Error(errorMessages.packingListDeleteFailed);
+    if(!deletionInfo || deletionInfo.deletedCount ==0) throw new Error(errorMessages.packingListDeleteFailed);
 
     return true;
 }
@@ -87,16 +82,14 @@ async function removeItemsFromPackingList(type, items){
         const packingCollection = await packing();
         const updationInfo = await packingCollection.updateOne({"type": type}, {$pull: {items: items}});
 
-        if(!updationInfo) throw new Error(errorMessages.packingListItemRemovalFailed);
-        if(updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemRemovalFailed);
+        if(!updationInfo || updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemRemovalFailed);
 
         return true;
     }else if(Array.isArray(items)){
         const packingCollection = await packing();
         const updationInfo = await packingCollection.updateOne({"type": type}, {$pull: {items: {$in: items}}});
 
-        if(!updationInfo) throw new Error(errorMessages.packingListItemRemovalFailed);
-        if(updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemRemovalFailed);
+        if(!updationInfo || updationInfo.updatedCount == 0) throw new Error(errorMessages.packingListItemRemovalFailed);
 
         return true;
     }else{
