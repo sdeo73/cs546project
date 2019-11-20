@@ -1,33 +1,9 @@
-const dubaiData = require("./Destination/dubai.json");
 const errorMessages = require('../public/errorMessages');
 const mongoCollections = require("../config/mongoCollections");
 const destinations = mongoCollections.destinations;
 const ObjectId = require("mongodb").ObjectID;
 
 let exportedMethods = {
-    testPrint() {
-        console.log(`dubai d_name = ${dubaiData.d_name}`)
-    },
-    /** 
-     * Returns true if the passed-in string is valid, else throws error.
-     * 
-     * @param str the string needs to be validated.
-     * @param str_name the name of the passed-in string.
-     * @returns boolean indicates whether the passed-in string valid or not.
-    */
-    validateStr(str, str_name) {
-        if (str === undefined) {
-            throw `The ${str_name} is undefined!`;
-        } else if (str == null) {
-            throw `The ${str_name} is null!`;
-        } else if (typeof str != "string") {
-            throw `The ${str_name} is not a string!`;
-        } else if (str.length == 0) {
-            throw `The ${str_name} string has zero length!`
-        } else {
-            return true;
-        }
-    },
     /**
      * Creates a new destination data and inserts it into the destinations collection.
      * Then returns the inserted destination object.
