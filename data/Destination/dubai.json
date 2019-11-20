@@ -1,297 +1,382 @@
 {
-    "d_name": "Dubai",
-    "country": "United Arab Emirates",
-    "weather": [
-        {
-            "month": "January",
-            "avgHigh": 24,
-            "avgLow": 14,
-            "rain": false
-        },
-        {
-            "month": "February",
-            "avgHigh": 25,
-            "avgLow": 16,
-            "rain": false
-        },
-        {
-            "month": "March",
-            "avgHigh": 29,
-            "avgLow": 18,
-            "rain": false
-        },
-        {
-            "month": "April",
-            "avgHigh": 33,
-            "avgLow": 21,
-            "rain": false
-        },
-        {
-            "month": "May",
-            "avgHigh": 38,
-            "avgLow": 25,
-            "rain": false
-        },
-        {
-            "month": "June",
-            "avgHigh": 40,
-            "avgLow": 28,
-            "rain": false
-        },
-        {
-            "month": "July",
-            "avgHigh": 41,
-            "avgLow": 30,
-            "rain": false
-        },
-        {
-            "month": "August",
-            "avgHigh": 41,
-            "avgLow": 31,
-            "rain": false
-        },
-        {
-            "month": "September",
-            "avgHigh": 39,
-            "avgLow": 28,
-            "rain": false
-        },
-        {
-            "month": "October",
-            "avgHigh": 35,
-            "avgLow": 24,
-            "rain": false
-        },
-        {
-            "month": "November",
-            "avgHigh": 31,
-            "avgLow": 20,
-            "rain": false
-        },
-        {
-            "month": "December",
-            "avgHigh": 26,
-            "avgLow": 16,
-            "rain": false
-        }
-    ],
-    "thingsToDo": [
-        {
-            "name": "Burj Khalifa - Level 124 + 125",
-            "location": "1 Sheikh Mohammed bin Rashid Blvd",
-            "type": "Sightseeing",
-            "avgCostPerPerson": 41,
-            "avgTimeSpent": 2
-        },
-        {
-            "name": "Burj Khalifa - Level 124 + 125 + 148",
-            "location": "1 Sheikh Mohammed bin Rashid Blvd",
-            "type": "Sightseeing",
-            "avgCostPerPerson": 103,
-            "avgTimeSpent": 2
-        },
-        {
-            "name": "Burj Khalifa - Level 152 + 153 + 154",
-            "location": "1 Sheikh Mohammed bin Rashid Blvd",
-            "type": "Sightseeing",
-            "avgCostPerPerson": 165,
-            "avgTimeSpent": 2
-        },
-        {
-            "name": "The Dubai Mall",
-            "location": "Financial Center Rd, Along Sheikh Zayed Road, next to Burj Khalifa tower",
-            "type": "Leisure",
-            "avgCostPerPerson": 0,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Burj Al Arab",
-            "location": "Jumeirah St - Dubai",
-            "type": "Luxury",
-            "avgCostPerPerson": 0,
-            "avgTimeSpent": 1
-        },
-        {
-            "name": "Atlantis - The Palm",
-            "location": "Crescent Road",
-            "type": "Luxury",
-            "avgCostPerPerson": 0,
-            "avgTimeSpent": 4
-        },
-        {
-            "name": "Aquaventure",
-            "location": "Atlantis The Palm - Crescent Road",
-            "type": "Entertainment",
-            "avgCostPerPerson": 80,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Wild Wadi",
-            "location": "Jumeirah Street, Opp. Burj Al Arab",
-            "type": "Entertainment",
-            "avgCostPerPerson": 80,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Ski Dubai",
-            "location": "Sheikh Zayed Road, Mall of the Emirates",
-            "type": "Entertainment",
-            "avgCostPerPerson": 61,
-            "avgTimeSpent": 3
-        },
-        {
-            "name": "Dubai Frame",
-            "location": "Sheikh Rashid Road, Zabeel Park, Gate 4",
-            "type": "Sightseeing",
-            "avgCostPerPerson": 21,
-            "avgTimeSpent": 1.5
-        },
-        {
-            "name": "Bollywood Parks Dubai",
-            "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
-            "type": "Entertainment",
-            "avgCostPerPerson": 47,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Motiongate Dubai",
-            "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
-            "type": "Entertainment",
-            "avgCostPerPerson": 75,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Legoland Dubai",
-            "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
-            "type": "Entertainment",
-            "avgCostPerPerson": 75,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Legoland Water Park",
-            "location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
-            "type": "Entertainment",
-            "avgCostPerPerson": 75,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Global Village",
-            "location": "Sheikh Mohammed Bin Zayed Road",
-            "type": "Entertainment",
-            "avgCostPerPerson": 4,
-            "avgTimeSpent": 7
-        },
-        {
-            "name": "Dubai Gold Souk",
-            "location": "Al Dhagaya, Deira",
-            "type": "Sighseeing",
-            "avgCostPerPerson": 0,
-            "avgTimeSpent": 2
-        },
-        {
-            "name": "Skydive Dubai - The Palm",
-            "location": "Al Seyahi St",
-            "type": "Adventure Sports",
-            "avgCostPerPerson": 600,
-            "avgTimeSpent": 3
-        },
-        {
-            "name": "Skydive Dubai - Desert Campus",
-            "location": "Al Seyahi St",
-            "type": "Adventure Sports",
-            "avgCostPerPerson": 462,
-            "avgTimeSpent": 3
-        },
-        {
-            "name": "Sheikh Zayed Grand Mosque",
-            "location": "Sheikh Rashid Bin Saeed St - Abu Dhabi",
-            "type": "Sightseeing",
-            "avgCostPerPerson": 0,
-            "avgTimeSpent": 1
-        },
-        {
-            "name": "Ferrari World",
-            "location": "Yas Island, Abu Dhabi",
-            "type": "Entertainment",
-            "avgCostPerPerson": 80,
-            "avgTimeSpent": 8
-        },
-        {
-            "name": "Yas Waterworld",
-            "location": "Yas Island, Abu Dhabi",
-            "type": "Entertainment",
-            "avgCostPerPerson": 70,
-            "avgTimeSpent": 8
-        }
-    ],
-    "countryCustoms": {
-        "onArrivalVisas": [
-            "Andorra",
-            "Argentina",
-            "Australia",
-            "Austria",
-            "Belgium",
-            "Brazil",
-            "Brunei",
-            "Bulgaria",
-            "Canada",
-            "Chile",
-            "Croatia",
-            "Cyprus",
-            "Czech Republic",
-            "Denmark",
-            "El Salvador",
-            "Estonia",
-            "Finland",
-            "France",
-            "Germany",
-            "Greece",
-            "Hong Kong",
-            "Hungary",
-            "Iceland",
-            "Ireland",
-            "Italy",
-            "Japan",
-            "Kazakhstan",
-            "Latvia",
-            "Liechtenstein",
-            "Lithuania",
-            "Luxembourg",
-            "Malaysia",
-            "Malta",
-            "Mauritius",
-            "Mexico",
-            "Monaco",
-            "Netherlands",
-            "New Zealand",
-            "Norway",
-            "People's Republic of China",
-            "Poland",
-            "Portugal",
-            "Romania",
-            "Russian Federation",
-            "San Marino",
-            "Serbia",
-            "Seychelles",
-            "Singapore",
-            "Slovakia",
-            "Slovenia",
-            "South Korea",
-            "Spain",
-            "Sweden",
-            "Switzerland",
-            "Ukraine",
-            "Uruguay",
-            "United Kingdom",
-            "United States of America",
-            "Vatican City"
-        ],
-        "restricted": [
-            "Israel"
-        ],
-        "vaccinations": [],
-        "cashLimit": 27226,
-        "prohibitedItems": [],
-        "laws": []
-    }
+	"d_name": "Dubai",
+	"country": "United Arab Emirates",
+	"weather": [
+		{
+			"month": "January",
+			"avgHigh": 24,
+			"avgLow": 14,
+			"rain": false
+		},
+		{
+			"month": "February",
+			"avgHigh": 25,
+			"avgLow": 16,
+			"rain": false
+		},
+		{
+			"month": "March",
+			"avgHigh": 29,
+			"avgLow": 18,
+			"rain": false
+		},
+		{
+			"month": "April",
+			"avgHigh": 33,
+			"avgLow": 21,
+			"rain": false
+		},
+		{
+			"month": "May",
+			"avgHigh": 38,
+			"avgLow": 25,
+			"rain": false
+		},
+		{
+			"month": "June",
+			"avgHigh": 40,
+			"avgLow": 28,
+			"rain": false
+		},
+		{
+			"month": "July",
+			"avgHigh": 41,
+			"avgLow": 30,
+			"rain": false
+		},
+		{
+			"month": "August",
+			"avgHigh": 41,
+			"avgLow": 31,
+			"rain": false
+		},
+		{
+			"month": "September",
+			"avgHigh": 39,
+			"avgLow": 28,
+			"rain": false
+		},
+		{
+			"month": "October",
+			"avgHigh": 35,
+			"avgLow": 24,
+			"rain": false
+		},
+		{
+			"month": "November",
+			"avgHigh": 31,
+			"avgLow": 20,
+			"rain": false
+		},
+		{
+			"month": "December",
+			"avgHigh": 26,
+			"avgLow": 16,
+			"rain": false
+		}
+	],
+	"thingsToDo": [
+		{
+			"name": "Burj Khalifa - Level 124 + 125",
+			"location": "1 Sheikh Mohammed bin Rashid Blvd",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 41,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Burj Khalifa - Level 124 + 125 + 148",
+			"location": "1 Sheikh Mohammed bin Rashid Blvd",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 103,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Burj Khalifa - Level 152 + 153 + 154",
+			"location": "1 Sheikh Mohammed bin Rashid Blvd",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 165,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "The Dubai Mall",
+			"location": "Financial Center Rd, Along Sheikh Zayed Road, next to Burj Khalifa tower",
+			"type": "Leisure",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Burj Al Arab",
+			"location": "Jumeirah St - Dubai",
+			"type": "Luxury",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Atlantis - The Palm",
+			"location": "Crescent Road",
+			"type": "Luxury",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Aquaventure",
+			"location": "Atlantis The Palm - Crescent Road",
+			"type": "Entertainment",
+			"avgCostPerPerson": 80,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Wild Wadi",
+			"location": "Jumeirah Street, Opp. Burj Al Arab",
+			"type": "Entertainment",
+			"avgCostPerPerson": 80,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Ski Dubai",
+			"location": "Sheikh Zayed Road, Mall of the Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 61,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Dubai Frame",
+			"location": "Sheikh Rashid Road, Zabeel Park, Gate 4",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 21,
+			"avgTimeSpent": 1.5
+		},
+		{
+			"name": "Bollywood Parks Dubai",
+			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
+			"type": "Entertainment",
+			"avgCostPerPerson": 47,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Motiongate Dubai",
+			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
+			"type": "Entertainment",
+			"avgCostPerPerson": 75,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Legoland Dubai",
+			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
+			"type": "Entertainment",
+			"avgCostPerPerson": 75,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Legoland Water Park",
+			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
+			"type": "Entertainment",
+			"avgCostPerPerson": 75,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Global Village",
+			"location": "Sheikh Mohammed Bin Zayed Road",
+			"type": "Entertainment",
+			"avgCostPerPerson": 4,
+			"avgTimeSpent": 7
+		},
+		{
+			"name": "Dubai Gold Souk",
+			"location": "Al Dhagaya, Deira",
+			"type": "Sighseeing",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Skydive Dubai - The Palm",
+			"location": "Al Seyahi St",
+			"type": "Adventure Sports",
+			"avgCostPerPerson": 600,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Skydive Dubai - Desert Campus",
+			"location": "Al Seyahi St",
+			"type": "Adventure Sports",
+			"avgCostPerPerson": 462,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Sheikh Zayed Grand Mosque",
+			"location": "Sheikh Rashid Bin Saeed St - Abu Dhabi",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Ferrari World",
+			"location": "Yas Island, Abu Dhabi",
+			"type": "Entertainment",
+			"avgCostPerPerson": 80,
+			"avgTimeSpent": 8
+		},
+		{
+			"name": "Yas Waterworld",
+			"location": "Yas Island, Abu Dhabi",
+			"type": "Entertainment",
+			"avgCostPerPerson": 70,
+			"avgTimeSpent": 8
+		}
+	],
+	"restaurants": [
+		{
+			"name": "Khaana Badosh",
+			"location": "Shop 6, Ground Floor, Al Salam Barsha South Building, Al Barsha South, Dubai",
+			"cuisine": [
+				"Pakistani",
+				"Indian",
+				"North Indian",
+				"Chinese"
+			],
+			"avgCostPerPerson": 8
+		},
+		{
+			"name": "Maisan 15",
+			"location": "Beside Maisan Towers, Barsha South, Dubai",
+			"cuisine": [
+				"Cafe"
+			],
+			"avgCostPerPerson": 21
+		},
+		{
+			"name": "Papa Murphy's Pizza",
+			"location": "Ground Floor, My City Centre Al Barsha, Al Barsha South, Dubai",
+			"cuisine": [
+				"Pizza"
+			],
+			"avgCostPerPerson": 14
+		},
+		{
+			"name": "Fusion Restaurant - The S Hotel, Al Barsha South",
+			"location": "The S Hotel, Beside My City Centre, Al Barsha South, Dubai",
+			"cuisine": [
+				"International"
+			],
+			"avgCostPerPerson": 20
+		},
+		{
+			"name": "Smart Cook",
+			"location": "Shop 9, Ground Floor, Al Salam Barsha South Building, Al Barsha South, Dubai",
+			"cuisine": [
+				"North Indian",
+				"Chinese",
+				"South Indian"
+			],
+			"avgCostPerPerson": 6
+		},
+		{
+			"name": "Shakespeare and Co.",
+			"location": "Ground Floor, My City Center, Al Barsha South, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Italian",
+				"Arabian",
+				"Middle Eastern",
+				"Desserts"
+			],
+			"avgCostPerPerson": 30
+		},
+		{
+			"name": "McDonald's",
+			"location": "Ground Floor, My City Center, Al Barsha South, Dubai",
+			"cuisine": [
+				"Fast Food"
+			],
+			"avgCostPerPerson": 7
+		},
+		{
+			"name": "Tim Hortons - تيم هورتنز",
+			"location": "Ground Floor, My City Centre Al Barsha, Al Barsha South, Dubai",
+			"cuisine": [
+				"Cafe"
+			],
+			"avgCostPerPerson": 11
+		},
+		{
+			"name": "Baker & Spice",
+			"location": "The S Hotel, Beside My City Centre, Al Barsha South, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Desserts",
+				"Bakery"
+			],
+			"avgCostPerPerson": 35
+		}
+	],
+	"countryCustoms": {
+		"onArrivalVisas": [
+			"Andorra",
+			"Argentina",
+			"Australia",
+			"Austria",
+			"Belgium",
+			"Brazil",
+			"Brunei",
+			"Bulgaria",
+			"Canada",
+			"Chile",
+			"Croatia",
+			"Cyprus",
+			"Czech Republic",
+			"Denmark",
+			"El Salvador",
+			"Estonia",
+			"Finland",
+			"France",
+			"Germany",
+			"Greece",
+			"Hong Kong",
+			"Hungary",
+			"Iceland",
+			"Ireland",
+			"Italy",
+			"Japan",
+			"Kazakhstan",
+			"Latvia",
+			"Liechtenstein",
+			"Lithuania",
+			"Luxembourg",
+			"Malaysia",
+			"Malta",
+			"Mauritius",
+			"Mexico",
+			"Monaco",
+			"Netherlands",
+			"New Zealand",
+			"Norway",
+			"People's Republic of China",
+			"Poland",
+			"Portugal",
+			"Romania",
+			"Russian Federation",
+			"San Marino",
+			"Serbia",
+			"Seychelles",
+			"Singapore",
+			"Slovakia",
+			"Slovenia",
+			"South Korea",
+			"Spain",
+			"Sweden",
+			"Switzerland",
+			"Ukraine",
+			"Uruguay",
+			"United Kingdom",
+			"United States of America",
+			"Vatican City"
+		],
+		"restricted": [
+			"Israel"
+		],
+		"vaccinations": [],
+		"cashLimit": 27226,
+		"prohibitedItems": [],
+		"laws": []
+	}
 }
