@@ -27,7 +27,6 @@
     "userCreationError": "Account creation failed! Please try again later.",
     "userDoesNotExist": "User does not exist.",
     "userIDInvalid": "User ID is invalid.",
-<<<<<<< HEAD
     "wrongNumberOfArguments": "Wrong number of argument(s) was given to the function!",
     "InvalidDestinationName": "Invalid destination name was provided",
     "InvalidCountryName": "Invalid country name was provided",
@@ -47,8 +46,7 @@
     "InvalidPackingListId": "Invalid packing list id was provided",
     "InvalidRestaurantObject": "Invalid restaurant object was provided",
     "InvalidRestaurantName": "Invalid restaurant name was provided",
-    "InvalidThingToDoObject": "Invalid thingToDo object was provided"
-=======
+    "InvalidThingToDoObject": "Invalid thingToDo object was provided",
     "packingListArgumentMissing": "Argument missing!",
     "packingListArgumentTypeError": "Argument not of correct type!",
     "packingListAlreadyExists": "Packing list already exists!",
@@ -57,5 +55,4 @@
     "packingListNotFound": "No packing list with that type!",
     "packingListDeleteFailed": "Could not delete packing list! It might not exist in the first place.",
     "packingListItemRemovalFailed": "Could not remove item! The item or packing list may not exist in the first place."
->>>>>>> 0aa880de192cbcec873dda69a425fbc262d68efb
 }
