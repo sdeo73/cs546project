@@ -42,7 +42,7 @@ let exportedMethods = {
         }
 
         const destinationsCollection = await destinations();
-        //prevenets duplicated destination object to be inserted into the database
+        //prevents duplicated destination object to be inserted into the database
         destinationsCollection.createIndex({"d_name":1},{unique:true});
         let newDestination = {
             d_name: d_name,
@@ -135,7 +135,7 @@ let exportedMethods = {
      * Adds the provided law id to a specific destination. 
      * Throws error if invalid number of arguments are provided or update failed..
      * 
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      * @param lawId law id in string format
      */
     async addLaw(destinationId, lawId) {
@@ -163,7 +163,7 @@ let exportedMethods = {
     /**
      * Adds the provided prohibited item id to a specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      * @param itemId item id in string format
      */
     async addProhibitedItem(destinationId, itemId) {
@@ -190,7 +190,7 @@ let exportedMethods = {
     /**
      * Adds the provided restaurant object to a specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      * @param newRestaurant new restaurant object
      */
     async addRestaurantToDest(destinationId, newRestaurant) {
@@ -217,7 +217,7 @@ let exportedMethods = {
     /**
      * Adds the provided thingToDo object into a specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      * @param newThing new newThing object
      */
     async addThingToDo(destinationId, newThing) {
@@ -244,7 +244,7 @@ let exportedMethods = {
     /**
      * Gets all the laws of a specific destination. 
      * Throws error if invalid number of arguments are provided or query failed.
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      */
     async getAllLaws(destinationId) {
         //validates number of arguments
@@ -268,7 +268,7 @@ let exportedMethods = {
     /**
      * Gets all the prohibited items of a specific destination. 
      * Throws error if invalid number of arguments are provided or query failed.
-     * @param destinationId destionation id in string format
+     * @param destinationId destination id in string format
      */
     async getAllProhibitedItems(destinationId) {
         //validates number of arguments
@@ -290,7 +290,7 @@ let exportedMethods = {
     /**
      * Removes a specific law with matching id within specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string 
+     * @param destinationId destination id in string 
      * @param lawId law id in string format
      */
     async removeLawById(destinationId, lawId) {
@@ -316,7 +316,7 @@ let exportedMethods = {
     /**
      * Removes a prohibited item with matching id within specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string 
+     * @param destinationId destination id in string 
      * @param itemId prohibited id in string format
      */
     async removeProhibitedItem(destinationId, itemId) {
@@ -343,7 +343,7 @@ let exportedMethods = {
     /**
      * Removes a restaurant with matching name within specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string 
+     * @param destinationId destination id in string 
      * @param restaurantName restaurant name in string format
      */
     async removeRestaurant(destinationId, restaurantName) {
@@ -370,7 +370,7 @@ let exportedMethods = {
     /**
      * Removes a specific thingToDo matching name within specific destination. 
      * Throws error if invalid number of arguments are provided or update failed.
-     * @param destinationId destionation id in string 
+     * @param destinationId destination id in string 
      * @param newThing thingToDo name in string format
      */
     async removeThingToDo(destinationId, newThing) {
