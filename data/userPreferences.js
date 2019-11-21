@@ -2,7 +2,7 @@ const ObjectId = require('mongodb').ObjectID;
 const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const error = require('../public/errorMessages');
-const userFunctions = require('users');
+const userFunctions = require('./users');
 
 /**
  * Function to check if user with userID has already selected userPreferences
