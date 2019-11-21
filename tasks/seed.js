@@ -9,7 +9,6 @@ const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const connection = require("../config/mongoConnection");
 // const objectHash = require('object-hash');
-const crypto = require('crypto');
 
 (async() => {
     try {

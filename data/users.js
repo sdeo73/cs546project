@@ -60,6 +60,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param gender user gender in string format
+     * @returns user the updated user object
     */
     async updateUserGender(userId, gender) {
         //validates number of arguments
@@ -92,6 +93,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param birthdate user birthdate in string format
+     * @returns user the updated user object
     */
     async updateDOB(userId, birthdate) {
         //validates number of arguments
@@ -124,6 +126,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param newfirstName first name of a user in string format
+     * @returns user the updated user object 
     */
     async updateFirstName(userId, newfirstName) {
         //validates number of arguments
@@ -156,6 +159,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param newlastName last name of a user in string format
+     * @returns user the updated user object
     */
     async updateLastName(userId, newlastName) {
         //validates number of arguments
@@ -188,6 +192,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param newEmail email of a user in string format
+     * @returns user the updated user object
     */
     async updateEmail(userId, newEmail) {
         //validates number of arguments
@@ -220,6 +225,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param nation nationality of a user in string format
+     * @returns user the updated user object
     */
     async updateNationality(userId, nation) {
         //validates number of arguments
@@ -252,6 +258,7 @@ let exportedMethods = {
      * 
      * @param userId user id in string format
      * @param itinerary itinerary of a user in object format
+     * @returns user the updated user object
     */
     async updateUserItinerary(userId, itinerary) {
         //validates number of arguments
