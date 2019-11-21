@@ -3,16 +3,15 @@ const passwordHash = require('password-hash');
 const laws = require("../data/Destination/laws.json");
 const prohibitedItems = require("../data/Destination/prohibitedItems.json");
 const lawFunctions = require('../data/laws');
+const signUpFunctions = require('../data/signup');
+const userPreFunctions = require('../data/userPreferences');
+const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const connection = require("../config/mongoConnection");
 // const objectHash = require('object-hash');
-const crypto = require('crypto');
 
 (async() => {
     try {
-        //Keeping below commented code in order to create a user for testing
-        // const user1 = await loginPage.insertUserData("test03@gmail.com", "1234");
-
         let index;
         //Insert all laws from laws.JSON into the database
         for(index in laws) {
@@ -35,8 +34,6 @@ const crypto = require('crypto');
                 }
             }
         }
-
-        await prohibitedItemFunctions.deleteProhibitedItem("5dd481532bd9e47097a78e5a");
 
     } catch (err) {
         console.log(err.message);
