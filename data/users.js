@@ -64,14 +64,14 @@ let exportedMethods = {
     async updateUserGender(userId, gender) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!gender || typeof(gender) != "string" || gender.length == 0) {
-            throw errorMessages.InvalidGender;
+            throw new errorMessages.InvalidGender;
         }
 
         //updates the user's gender
@@ -81,7 +81,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId); 
@@ -96,14 +96,14 @@ let exportedMethods = {
     async updateDOB(userId, birthdate) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!birthdate || typeof(birthdate) != "string" || birthdate.length == 0) {
-            throw errorMessages.InvalidDateOfBirth;
+            throw new errorMessages.InvalidDateOfBirth;
         }
 
         //updates the user's gender
@@ -113,7 +113,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId); 
@@ -128,14 +128,14 @@ let exportedMethods = {
     async updateFirstName(userId, newfirstName) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!newfirstName || typeof(newfirstName) != "string" || newfirstName.length == 0) {
-            throw errorMessages.InvalidFirstName;
+            throw new errorMessages.InvalidFirstName;
         }
 
         //updates the user's first name
@@ -145,7 +145,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId);
@@ -160,14 +160,14 @@ let exportedMethods = {
     async updateLastName(userId, newlastName) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!newlastName || typeof(newlastName) != "string" || newlastName.length == 0) {
-            throw errorMessages.InvalidLastName;
+            throw new errorMessages.InvalidLastName;
         }
 
         //updates the user's last name
@@ -177,7 +177,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId);
@@ -192,14 +192,14 @@ let exportedMethods = {
     async updateEmail(userId, newEmail) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!newEmail || typeof(newEmail) != "string" || newEmail.length == 0) {
-            throw errorMessages.invalidEmail;
+            throw new errorMessages.invalidEmail;
         }
 
         //updates the user's email
@@ -209,7 +209,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId);
@@ -224,14 +224,14 @@ let exportedMethods = {
     async updateNationality(userId, nation) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!nation || typeof(nation) != "string" || nation.length == 0) {
-            throw errorMessages.InvalidCountryName;
+            throw new errorMessages.InvalidCountryName;
         }
 
         //updates the user's nationality
@@ -241,7 +241,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId);
@@ -256,14 +256,14 @@ let exportedMethods = {
     async updateUserItinerary(userId, itinerary) {
         //validates number of arguments
         if (arguments.length != 2) {
-            throw errorMessages.wrongNumberOfArguments;
+            throw new errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            throw errorMessages.userIDInvalid;
+            throw new errorMessages.userIDInvalid;
         }
         if (!itinerary || typeof(itinerary) != "object" || itinerary.length == 0) {
-            throw errorMessages.InvalidItineraryObject;
+            throw new errorMessages.InvalidItineraryObject;
         }
 
         //updates the user's first name
@@ -273,7 +273,7 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            throw errorMessages.UpdateUserError;
+            throw new errorMessages.UpdateUserError;
         }
 
         return this.getUserById(userId);
