@@ -89,7 +89,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         },
         tourType: tourType,
         tourActivity: tourActivity,
-        noOfTravelers: parseInt(noOfTravelers),
+        noOfTravelers: parseInt(nTravelers),
         specialNeeds: specialNeeds,
         budget: parseInt(budget),
         destination: destination,
