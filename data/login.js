@@ -3,7 +3,6 @@ const ObjectId = require('mongodb').ObjectID;
 const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const passwordHash = require('password-hash');
-const bcrypt = require("bcrypt");
 
 let exportedMethods = {
     /** 

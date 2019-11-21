@@ -4,7 +4,6 @@ const data = require('../data');
 const loginData = data.login;
 const errorMessages = require('../public/errorMessages');
 const passwordHash = require('password-hash');
-const bcrypt = require("bcrypt");
 
 router.get('/', async (req, res) => {
     try {
