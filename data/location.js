@@ -188,7 +188,6 @@ async function getNearbyRestaurants(lat, lon, filePath, currencyConversionFactor
     }
 
     destination.restaurants = restaurants;
-
     fs.writeFile(filePath, JSON.stringify(destination, null, "\t"), function(err){
         if(err) throw err;
     });

@@ -75,6 +75,7 @@
     "packingListNotFound": "No packing list with that type!",
     "packingListDeleteFailed": "Could not delete packing list! It might not exist in the first place.",
     "packingListItemRemovalFailed": "Could not remove item! The item or packing list may not exist in the first place.",
+<<<<<<< HEAD
     "mealPrefUpdationFailed": "Meal preference was not updated! Please try again later.",
     "tourActivityUpdationFailed": "Tour Activity was not updated! Please try again later.",
     "tourTypeUpdationFailed": "Tour Type was not updated! Please try again later.",
@@ -83,4 +84,16 @@
     "budgetUpdationFailed": "Budget was not updated! Please try again later.",
     "destinationUpdationFailed": "Destination was not updated! Please try again later.",
     "travelDateUpdationFailed":"Travel dates were not updated! Please try again later."
+=======
+    "locationAddressMissing": "Address Missing!",
+    "locationAddressIncorrectType": "Address is not of correct type!",
+    "locationCoordinateMissing": "One or more coordinates are missing!",
+    "locationCoordinateIncorrectType": "One or more coordinates are not of correct type!",
+    "locationCoordinateDistanceMissing": "Coordinate or distance is missing!",
+    "locationCoordinateDistanceIncorrectType": "Coordinate or distance is not of correct type!",
+    "locationAddressDistanceMissing": "Address or distance is missing!",
+    "locationAddressDistanceIncorrectType": "Address or distance is not of correct type!",
+    "locationArgumentMissing": "Argument missing in location!",
+    "locationArgumentIncorrectType": "Argument of incorrect type in location!"
+>>>>>>> 1063386a4667e52f4ae603e7cbabdbf69930cf17
 }
