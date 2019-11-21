@@ -3,9 +3,12 @@
     "dobMissing" : "Date of birth missing.",
     "userIDMissing" : "User ID missing.",
     "mealPrefMissing" : "Meal Preferences missing.",
+    "mealPrefInvalidType": "Error, Meal preference input is of wrong type.",
     "tourTypeMissing" : "Tour type missing.",
+    "tourActivityMissing" : "Tour activity missing.",
     "nTravelersMissing" : "No. of travelers missing.",
     "specialNeedsMissing" : "Special needs are missing.",
+    "specialNeedsInvalidType": "Error, Special needs input is of wrong type.",
     "budgetMissing" : "Budget missing.",
     "destinationMissing" : "Destination missing.",
     "travelDatesMissing" : "Travel dates missing.",
@@ -71,5 +74,13 @@
     "packingListAddError": "Could not add packing list!",
     "packingListNotFound": "No packing list with that type!",
     "packingListDeleteFailed": "Could not delete packing list! It might not exist in the first place.",
-    "packingListItemRemovalFailed": "Could not remove item! The item or packing list may not exist in the first place."
+    "packingListItemRemovalFailed": "Could not remove item! The item or packing list may not exist in the first place.",
+    "mealPrefUpdationFailed": "Meal preference was not updated! Please try again later.",
+    "tourActivityUpdationFailed": "Tour Activity was not updated! Please try again later.",
+    "tourTypeUpdationFailed": "Tour Type was not updated! Please try again later.",
+    "nTravelersUpdationFailed":  "Number of travelers was not updated! Please try again later.",
+    "specialNeedsUpdationFailed": "Special needs were not updated! Please try again later.",
+    "budgetUpdationFailed": "Budget was not updated! Please try again later.",
+    "destinationUpdationFailed": "Destination was not updated! Please try again later.",
+    "travelDateUpdationFailed":"Travel dates were not updated! Please try again later."
 }

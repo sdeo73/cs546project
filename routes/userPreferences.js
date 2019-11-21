@@ -20,7 +20,7 @@ router.post('/home', async(req,res) => {
         } else {
             specialNeeds = userPrefInput.specialNeeds;
         }
-        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender,userPrefInput.dob,userPrefInput.mealPref,userPrefInput.tourType,userPrefInput.nTravelers, specialNeeds, userPrefInput.budget,userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
+        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender,userPrefInput.dob,userPrefInput.mealPref,userPrefInput.tourType,userPrefInput.tourActivity,userPrefInput.nTravelers, specialNeeds, userPrefInput.budget,userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
         if(userPref!==true) {
             return res.status(400).json({error: userPref});
         } else {
