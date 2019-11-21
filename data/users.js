@@ -62,19 +62,17 @@ let exportedMethods = {
      * @param gender user gender in string format
     */
     async updateUserGender(userId, gender) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!gender || typeof(gender) != "string" || gender.length == 0) {
-            errors.push(errorMessages.InvalidGender);
+            throw errorMessages.InvalidGender;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's gender
         const newUser = {
@@ -83,9 +81,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId); 
     },
@@ -97,19 +94,17 @@ let exportedMethods = {
      * @param birthdate user birthdate in string format
     */
     async updateDOB(userId, birthdate) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!birthdate || typeof(birthdate) != "string" || birthdate.length == 0) {
-            errors.push(errorMessages.InvalidDateOfBirth);
+            throw errorMessages.InvalidDateOfBirth;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's gender
         const newUser = {
@@ -118,9 +113,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId); 
     },
@@ -132,19 +126,17 @@ let exportedMethods = {
      * @param newfirstName first name of a user in string format
     */
     async updateFirstName(userId, newfirstName) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!newfirstName || typeof(newfirstName) != "string" || newfirstName.length == 0) {
-            errors.push(errorMessages.InvalidFirstName);
+            throw errorMessages.InvalidFirstName;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's first name
         const newUser = {
@@ -153,9 +145,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId);
     },
@@ -167,19 +158,17 @@ let exportedMethods = {
      * @param newlastName last name of a user in string format
     */
     async updateLastName(userId, newlastName) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!newlastName || typeof(newlastName) != "string" || newlastName.length == 0) {
-            errors.push(errorMessages.InvalidLastName);
+            throw errorMessages.InvalidLastName;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's last name
         const newUser = {
@@ -188,9 +177,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId);
     },
@@ -202,19 +190,17 @@ let exportedMethods = {
      * @param newEmail email of a user in string format
     */
     async updateEmail(userId, newEmail) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!newEmail || typeof(newEmail) != "string" || newEmail.length == 0) {
-            errors.push(errorMessages.invalidEmail);
+            throw errorMessages.invalidEmail;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's email
         const newUser = {
@@ -223,9 +209,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId);
     },
@@ -237,19 +222,17 @@ let exportedMethods = {
      * @param nation nationality of a user in string format
     */
     async updateNationality(userId, nation) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!nation || typeof(nation) != "string" || nation.length == 0) {
-            errors.push(errorMessages.InvalidCountryName);
+            throw errorMessages.InvalidCountryName;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's nationality
         const newUser = {
@@ -258,9 +241,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId);
     },
@@ -272,19 +254,17 @@ let exportedMethods = {
      * @param itinerary itinerary of a user in object format
     */
     async updateUserItinerary(userId, itinerary) {
-        let errors = [];
         //validates number of arguments
         if (arguments.length != 2) {
-            errors.push(errorMessages.wrongNumberOfArguments);
+            throw errorMessages.wrongNumberOfArguments;
         }
         //validates arguments type
         if (!userId || typeof(userId) != "string" || userId.length == 0) {
-            errors.push(errorMessages.userIDInvalid);
+            throw errorMessages.userIDInvalid;
         }
         if (!itinerary || typeof(itinerary) != "object" || itinerary.length == 0) {
-            errors.push(errorMessages.InvalidItineraryObject);
+            throw errorMessages.InvalidItineraryObject;
         }
-        if(errors.length > 0) return errors;
 
         //updates the user's first name
         const newUser = {
@@ -293,9 +273,8 @@ let exportedMethods = {
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({_id: ObjectId(userId)}, {$set: newUser});
         if (!updatedUser || updatedUser.modifiedCount === 0) {
-            errors.push(errorMessages.UpdateUserError);
+            throw errorMessages.UpdateUserError;
         }
-        if(errors.length > 0) return errors;
 
         return this.getUserById(userId);
     }
