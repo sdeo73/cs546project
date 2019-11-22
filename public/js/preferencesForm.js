@@ -1,5 +1,6 @@
 const form = document.getElementById("preferences-form");
 
+let todaysDate;
 $(function () { //Referred from https://stackoverflow.com/questions/43274559/how-do-i-restrict-past-dates-in-html5-input-type-date
     var dtToday = new Date();
 
@@ -10,10 +11,10 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
         month = '0' + month.toString();
     if (day < 10)
         day = '0' + day.toString();
-
-    var minDate = year + '-' + month + '-' + day;
-    $('#travelStart-input').attr('min', minDate);
-    $('#travelEnd-input').attr('min', minDate);
+        todaysDate = year + '-' + month + '-' + day;
+    $('#travelStart-input').attr('min', todaysDate);
+    $('#travelEnd-input').attr('min', todaysDate);
+    $('#dob-input').attr('max', todaysDate);
 });
 
 form.addEventListener("submit", event => {
@@ -30,13 +31,22 @@ form.addEventListener("submit", event => {
     }
 
     const birthdayInput = document.getElementById("dob-input").value;
+    let timeDifference= new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
+    let age = parseInt((timeDifference / (1000 * 3600 * 24))/365); 
     if (!birthdayInput) {
         event.preventDefault();
         $("#birthday-missing").show();
+        $("#underage").hide();
+        errors = true;
+    } else if(age<16) {
+        event.preventDefault();
+        $("#underage").show();
+        $("#birthday-missing").hide();
         errors = true;
     } else {
         event.preventDefault();
         $("#birthday-missing").hide();
+        $("#underage").hide();
     }
 
     const country = document.getElementById("countryId").value;
@@ -135,7 +145,7 @@ form.addEventListener("submit", event => {
     }
 
     //Check if travel time is not more than two weeks
-    var timeDifference= new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
+    timeDifference= new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
     var numberOfDays = timeDifference / (1000 * 3600 * 24); 
     if(numberOfDays > 14){
         event.preventDefault();

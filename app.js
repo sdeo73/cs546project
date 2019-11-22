@@ -9,16 +9,16 @@ const exphbs = require('express-handlebars');
 
 app.use('/public', static);
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    name: 'AuthCookie',
-    secret: 'Patrick is awesome',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { path: '/', httpOnly: true, secure: false, maxAge: null }
+  name: 'AuthCookie',
+  secret: 'Patrick is awesome',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { path: '/', httpOnly: true, secure: false, maxAge: null }
 }));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   let auth = "Non-Authenticated User";
   if (req.session.AuthCookie) {
     auth = "Authenticated User";
@@ -27,7 +27,23 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.use('/home', function (req, res, next) {
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
+app.use('/preferences', function(req,res,next){
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 configRoutes(app);
