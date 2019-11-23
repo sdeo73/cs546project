@@ -1,5 +1,6 @@
-const dubai = require('./Destination/dubai');
 const location = require('./location');
+const destinationFunctions = require('./destinations');
+const dbConnection = require('../config/mongoConnection');
 
 let visitedThings = [];
 
@@ -75,17 +76,17 @@ function sortSack2(capacity, items) {
     return result;
 }
 
-async function getThingsToDo(destinationFilePath) {
-    const destination = await require(destinationFilePath);
-    let thingsToDo = destination.thingsToDo;
+async function getThingsToDo(destinationObject) {
+    let thingsToDo = destinationObject.thingsToDo;
 
     return thingsToDo;
 }
 
-async function getNearestThingToDo(thingToDo, thingsToDo){
+async function getNearestThingToDo(thingToDo, thingsToDo, destinationObject){
     let thing = Object.keys(thingToDo);
     thing = thing[0];
-    let thingObject = dubai.thingsToDo.find(x => x.name === thing);
+    let allThings = await getThingsToDo(destinationObject);
+    let thingObject = allThings.find(x => x.name === thing);
     thingAddress = thingObject.location;
     let minThing = ""; 
     let minDistance = -1;
@@ -93,7 +94,7 @@ async function getNearestThingToDo(thingToDo, thingsToDo){
     for(let i=0; i<thingsToDo.length; i++){
         let currentThing = Object.keys(thingsToDo[i]);
         currentThing = currentThing[0];
-        currentThing = dubai.thingsToDo.find(newThing => newThing.name === currentThing);
+        currentThing = allThings.find(newThing => newThing.name === currentThing);
         let distance = await location.calculateDistanceAddress(thingAddress, currentThing.location);
         if(minDistance == -1){
             minDistance = distance;
@@ -106,14 +107,14 @@ async function getNearestThingToDo(thingToDo, thingsToDo){
     return minThing;
 }
 
-async function getItineraryDay(destinationFilePath, maxTime, maxBudget, noOfTravellers){
+async function getItineraryDay(destinationObject, maxTime, maxBudget, noOfTravellers){
     let itineraryThisDay = [];
 
     if(maxTime < 1 || maxBudget <1){
         return itineraryThisDay;
     }
 
-    let allThings = await getThingsToDo(destinationFilePath);
+    let allThings = await getThingsToDo(destinationObject);
     let possibleThingsToDo = await putThingsToSack(allThings, maxBudget, maxTime);
     let nearestThingObj = possibleThingsToDo[0];
     let nearestThing = Object.keys(nearestThingObj);
@@ -138,7 +139,7 @@ async function getItineraryDay(destinationFilePath, maxTime, maxBudget, noOfTrav
     possibleThingsToDo.splice(thisIndex, 1);
     
     for(let i=0; i<possibleThingsToDo.length; i++){
-        nearestThing = await getNearestThingToDo(nearestThingObj, possibleThingsToDo);
+        nearestThing = await getNearestThingToDo(nearestThingObj, possibleThingsToDo, destinationObject);
 
         thisIndex = possibleThingsToDo.findIndex(
             x => {
@@ -167,7 +168,7 @@ async function getItineraryDay(destinationFilePath, maxTime, maxBudget, noOfTrav
     return itineraryThisDay;
 }
 
-async function generateItinerary(destinationFilePath, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers){
+async function generateItinerary(destinationObject, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers){
     const budgetPerDay = maxBudgetPerPerson*noOfTravellers / noOfDays;
     let budgetNextDay = budgetPerDay;
     let budgetRemaining = budgetNextDay;
@@ -175,7 +176,7 @@ async function generateItinerary(destinationFilePath, timePerDay, maxBudgetPerPe
     finalItinerary = {};
 
     for(let i=0; i<noOfDays; i++){
-        let itineraryThisDay = await getItineraryDay(destinationFilePath, timePerDay, budgetNextDay, noOfTravellers);
+        let itineraryThisDay = await getItineraryDay(destinationObject, timePerDay, budgetNextDay, noOfTravellers);
         budgetRemaining = budgetNextDay;
 
         for(let j=0; j<itineraryThisDay.length; j++){
@@ -192,8 +193,12 @@ async function generateItinerary(destinationFilePath, timePerDay, maxBudgetPerPe
 
 async function main(){
     try {
-        let finalItinerary = await generateItinerary('./Destination/dubai', 10, 1000, 14, 5);
+        let destinationObject = await destinationFunctions.getDestinationById('5dd987709e47d21361172a2b');
+        let finalItinerary = await generateItinerary(destinationObject, 10, 1000, 14, 5);
         console.log(finalItinerary);
+        const db = await dbConnection();
+        await db.serverConfig.close();
+        
     } catch (error) {
         console.log(error);
     }
@@ -201,4 +206,4 @@ async function main(){
 
 main();
 
-module.exports = {getItineraryDay};
+module.exports = {generateItinerary};

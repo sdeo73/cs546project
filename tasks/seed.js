@@ -8,32 +8,42 @@ const signUpFunctions = require('../data/signup');
 const userPreFunctions = require('../data/userPreferences');
 const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
+const destinationFunctions = require('../data/destinations');
 const connection = require("../config/mongoConnection");
-// const objectHash = require('object-hash');
-const destFunctions = require('../data/destinations');
+const dubai = require("../data/Destination/dubai.json");
 
 (async() => {
     try {
-        let index;
-        //Insert all laws from laws.JSON into the database
-        for(index in laws) {
-            try {
-                await lawFunctions.createLaw(laws[index].description);
-            } catch (error) {
-                if(error.name=="MongoError" && error.code==11000) { //Error message and code in case of duplicate insertion
-                    index++; //Skip duplicate entry and continue
-                }
-            }
-        }
+        // let index;
+        // //Insert all laws from laws.JSON into the database
+        // for(index in laws) {
+        //     try {
+        //         await lawFunctions.createLaw(laws[index].description);
+        //     } catch (error) {
+        //         if(error.name=="MongoError" && error.code==11000) { //Error message and code in case of duplicate insertion
+        //             index++; //Skip duplicate entry and continue
+        //         }
+        //     }
+        // }
 
-        //Insert all prohibited items from prohibitedItems.JSON into the database
-        for(index in prohibitedItems) {
-            try {
-                await prohibitedItemFunctions.createProhibitedItem(prohibitedItems[index].item_name);
-            } catch (error) {
-                if(error.name=="MongoError" && error.code==11000) {//Error message and code in case of duplicate insertion
-                    index++; //Skip duplicate entry and continue
-                }
+        // //Insert all prohibited items from prohibitedItems.JSON into the database
+        // for(index in prohibitedItems) {
+        //     try {
+        //         await prohibitedItemFunctions.createProhibitedItem(prohibitedItems[index].item_name);
+        //     } catch (error) {
+        //         if(error.name=="MongoError" && error.code==11000) {//Error message and code in case of duplicate insertion
+        //             index++; //Skip duplicate entry and continue
+        //         }
+        //     }
+        // }
+
+        //Insert all destinations (only dubai for now) from dubai.json into the database
+        try {
+            const addedDubai = await destinationFunctions.addDestination(dubai.d_name, dubai.country, dubai.weather, dubai.thingsToDo, dubai.restaurants, dubai.countryCustoms);
+            console.log(addedDubai);
+        } catch (error) {
+            if(error.name=="MongoError" && error.code==11000) {//Error message and code in case of duplicate insertion
+                index++; //Skip duplicate entry and continue
             }
         }
 
