@@ -1,6 +1,7 @@
 const loginPage = require('../data/login');
 const passwordHash = require('password-hash');
 const laws = require("../data/Destination/laws.json");
+const dubai = require("../data/Destination/dubai.json");
 const prohibitedItems = require("../data/Destination/prohibitedItems.json");
 const lawFunctions = require('../data/laws');
 const signUpFunctions = require('../data/signup');
@@ -9,6 +10,7 @@ const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const connection = require("../config/mongoConnection");
 // const objectHash = require('object-hash');
+const destFunctions = require('../data/destinations');
 
 (async() => {
     try {
