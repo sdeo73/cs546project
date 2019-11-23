@@ -179,7 +179,7 @@ async function generateItinerary(destinationFilePath, timePerDay, maxBudgetPerPe
         budgetRemaining = budgetNextDay;
 
         for(let j=0; j<itineraryThisDay.length; j++){
-            budgetRemaining -= itineraryThisDay[i].avgCost;
+            budgetRemaining -= itineraryThisDay[j].avgCost;
         }
 
         budgetNextDay = budgetRemaining + budgetPerDay;
@@ -192,7 +192,7 @@ async function generateItinerary(destinationFilePath, timePerDay, maxBudgetPerPe
 
 async function main(){
     try {
-        let finalItinerary = await generateItinerary('./Destination/dubai', 10, 1000, 3, 5);
+        let finalItinerary = await generateItinerary('./Destination/dubai', 10, 1000, 14, 5);
         console.log(finalItinerary);
     } catch (error) {
         console.log(error);
