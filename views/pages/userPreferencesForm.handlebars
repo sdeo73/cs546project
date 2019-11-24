@@ -1,6 +1,6 @@
 <div class="preferenceForm">
     <main>
-        <form action="/home" method="POST" id="preferences-form">
+        <form action="/preferences" method="POST" id="preferences-form">
             <label for="gender-input"> Gender: </label>
             <label for="g1">Male</label>
             <input type="radio" name="gender" value="male" id="g1">
@@ -18,6 +18,10 @@
             <div class="error-msg" id="birthday-missing">
                 <i class="fa fa-times-circle"></i>
                 Birthday is required!
+            </div>
+            <div class="error-msg" id="underage">
+                <i class="fa fa-times-circle"></i>
+                You must be at least 16 years old!
             </div>
 
             <label for="countryId">Destination: </label>
@@ -68,7 +72,7 @@
             <input type="radio" name="tourType" value="sightseeing" id="tourType6"><br>
             <div class="error-msg" id="tourType-missing">
                 <i class="fa fa-times-circle"></i>
-               Tour type is required!
+                Tour type is required!
             </div>
 
             <label for="tourActivity-input"> Tour Activity: </label>
@@ -80,12 +84,12 @@
             <input type="radio" name="tourActivity" value="high" id="tourActivity3"><br>
             <div class="error-msg" id="activity-missing">
                 <i class="fa fa-times-circle"></i>
-               Tour Activity is required!
+                Tour Activity is required!
             </div>
 
 
             <label for="travelers-input">Travelers: </label>
-            <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers"><br>
+            <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers" min=0><br>
             <div class="error-msg" id="ntravelers-missing">
                 <i class="fa fa-times-circle"></i>
                 Number of travelers is required!
@@ -127,7 +131,7 @@
                 Error! Travel start date cannot be ahead of end date.
             </div>
 
-             <div class="error-msg" id="number-of-dates">
+            <div class="error-msg" id="number-of-dates">
                 <i class="fa fa-times-circle"></i>
                 Error! Maximum travel time is two weeks (14 days).
             </div>
