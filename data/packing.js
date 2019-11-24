@@ -126,53 +126,59 @@ async function generatePackingList(travelDates, destinationObj, tourType) {
     //finds the weather data such as rain, maximum and minimum temperature
     let hasRain = false;    //indicate whether the destination rains or not
     let allWeather = destinationObj.weather;    //an array of the destination's monthly weather data
-
-    let startYear = new Date(travelDates.start).getFullYear();
-    let endYear = new Date(travelDates.end).getFullYear();
-    let startMonth = new Date(travelDates.start).getMonth();
-    let endMonth = new Date(travelDates.end).getMonth();
-    if (isNaN(startYear) || isNaN(endYear) || isNaN(startMonth) || isNaN(endMonth)) { //checks if the date strings provided were valid or not
+    let startDate = new Date(travelDates.start);
+    let endDate = new Date(travelDates.end);
+    let startYear = startDate.getFullYear();
+    let endYear = endDate.getFullYear();
+    let startMonth = startDate.getMonth();
+    let endMonth = endDate.getMonth();
+    //checks if the date strings provided were valid or not
+    if (isNaN(startYear) || isNaN(endYear) || isNaN(startMonth) || isNaN(endMonth)) { 
         throw new Error(errorMessages.InvalidDateFormat);
     }
-    let yearDiff = Math.abs(endYear - startYear);
-    let monthDiff = Math.abs(endMonth - startMonth);
-    let monthsArr = [];
-    if (yearDiff > 1) {
-        monthsArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    } else if (yearDiff == 1) {
-        for (let i = startMonth; i < 12; i++) {
+    //need to check invalid date format such as: 11/31/2019 or 02/29/2019
+    if (!validateDate(travelDates.start) || !validateDate(travelDates.end)) {
+        throw new Error(errorMessages.InvalidDateFormat);
+    }
+    
+    let yearDiff = endYear - startYear;
+    let monthsArr = []; //integer array used to store all the months' index covered by the itinerary
+    if (yearDiff < 0) { //endDate happens before startDate
+        throw new Error(errorMessages.InvalidDateFormat);
+    } else if (yearDiff > 1) { //all months are covered between startDate and endDate. e.g. 12/31/2019~04/05/2023
+        monthsArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    } else if (yearDiff == 1) { //startDate and endDate have one year gap. e.g. 12/31/2019~02/23/2021
+        for (let i = startMonth; i < 12; i++) { //startDate's month to December
             monthsArr.push(i);
         }
-        for (let j = 0; j <= endMonth; j++) {
+        for (let j = 0; j <= endMonth; j++) {   //january to endDate's month
             monthsArr.push(j);
         }
-    } else {
+    } else {    //startDate and endDate have the same year. e.g. e.g. 05/29/2019~07/23/2019
         for (let i = startMonth; i <= endMonth; i++) {
             monthsArr.push(i);
         }
     }
-    //what about cross-year time range???
 
     let minTemp;    //lowest temperature of the destination
     let maxTemp;    //highest temperature of the destination
     let summerTemp = 25;    //temperature for summer packing list
     let winterTemp = 10;    //temperature for winter packing list
     
-
+    //scans through the monthsArr to get the weather data
     for (var i in monthsArr) {
-        let currentMonth = allWeather[i];   //gets the current month weather data
-        if (currentMonth.rain == "true") {  //the destination has rain
+        let currentMonth = allWeather[monthsArr[i]];   //gets the current month weather data
+        if (currentMonth.rain) {  //the destination has rain
             hasRain = true;
         }
         if (currentMonth.avgHigh > maxTemp) {   //found higher maxTemp
             maxTemp = currentMonth.avgHigh;
-        } else if (maxTemp === undefined) { //initial maximum temperature
-            maxTemp = currentMonth.avgLow;
+        } else if (maxTemp === undefined) {     //initializes maximum temperature
+            maxTemp = currentMonth.avgHigh;
         }
-        //min temp is incorrect
-        if (currentMonth.avgLow < minTemp) { //found lower minTemp
+        if (currentMonth.avgLow < minTemp) {    //found lower minTemp
             minTemp = currentMonth.avgLow;
-        } else if (minTemp === undefined) { //initial minimum temperature
+        } else if (minTemp === undefined) {     //initializes minimum temperature
             minTemp = currentMonth.avgLow;
         }
     }
@@ -201,45 +207,29 @@ async function generatePackingList(travelDates, destinationObj, tourType) {
             finalPack = finalPack.concat(await getPackingList(currentType));
         }
     }
-
     return finalPack;
 }
 
-/** */
-async function main() {
-    try {
-        //scenarios:
-        //1. 01/05/2019~05/21/2019: Months: 1, 2, 3, 4, 5, yearDiff == 0
-        //2. 11/31/2019~02/23/2020: Months: 11, 12, 1, 2, yearDiff == 1
-        //3. 12/31/2019~02/23/2021: Mothhs: 1 ~ 12, yearDiff > 1
-        let travelDates = {
-            start: "01/13/2020",
-            end: "02/15/2020"
-        };
-        let tourType = ["hiking", "business"];
-        let destinationObj = await destination.getDestinationById("5dd9862661569c6ee430ff97");
-        console.log(`destinationObj name = ${destinationObj.d_name}`);
-        // let startMonth = new Date(travelDates.start).getMonth();
-        // let endMonth = new Date(travelDates.end).getMonth();
-        // console.log(`startMonth = ${startMonth}`);
-        // console.log(`endMonth = ${endMonth}`);
-        // console.log(`getFullYear = ${new Date(travelDates.start).getFullYear()}`);
-        console.log(await generatePackingList(travelDates, destinationObj, tourType));
-        
-        // let finalPack = await getPackingList("basic");
-        // let hikingList = await getPackingList("hiking");
-        // console.log(finalPack.concat(hikingList));
-
-        // for (let current in packingList) {
-        //     await createPackingList(packingList[current].type, packingList[current].items);
-        // }
-        
-    } catch (error) {
-        console.log(error);
+/** 
+ * Returns true if the passed-in date string is valid after parsing to new Date, else
+ * returns false.
+ * 
+ * @param dateString the string to be parsed into date and validated
+ * @returns boolean indicates whether the passed-in string date is valid or not
+*/
+function validateDate(dateString) {
+    let inputDate = dateString.split("/");
+    let newDate = new Date(dateString);
+    //checks if the date strings provided were valid or not
+    if (isNaN(newDate.getFullYear()) || isNaN(newDate.getMonth()) || isNaN(newDate.getDate())) { 
+        return false;
     }
+    //validates if the date is parsed correctly
+    if ((newDate.getMonth() + 1) == inputDate[0] && newDate.getDate() == inputDate[1] && newDate.getFullYear() == inputDate[2]) {
+        return true;
+    }
+    return false;
 }
-
-main();
 
 module.exports = {createPackingList, getPackingList, addItemsToPackingList, deletePackingList, removeItemsFromPackingList, generatePackingList};
 
