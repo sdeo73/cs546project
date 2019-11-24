@@ -33,6 +33,7 @@
     "UserRemovalError": "Could not remove user from mongo database",
     "UpdateUserError": "Could not update user in mongo database",
     "wrongNumberOfArguments": "Wrong number of argument(s) was given to the function!",
+    "InvalidDateFormat" : "Invalid date string was provided",
     "InvalidGender" : "Invalid gender string was provided",
     "InvalidDateOfBirth" : "Invalid date of brith string was provided",
     "InvalidFirstName" : "Invalid first name string was provided",
