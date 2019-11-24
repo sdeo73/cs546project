@@ -25,7 +25,7 @@ router.post('/preferences', async (req, res) => {
             specialNeeds = userPrefInput.specialNeeds;
         }
         const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
-        if (userPref !== true) {
+        if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
             return res.status(200).json({ inserted: true });

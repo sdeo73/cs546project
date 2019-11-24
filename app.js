@@ -35,7 +35,15 @@ app.use('/home', function (req, res, next) {
   }
 });
 
-app.use('/preferences', function(req,res,next){
+app.use('/signup', function (req, res, next) {
+  if (req.session.userID) {
+    return res.status(200).redirect('/home');
+  } else {
+    return next();
+  }
+});
+
+app.use('/preferences', function (req, res, next) {
   if (req.session.userID) {
     return next();
   } else {

@@ -31,14 +31,15 @@ form.addEventListener("submit", event => {
     }
 
     const birthdayInput = document.getElementById("dob-input").value;
-    let timeDifference= new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
-    let age = parseInt((timeDifference / (1000 * 3600 * 24))/365); 
     if (!birthdayInput) {
         event.preventDefault();
         $("#birthday-missing").show();
         $("#underage").hide();
         errors = true;
-    } else if(age<16) {
+    } 
+    let timeDifference= new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
+    let age = parseInt((timeDifference / (1000 * 3600 * 24))/365); 
+    if(age<16) {
         event.preventDefault();
         $("#underage").show();
         $("#birthday-missing").hide();
