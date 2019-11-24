@@ -103,5 +103,7 @@
     "locationAddressDistanceMissing": "Address or distance is missing!",
     "locationAddressDistanceIncorrectType": "Address or distance is not of correct type!",
     "locationArgumentMissing": "Argument missing in location!",
-    "locationArgumentIncorrectType": "Argument of incorrect type in location!"
+    "locationArgumentIncorrectType": "Argument of incorrect type in location!",
+    "itineraryArgumentMissing": "Argument missing in itinerary!",
+    "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary"
 }
