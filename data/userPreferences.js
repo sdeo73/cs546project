@@ -31,21 +31,21 @@ async function checkUserPreferenceExists(userID) {
 }
 
 /**
-     * Creates a new user preference object and inserts it into the users collection.
-     * @param {*} gender User's gender
-     * @param {*} dob User's birthday in yyyy-mm-dd
-     * @param {*} mealPreference An array of meal preferences
-     * @param {*} tourType String representing tour type
-     * @param {*} tourActivity String representing tour activity
-     * @param {*} nTravelers Integer representing number of travelers
-     * @param {*} specialNeeds An array of special needs
-     * @param {*} budget Integer representing budget per person, minimum limit 2000
-     * @param {*} destination String representing destination (city)
-     * @param {*} travelDateStart User's travel start date in yyyy-mm-dd
-     * @param {*} travelDateEnd User's travel end date in yyyy-mm-dd
-     * @param {*} userID User's ID retreived from session
-     * @returns true if insertion was successful, else returns errors array
-     */
+    * Creates a new user preference object and inserts it into the users collection.
+    * @param {*} gender User's gender
+    * @param {*} dob User's birthday in yyyy-mm-dd
+    * @param {*} mealPreference An array of meal preferences
+    * @param {*} tourType String representing tour type
+    * @param {*} tourActivity String representing tour activity
+    * @param {*} nTravelers Integer representing number of travelers
+    * @param {*} specialNeeds An array of special needs
+    * @param {*} budget Integer representing budget per person, minimum limit 2000
+    * @param {*} destination String representing destination (city)
+    * @param {*} travelDateStart User's travel start date in yyyy-mm-dd
+    * @param {*} travelDateEnd User's travel end date in yyyy-mm-dd
+    * @param {*} userID User's ID retreived from session
+    * @returns true if insertion was successful, else returns errors array
+    */
 async function addUserPreferences(gender, dob, mealPreference, tourType, tourActivity, nTravelers, specialNeeds, budget, destination, travelDateStart, travelDateEnd, userID) {
     let errors = [];
     if (!gender) {
@@ -68,7 +68,25 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         errors.push(error.destinationMissing);
     } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
-    } if (errors.length > 0) {
+    }
+
+    //Check if birthday is valid: 
+    const getAge = dob => Math.floor((new Date() - new Date(dob).getTime())/(365.25 * 24 * 60 * 60 * 1000)); //Referenced from https://stackoverflow.com/questions/4060004/calculate-age-given-the-birth-date-in-the-format-yyyymmdd
+    let age = getAge(dob);
+    if (age < 16) {
+        errors.push(error.minimumAgeError);
+    }
+
+    //Check if travel dates are valid:
+    let timeDifference = new Date(travelDateEnd).getTime() - new Date(travelDateStart).getTime();
+    let numberOfDays = timeDifference / (1000 * 3600 * 24);
+    if (travelDateEnd < travelDateStart) {
+        errors.push(error.travelDatesInvalid)
+    } else if (numberOfDays > 14) {
+        errors.push(error.travelDatesMaxLimit);
+    }
+
+    if (errors.length > 0) {
         return errors;
     }
 

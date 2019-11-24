@@ -4,7 +4,7 @@ const data = require('../data');
 const signupData = data.signup;
 const errorMessages = require('../public/errorMessages');
 
-router.get('/', async (req, res) => {
+router.get('/signup', async (req, res) => {
     try {
         res.status(200).render("pages/signup", {
             partial: "signup-scripts",
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {  
+router.post('/signup', async (req, res) => {  
     try {
         const inputs = req.body;
         if(!Array.isArray(inputs.nationality)){

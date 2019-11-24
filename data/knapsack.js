@@ -1,10 +1,26 @@
 const location = require('./location');
 const destinationFunctions = require('./destinations');
 const dbConnection = require('../config/mongoConnection');
+const errorMessages = require('../public/errorMessages');
 
+// Array to store the list of places already visited in this itinerary
 let visitedThings = [];
 
+/**
+ * Knapsack function to pick out things from the input allThings
+ * that satisfy the maxBudget and maxTime constraints
+ * 
+ * @param {*} allThings an array of things to pass as input to knapsack
+ * @param {*} maxBudget maximum total budget alloted
+ * @param {*} maxTime maximum time alloted
+ */
 async function putThingsToSack(allThings, maxBudget, maxTime) {
+    if(arguments.length != 3 || !allThings || !maxBudget || !maxTime) 
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    
+    if(!Array.isArray(allThings) || Number.isNaN(maxBudget) || Number.isNaN(maxTime))
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+
     let thingsToDo = allThings;
     let items = [];
     for (i = 0; i < thingsToDo.length; i++) {
@@ -20,21 +36,28 @@ async function putThingsToSack(allThings, maxBudget, maxTime) {
     }
 
     let capacity = maxTime * 1000 + maxBudget;
-    let sortByCost = sortSack2(capacity, items);
+    let sortByCost = sortSack(capacity, items);
 
     return sortByCost;
 }
 
-function sortSack2(capacity, items) {
+/**
+ * Helper function for knapsack algorithm modified from npm package, knapsack-js.
+ * Finds the optimum out of provided items according to capacity.
+ * 
+ * @param {*} capacity weight parameter to knapsack
+ * @param {*} items the list of items to sort as per knapsack algorithm
+ */
+function sortSack(capacity, items) {
+    if(arguments.length != 2 || !capacity || !items)
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    
+    if(Number.isNaN(capacity) || !Array.isArray(items))
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+
     var result  = [],
         leftCap = capacity,
         itemsFiltered;
-
-    if(typeof capacity !== 'number')
-      return false;
-
-    if(!items || !(items instanceof Array))
-      return false;
 
     // Resolve
     var item,
@@ -76,16 +99,23 @@ function sortSack2(capacity, items) {
     return result;
 }
 
-async function getThingsToDo(destinationObject) {
-    let thingsToDo = destinationObject.thingsToDo;
-
-    return thingsToDo;
-}
-
+/**
+ * Find the location nearest to thingToDo from the thingsToDo array.
+ * This is a helper function for itinerary generation.
+ * 
+ * @param {*} thingToDo Source location
+ * @param {*} thingsToDo List of possible destination locations
+ * @param {*} destinationObject The main destination object from the collection
+ */
 async function getNearestThingToDo(thingToDo, thingsToDo, destinationObject){
-    let thing = Object.keys(thingToDo);
-    thing = thing[0];
-    let allThings = await getThingsToDo(destinationObject);
+    if(arguments.length != 3 || !thingsToDo || !thingsToDo || !destinationObject)
+        throw new Error(errorMessages.itineraryArgumentMissing);
+
+    if(typeof thingsToDo !== 'object' || !Array.isArray(thingsToDo) || typeof destinationObject !== 'object')
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+
+    let thing = (Object.keys(thingToDo))[0];
+    let allThings = destinationObject.thingsToDo;
     let thingObject = allThings.find(x => x.name === thing);
     thingAddress = thingObject.location;
     let minThing = ""; 
@@ -94,6 +124,9 @@ async function getNearestThingToDo(thingToDo, thingsToDo, destinationObject){
     for(let i=0; i<thingsToDo.length; i++){
         let currentThing = Object.keys(thingsToDo[i]);
         currentThing = currentThing[0];
+        if(currentThing == thing){
+            continue;
+        }
         currentThing = allThings.find(newThing => newThing.name === currentThing);
         let distance = await location.calculateDistanceAddress(thingAddress, currentThing.location);
         if(minDistance == -1){
@@ -107,18 +140,30 @@ async function getNearestThingToDo(thingToDo, thingsToDo, destinationObject){
     return minThing;
 }
 
-async function getItineraryDay(destinationObject, maxTime, maxBudget, noOfTravellers){
+/**
+ * 
+ * @param {*} destinationObject 
+ * @param {*} maxTime 
+ * @param {*} maxBudget 
+ * @param {*} noOfTravellers 
+ */
+async function generateSingleDayItinerary(destinationObject, maxTime, maxBudget, noOfTravellers){
+    if(arguments.length != 4 || !destinationObject || !maxTime || !maxBudget || !noOfTravellers)
+        throw new Error(errorMessages.itineraryArgumentMissing);
+
+    if(typeof destinationObject != 'object' || Number.isNaN(maxTime) || Number.isNaN(maxBudget) || !Number.isInteger(noOfTravellers))
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+
     let itineraryThisDay = [];
 
     if(maxTime < 1 || maxBudget <1){
         return itineraryThisDay;
     }
 
-    let allThings = await getThingsToDo(destinationObject);
+    let allThings = destinationObject.thingsToDo;
     let possibleThingsToDo = await putThingsToSack(allThings, maxBudget, maxTime);
     let nearestThingObj = possibleThingsToDo[0];
-    let nearestThing = Object.keys(nearestThingObj);
-    nearestThing = nearestThing[0];
+    let nearestThing = (Object.keys(nearestThingObj))[0];
     visitedThings.push(nearestThing);
     let cost = possibleThingsToDo[0][nearestThing] % 100;
     let time = Math.round(possibleThingsToDo[0][nearestThing] / 1000);
@@ -130,27 +175,34 @@ async function getItineraryDay(destinationObject, maxTime, maxBudget, noOfTravel
         "avgTimeSpent": time
     }
     itineraryThisDay.push(item);
-    let thisIndex = possibleThingsToDo.findIndex(
+    let nearestIndex = possibleThingsToDo.findIndex(
         x => {
             let keys = Object.keys(x);
             return (keys[0] == nearestThing);
         }
     );
-    possibleThingsToDo.splice(thisIndex, 1);
     
     for(let i=0; i<possibleThingsToDo.length; i++){
         nearestThing = await getNearestThingToDo(nearestThingObj, possibleThingsToDo, destinationObject);
 
-        thisIndex = possibleThingsToDo.findIndex(
+        if(visitedThings.includes(nearestThing)){
+            continue;
+        }
+
+        if(nearestThing === ""){
+            continue;
+        }
+
+        nearestIndex = possibleThingsToDo.findIndex(
             x => {
                 let keys = Object.keys(x);
                 return (keys[0] == nearestThing);
             }
         );
-        cost = possibleThingsToDo[thisIndex][nearestThing] % 100;
-        time = Math.round(possibleThingsToDo[thisIndex][nearestThing] / 1000);
-        nearestThingObj = possibleThingsToDo[thisIndex];
-        possibleThingsToDo.splice(thisIndex, 1);
+
+        cost = possibleThingsToDo[nearestIndex][nearestThing] % 100;
+        time = Math.round(possibleThingsToDo[nearestIndex][nearestThing] / 1000);
+        nearestThingObj = possibleThingsToDo[nearestIndex];
         location = (allThings.find(x => x.name == nearestThing)).location;
         
         item = {
@@ -160,15 +212,28 @@ async function getItineraryDay(destinationObject, maxTime, maxBudget, noOfTravel
             "avgTimeSpent": time
         }
         
-        nearestThing = Object.keys(nearestThingObj);
-        nearestThing = nearestThing[0];
         itineraryThisDay.push(item);
         visitedThings.push(nearestThing);
     }
     return itineraryThisDay;
 }
 
-async function generateItinerary(destinationObject, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers){
+/**
+ * 
+ * @param {*} destinationId MongoDB ID of the destination document to generate itinerary for
+ * @param {*} timePerDay Depends on the tour activity selected
+ * @param {*} maxBudgetPerPerson Maximimum budget for one person for the duration of the trip
+ * @param {*} noOfDays No. of days to travel
+ * @param {*} noOfTravellers No. of people travelling
+ */
+async function generateCompleteItinerary(destinationId, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers){
+    if(arguments.length != 5 || !destinationId || !timePerDay || !maxBudgetPerPerson || !noOfDays || !noOfTravellers)
+        throw new Error(errorMessages.itineraryArgumentMissing);
+
+    if(typeof destinationId !== 'string' || Number.isNaN(timePerDay) || Number.isNaN(maxBudgetPerPerson) || !Number.isInteger(noOfDays) || !Number.isInteger(noOfTravellers))
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+
+    let destinationObject = await destinationFunctions.getDestinationById(destinationId);
     const budgetPerDay = maxBudgetPerPerson*noOfTravellers / noOfDays;
     let budgetNextDay = budgetPerDay;
     let budgetRemaining = budgetNextDay;
@@ -176,7 +241,7 @@ async function generateItinerary(destinationObject, timePerDay, maxBudgetPerPers
     finalItinerary = {};
 
     for(let i=0; i<noOfDays; i++){
-        let itineraryThisDay = await getItineraryDay(destinationObject, timePerDay, budgetNextDay, noOfTravellers);
+        let itineraryThisDay = await generateSingleDayItinerary(destinationObject, timePerDay, budgetNextDay/noOfTravellers, noOfTravellers);
         budgetRemaining = budgetNextDay;
 
         for(let j=0; j<itineraryThisDay.length; j++){
@@ -191,19 +256,4 @@ async function generateItinerary(destinationObject, timePerDay, maxBudgetPerPers
     return finalItinerary;
 }
 
-async function main(){
-    try {
-        let destinationObject = await destinationFunctions.getDestinationById('5dd987709e47d21361172a2b');
-        let finalItinerary = await generateItinerary(destinationObject, 10, 1000, 14, 5);
-        console.log(finalItinerary);
-        const db = await dbConnection();
-        await db.serverConfig.close();
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-main();
-
-module.exports = {generateItinerary};
+module.exports = {generateCompleteItinerary};
