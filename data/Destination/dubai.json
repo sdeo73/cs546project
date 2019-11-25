@@ -126,9 +126,9 @@
 			"avgTimeSpent": 8
 		},
 		{
-			"name": "Wild Wadi",
+			"name": "Wild Wadi Amusement Park",
 			"location": "Jumeirah Street, Opp. Burj Al Arab",
-			"type": "Entertainment",
+			"type": "Theme Park",
 			"avgCostPerPerson": 80,
 			"avgTimeSpent": 8
 		},
@@ -170,7 +170,7 @@
 		{
 			"name": "Legoland Water Park",
 			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
-			"type": "Entertainment",
+			"type": "Theme Park",
 			"avgCostPerPerson": 75,
 			"avgTimeSpent": 8
 		},
@@ -182,8 +182,8 @@
 			"avgTimeSpent": 7
 		},
 		{
-			"name": "Dubai Gold Souk",
-			"location": "Al Dhagaya, Deira",
+			"name": "Gold and Spice Souks",
+			"location": "5 Old Baladiya St - Dubai - United Arab Emirates",
 			"type": "Sighseeing",
 			"avgCostPerPerson": 0,
 			"avgTimeSpent": 2
@@ -191,14 +191,14 @@
 		{
 			"name": "Skydive Dubai - The Palm",
 			"location": "Al Seyahi St",
-			"type": "Adventure Sports",
+			"type": "Adventure",
 			"avgCostPerPerson": 600,
 			"avgTimeSpent": 3
 		},
 		{
 			"name": "Skydive Dubai - Desert Campus",
 			"location": "Al Seyahi St",
-			"type": "Adventure Sports",
+			"type": "Adventure",
 			"avgCostPerPerson": 462,
 			"avgTimeSpent": 3
 		},
@@ -222,6 +222,356 @@
 			"type": "Entertainment",
 			"avgCostPerPerson": 70,
 			"avgTimeSpent": 8
+		},
+		{
+			"name": "Dubai Museum Gold Souk",
+			"location": "Al Fahidi Street Bur Dubai United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 45,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Museum of Illusions",
+			"location": "Al Seef - Dubai Creek - Dubai - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 22,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Olioli Children's Museum",
+			"location": "60 4th St - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 30,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Pearl Museum Emirates NBD",
+			"location": "10 Beniyas Rd - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 20,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Etihad Museum",
+			"location": "Jumeira Street, Dubai, United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 7,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Coin Museum",
+			"location": "Dubai Heritage Village, Bur Dubai - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 20,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Coffee Museum",
+			"location": "Villa 44, Al Fahidi Historical Neighborhood, Bastakiya - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Women's Museum - Bait Al Banat",
+			"location": "Al Sabkha, Gold Souq, Near - Al Khor St - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 6,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Sheikh Saeed al-Maktoum's House",
+			"location": "Al Khaleej Rd, Bur Dubai, Dubai, United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 1,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "The Dubai Fountain",
+			"location": "Fashion Parking - Dubai Mall - Sheikh Mohammed bin Rashid Blvd - Dubai",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Dubai Aquarium & Underwater Zoo",
+			"location": "Sheikh Zayed Road | The Dubai Mall, Doha Street Off 1st Interchange, Dubai, United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 37,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Desert Safari 4WD Tour",
+			"location": "Rolla Street - Dubai - United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 70,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Speedboat Tour",
+			"location": "Jumeirah St - Dubai - United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 35,
+			"avgTimeSpent": 1.5
+		},
+		{
+			"name": "Bastakia Quarter",
+			"location": "Bur dubai | Building 20, Dubai, United Arab Emirates",
+			"type": "Historical",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Luxury Yacht Tour",
+			"location": "Leisure",
+			"type": "Jumeirah St - Dubai - United Arab Emirates",
+			"avgCostPerPerson": 70,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Aquaventure Waterpark",
+			"location": "Atlantis The Palm - Crescent Rd - Dubai - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 135,
+			"avgTimeSpent": 5
+		},
+		{
+			"name": "Dubai Aventura Parks",
+			"location": "Mushrif Park، Gate 1، POB 30929 - Dubai - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 185,
+			"avgTimeSpent": 6
+		},
+		{
+			"name": "Adventureland",
+			"location": "Level 1 , Sahara Centre, Al Nahda Interchange - Dubai - Sharjah Rd - Sharjah - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 25,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Dubai Garden Glow",
+			"location": "Zabeel Park, Gate No- 6 & 7 Area - B - Dubai - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 18,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Laguna Waterpark by Meraas",
+			"location": "La Mer - Dubai - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 50,
+			"avgTimeSpent": 5
+		},
+		{
+			"name": "Hub Zero Dubai",
+			"location": "Al Mustaqbal, City Walk, Phase Two - Dubai - United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 25,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Al Khazzan Park",
+			"location": "Mohammed Elhenaway - Dubai - United Arab Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "BurJuman",
+			"location": "Khalid Bin Al Waleed Rd - Dubai - United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Deira City Center Shopping Mall",
+			"location": "8th Street, Dubai, United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Dubai Festival Mall",
+			"location": "Al Rebat Road, Dubai Festival City - Dubai - United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Global Village",
+			"location": "Sheikh Mohammed Bin Zayed Road, Dubai, United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Jumeirah Mosque",
+			"location": "Jumeirah Beach Road, Jumeirah 1, Dubai, United Arab Emirates",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 8,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "The Sheikh Mohammed Centre for Cultural Understanding",
+			"location": "House 26 & 47, Al Fahidi Historical Neighbourhood, Al Musallah Street, Bur Dubai, Dubai, United Arab Emirates",
+			"type": "Historical",
+			"avgCostPerPerson": 30,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Jumeirah Beach",
+			"location": "1 Al Ghelaan Street - Dubai - United Arab Emirates",
+			"type": "Leisure",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Dubai Desert Conservation Reserve",
+			"location": "Camelicious - Dubai Al Ain Road, Exit 26, Um Nahad 3 area - Dubai - United Arab Emirates",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 50,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Dubai Outlet Mall",
+			"location": "Route 66 - Dubai - Al Ain Rd - Dubai - United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 3
+		},
+		{
+			"name": "Dubai Miracle Garden",
+			"location": "Al Barsha South 3 - Dubai - United Arab Emirates",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 15,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Kite Beach",
+			"location": "Kite Beach - Dubai - United Arab Emirates",
+			"type": "Sightseeing",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Al Fahidi District",
+			"location": "Al Fahidi Neighborhood, 312th Road - Al Fahidi St - Dubai - United Arab Emirates",
+			"type": "Historical",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Phobia Dubai Escape Game",
+			"location": "Red Diamond Building | Office F112, Dubai, United Arab Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 30,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Pavilion Dive Centre",
+			"location": "Jumeirah Beach Road, Dubai, United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 45,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Inflight Dubai Indoor Skydiving",
+			"location": "E 66 | Skydive Dubai Desert Campus, Dubai, United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 50,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Dubai Self-drive Quad Bike Ride",
+			"location": "Dubai - United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 55,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Dubai Helicopter Tour",
+			"location": "Dubai - United Arab Emirates",
+			"type": "Adventure",
+			"avgCostPerPerson": 150,
+			"avgTimeSpent": 1
+		},
+		{
+			"name": "Zabeel Palace",
+			"location": "Zabeel, Bur Dubai",
+			"type": "Historical",
+			"avgCostPerPerson": 55,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Round 10 Boxing Club",
+			"location": "364/8 Street | Al Quoz First, Capitol Warehouse 42, Dubai 128281, United Arab Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 35,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "3D Blacklight Minigolf",
+			"location": "Jumeirah Beach Residence, Bahar Plaza Level | JBR 03 Bahar, Unit P24 E, Dubai, United Arab Emirates",
+			"type": "Leisure",
+			"avgCostPerPerson": 30,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Mountain Extreme Rock Climbing",
+			"location": "Capital Golden Tower - Mountain Extreme shop | Ground Floor Back of The Building, Dubai, United Arab Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 30,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Reel Cinemas",
+			"location": "The Dubai Mall Upper Deck Rd | Off Exit 32, Sheikh Zayed Road, Dubai, United Arab Emirates",
+			"type": "Leisure",
+			"avgCostPerPerson": 20,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Grand Cinemas Mercato Mall",
+			"location": "Jumeirah 2 Jumeirah Beach Road 1 St, Dubai, United Arab Emirates",
+			"type": "Shopping",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Dubai Bollywood",
+			"location": "53 22 Street | Al Quoz Industrial Area 3, Dubai, United Arab Emirates",
+			"type": "Theme Park",
+			"avgCostPerPerson": 40,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Switch Bowling",
+			"location": "Ibn Battuta Mall Orchid St | Garden Cross Road, 1, Dubai, United Arab Emirates",
+			"type": "Entertainment",
+			"avgCostPerPerson": 20,
+			"avgTimeSpent": 4
+		},
+		{
+			"name": "Al Jaber Gallery",
+			"location": "1 St, Dubai 1940, United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Alserkal Cultural Foundation",
+			"location": "Heritage House No. 13, Al Fahidi Historical Neighbourhood - Dubai - United Arab Emirates",
+			"type": "Museum",
+			"avgCostPerPerson": 15,
+			"avgTimeSpent": 2
+		},
+		{
+			"name": "Al Bastakiya District",
+			"location": "Bastakiya Opposite Musalla Post Office - Al Fahidi St - Dubai - United Arab Emirates",
+			"type": "Historical",
+			"avgCostPerPerson": 0,
+			"avgTimeSpent": 3
 		}
 	],
 	"restaurants": [
