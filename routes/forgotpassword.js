@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
             if (req.session.invalidPass) {
                 hasErrors = true;
             }
-            res.render('pages/loginPage', {title: "Login", hasErrors: hasErrors, error: req.session.invalidPass, partial: "login-scripts"});
+            res.render('pages/forgotpassword', {title: "Forgot Password", hasErrors: hasErrors, error: req.session.invalidPass, partial: "login-scripts"});
         }
         return res.status(200);
     } catch (error) {

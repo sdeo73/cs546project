@@ -1,13 +1,24 @@
 <div class="preferenceForm">
     <main>
+         <header class="head1">
+            <p class="paragraph-content">The Lazy Traveller </p>
+        </header>
+
+        <br>
         <form action="/home" method="POST" id="preferences-form">
+                   <div id="shadow">
+<br>
             <label for="gender-input"> Gender: </label>
+            
             <label for="g1">Male</label>
             <input type="radio" name="gender" value="male" id="g1">
             <label for="g2">Female</label>
             <input type="radio" name="gender" value="female" id="g2">
             <label for="g3">Other</label>
+            
+            
             <input type="radio" name="gender" value="other" id="g3"><br>
+            
             <div class="error-msg" id="gender-missing">
                 <i class="fa fa-times-circle"></i>
                 Gender is required!
@@ -134,5 +145,11 @@
 
             <button type="submit">Submit</button>
         </form>
+        <br><br>
+        </div>
+        <br><br><br>
+        <footer class="head1">
+    <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
+</footer>
     </main>
 </div>

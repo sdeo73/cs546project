@@ -8,7 +8,7 @@
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
-     color: red;
+     color:darkred;
      text-align: center;
 }
 
@@ -29,6 +29,28 @@ body {
      background-attachment: fixed;
      background-size: 100% 100%;
 }
+
+.head1
+{
+background-color:#007fac;
+color:AliceBlue;
+font-weight:bold;
+font-size:22px;
+padding: 1px;
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+}
+
+
+.paragraph-content
+{
+
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+font-size: 25px;
+}
+
+
 
 h1 {
      text-align: center;
@@ -70,16 +92,39 @@ h1 {
     display: inline-block;
 }
 
+
+
+#preferences-form{
+
+     height: auto;
+     width: 68%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #80b5d8;
+     display: inline-block;
+}
+
+
+
+#shadow {
+    border: 5px solid;
+   
+    box-shadow: 5px 10px;
+  }
+
 #signupForm label, #loginForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], 
 label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input],
 label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
-     color: white;
+     color: black;
      display: inline-block;
      font-family: 'Amatic SC', cursive;
      padding-right: 10px;
      font-size: 25px;
      font-weight: bold;
      width: 150px;
+     border: tomato;
 }
 
 label[for=gender-input], label[for=dob-input], label[for=countryId], 
@@ -99,10 +144,12 @@ label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input
 
 }
 
+
 #signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder {
      font-family: 'Titillium Web', sans-serif;
      text-align: center;
      color: #4a8ab4;
+     
 }
 
 button[type="submit"] {
@@ -111,7 +158,9 @@ button[type="submit"] {
      font-size: 20px;
      font-weight: bold;
      width: 100px;
-     color: #287eab;
+     background-color: #007fac;
+     color:white;
+
 }
 
 button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover {
@@ -125,15 +174,25 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
 #addNationalities {
      margin-left: 10px;
      font-size: 16px;
-     color: #4a8ab4;
+    background-color: #4a8ab4;
+    color:black;
      border: none;
+
 }
+.screenreader-only {
+    position: absolute;
+    left: -99999px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
 
 .deleteNationalities{
     margin-left: 10px;
     font-size: 16px;
-    color: #4a8ab4;
-    border: none;
+    background-color: #4a8ab4;
+    color: white;
+     border: none;
 }
 
 #nationalities li select {
@@ -149,12 +208,16 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
      color: #4a8ab4;
 }
 
+
+
 label[for=g1],label[for=g2],label[for=g3],label[for=mealPref1], label[for=mealPref2], label[for=mealPref3], label[for=mealPref4], label[for=mealPref5], label[for=mealPref6],
 label[for=tourType1], label[for=tourType2], label[for=tourType3], label[for=tourType4], label[for=tourType5],
 label[for=tourType6], label[for=tourActivity1], label[for=tourActivity2], label[for=tourActivity3], label[for=specialNeeds1], label[for=specialNeeds2], label[for=specialNeeds3], label[for=specialNeeds4]{
      font-family: 'Titillium Web', sans-serif;
      font-size: 15px;
-     color: white;
+     color:black;
+   
+
 }
 
 #preferences-form input[type=radio], #preferences-form input[type=checkbox]{
