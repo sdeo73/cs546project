@@ -323,8 +323,8 @@
 		},
 		{
 			"name": "Luxury Yacht Tour",
-			"location": "Leisure",
-			"type": "Jumeirah St - Dubai - United Arab Emirates",
+			"location": "Jumeirah St - Dubai - United Arab Emirates",
+			"type": "Leisure",
 			"avgCostPerPerson": 70,
 			"avgTimeSpent": 4
 		},
