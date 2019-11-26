@@ -8,7 +8,7 @@
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
-     color:darkred;
+     color:#e60000;
      text-align: center;
 }
 
@@ -47,7 +47,40 @@ font-size:22px;
 padding: 1px;
      font-weight: bold;
 font-family: 'Amatic SC', cursive;
+position: fixed;
+width:100%;
+
+
 }
+
+#footer1
+{
+     background-color:#007fac;
+     color:AliceBlue;
+     font-weight:bold;
+     font-size:22px;
+     padding: 1px;
+          font-weight: bold;
+     font-family: 'Amatic SC', cursive;
+     position: fixed; 
+     bottom: 0;
+     width:100%;
+}
+
+#footer
+{
+     background-color:#007fac;
+     color:AliceBlue;
+     font-weight:bold;
+     font-size:22px;
+     padding: 1px;
+          font-weight: bold;
+     font-family: 'Amatic SC', cursive;
+     position: relative; 
+     bottom: 0;
+     width:100%;
+}
+
 
 
 .paragraph-content
@@ -117,9 +150,9 @@ h1 {
 
 
 #shadow {
-    border: 5px solid;
-   
-    box-shadow: 5px 10px;
+    border: 3px solid;
+    box-shadow: 5px 10px 18px #888888;
+    /* box-shadow: 5px 10px; */
   }
 
 #signupForm label, #loginForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], 
