@@ -48,7 +48,6 @@ let exportedMethods = {
             d_name: d_name,
             country: country,
             weather: weather,
-            packingList: [],
             thingsToDo: thingsToDo,
             restaurants: restaurants,
             countryCustoms: countryCustoms
