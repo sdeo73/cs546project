@@ -107,14 +107,14 @@
 		{
 			"name": "Burj Al Arab",
 			"location": "Jumeirah St - Dubai",
-			"type": "Luxury",
+			"type": "Leisure",
 			"avgCostPerPerson": 0,
 			"avgTimeSpent": 1
 		},
 		{
 			"name": "Atlantis - The Palm",
 			"location": "Crescent Road",
-			"type": "Luxury",
+			"type": "Leisure",
 			"avgCostPerPerson": 0,
 			"avgTimeSpent": 4
 		},
