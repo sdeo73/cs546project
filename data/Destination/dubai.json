@@ -184,7 +184,7 @@
 		{
 			"name": "Gold and Spice Souks",
 			"location": "5 Old Baladiya St - Dubai - United Arab Emirates",
-			"type": "Sighseeing",
+			"type": "Sightseeing",
 			"avgCostPerPerson": 0,
 			"avgTimeSpent": 2
 		},
@@ -657,6 +657,428 @@
 				"Bakery"
 			],
 			"avgCostPerPerson": 35
+		},
+		{
+			"name": "24th St.",
+			"location": "24th Floor, Dusit Thani Dubai, Sheikh Zayed Road, Trade Centre Area, Dubai",
+			"cuisine": [
+				"Asian",
+				"Italian",
+				"Arabian"
+			],
+			"avgCostPerPerson": 541
+		},
+		{
+			"name": "The Cheesecake Factory",
+			"location": "Ground Level, Near Aquarium, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"American",
+				"Desserts",
+				"Salad"
+			],
+			"avgCostPerPerson": 505
+		},
+		{
+			"name": "Social House",
+			"location": "Lower Ground Floor, Near Waterfall, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Japanese",
+				"Seafood",
+				"Italian",
+				"Beverages"
+			],
+			"avgCostPerPerson": 505
+		},
+		{
+			"name": "Huqqa",
+			"location": "Level 3, New Extension, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Turkish"
+			],
+			"avgCostPerPerson": 587
+		},
+		{
+			"name": "Two at Symphony",
+			"location": "Level 1 New Fashion Avenue, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Salad",
+				"Healthy Food"
+			],
+			"avgCostPerPerson": 495
+		},
+		{
+			"name": "Shake Shack - The Dubai Mall",
+			"location": "Level 1, Near Waterfront, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Fast Food",
+				"Burger"
+			],
+			"avgCostPerPerson": 248
+		},
+		{
+			"name": "Walnut Grove",
+			"location": "Ground Level, Near Waterfall, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Bakery"
+			],
+			"avgCostPerPerson": 431
+		},
+		{
+			"name": "Filful",
+			"location": "Claren Tower, Sheikh Mohammed Bin Rashid Boulevard Road, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Lebanese",
+				"Arabian",
+				"Street Food"
+			],
+			"avgCostPerPerson": 349
+		},
+		{
+			"name": "PizzaExpress Live",
+			"location": "Ground Floor, DoubleTree by Hilton Dubai Business Bay, Bay Square, Business Bay, Dubai",
+			"cuisine": [
+				"Italian",
+				"Pizza"
+			],
+			"avgCostPerPerson": 505
+		},
+		{
+			"name": "Appam Corner Restaurant",
+			"location": "Shop 7 Ground Floor, RDK Building, Opposite Nibras International School, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"South Indian",
+				"North Indian",
+				"Chinese",
+				"Chettinad",
+				"Hyderabadi"
+			],
+			"avgCostPerPerson": 119
+		},
+		{
+			"name": "The Green Fridge",
+			"location": "Shop 8, Ground Floor, CEO Building, Opposite Carrefour Market, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Healthy Food",
+				"Salad"
+			],
+			"avgCostPerPerson": 156
+		},
+		{
+			"name": "Royal Grill Restaurant",
+			"location": "Shop 1, Ground Floor, CEO Building, Opposite Carrefour Market, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Indian",
+				"North Indian",
+				"Arabian"
+			],
+			"avgCostPerPerson": 184
+		},
+		{
+			"name": "Foodies Bhavan",
+			"location": "Ewan Residences, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"South Indian",
+				"North Indian",
+				"Chinese",
+				"Street Food"
+			],
+			"avgCostPerPerson": 138
+		},
+		{
+			"name": "Veg Hut Restaurant",
+			"location": "Shop 1, Ground Floor, RDK Building, Block A, Opposite Nibras International School, Dubai Investment Park, Dubai, Dubai",
+			"cuisine": [
+				"Indian",
+				"South Indian"
+			],
+			"avgCostPerPerson": 73
+		},
+		{
+			"name": "ChicKing",
+			"location": "Level 1, Carrefour, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Burger",
+				"Fast Food",
+				"Pizza"
+			],
+			"avgCostPerPerson": 92
+		},
+		{
+			"name": "Foods Sagar Restaurant",
+			"location": "Beside Jamia Masjid, Dubai Investment Park 1, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Indian",
+				"Mughlai",
+				"North Indian",
+				"Chinese",
+				"Seafood"
+			],
+			"avgCostPerPerson": 184
+		},
+		{
+			"name": "Puranmal",
+			"location": "Shop 8, Ground Floor, RDK Building, Opposite Nibras International School, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"North Indian",
+				"South Indian",
+				"Street Food",
+				"Desserts"
+			],
+			"avgCostPerPerson": 184
+		},
+		{
+			"name": "Wendy's",
+			"location": "Ground Level, Carrefour Centre, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Fast Food",
+				"Burger"
+			],
+			"avgCostPerPerson": 110
+		},
+		{
+			"name": "Chili's",
+			"location": "Ground Floor, City Centre Me'aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"American",
+				"Mexican"
+			],
+			"avgCostPerPerson": 477
+		},
+		{
+			"name": "Al Shams",
+			"location": "Ground Floor, Damac Lago Vista Tower B, IMPZ, Dubai",
+			"cuisine": [
+				"North Indian",
+				"South Indian",
+				"Chinese",
+				"Arabian"
+			],
+			"avgCostPerPerson": 147
+		},
+		{
+			"name": "Leila",
+			"location": "Ground Level, City Centre Me’aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Lebanese"
+			],
+			"avgCostPerPerson": 303
+		},
+		{
+			"name": "800 Degrees Neapolitan Pizzeria",
+			"location": "Ground Level, City Centre Me’aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Pizza",
+				"Italian"
+			],
+			"avgCostPerPerson": 294
+		},
+		{
+			"name": "PAUL Bakery & Restaurant",
+			"location": "Ground Level, City Centre Me'aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Cafe",
+				"French"
+			],
+			"avgCostPerPerson": 385
+		},
+		{
+			"name": "Pizza Hut",
+			"location": "ENOC Petrol Station, Near Me'aisem City Center, Sheikh Mohammad Bin Zayed Road, IMPZ, Dubai",
+			"cuisine": [
+				"Pizza"
+			],
+			"avgCostPerPerson": 202
+		},
+		{
+			"name": "Fusion - Ghaya Grand Hotel",
+			"location": "Podium Level, Ghaya Grand Hotel, IMPZ, Dubai",
+			"cuisine": [
+				"Asian",
+				"Indian",
+				"Italian"
+			],
+			"avgCostPerPerson": 551
+		},
+		{
+			"name": "The Big Wok",
+			"location": "Floor 1, Circular Building, Block B, IMPZ, Dubai",
+			"cuisine": [
+				"Chinese",
+				"Indian",
+				"North Indian",
+				"Continental"
+			],
+			"avgCostPerPerson": 239
+		},
+		{
+			"name": "Little Lahore",
+			"location": "Shop 01, Ground Floor, Goldcrest Views 2 Tower, Cluster J, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Pakistani",
+				"Indian",
+				"Beverages",
+				"Desserts"
+			],
+			"avgCostPerPerson": 294
+		},
+		{
+			"name": "Highway 311 Grills and Eatery",
+			"location": "Shop 12, Basement Level, Mag 214 Tower, Cluster R, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Mexican",
+				"Peruvian",
+				"Latin American"
+			],
+			"avgCostPerPerson": 239
+		},
+		{
+			"name": "Jazz@PizzaExpress",
+			"location": "Basement Level, Mövenpick Hotel, Cluster A, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Italian",
+				"Pizza"
+			],
+			"avgCostPerPerson": 505
+		},
+		{
+			"name": "Greek & Delicious",
+			"location": "Shop 01-A, Ground Floor, Goldcrest Views 2 Tower, Cluster J, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Greek",
+				"Salad",
+				"Grill"
+			],
+			"avgCostPerPerson": 404
+		},
+		{
+			"name": "Operation:Falafel",
+			"location": "The Beach, Jumeirah Beach Residence (JBR), Dubai",
+			"cuisine": [
+				"Street Food",
+				"Arabian",
+				"Middle Eastern",
+				"Salad"
+			],
+			"avgCostPerPerson": 284
+		},
+		{
+			"name": "Bombay Bungalow",
+			"location": "The Beach, Jumeirah Beach Residence (JBR), Dubai",
+			"cuisine": [
+				"Indian",
+				"North Indian"
+			],
+			"avgCostPerPerson": 413
+		},
+		{
+			"name": "Rajdhani Street",
+			"location": "Shop 07, Ground Floor, Platinum Tower, Cluster I, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Street Food",
+				"Indian"
+			],
+			"avgCostPerPerson": 220
+		},
+		{
+			"name": "Kulcha King - كولشا كينج",
+			"location": "Basement Level, O2 Residence, Cluster O, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Indian",
+				"Biryani",
+				"North Indian",
+				"Kebab"
+			],
+			"avgCostPerPerson": 239
+		},
+		{
+			"name": "Delhi Nihari Restaurant",
+			"location": "Ground Floor, Al Zarouni Building, Behind IMall, Genata Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Mughlai",
+				"Indian",
+				"Pakistani"
+			],
+			"avgCostPerPerson": 110
+		},
+		{
+			"name": "Masala Wok",
+			"location": "Ground Floor, Al Bahri Building, Amman Street, Al Nahda 2, Al Nahda, Dubai",
+			"cuisine": [
+				"Indian",
+				"Chinese",
+				"Kebab"
+			],
+			"avgCostPerPerson": 275
+		},
+		{
+			"name": "Biryaniwalla & Co",
+			"location": "Ground Floor, Ahali Building, Bagdat Street, Al Nahda 2, Al Nahda, Dubai",
+			"cuisine": [
+				"Biryani",
+				"Hyderabadi",
+				"North Indian"
+			],
+			"avgCostPerPerson": 184
+		},
+		{
+			"name": "Nayaab Haandi",
+			"location": "Shop 3, Ground Floor, City Tower, Beside Power Zone Body Building, Samarqand Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Pakistani",
+				"Indian"
+			],
+			"avgCostPerPerson": 202
+		},
+		{
+			"name": "Salkara Restaurant",
+			"location": "Food Court, Level 6, Ansar Mall, Al Ittihad Road, Al Nahda, Sharjah",
+			"cuisine": [
+				"South Indian",
+				"Kerala"
+			],
+			"avgCostPerPerson": 138
+		},
+		{
+			"name": "Makani Restaurant",
+			"location": "Food Court, Level 2, East Atrium Area, Sahara Centre, Al Nahda, Sharjah",
+			"cuisine": [
+				"Indian",
+				"North Indian",
+				"Mughlai"
+			],
+			"avgCostPerPerson": 220
+		},
+		{
+			"name": "Levant'ish",
+			"location": "Grand Service Station, Baghdad Street, Qusais, Dubai",
+			"cuisine": [
+				"Lebanese",
+				"Turkish",
+				"Syrian"
+			],
+			"avgCostPerPerson": 220
+		},
+		{
+			"name": "Kabab Karachi",
+			"location": "Shop 19, Ground Floor, Abdullah Al Sheeba Building, Bukhara Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Pakistani",
+				"Kebab",
+				"Biryani"
+			],
+			"avgCostPerPerson": 92
+		},
+		{
+			"name": "Applebee's",
+			"location": "Level 2, Opposite Jumbo Electronics, Sahara Centre, Al Nahda Road, Al Nahda, Sharjah",
+			"cuisine": [
+				"American",
+				"Mexican",
+				"Burger"
+			],
+			"avgCostPerPerson": 459
 		}
 	],
 	"countryCustoms": {
