@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
+
 const loginData = data.login;
 const errorMessages = require('../public/errorMessages');
 const passwordHash = require('password-hash');
@@ -28,12 +29,15 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+
         const user_email = req.body.user_email;
         const user_pass = req.body.user_password;
         const currentUser = await loginData.getHashPassword(user_email);
 
         let validPass = false;
-        if (currentUser !== null) { //user exists
+        if (currentUser !== null) 
+        {
+             //user exists
             const hashPass = currentUser.password;
             console.log(`hashPass = ${hashPass}`);
             validPass = passwordHash.verify(user_pass, hashPass);
@@ -51,13 +55,18 @@ router.post('/', async (req, res) => {
             } else {
                 return res.status(200).redirect('../preferences');
             }
-        } else {
+        } else 
+        
+        {
             req.session.invalidPass = "Invalid username or password was provided";
             //redirect to the login page again
             res.redirect('/');
             return res.status(401).json({error: validPass});
         }
-    } catch (error) {
+
+    } 
+    
+        catch (error) {
         return res.status(404).json(error.message);
     }
 });
@@ -66,9 +75,13 @@ router.get('/logout', async (req, res) => {
     try {
         //removes the session id from the user collection
         await loginData.removeSessionID(req.session.userID, req.session.AuthCookie);
+        
         //Expire the cookies and render the logoutPage
         req.session.destroy(res.render('pages/loginPage', {title: "Logout Successfully Page"}));
-    } catch (err) {
+    }
+    
+    catch (err)
+     {
         return res.status(404).json(err);
     }
 });
