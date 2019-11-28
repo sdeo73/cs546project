@@ -666,7 +666,7 @@
 				"Italian",
 				"Arabian"
 			],
-			"avgCostPerPerson": 541
+			"avgCostPerPerson": 40
 		},
 		{
 			"name": "The Cheesecake Factory",
@@ -676,7 +676,7 @@
 				"Desserts",
 				"Salad"
 			],
-			"avgCostPerPerson": 505
+			"avgCostPerPerson": 25
 		},
 		{
 			"name": "Social House",
@@ -687,7 +687,7 @@
 				"Italian",
 				"Beverages"
 			],
-			"avgCostPerPerson": 505
+			"avgCostPerPerson": 20
 		},
 		{
 			"name": "Huqqa",
@@ -695,7 +695,7 @@
 			"cuisine": [
 				"Turkish"
 			],
-			"avgCostPerPerson": 587
+			"avgCostPerPerson": 25
 		},
 		{
 			"name": "Two at Symphony",
@@ -705,7 +705,7 @@
 				"Salad",
 				"Healthy Food"
 			],
-			"avgCostPerPerson": 495
+			"avgCostPerPerson": 21
 		},
 		{
 			"name": "Shake Shack - The Dubai Mall",
@@ -714,7 +714,7 @@
 				"Fast Food",
 				"Burger"
 			],
-			"avgCostPerPerson": 248
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Walnut Grove",
@@ -723,7 +723,7 @@
 				"Cafe",
 				"Bakery"
 			],
-			"avgCostPerPerson": 431
+			"avgCostPerPerson": 22
 		},
 		{
 			"name": "Filful",
@@ -733,7 +733,7 @@
 				"Arabian",
 				"Street Food"
 			],
-			"avgCostPerPerson": 349
+			"avgCostPerPerson": 30
 		},
 		{
 			"name": "PizzaExpress Live",
@@ -742,7 +742,7 @@
 				"Italian",
 				"Pizza"
 			],
-			"avgCostPerPerson": 505
+			"avgCostPerPerson": 14
 		},
 		{
 			"name": "Appam Corner Restaurant",
@@ -754,7 +754,7 @@
 				"Chettinad",
 				"Hyderabadi"
 			],
-			"avgCostPerPerson": 119
+			"avgCostPerPerson": 23
 		},
 		{
 			"name": "The Green Fridge",
@@ -763,7 +763,7 @@
 				"Healthy Food",
 				"Salad"
 			],
-			"avgCostPerPerson": 156
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Royal Grill Restaurant",
@@ -773,7 +773,7 @@
 				"North Indian",
 				"Arabian"
 			],
-			"avgCostPerPerson": 184
+			"avgCostPerPerson": 34
 		},
 		{
 			"name": "Foodies Bhavan",
@@ -784,7 +784,7 @@
 				"Chinese",
 				"Street Food"
 			],
-			"avgCostPerPerson": 138
+			"avgCostPerPerson": 42
 		},
 		{
 			"name": "Veg Hut Restaurant",
@@ -793,7 +793,7 @@
 				"Indian",
 				"South Indian"
 			],
-			"avgCostPerPerson": 73
+			"avgCostPerPerson": 20
 		},
 		{
 			"name": "ChicKing",
@@ -803,7 +803,7 @@
 				"Fast Food",
 				"Pizza"
 			],
-			"avgCostPerPerson": 92
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Foods Sagar Restaurant",
@@ -815,7 +815,7 @@
 				"Chinese",
 				"Seafood"
 			],
-			"avgCostPerPerson": 184
+			"avgCostPerPerson": 17
 		},
 		{
 			"name": "Puranmal",
@@ -826,7 +826,7 @@
 				"Street Food",
 				"Desserts"
 			],
-			"avgCostPerPerson": 184
+			"avgCostPerPerson": 20
 		},
 		{
 			"name": "Wendy's",
@@ -835,7 +835,7 @@
 				"Fast Food",
 				"Burger"
 			],
-			"avgCostPerPerson": 110
+			"avgCostPerPerson": 10
 		},
 		{
 			"name": "Chili's",
@@ -844,7 +844,7 @@
 				"American",
 				"Mexican"
 			],
-			"avgCostPerPerson": 477
+			"avgCostPerPerson": 9
 		},
 		{
 			"name": "Al Shams",
@@ -855,7 +855,7 @@
 				"Chinese",
 				"Arabian"
 			],
-			"avgCostPerPerson": 147
+			"avgCostPerPerson": 11
 		},
 		{
 			"name": "Leila",
@@ -863,7 +863,7 @@
 			"cuisine": [
 				"Lebanese"
 			],
-			"avgCostPerPerson": 303
+			"avgCostPerPerson": 16
 		},
 		{
 			"name": "800 Degrees Neapolitan Pizzeria",
@@ -872,7 +872,7 @@
 				"Pizza",
 				"Italian"
 			],
-			"avgCostPerPerson": 294
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "PAUL Bakery & Restaurant",
@@ -881,7 +881,7 @@
 				"Cafe",
 				"French"
 			],
-			"avgCostPerPerson": 385
+			"avgCostPerPerson": 27
 		},
 		{
 			"name": "Pizza Hut",
@@ -889,7 +889,7 @@
 			"cuisine": [
 				"Pizza"
 			],
-			"avgCostPerPerson": 202
+			"avgCostPerPerson": 12
 		},
 		{
 			"name": "Fusion - Ghaya Grand Hotel",
@@ -899,7 +899,7 @@
 				"Indian",
 				"Italian"
 			],
-			"avgCostPerPerson": 551
+			"avgCostPerPerson": 38
 		},
 		{
 			"name": "The Big Wok",
@@ -910,7 +910,7 @@
 				"North Indian",
 				"Continental"
 			],
-			"avgCostPerPerson": 239
+			"avgCostPerPerson": 17
 		},
 		{
 			"name": "Little Lahore",
@@ -921,7 +921,7 @@
 				"Beverages",
 				"Desserts"
 			],
-			"avgCostPerPerson": 294
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Highway 311 Grills and Eatery",
@@ -931,7 +931,7 @@
 				"Peruvian",
 				"Latin American"
 			],
-			"avgCostPerPerson": 239
+			"avgCostPerPerson": 26
 		},
 		{
 			"name": "Jazz@PizzaExpress",
@@ -940,7 +940,7 @@
 				"Italian",
 				"Pizza"
 			],
-			"avgCostPerPerson": 505
+			"avgCostPerPerson": 13
 		},
 		{
 			"name": "Greek & Delicious",
@@ -950,7 +950,7 @@
 				"Salad",
 				"Grill"
 			],
-			"avgCostPerPerson": 404
+			"avgCostPerPerson": 43
 		},
 		{
 			"name": "Operation:Falafel",
@@ -961,7 +961,7 @@
 				"Middle Eastern",
 				"Salad"
 			],
-			"avgCostPerPerson": 284
+			"avgCostPerPerson": 20
 		},
 		{
 			"name": "Bombay Bungalow",
@@ -970,7 +970,7 @@
 				"Indian",
 				"North Indian"
 			],
-			"avgCostPerPerson": 413
+			"avgCostPerPerson": 34
 		},
 		{
 			"name": "Rajdhani Street",
@@ -979,7 +979,7 @@
 				"Street Food",
 				"Indian"
 			],
-			"avgCostPerPerson": 220
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Kulcha King - كولشا كينج",
@@ -990,7 +990,7 @@
 				"North Indian",
 				"Kebab"
 			],
-			"avgCostPerPerson": 239
+			"avgCostPerPerson": 12
 		},
 		{
 			"name": "Delhi Nihari Restaurant",
@@ -1000,7 +1000,7 @@
 				"Indian",
 				"Pakistani"
 			],
-			"avgCostPerPerson": 110
+			"avgCostPerPerson": 7
 		},
 		{
 			"name": "Masala Wok",
@@ -1010,7 +1010,7 @@
 				"Chinese",
 				"Kebab"
 			],
-			"avgCostPerPerson": 275
+			"avgCostPerPerson": 15
 		},
 		{
 			"name": "Biryaniwalla & Co",
@@ -1020,7 +1020,7 @@
 				"Hyderabadi",
 				"North Indian"
 			],
-			"avgCostPerPerson": 184
+			"avgCostPerPerson": 13
 		},
 		{
 			"name": "Nayaab Haandi",
@@ -1029,7 +1029,7 @@
 				"Pakistani",
 				"Indian"
 			],
-			"avgCostPerPerson": 202
+			"avgCostPerPerson": 11
 		},
 		{
 			"name": "Salkara Restaurant",
@@ -1038,7 +1038,7 @@
 				"South Indian",
 				"Kerala"
 			],
-			"avgCostPerPerson": 138
+			"avgCostPerPerson": 17
 		},
 		{
 			"name": "Makani Restaurant",
@@ -1048,7 +1048,7 @@
 				"North Indian",
 				"Mughlai"
 			],
-			"avgCostPerPerson": 220
+			"avgCostPerPerson": 22
 		},
 		{
 			"name": "Levant'ish",
@@ -1058,7 +1058,7 @@
 				"Turkish",
 				"Syrian"
 			],
-			"avgCostPerPerson": 220
+			"avgCostPerPerson": 37
 		},
 		{
 			"name": "Kabab Karachi",
@@ -1068,7 +1068,7 @@
 				"Kebab",
 				"Biryani"
 			],
-			"avgCostPerPerson": 92
+			"avgCostPerPerson": 10
 		},
 		{
 			"name": "Applebee's",
@@ -1078,7 +1078,7 @@
 				"Mexican",
 				"Burger"
 			],
-			"avgCostPerPerson": 459
+			"avgCostPerPerson": 15
 		}
 	],
 	"countryCustoms": {
