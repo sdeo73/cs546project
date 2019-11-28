@@ -10,11 +10,10 @@ const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const destinationFunctions = require('../data/destinations');
 const connection = require("../config/mongoConnection");
-const dubai = require("../data/Destination/dubai.json");
 
 (async() => {
     try {
-        // let index;
+        let index;
         // //Insert all laws from laws.JSON into the database
         // for(index in laws) {
         //     try {
@@ -44,6 +43,7 @@ const dubai = require("../data/Destination/dubai.json");
         } catch (error) {
             if(error.name=="MongoError" && error.code==11000) {//Error message and code in case of duplicate insertion
                 index++; //Skip duplicate entry and continue
+                console.log(error.message);
             }
         }
 
