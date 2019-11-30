@@ -127,7 +127,7 @@ async function selectThingsToDo(allThings) {
     let dailyItems = [];
     let dailyBudget = budgetPerDay;
     let dailyTime = hourPerDay;
-    let dayCount = 1;
+    let dayCount = 0;
     let startOfTheDay = true;
     let startLocation = null;   
 
@@ -138,7 +138,7 @@ async function selectThingsToDo(allThings) {
             dailyBudget -= currentRestaurantBudget;
             restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2);
             dailyBudget += excessBudget;
-            finalArr["day_" + dayCount] = restaurants;
+            finalArr[dayCount + "_day"] = restaurants;
             startOfTheDay = false;
         }
         let currentItem = allThings[thing];
@@ -157,12 +157,10 @@ async function selectThingsToDo(allThings) {
             dailyTime -= itemTime;
             totalSpent += itemCost;
             totalHours += itemTime;
-            // allThings.splice(index, 1); //removes visited thing 
         } else {    //out of budget or time, concludes the date
-            // finalArr["day_" + dayCount] = dailyItems;
-            let tempDay = finalArr["day_" + dayCount];
+            let tempDay = finalArr[dayCount + "_day"];
             dailyItems.sort(compareDistance);   //sorts the selected thingsToDo by their distance to daily start location.
-            finalArr["day_" + dayCount] = tempDay.concat(dailyItems);
+            finalArr[dayCount + "_day"] = tempDay.concat(dailyItems);
             //resets attributes
             dailyItems = []; //clears dailyItems array
             dailyBudget = budgetPerDay + dailyBudget;
