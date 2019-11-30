@@ -10,7 +10,6 @@ const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const destinationFunctions = require('../data/destinations');
 const connection = require("../config/mongoConnection");
-const dubai = require("../data/Destination/dubai.json");
 
 (async() => {
     try {
