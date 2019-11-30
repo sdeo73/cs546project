@@ -29,7 +29,7 @@ async function addUser(firstName, lastName, email, password, nationality){
         errors.push(errorMessages.emailMissing);
     if(!password || typeof(password) != "string" || password.length == 0)
         errors.push(errorMessages.passwordMissing);
-    if(!nationality || typeof(nationality) != "string" || nationality.length == 0)
+    if(!nationality || !Array.isArray(nationality) || nationality.length == 0)
         errors.push(errorMessages.nationalityMissing);
         
     if(errors.length > 0) return errors;
