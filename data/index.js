@@ -5,7 +5,7 @@ const userPrefData = require("./userPreferences");
 const lawsData = require("./laws");
 const prohibitedItemsData = require("./prohibitedItems");
 const packingData = require('./packing');
-const itineraryData = require('./itinerary');
+const itineraryData = require('./generateItineraryPDF');
 const knapsackData = require('./knapsack');
 
 module.exports = {

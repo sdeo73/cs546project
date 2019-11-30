@@ -10,6 +10,7 @@ const usersFunctions = require('../data/users');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
 const destinationFunctions = require('../data/destinations');
 const connection = require("../config/mongoConnection");
+const locationData = require("../data/location");
 
 (async() => {
     try {
@@ -45,6 +46,20 @@ const connection = require("../config/mongoConnection");
                 index++; //Skip duplicate entry and continue
             }
         }
+
+        // //calls location.js getNearbyRestaurants function
+        // //lat, lon, filePath, currencyConversionFactor
+        // try {
+        //     //25.193742, 55.274745, 1USD = 3.67AED
+        //     await locationData.getNearbyRestaurants(25.285323, 55.370771, "../data/Destination/dubai.json", 3.67);
+        //     await locationData.getNearbyRestaurants(25.328786, 55.375579, "../data/Destination/dubai.json", 3.67);
+        //     await locationData.getNearbyRestaurants(25.297163, 55.415984, "../data/Destination/dubai.json", 3.67);
+        //     await locationData.getNearbyRestaurants(25.339623, 55.443453, "../data/Destination/dubai.json", 3.67);
+        //     await locationData.getNearbyRestaurants(25.403719, 55.490722, "../data/Destination/dubai.json", 3.67);
+        //     await locationData.getNearbyRestaurants(25.308973, 55.518592, "../data/Destination/dubai.json", 3.67);
+        // } catch (err) {
+        //     console.log(err.message);
+        // }
 
     } catch (err) {
         console.log(err.message);
