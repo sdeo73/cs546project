@@ -2,20 +2,39 @@ const location = require('./location');
 const destinationFunctions = require('./destinations');
 const errorMessages = require('../public/errorMessages');
 
+//global variables
+// all the available restaurants from the database
 let allRestaurants = [];
-//Make all the budgetNextDay and budgetRemaining variables as global variables so the program run faster?
+//daily budget
 let budgetPerDay = -1;
+//number of available hours per day
 let hourPerDay = -1;
+//total number of days of the itinerary
 let totalNumOfDays = -1
+//the amount of daily budget allocated to dining per day
 let restaurantBudget = 0.2;
-
-//budget
+//money left after dining
 let excessBudget = 0;
+//total money spent for the entire trip
 let totalSpent = 0;
+//total hours spent for the entire trip
 let totalHours = 0;
 
-/** */
-function compare(a, b) {
+/** 
+ * Compares the two given thingsToDo objects' type, returns negative integer if B object type is
+ * larger than A object type alphabetically, returns positive integer if A object type is
+ * larger than B object type alphabetically, returns zero if the two types are equal.
+ * Throws error if invalid arguments were provided.
+ * 
+ * @param a the first thingToDo object.
+ * @param b the second thingToDo object.
+ * @returns integer indicates whether a and b objects' types are equal or not.
+*/
+function compareTourType(a, b) {
+    //validates arguments
+    if (arguments.length != 2 || !a || !b || typeof a !== "object" || typeof b !== "object") {
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    }
     if (a.type < b.type){
         return -1;
     }
@@ -25,10 +44,42 @@ function compare(a, b) {
     return 0;
 }
 
-/** */
+/** 
+ * Compares the two given thingsToDo objects' distance, returns negative integer if B object distance is
+ * larger than A object distance alphabetically, returns positive integer if A object distance is
+ * larger than B object distance alphabetically, returns zero if the two distances are equal.
+ * Throws error if invalid arguments were provided.
+ * 
+ * @param a the first thingToDo object.
+ * @param b the second thingToDo object.
+ * @returns integer indicates whether a and b objects' distances are equal or not.
+*/
+function compareDistance(a, b) {
+    //validates arguments
+    if (arguments.length != 2 || !a || !b || typeof a !== "object" || typeof b !== "object") {
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    }
+    if (a.distance < b.distance){
+        return -1;
+    }
+    if (a.distance > b.distance){
+        return 1;
+    }
+    return 0;
+}
+
+/** 
+ * Selects restaurants that are within the given maximum budget and count. Throws errors
+ * if invalid arguments were provided.
+ * 
+ * @param allRestaurants all the available restaurant objects.
+ * @param maxBudget maximum budget for select restaurants.
+ * @param maxRestaurantCount maximum number of restaurant that can be selected.
+ * @returns selectedRestaurants an array of selected restaurant objects.
+*/
 function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
     //validates argumenets type
-    if (arguments.length != 3 || !allRestaurants || !maxBudget || !maxRestaurantCount) {
+    if (arguments.length != 3 || !maxBudget || !maxRestaurantCount || !allRestaurants) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
     if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount)) {
@@ -39,11 +90,10 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
     let index = 0;
     while (restaurantCount < maxRestaurantCount && index != allRestaurants.length) {
         let currentRestaurant = allRestaurants[index];
-        //allThings[thing].group = "thingToDo";
         let itemCost = currentRestaurant.avgCostPerPerson;
         if (maxBudget >= itemCost) {    //within budget
             maxBudget -= itemCost;
-            totalSpent += itemCost;
+            totalSpent += itemCost;     
             restaurantCount++;
             allRestaurants.splice(index, 1);
             currentRestaurant.group = "restaurant";
@@ -59,31 +109,29 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
  * Selects an array of things to do based on the given two constraints: maximum budget and time (hours per day).
  * Throws errors if invalid arguments were given or empty array is generated.
  * 
- * @param allThings an array of objects with things to do
- * @param maxBudget maximum total budget allotted
- * @param maxTime maximum time allotted
- * @returns 
+ * @param allThings an array of objects with things to do.
+ * @param maxBudget maximum total budget allotted.
+ * @param maxTime maximum time allotted.
+ * @returns finalArr an array of daily itinerary objects.
  */
 async function selectThingsToDo(allThings) {
-    if (arguments.length != 1 || !allThings) {
+    //validates argument number and type
+    if (arguments.length != 2 || !allThings) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    
     if (!Array.isArray(allThings)) {
         throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
-    let finalArr = [];
+    let finalArr = [];  //daily itinerary array consists of thingsToDo and restaurants
     let dailyItems = [];
     let dailyBudget = budgetPerDay;
     let dailyTime = hourPerDay;
     let dayCount = 1;
     let startOfTheDay = true;
-    let startLocation = null;
-    let locationDistance = 0;
-    let index = 0;
-    for (let thing in allThings) {
-    // while (dayCount > totalNumOfDays) {
+    let startLocation = null;   
+
+    for (let thing in allThings) {  //scans through all the available thingsToDo
         let restaurants = [];
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
@@ -96,15 +144,15 @@ async function selectThingsToDo(allThings) {
         let currentItem = allThings[thing];
         let itemCost = currentItem.avgCostPerPerson;
         let itemTime = currentItem.avgTimeSpent;
-        // if (startLocation === null) {   //set current day's starting address
-        //     startLocation = allThings[thing].location;
-        // }
-        // let locationDistance = await location.calculateDistanceAddress(startLocation, allThings[thing].location);
-
+        if (startLocation === null) {   //set current day's starting address
+            startLocation = allThings[thing].location;
+        }
+        
         //selects thingsToDo for the current day
         if (dailyBudget >= itemCost && dailyTime >= itemTime) { //within budget
             allThings[thing].group = "thingToDo";
-            dailyItems.push(allThings[thing]);
+            allThings[thing].distance = await location.calculateDistanceAddress(startLocation, allThings[thing].location);
+            dailyItems.push(allThings[thing]);  //add the items to current day's itinerary
             dailyBudget -= itemCost;
             dailyTime -= itemTime;
             totalSpent += itemCost;
@@ -113,6 +161,7 @@ async function selectThingsToDo(allThings) {
         } else {    //out of budget or time, concludes the date
             // finalArr["day_" + dayCount] = dailyItems;
             let tempDay = finalArr["day_" + dayCount];
+            dailyItems.sort(compareDistance);   //sorts the selected thingsToDo by their distance to daily start location.
             finalArr["day_" + dayCount] = tempDay.concat(dailyItems);
             //resets attributes
             dailyItems = []; //clears dailyItems array
@@ -126,23 +175,27 @@ async function selectThingsToDo(allThings) {
             break;
         }
     }
-    console.log(finalArr);
-    console.log(`totalSpent = ${totalSpent}`);
-    console.log(`totalHours = ${totalHours}`);
     return finalArr;
 }
 
 /** 
- * Sorts the thingsToDo array based on user's preferred tour type priority.
+ * Sorts the thingsToDo array based on user's preferred tour type priorities.
+ * Throws error if invalid arguments were provided.
  * 
- * @param allThings all the unsorted thingsToDo items
- * @param tourTypeList an array with user's 
- * @returns array an array of sorted thingsToDo items
+ * @param allThings all the unsorted thingsToDo items.
+ * @param tourTypeList an array with user's tour type priorities.
+ * @returns array an array of sorted thingsToDo items.
 */
-function sortAllThings(allThings, tourTypeList) {
+function sortThingsByTourType(allThings, tourTypeList) {
+    //validates argument number and type
+    if (arguments.length != 2 || !allThings || !tourTypeList) {
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    }
+    if (!Array.isArray(allThings) || !Array.isArray(tourTypeList)) {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
     let sortedAllThings = {};
     for (let obj in allThings) {
-        //key = tourType, value = an array of allThings objects with the same tourType
         let temp = [];
         let objTourType = allThings[obj].type.toLowerCase();
         if (objTourType in sortedAllThings) {   //tour type already exists
@@ -150,19 +203,23 @@ function sortAllThings(allThings, tourTypeList) {
         }
         temp.push(allThings[obj]);
         sortedAllThings[objTourType] = temp;
-        // sortedAllThings[tourTypeList[]]
     }
     let resultThings = [];
     for (let i = 0; i < tourTypeList.length; i++) {
         let currentItems = sortedAllThings[tourTypeList[i]];
-        resultThings = resultThings.concat(currentItems);//can't do this
+        resultThings = resultThings.concat(currentItems);
     }
 
-    // return sortedAllThings;
     return resultThings;
 }
 
-/** */
+/** 
+ * Generates a complete itinerary object based on the given user preference. Throws errors
+ * if invalid argument was provided.
+ * 
+ * @param userPreferences user preferences object.
+ * @returns completeItinerary a complete itinerary object with daily thingsToDo and restaurants.
+*/
 async function generateCompleteItinerary(userPreferences) {
     //validates number of argument
     if (arguments.length != 1) {
@@ -172,34 +229,38 @@ async function generateCompleteItinerary(userPreferences) {
     if (typeof userPreferences != "object") {
         throw new Error(errorMessages.itineraryArgumentMissing); 
     }
-    let destinationObj = await destinationFunctions.getDestinationById(userPreferences.destinationId);
 
+    //gets thingsToDo and restaurants from the database.
+    let destinationObj = await destinationFunctions.getDestinationById(userPreferences.destinationId);
     let allThings = destinationObj.thingsToDo;
-    // let restaurants = destinationObj.restaurants;
     allRestaurants = destinationObj.restaurants;
 
-    //is this step necessary? Time efficiency wise?
-    allThings.sort(compare);   //sorts the allThings by tour type
+    allThings.sort(compareTourType);   //sorts the allThings alphabetically by tour type
     let tourTypeList = generateTourTypePriority(userPreferences.tourType);
-    let sortedThings = sortAllThings(allThings, tourTypeList);
+    let sortedThings = sortThingsByTourType(allThings, tourTypeList);
 
-    // console.log(JSON.stringify(sortedThings));
     totalNumOfDays = userPreferences.numOfDays;
     hourPerDay = userPreferences.hoursPerDay;
     budgetPerDay = userPreferences.maxBudgetPerPerson / userPreferences.numOfDays;
-    // let tempRestaurants = selectRestaurants(restaurants, budgetPerDay / 5, 3);
-    // excessBudget = 0;
-    let selectedThings = await selectThingsToDo(sortedThings);
 
+    //calls helper function to generate itinerary
+    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants);
+
+    return completeItinerary;
 }
 
 /** 
  * Generates a list of tour type and prioritizes them based on the tour type selected by user.
+ * Throws error if invalid argument was provided.
  * 
- * @param tourType the tour type selected by user in string format
- * @returns array an array of tour types
+ * @param tourType the tour type selected by user in string format.
+ * @returns array an array of tour types.
 */
 function generateTourTypePriority(tourType) {
+    //validates number of argument
+    if (arguments.length != 1 || typeof tourType != "string") {
+        throw new Error(errorMessages.wrongNumberOfArguments);  
+    }
     let priorityList = {    //tour type with smaller index has higher priority
         business: ["shopping", "sightseeing", "leisure", "entertainment", "museum", "historical", "theme park", "adventure"],
         hiking: ["adventure", "sightseeing", "historical", "museum", "shopping", "leisure", "entertainment", "theme park"],
@@ -219,12 +280,16 @@ async function main() {
         let userPreferences = {
             destinationId: "5ddfeb603bb0fb359c094fb7",
             tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 8,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
+            hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
             maxBudgetPerPerson: 2000,
             numOfDays: 14,
             numOfTravelers: 5
         };
+        var start = new Date().getTime();
         let resultItinerary = await generateCompleteItinerary(userPreferences);
+        console.log(resultItinerary);
+        var end = new Date().getTime();
+        console.log(`generateCompleteItinerary total run time = ${end - start}`);
     } catch (err) {
         console.log(err.message);
     }
