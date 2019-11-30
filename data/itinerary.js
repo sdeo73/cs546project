@@ -138,7 +138,7 @@ async function selectThingsToDo(allThings) {
             dailyBudget -= currentRestaurantBudget;
             restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2);
             dailyBudget += excessBudget;
-            finalArr[dayCount + "_day"] = restaurants;
+            finalArr[dayCount] = restaurants;
             startOfTheDay = false;
         }
         let currentItem = allThings[thing];
@@ -158,9 +158,13 @@ async function selectThingsToDo(allThings) {
             totalSpent += itemCost;
             totalHours += itemTime;
         } else {    //out of budget or time, concludes the date
-            let tempDay = finalArr[dayCount + "_day"];
+            let tempDay = finalArr[dayCount];
             dailyItems.sort(compareDistance);   //sorts the selected thingsToDo by their distance to daily start location.
-            finalArr[dayCount + "_day"] = tempDay.concat(dailyItems);
+            if (tempDay) {
+                finalArr[dayCount] = tempDay.concat(dailyItems);
+            } else {
+                finalArr[dayCount] = dailyItems;
+            }
             //resets attributes
             dailyItems = []; //clears dailyItems array
             dailyBudget = budgetPerDay + dailyBudget;
@@ -169,7 +173,7 @@ async function selectThingsToDo(allThings) {
             startLocation = null;
             startOfTheDay = true; 
         }
-        if (dayCount > totalNumOfDays) {  //completes generating all the daily itinerary
+        if (dayCount >= totalNumOfDays) {  //completes generating all the daily itinerary
             break;
         }
     }
