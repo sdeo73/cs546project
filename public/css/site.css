@@ -388,3 +388,59 @@ input[id=dob-input],input[id=travelStart-input],input[id=travelEnd-input] {
      transform: translate(-50%, -50%);
      text-align: center;
    }
+
+
+   #eg
+{
+color:black;
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+font-size: 30px;
+}
+
+.hidden
+{position:absolute;
+left:-10000px;
+top:auto;
+width:1px;
+height:1px;
+overflow:hidden;}
+
+#eg2
+{
+color:black;
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+font-size: 30px;
+}
+
+.head1
+{
+background-color:#007fac;
+color:AliceBlue;
+font-weight:bold;
+font-size:22px;
+padding: 1px;
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+}
+
+
+
+.abc{
+ background-color:#007fac;
+border-radius:50%;
+  border: white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  radius:50%;
+     font-weight: bold;
+font-family: 'Amatic SC', cursive;
+
+}
