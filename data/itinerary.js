@@ -275,28 +275,28 @@ function generateTourTypePriority(tourType) {
 }
 
 /** */
-async function main() {
-    try {
-        //10, 1000, 14, 5
-        //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
-        let userPreferences = {
-            destinationId: "5ddfeb603bb0fb359c094fb7",
-            tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
-            maxBudgetPerPerson: 2000,
-            numOfDays: 14,
-            numOfTravelers: 5
-        };
-        var start = new Date().getTime();
-        let resultItinerary = await generateCompleteItinerary(userPreferences);
-        console.log(resultItinerary);
-        var end = new Date().getTime();
-        console.log(`generateCompleteItinerary total run time = ${end - start}`);
-    } catch (err) {
-        console.log(err.message);
-    }
-}
+// async function main() {
+//     try {
+//         //10, 1000, 14, 5
+//         //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
+//         let userPreferences = {
+//             destinationId: "5ddfeb603bb0fb359c094fb7",
+//             tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
+//             hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
+//             maxBudgetPerPerson: 2000,
+//             numOfDays: 14,
+//             numOfTravelers: 5
+//         };
+//         var start = new Date().getTime();
+//         let resultItinerary = await generateCompleteItinerary(userPreferences);
+//         console.log(resultItinerary);
+//         var end = new Date().getTime();
+//         console.log(`generateCompleteItinerary total run time = ${end - start}`);
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// }
 
-main();
+// main();
 
 module.exports = {generateCompleteItinerary};
