@@ -265,7 +265,7 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     let errors = [];
     if (!newSpecialNeeds) {
         errors.push(error.specialNeedsMissing);
-    } else if (!Array.isArray(newSpecialNeeds)) {
+    } else if (typeof newSpecialNeeds == "boolean") {
         throw new Error(error.specialNeedsInvalidType);
     }
 
