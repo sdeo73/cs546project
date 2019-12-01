@@ -77,12 +77,12 @@ function compareDistance(a, b) {
  * @param maxRestaurantCount maximum number of restaurant that can be selected.
  * @returns selectedRestaurants an array of selected restaurant objects.
 */
-function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
+function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specialNeeds) {
     //validates argumenets type
-    if (arguments.length != 3 || !maxBudget || !maxRestaurantCount || !allRestaurants) {
+    if (arguments.length != 4 || !maxBudget || !maxRestaurantCount || !allRestaurants || specialNeeds === undefined || specialNeeds == null) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount)) {
+    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount) || typeof specialNeeds !== "boolean") {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
     let selectedRestaurants = [];
@@ -91,7 +91,12 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
     while (restaurantCount < maxRestaurantCount && index != allRestaurants.length) {
         let currentRestaurant = allRestaurants[index];
         let itemCost = currentRestaurant.avgCostPerPerson;
-        if (maxBudget >= itemCost) {    //within budget
+        let itemSpecialNeeds = currentRestaurant.specialNeeds;
+        let hasSpecialNeeds = true;
+        if (specialNeeds && !itemSpecialNeeds) {
+            hasSpecialNeeds = false;
+        }
+        if (maxBudget >= itemCost && hasSpecialNeeds) {    //within budget
             maxBudget -= itemCost;
             totalSpent += itemCost;     
             restaurantCount++;
@@ -114,12 +119,12 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
  * @param maxTime maximum time allotted.
  * @returns finalArr an array of daily itinerary objects.
  */
-async function selectThingsToDo(allThings) {
+async function selectThingsToDo(allThings, allRestaurants, specialNeeds) {
     //validates argument number and type
-    if (arguments.length != 2 || !allThings) {
+    if (arguments.length != 3 || !allThings || !allRestaurants || specialNeeds === undefined || specialNeeds == null) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allThings)) {
+    if (!Array.isArray(allThings) || !Array.isArray(allRestaurants) || typeof specialNeeds !== "boolean") {
         throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
@@ -136,7 +141,7 @@ async function selectThingsToDo(allThings) {
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
             dailyBudget -= currentRestaurantBudget;
-            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2);
+            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2, specialNeeds);
             dailyBudget += excessBudget;
             finalArr[dayCount] = restaurants;
             startOfTheDay = false;
@@ -144,12 +149,17 @@ async function selectThingsToDo(allThings) {
         let currentItem = allThings[thing];
         let itemCost = currentItem.avgCostPerPerson;
         let itemTime = currentItem.avgTimeSpent;
+        let itemSpecialNeeds = currentItem.specialNeeds;
+        let hasSpecialNeeds = true;
+        if (specialNeeds && !itemSpecialNeeds) {
+            hasSpecialNeeds = false;
+        }
         if (startLocation === null) {   //set current day's starting address
             startLocation = allThings[thing].location;
         }
         
         //selects thingsToDo for the current day
-        if (dailyBudget >= itemCost && dailyTime >= itemTime) { //within budget
+        if (dailyBudget >= itemCost && dailyTime >= itemTime && hasSpecialNeeds) { //within budget
             allThings[thing].group = "thingToDo";
             allThings[thing].distance = await location.calculateDistanceAddress(startLocation, allThings[thing].location);
             dailyItems.push(allThings[thing]);  //add the items to current day's itinerary
@@ -244,9 +254,10 @@ async function generateCompleteItinerary(userPreferences) {
     totalNumOfDays = userPreferences.numOfDays;
     hourPerDay = userPreferences.hoursPerDay;
     budgetPerDay = userPreferences.maxBudgetPerPerson / userPreferences.numOfDays;
+    let specialNeeds = userPreferences.specialNeeds;
 
     //calls helper function to generate itinerary
-    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants);
+    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds);
 
     return completeItinerary;
 }
@@ -280,12 +291,13 @@ async function main() {
         //10, 1000, 14, 5
         //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
         let userPreferences = {
-            destinationId: "5ddfeb603bb0fb359c094fb7",
+            destinationId: "5de41f614d32cf422c12f2bc",
             tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
             hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
             maxBudgetPerPerson: 2000,
             numOfDays: 14,
-            numOfTravelers: 5
+            numOfTravelers: 5,
+            specialNeeds: false,
         };
         var start = new Date().getTime();
         let resultItinerary = await generateCompleteItinerary(userPreferences);
