@@ -28,7 +28,7 @@ router.post('/preferences', async (req, res) => {
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
-            return res.status(200).json({ inserted: true });
+            res.status(200).redirect('/home');
         }
     } catch (e) {
         return res.status(400).json({ error: e.message });

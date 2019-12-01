@@ -122,6 +122,16 @@ button[type="submit"] {
      color: #287eab;
 }
 
+#signup_button, #login_button {
+     font-family: 'Amatic SC', cursive;
+     padding: 8px;
+     font-size: 20px;
+     font-weight: bold;
+     width: 100px;
+     color: #ffffff;
+}
+
+
 button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover {
     cursor: pointer;
 }
