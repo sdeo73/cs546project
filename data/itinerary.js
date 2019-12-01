@@ -77,26 +77,28 @@ function compareDistance(a, b) {
  * @param maxRestaurantCount maximum number of restaurant that can be selected.
  * @returns selectedRestaurants an array of selected restaurant objects.
 */
-function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specialNeeds) {
+function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specialNeeds, userMealPreferences) {
     //validates argumenets type
-    if (arguments.length != 4 || !maxBudget || !maxRestaurantCount || !allRestaurants || specialNeeds === undefined || specialNeeds == null) {
+    if (arguments.length != 5 || !maxBudget || !maxRestaurantCount || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount) || typeof specialNeeds !== "boolean") {
+    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
     let selectedRestaurants = [];
     let restaurantCount = 0;
     let index = 0;
-    while (restaurantCount < maxRestaurantCount && index != allRestaurants.length) {
+    while (restaurantCount < maxRestaurantCount && index < allRestaurants.length) {
         let currentRestaurant = allRestaurants[index];
         let itemCost = currentRestaurant.avgCostPerPerson;
         let itemSpecialNeeds = currentRestaurant.specialNeeds;
+        let itemMealPreferences = currentRestaurant.mealPreferences;
         let hasSpecialNeeds = true;
         if (specialNeeds && !itemSpecialNeeds) {
             hasSpecialNeeds = false;
         }
-        if (maxBudget >= itemCost && hasSpecialNeeds) {    //within budget
+        const difference = userMealPreferences.every(val => itemMealPreferences.includes(val));
+        if (maxBudget >= itemCost && hasSpecialNeeds && difference) {    //within budget
             maxBudget -= itemCost;
             totalSpent += itemCost;     
             restaurantCount++;
@@ -119,12 +121,12 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specia
  * @param maxTime maximum time allotted.
  * @returns finalArr an array of daily itinerary objects.
  */
-async function selectThingsToDo(allThings, allRestaurants, specialNeeds) {
+async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMealPreferences) {
     //validates argument number and type
-    if (arguments.length != 3 || !allThings || !allRestaurants || specialNeeds === undefined || specialNeeds == null) {
+    if (arguments.length != 4 || !allThings || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allThings) || !Array.isArray(allRestaurants) || typeof specialNeeds !== "boolean") {
+    if (!Array.isArray(allThings) || !Array.isArray(allRestaurants) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
         throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
@@ -141,7 +143,7 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds) {
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
             dailyBudget -= currentRestaurantBudget;
-            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2, specialNeeds);
+            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2, specialNeeds, userMealPreferences);
             dailyBudget += excessBudget;
             finalArr[dayCount] = restaurants;
             startOfTheDay = false;
@@ -225,6 +227,31 @@ function sortThingsByTourType(allThings, tourTypeList) {
     return resultThings;
 }
 
+/**
+ * Generates an array of strings with all meal preference categories selected by the user.
+ * Throws errors if invalid argument was provided. 
+ * 
+ * @param {*} mealPreference an object with meal preference category as key and boolean as value.
+ * @returns userMealPreferences an array of strings with meal preference categories.
+ */
+function generatePreferencesArr(mealPreference) {
+    //validates argument number and type
+    if (arguments.length != 1 || !mealPreference) {
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    }
+    if (typeof mealPreference !== "object") {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
+    //turns user provided meal preferences into a string array
+    let userMealPreferences = [];
+    for (let type in mealPreference) {
+        if (mealPreference[type]) {
+            userMealPreferences.push(type);
+        }
+    }
+    return userMealPreferences;
+}
+
 /** 
  * Generates a complete itinerary object based on the given user preference. Throws errors
  * if invalid argument was provided.
@@ -255,9 +282,12 @@ async function generateCompleteItinerary(userPreferences) {
     hourPerDay = userPreferences.hoursPerDay;
     budgetPerDay = userPreferences.maxBudgetPerPerson / userPreferences.numOfDays;
     let specialNeeds = userPreferences.specialNeeds;
+    let mealPreference = userPreferences.mealPreference;
+    //converts the user meal preferences from object to an array of strings
+    let userMealPreferences = generatePreferencesArr(mealPreference);
 
     //calls helper function to generate itinerary
-    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds);
+    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds, userMealPreferences);
 
     return completeItinerary;
 }
@@ -291,13 +321,21 @@ async function main() {
         //10, 1000, 14, 5
         //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
         let userPreferences = {
-            destinationId: "5de41f614d32cf422c12f2bc",
+            destinationId: "5de431fec2794b3a3808ff1a",
             tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
             hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
             maxBudgetPerPerson: 2000,
             numOfDays: 14,
             numOfTravelers: 5,
             specialNeeds: false,
+            mealPreference: {
+                vegan: false,
+                vegetarian: false,
+                whiteMeat: false,
+                redMeat: false,
+                seafood: false,
+                eggs: true
+            }
         };
         var start = new Date().getTime();
         let resultItinerary = await generateCompleteItinerary(userPreferences);

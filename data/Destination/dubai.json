@@ -208,7 +208,7 @@
 			"name": "Skydive Dubai - The Palm",
 			"location": "Al Seyahi St",
 			"type": "Adventure",
-			"avgCostPerPerson": 600,
+			"avgCostPerPerson": 60,
 			"avgTimeSpent": 3,
 			"specialNeeds": false
 		},
@@ -216,7 +216,7 @@
 			"name": "Skydive Dubai - Desert Campus",
 			"location": "Al Seyahi St",
 			"type": "Adventure",
-			"avgCostPerPerson": 462,
+			"avgCostPerPerson": 55,
 			"avgTimeSpent": 3,
 			"specialNeeds": false
 		},
@@ -655,7 +655,7 @@
 				"North Indian",
 				"Chinese"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 8,
 			"specialNeeds": true
 		},
@@ -665,7 +665,7 @@
 			"cuisine": [
 				"Cafe"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 21,
 			"specialNeeds": true
 		},
@@ -675,7 +675,7 @@
 			"cuisine": [
 				"Pizza"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 14,
 			"specialNeeds": true
 		},
@@ -685,7 +685,7 @@
 			"cuisine": [
 				"International"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood"],
 			"avgCostPerPerson": 20,
 			"specialNeeds": true
 		},
@@ -697,7 +697,7 @@
 				"Chinese",
 				"South Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
 			"avgCostPerPerson": 6,
 			"specialNeeds": false
 		},
@@ -711,7 +711,7 @@
 				"Middle Eastern",
 				"Desserts"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
 			"avgCostPerPerson": 30,
 			"specialNeeds": true
 		},
@@ -721,7 +721,7 @@
 			"cuisine": [
 				"Fast Food"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 7,
 			"specialNeeds": true
 		},
@@ -731,7 +731,7 @@
 			"cuisine": [
 				"Cafe"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Red Meat", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "eggs"],
 			"avgCostPerPerson": 11,
 			"specialNeeds": false
 		},
@@ -743,7 +743,7 @@
 				"Desserts",
 				"Bakery"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 35,
 			"specialNeeds": true
 		},
@@ -755,7 +755,7 @@
 				"Italian",
 				"Arabian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 40,
 			"specialNeeds": true
 		},
@@ -767,7 +767,7 @@
 				"Desserts",
 				"Salad"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 25,
 			"specialNeeds": false
 		},
@@ -776,11 +776,11 @@
 			"location": "Lower Ground Floor, Near Waterfall, The Dubai Mall, Downtown Dubai, Dubai",
 			"cuisine": [
 				"Japanese",
-				"Seafood",
+				"seafood",
 				"Italian",
 				"Beverages"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood"],
 			"avgCostPerPerson": 20,
 			"specialNeeds": true
 		},
@@ -790,7 +790,7 @@
 			"cuisine": [
 				"Turkish"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 25,
 			"specialNeeds": false
 		},
@@ -802,7 +802,7 @@
 				"Salad",
 				"Healthy Food"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 21,
 			"specialNeeds": true
 		},
@@ -813,7 +813,7 @@
 				"Fast Food",
 				"Burger"
 			],
-			"mealPreferences": ["Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": true
 		},
@@ -824,7 +824,7 @@
 				"Cafe",
 				"Bakery"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "eggs"],
 			"avgCostPerPerson": 22,
 			"specialNeeds": true
 		},
@@ -836,7 +836,7 @@
 				"Arabian",
 				"Street Food"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Red Meat", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "eggs"],
 			"avgCostPerPerson": 30,
 			"specialNeeds": false
 		},
@@ -847,7 +847,7 @@
 				"Italian",
 				"Pizza"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 14,
 			"specialNeeds": false
 		},
@@ -861,7 +861,7 @@
 				"Chettinad",
 				"Hyderabadi"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 23,
 			"specialNeeds": true
 		},
@@ -872,7 +872,7 @@
 				"Healthy Food",
 				"Salad"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": false
 		},
@@ -884,7 +884,7 @@
 				"North Indian",
 				"Arabian"
 			],
-			"mealPreferences": ["White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 34,
 			"specialNeeds": true
 		},
@@ -897,7 +897,7 @@
 				"Chinese",
 				"Street Food"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "eggs"],
 			"avgCostPerPerson": 42,
 			"specialNeeds": true
 		},
@@ -908,7 +908,7 @@
 				"Indian",
 				"South Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian"],
+			"mealPreferences": ["vegan", "vegetarian"],
 			"avgCostPerPerson": 20,
 			"specialNeeds": false
 		},
@@ -920,7 +920,7 @@
 				"Fast Food",
 				"Pizza"
 			],
-			"mealPreferences": ["White Meat", "Eggs"],
+			"mealPreferences": ["whiteMeat", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": false
 		},
@@ -932,9 +932,9 @@
 				"Mughlai",
 				"North Indian",
 				"Chinese",
-				"Seafood"
+				"seafood"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood"],
 			"avgCostPerPerson": 17,
 			"specialNeeds": true
 		},
@@ -947,7 +947,7 @@
 				"Street Food",
 				"Desserts"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 20,
 			"specialNeeds": true
 		},
@@ -958,7 +958,7 @@
 				"Fast Food",
 				"Burger"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 10,
 			"specialNeeds": false
 		},
@@ -969,7 +969,7 @@
 				"American",
 				"Mexican"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood"],
 			"avgCostPerPerson": 9,
 			"specialNeeds": true
 		},
@@ -982,7 +982,7 @@
 				"Chinese",
 				"Arabian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 11,
 			"specialNeeds": true
 		},
@@ -992,7 +992,7 @@
 			"cuisine": [
 				"Lebanese"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 16,
 			"specialNeeds": false
 		},
@@ -1003,7 +1003,7 @@
 				"Pizza",
 				"Italian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": true
 		},
@@ -1014,7 +1014,7 @@
 				"Cafe",
 				"French"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "seafood", "eggs"],
 			"avgCostPerPerson": 27,
 			"specialNeeds": false
 		},
@@ -1024,7 +1024,7 @@
 			"cuisine": [
 				"Pizza"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 12,
 			"specialNeeds": true
 		},
@@ -1036,7 +1036,7 @@
 				"Indian",
 				"Italian"
 			],
-			"mealPreferences": ["Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 38,
 			"specialNeeds": true
 		},
@@ -1049,7 +1049,7 @@
 				"North Indian",
 				"Continental"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 17,
 			"specialNeeds": false
 		},
@@ -1062,7 +1062,7 @@
 				"Beverages",
 				"Desserts"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": false
 		},
@@ -1074,7 +1074,7 @@
 				"Peruvian",
 				"Latin American"
 			],
-			"mealPreferences": ["Red Meat", "Eggs"],
+			"mealPreferences": ["redMeat", "eggs"],
 			"avgCostPerPerson": 26,
 			"specialNeeds": true
 		},
@@ -1085,7 +1085,7 @@
 				"Italian",
 				"Pizza"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 13,
 			"specialNeeds": false
 		},
@@ -1097,7 +1097,7 @@
 				"Salad",
 				"Grill"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 43,
 			"specialNeeds": true
 		},
@@ -1110,7 +1110,7 @@
 				"Middle Eastern",
 				"Salad"
 			],
-			"mealPreferences": ["White Meat", "Red Meat", "Eggs"],
+			"mealPreferences": ["whiteMeat", "redMeat", "eggs"],
 			"avgCostPerPerson": 20,
 			"specialNeeds": true
 		},
@@ -1121,7 +1121,7 @@
 				"Indian",
 				"North Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 34,
 			"specialNeeds": true
 		},
@@ -1132,7 +1132,7 @@
 				"Street Food",
 				"Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": true
 		},
@@ -1145,7 +1145,7 @@
 				"North Indian",
 				"Kebab"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 12,
 			"specialNeeds": false
 		},
@@ -1157,7 +1157,7 @@
 				"Indian",
 				"Pakistani"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "eggs"],
 			"avgCostPerPerson": 7,
 			"specialNeeds": true
 		},
@@ -1169,7 +1169,7 @@
 				"Chinese",
 				"Kebab"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": true
 		},
@@ -1181,7 +1181,7 @@
 				"Hyderabadi",
 				"North Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
 			"avgCostPerPerson": 13,
 			"specialNeeds": false
 		},
@@ -1192,7 +1192,7 @@
 				"Pakistani",
 				"Indian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 11,
 			"specialNeeds": true
 		},
@@ -1203,7 +1203,7 @@
 				"South Indian",
 				"Kerala"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 17,
 			"specialNeeds": true
 		},
@@ -1215,7 +1215,7 @@
 				"North Indian",
 				"Mughlai"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian"],
+			"mealPreferences": ["vegan", "vegetarian"],
 			"avgCostPerPerson": 22,
 			"specialNeeds": false
 		},
@@ -1227,7 +1227,7 @@
 				"Turkish",
 				"Syrian"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 37,
 			"specialNeeds": true
 		},
@@ -1239,7 +1239,7 @@
 				"Kebab",
 				"Biryani"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat", "Seafood", "Eggs"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
 			"avgCostPerPerson": 10,
 			"specialNeeds": true
 		},
@@ -1251,7 +1251,7 @@
 				"Mexican",
 				"Burger"
 			],
-			"mealPreferences": ["Vegan", "Vegetarian", "White Meat", "Red Meat"],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
 			"avgCostPerPerson": 15,
 			"specialNeeds": true
 		}
