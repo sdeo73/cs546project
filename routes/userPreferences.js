@@ -28,8 +28,12 @@ router.post('/preferences', async (req, res) => {
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
+<<<<<<< HEAD
             req.session.userPreferences = userPrefInput;
             return res.status(200).redirect('/viewItinerary');
+=======
+            res.status(200).redirect('/home');
+>>>>>>> 1d956b14817f56eaa1687dab0ee606603d7f01b4
         }
     } catch (e) {
         return res.status(400).json({ error: e.message });
