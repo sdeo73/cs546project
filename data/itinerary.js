@@ -93,12 +93,13 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specia
         let itemCost = currentRestaurant.avgCostPerPerson;
         let itemSpecialNeeds = currentRestaurant.specialNeeds;
         let itemMealPreferences = currentRestaurant.mealPreferences;
-        let hasSpecialNeeds = true;
-        if (specialNeeds && !itemSpecialNeeds) {
-            hasSpecialNeeds = false;
-        }
+        //checks if current restaurant offers all meal preferences selected by the user
         const difference = userMealPreferences.every(val => itemMealPreferences.includes(val));
-        if (maxBudget >= itemCost && hasSpecialNeeds && difference) {    //within budget
+        if (maxBudget >= itemCost && difference) {    //within budget
+            if (specialNeeds && specialNeeds !== itemSpecialNeeds) {  //skips this item due to invalid specialNeeds
+                index++;
+                continue;
+            }
             maxBudget -= itemCost;
             totalSpent += itemCost;     
             restaurantCount++;
@@ -139,7 +140,7 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
     let startLocation = null;   
 
     for (let thing in allThings) {  //scans through all the available thingsToDo
-        let restaurants = [];
+        let restaurants = [];   //should be outside the loop
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
             dailyBudget -= currentRestaurantBudget;
@@ -152,16 +153,15 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
         let itemCost = currentItem.avgCostPerPerson;
         let itemTime = currentItem.avgTimeSpent;
         let itemSpecialNeeds = currentItem.specialNeeds;
-        let hasSpecialNeeds = true;
-        if (specialNeeds && !itemSpecialNeeds) {
-            hasSpecialNeeds = false;
-        }
         if (startLocation === null) {   //set current day's starting address
             startLocation = allThings[thing].location;
         }
         
         //selects thingsToDo for the current day
-        if (dailyBudget >= itemCost && dailyTime >= itemTime && hasSpecialNeeds) { //within budget
+        if (dailyBudget >= itemCost && dailyTime >= itemTime) { //within budget
+            if (specialNeeds && specialNeeds !== itemSpecialNeeds) {  //skips this item due to invalid specialNeeds
+                continue;
+            }
             allThings[thing].group = "thingToDo";
             allThings[thing].distance = await location.calculateDistanceAddress(startLocation, allThings[thing].location);
             dailyItems.push(allThings[thing]);  //add the items to current day's itinerary
@@ -185,10 +185,11 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
             startLocation = null;
             startOfTheDay = true; 
         }
-        if (dayCount >= totalNumOfDays) {  //completes generating all the daily itinerary
+        if (dayCount > totalNumOfDays) {  //completes generating all the daily itinerary
             break;
         }
     }
+
     return finalArr;
 }
 
@@ -321,25 +322,27 @@ async function main() {
         //10, 1000, 14, 5
         //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
         let userPreferences = {
-            destinationId: "5de431fec2794b3a3808ff1a",
-            tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
+            destinationId: "5de54a3ca15f1b052c03ba6a",
+            tourType: "Hiking", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
             hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
             maxBudgetPerPerson: 2000,
-            numOfDays: 14,
-            numOfTravelers: 5,
-            specialNeeds: false,
+            numOfDays: 7,
+            numOfTravelers: 15,
+            specialNeeds: true,
             mealPreference: {
-                vegan: false,
+                vegan: true,
                 vegetarian: false,
-                whiteMeat: false,
+                whiteMeat: true,
                 redMeat: false,
-                seafood: false,
-                eggs: true
+                seafood: true,
+                eggs: false
             }
         };
         var start = new Date().getTime();
         let resultItinerary = await generateCompleteItinerary(userPreferences);
         console.log(resultItinerary);
+        console.log(`totalSpent = ${totalSpent}`);
+        console.log(`totalHours = ${totalHours}`);
         var end = new Date().getTime();
         console.log(`generateCompleteItinerary total run time = ${end - start}`);
     } catch (err) {
