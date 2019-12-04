@@ -6,7 +6,7 @@ const userPrefData = data.userPreferences;
 router.get('/preferences', async (req, res) => {
     try {
         if (await data.userPreferences.checkUserPreferenceExists(req.session.userID)) {
-            res.status(200).redirect('/home');
+            res.status(200).redirect('/viewItinerary');
         } else {
             res.status(200).render('pages/userPreferencesForm', { title: "Tell Us What You Like", partial: "preferences-scripts" });
         }
@@ -28,12 +28,8 @@ router.post('/preferences', async (req, res) => {
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
-<<<<<<< HEAD
             req.session.userPreferences = userPrefInput;
-            return res.status(200).redirect('/viewItinerary');
-=======
-            res.status(200).redirect('/home');
->>>>>>> 1d956b14817f56eaa1687dab0ee606603d7f01b4
+            return res.status(200).redirect('/generateItinerary');
         }
     } catch (e) {
         return res.status(400).json({ error: e.message });

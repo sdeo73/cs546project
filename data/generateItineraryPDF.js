@@ -25,6 +25,7 @@ async function generateItineraryPDF(itinerary, userID, connection) {
     }
 
     //Initialize new PDF document
+    deleteLocalItinerary();
     let doc = new PDFDocument();
     doc.pipe(fs.createWriteStream('public/uploads/itinerary.pdf'));
     let day = 1;
@@ -55,9 +56,8 @@ async function generateItineraryPDF(itinerary, userID, connection) {
             assert.ifError(error);
         }).
         on('finish', function () {
-            process.exit(0);
+            assert.ok("Done");
         });
-
     return true;
 }
 
@@ -72,18 +72,19 @@ async function fetchUserItinerary(userID, connection) {
     } else if (!ObjectId.isValid) {
         throw new Error(errorMessages.userIDInvalid);
     }
-
+    deleteLocalItinerary();
     var bucket = new mongodb.GridFSBucket(connection, {
         bucketName: 'itineraries'
     });
 
+    //Fetch pdf from database
     bucket.openDownloadStreamByName(userID).
         pipe(fs.createWriteStream('public/uploads/itinerary.pdf')).
         on('error', function (error) {
             assert.ifError(error);
         }).
         on('finish', function () {
-            process.exit(0);
+            assert.ok("Done");
         });
     return true;
 }

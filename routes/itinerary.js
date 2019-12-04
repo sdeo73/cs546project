@@ -5,7 +5,7 @@ const mongoCollections = require("./../config/mongoCollections");
 const destination = mongoCollections.destinations;
 const mongoConnection = require("./../config/mongoConnection");
 
-router.get('/viewItinerary', async (req, res) => {
+router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
@@ -43,9 +43,20 @@ router.get('/viewItinerary', async (req, res) => {
         }
     } catch (error) {
         return res.status(404).json({ error: error.message });
-    } finally {
-        data.displayItinerary.deleteLocalItinerary();
     }
-})
+});
+
+router.get('/viewItinerary', async (req, res) => {
+    try {
+        let userID = req.session.userID;
+        const connection = await mongoConnection();
+       let done = await data.displayItinerary.fetchUserItinerary(userID,connection);
+       if(done) {
+        return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+       }
+    } catch (error) {
+        return res.status(404).json({ error: error.message });
+    }
+});
 
 module.exports = router;
