@@ -316,40 +316,4 @@ function generateTourTypePriority(tourType) {
     return priorityList[tourType.toLowerCase()];
 }
 
-/** */
-async function main() {
-    try {
-        //10, 1000, 14, 5
-        //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
-        let userPreferences = {
-            destinationId: "5de54a3ca15f1b052c03ba6a",
-            tourType: "Hiking", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
-            maxBudgetPerPerson: 2000,
-            numOfDays: 7,
-            numOfTravelers: 15,
-            specialNeeds: true,
-            mealPreference: {
-                vegan: true,
-                vegetarian: false,
-                whiteMeat: true,
-                redMeat: false,
-                seafood: true,
-                eggs: false
-            }
-        };
-        var start = new Date().getTime();
-        let resultItinerary = await generateCompleteItinerary(userPreferences);
-        console.log(resultItinerary);
-        console.log(`totalSpent = ${totalSpent}`);
-        console.log(`totalHours = ${totalHours}`);
-        var end = new Date().getTime();
-        console.log(`generateCompleteItinerary total run time = ${end - start}`);
-    } catch (err) {
-        console.log(err.message);
-    }
-}
-
-main();
-
 module.exports = {generateCompleteItinerary};
