@@ -393,8 +393,18 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     }
 }
 
-
+/**
+ * Fetch preferences of a specific user
+ * 
+ * @param {*} userID ID of user to fetch preferences of
+ * @returns Preferences of user
+ */
+async function getUserPreferences(userID){
+    const user = await userFunctions.getUserById(userID);
+    let userPreferences = await user.userPreferences;
+    return userPreferences;
+}
 
 module.exports = {
-    addUserPreferences, checkUserPreferenceExists, updateUserMealPref, updateUserTourActivity, updateUserTourType, updateNumOfTravelers, updateSpecialNeeds, updateBudget, updateUserDestination, updateTravelDates
+    addUserPreferences, checkUserPreferenceExists, updateUserMealPref, updateUserTourActivity, updateUserTourType, updateNumOfTravelers, updateSpecialNeeds, updateBudget, updateUserDestination, updateTravelDates, getUserPreferences
 }

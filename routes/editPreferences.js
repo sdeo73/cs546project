@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const userPrefData = data.userPreferences;
+const errorMessages = require('../public/errorMessages');
 
 router.use('/editpreferences', function (req, res, next) {
     if (req.session.userID) {
@@ -14,7 +15,13 @@ router.use('/editpreferences', function (req, res, next) {
 router.get('/editpreferences', async (req, res) => {
     try {
         if (await userPrefData.checkUserPreferenceExists(req.session.userID)) {
-            return res.status(200).render('pages/editPreferencesForm', { title: "Change your preferences", partial: "edit-preferences-scripts" });
+
+            // Handlebars helper code reused from https://stackoverflow.com/questions/34252817/handlebarsjs-check-if-a-string-is-equal-to-a-value
+            Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+                return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+            });
+            let userPreferences = await userPrefData.getUserPreferences(req.session.userID);
+            return res.status(200).render('pages/editPreferencesForm', { title: "Change your preferences", partial: "edit-preferences-scripts" , userPreferences: userPreferences});
         } else {
             return res.status(200).redirect('preferences');
         }
@@ -60,23 +67,24 @@ router.post('/editpreferences', async (req, res) => {
                 }
 
                 if(editPrefInput.travelDateStart && editPrefInput.travelDateEnd){
+                    if(editPrefInput.travelDateEnd < editPrefInput.travelDateStart) throw new Error(errorMessages.travelDatesInvalid);
                     await userPrefData.updateTravelDates(req.session.userID, editPrefInput.travelDateStart, editPrefInput.travelDateEnd);
                     oneSelected = true;
                 }else if(editPrefInput.travelDateStart){
-                    throw new Error("Please specify an end date!");
+                    throw new Error(errorMessages.editPrefNoEndDate);
                 }else if(editPrefInput.travelDateEnd){
-                    throw new Error("Please sprcify a start date!");
+                    throw new Error(errorMessages.editPrefNoStartDate);
                 }
 
             } else {
-                return res.status(200).redirect('preferences');
+                return res.status(200).redirect('/preferences');
             }
         } else {
             return res.status(200).redirect('/login');
         }
 
         if(!oneSelected){
-            throw new Error("No preference selected to change!");
+            throw new Error(errorMessages.editPrefNoPref);
         }else{
             return res.status(200).redirect('/home');
         }

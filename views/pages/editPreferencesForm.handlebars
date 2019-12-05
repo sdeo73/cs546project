@@ -14,44 +14,44 @@
             
             <label for="mealPref-input">Meal Preference: </label>
             <label for="mealPref1">Vegan</label>
-            <input type="checkbox" name="mealPref" value="vegan" id="mealPref1">
+            <input type="checkbox" name="mealPref" value="vegan" id="mealPref1" {{#ifEquals userPreferences.mealPreference.vegan}} checked {{/ifEquals}}>
             <label for="mealPref2">Vegetarian</label>
-            <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2">
+            <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2" {{#ifEquals userPreferences.mealPreference.vegetarian}} checked {{/ifEquals}}>
             <label for="mealPref3">White Meat</label>
-            <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3">
+            <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3" {{#ifEquals userPreferences.mealPreference.whiteMeat}} checked {{/ifEquals}}>
             <label for="mealPref4">Red Meat</label>
-            <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4">
+            <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4" {{#ifEquals userPreferences.mealPreference.redMeat}} checked {{/ifEquals}}>
             <label for="mealPref5">Seafood</label>
-            <input type="checkbox" name="mealPref" value="seafood" id="mealPref5">
+            <input type="checkbox" name="mealPref" value="seafood" id="mealPref5" {{#ifEquals userPreferences.mealPreference.seafood}} checked {{/ifEquals}}>
             <label for="mealPref6">Eggs</label>
-            <input type="checkbox" name="mealPref" value="eggs" id="mealPref6"><br>
+            <input type="checkbox" name="mealPref" value="eggs" id="mealPref6" {{#ifEquals userPreferences.mealPreference.eggs}} checked {{/ifEquals}}><br>
             
 
             <label for="tourType-input">Tour type: </label>
             <label for="tourType1">Business</label>
-            <input type="radio" name="tourType" value="business" id="tourType1">
+            <input type="radio" name="tourType" value="business" id="tourType1" {{#ifEquals userPreferences.tourType == "business"}}checked{{/ifEquals}}>
             <label for="tourType2">Hiking</label>
-            <input type="radio" name="tourType" value="hiking" id="tourType2">
+            <input type="radio" name="tourType" value="hiking" id="tourType2" {{#ifEquals userPreferences.tourType == "hiking"}}checked{{/ifEquals}}>
             <label for="tourType3">Scenic</label>
-            <input type="radio" name="tourType" value="scenic" id="tourType3">
+            <input type="radio" name="tourType" value="scenic" id="tourType3" {{#ifEquals userPreferences.tourType == "scenic"}}checked{{/ifEquals}}>
             <label for="tourType4">Adventure Sports</label>
-            <input type="radio" name="tourType" value="adventureSports" id="tourType4">
+            <input type="radio" name="tourType" value="adventureSports" id="tourType4" {{#ifEquals userPreferences.tourType == "adventureSports"}}checked{{/ifEquals}}>
             <label for="tourType5">Historical</label>
-            <input type="radio" name="tourType" value="historical" id="tourType5">
+            <input type="radio" name="tourType" value="historical" id="tourType5" {{#ifEquals userPreferences.tourType == "historical"}}checked{{/ifEquals}}>
             <label for="tourType6">Sightseeing</label>
-            <input type="radio" name="tourType" value="sightseeing" id="tourType6"><br>
+            <input type="radio" name="tourType" value="sightseeing" id="tourType6" {{#ifEquals userPreferences.tourType == "sightseeing"}}checked{{/ifEquals}}><br>
             
 
             <label for="tourActivity-input"> Tour Activity: </label>
             <label for="tourActivity1">Relaxed</label>
-            <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1">
+            <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1" {{#if userPreferences.tourActivity == "relaxed"}}checked{{/if}}>
             <label for="tourActivity2">Moderate</label>
-            <input type="radio" name="tourActivity" value="moderate" id="tourActivity2">
+            <input type="radio" name="tourActivity" value="moderate" id="tourActivity2" {{#if userPreferences.tourActivity == "moderate"}}checked{{/if}}>
             <label for="tourActivity3">High</label>
-            <input type="radio" name="tourActivity" value="high" id="tourActivity3"><br>
+            <input type="radio" name="tourActivity" value="high" id="tourActivity3" {{#if userPreferences.tourActivity == "high"}}checked{{/if}}><br>
 
             <label for="travelers-input">Travelers: </label>
-            <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers" min=0><br>
+            <input type="number" name="nTravelers" id="travelers-input" placeholder={{userPreferences.noOfTravelers}} min=0><br>
             
 
             <label for="specialNeeds-input">Special Needs: </label>
@@ -65,7 +65,7 @@
             <input type="checkbox" name="specialNeeds" value="sensoryImpaired" id="specialNeeds4"><br>
 
             <label for="budget-input">Budget per person: </label>
-            <input type="number" name="budget" id="budget-input" placeholder="Enter your budget" min=2000><br>
+            <input type="number" name="budget" id="budget-input" placeholder={{userPreferences.budget}} min=2000><br>
             
 
             <label for="travelStart-input">Travel Start Date: </label>
