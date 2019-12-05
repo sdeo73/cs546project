@@ -341,7 +341,7 @@ async function main() {
         let userPreferences = {
             destinationId: "5de54a3ca15f1b052c03ba6a",
             tourType: "Hiking",         //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 1,             //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
+            hoursPerDay: 8,             //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
             maxBudgetPerPerson: 2000,   //minimum 2,000 USD
             numOfDays:  1,              //maximum 7 days
             numOfTravelers: 1,         //no maximum number of travelers
