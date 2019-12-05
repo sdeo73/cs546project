@@ -185,7 +185,7 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
             startLocation = null;
             startOfTheDay = true; 
         }
-        if (dayCount > totalNumOfDays) {  //completes generating all the daily itinerary
+        if (dayCount >= totalNumOfDays) {  //completes generating all the daily itinerary
             break;
         }
     }
@@ -266,8 +266,14 @@ async function generateCompleteItinerary(userPreferences) {
         throw new Error(errorMessages.wrongNumberOfArguments);  
     }
     //validates argument type
-    if (typeof userPreferences != "object") {
-        throw new Error(errorMessages.itineraryArgumentMissing); 
+    if (typeof userPreferences != "object" || Object.keys(userPreferences).length != 8) {
+        throw new Error(errorMessages.InvalidItineraryObject); 
+    }
+    if (typeof userPreferences.destinationId != "string" || userPreferences.destinationId.length === 0 || typeof userPreferences.tourType != "string" || userPreferences.tourType.length === 0) {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
+    if (Number.isNaN(userPreferences.hoursPerDay) || Number.isNaN(userPreferences.maxBudgetPerPerson) || Number.isNaN(userPreferences.numOfDays) || Number.isNaN(userPreferences.numOfTravelers)) {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
     //gets thingsToDo and restaurants from the database.
@@ -279,16 +285,27 @@ async function generateCompleteItinerary(userPreferences) {
     let tourTypeList = generateTourTypePriority(userPreferences.tourType);
     let sortedThings = sortThingsByTourType(allThings, tourTypeList);
 
+    let completeItinerary = [];
+    let totalTravelers = userPreferences.numOfTravelers;
+    let maxBudgetPerPerson = userPreferences.maxBudgetPerPerson;
     totalNumOfDays = userPreferences.numOfDays;
     hourPerDay = userPreferences.hoursPerDay;
     budgetPerDay = userPreferences.maxBudgetPerPerson / userPreferences.numOfDays;
+    //checks if user preferences variables are negative or not
+    if (totalNumOfDays < 0 || hourPerDay < 0 || maxBudgetPerPerson < 0 || totalTravelers < 0) {
+        throw new Error(errorMessages.negativeUserPreferenceVariables);  
+    }
+    if (totalNumOfDays == 0 || hourPerDay == 0) {   //returns empty array
+        return completeItinerary;
+    }
+
     let specialNeeds = userPreferences.specialNeeds;
     let mealPreference = userPreferences.mealPreference;
     //converts the user meal preferences from object to an array of strings
     let userMealPreferences = generatePreferencesArr(mealPreference);
 
     //calls helper function to generate itinerary
-    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds, userMealPreferences);
+    completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds, userMealPreferences);
 
     return completeItinerary;
 }
@@ -302,7 +319,7 @@ async function generateCompleteItinerary(userPreferences) {
 */
 function generateTourTypePriority(tourType) {
     //validates number of argument
-    if (arguments.length != 1 || typeof tourType != "string") {
+    if (arguments.length != 1 || typeof tourType != "string" || tourType.length === 0) {
         throw new Error(errorMessages.wrongNumberOfArguments);  
     }
     let priorityList = {    //tour type with smaller index has higher priority
@@ -323,12 +340,12 @@ async function main() {
         //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
         let userPreferences = {
             destinationId: "5de54a3ca15f1b052c03ba6a",
-            tourType: "Hiking", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
-            maxBudgetPerPerson: 2000,
-            numOfDays: 7,
-            numOfTravelers: 15,
-            specialNeeds: true,
+            tourType: "Hiking",         //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
+            hoursPerDay: 1,             //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
+            maxBudgetPerPerson: 2000,   //minimum 2,000 USD
+            numOfDays:  1,              //maximum 7 days
+            numOfTravelers: 1,         //no maximum number of travelers
+            specialNeeds: true,         
             mealPreference: {
                 vegan: true,
                 vegetarian: false,
