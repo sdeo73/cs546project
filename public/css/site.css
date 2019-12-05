@@ -476,7 +476,14 @@ font-family: 'Amatic SC', cursive;
 }
 
 
-
+.abtus-p1
+{
+     color:teal;
+     font-size: 20px;
+     position: absolute;
+     font-weight:bolder;
+    
+}
 
 .img-abtus
 {
@@ -485,4 +492,22 @@ font-family: 'Amatic SC', cursive;
 
 .img-abtus{
      margin-top:0%;
+}
+
+
+.ctus
+{
+     width:100%;
+}
+
+.ctus-p
+{
+     color:teal;
+     font-size: 34px;
+     position: absolute;
+     font-weight:bolder;
+     font-family: 'Amatic SC', cursive ; 
+     margin-left:35%;
+     margin-top: 1%;
+
 }
