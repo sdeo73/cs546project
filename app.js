@@ -51,6 +51,7 @@ app.use('/preferences', function (req, res, next) {
   }
 });
 
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 

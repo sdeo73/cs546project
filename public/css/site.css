@@ -3,7 +3,7 @@
 #firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing,
  #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage,#destination-missing,
  #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
- #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail{
+ #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits{
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
@@ -46,7 +46,7 @@ h1 {
      color: #4a8ab4;
 }
 
-.signupForm, .loginForm, .preferenceForm {
+.signupForm, .loginForm, .preferenceForm, .editPreferenceForm {
     display: block;
     text-align: center;
 }
@@ -55,7 +55,7 @@ h1 {
      margin-top: 120px;
 }
 
-#preferences-form {
+#preferences-form, #edit-preferences-form{
      height: auto;
      width: 60%;
      padding: 20px;
@@ -101,13 +101,13 @@ label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input
      padding: 5px;
 }
 
-#preferences-form input {
+#preferences-form input, #edit-preferences-form input {
      display: inline-block;
      text-align: left;
 
 }
 
-#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder {
+#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder, #edit-preferences-form input::placeholder {
      font-family: 'Titillium Web', sans-serif;
      text-align: center;
      color: #4a8ab4;
@@ -132,7 +132,7 @@ button[type="submit"] {
 }
 
 
-button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover {
+button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover, #edit-preferences-form input[type=radio]:hover, #edit-preferences-form input[type=checkbox]:hover {
     cursor: pointer;
 }
 
@@ -175,7 +175,7 @@ label[for=tourType6], label[for=tourActivity1], label[for=tourActivity2], label[
      color: white;
 }
 
-#preferences-form input[type=radio], #preferences-form input[type=checkbox]{
+#preferences-form input[type=radio], #preferences-form input[type=checkbox], #edit-preferences-form input[type=radio], #edit-preferences-form input[type=checkbox]{
      margin-right: 12px;
 }
 
@@ -184,7 +184,7 @@ input[id=dob-input],input[id=travelStart-input],input[id=travelEnd-input] {
      color: #4a8ab4;
 }
 
-#preferences-form button[type=submit] {
+#preferences-form button[type=submit], #edit-preferences-form button[type=submit] {
      text-align: center;
      display: block;
      margin: 0 auto;
