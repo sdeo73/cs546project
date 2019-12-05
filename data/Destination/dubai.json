@@ -77,26 +77,10 @@
 	],
 	"thingsToDo": [
 		{
-			"name": "Burj Khalifa - Level 124 + 125",
-			"location": "1 Sheikh Mohammed bin Rashid Blvd",
-			"type": "Sightseeing",
-			"avgCostPerPerson": 41,
-			"avgTimeSpent": 2,
-			"specialNeeds": true
-		},
-		{
 			"name": "Burj Khalifa - Level 124 + 125 + 148",
 			"location": "1 Sheikh Mohammed bin Rashid Blvd",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 103,
-			"avgTimeSpent": 2,
-			"specialNeeds": true
-		},
-		{
-			"name": "Burj Khalifa - Level 152 + 153 + 154",
-			"location": "1 Sheikh Mohammed bin Rashid Blvd",
-			"type": "Sightseeing",
-			"avgCostPerPerson": 165,
 			"avgTimeSpent": 2,
 			"specialNeeds": true
 		},

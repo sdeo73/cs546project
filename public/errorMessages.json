@@ -106,5 +106,6 @@
     "locationArgumentMissing": "Argument missing in location!",
     "locationArgumentIncorrectType": "Argument of incorrect type in location!",
     "itineraryArgumentMissing": "Argument missing in itinerary!",
-    "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary"
+    "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary",
+    "itineraryUndefined": "Error, itinerary object is undefined!"
 }
