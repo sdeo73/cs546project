@@ -60,14 +60,16 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         errors.push(error.tourActivityMissing);
     } if (!nTravelers) {
         errors.push(error.nTravelersMissing);
-    } if (!specialNeeds) {
-        errors.push(error.specialNeedsMissing);
     } if (!budget) {
         errors.push(error.budgetMissing);
     } if (!destination) {
         errors.push(error.destinationMissing);
     } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
+    }
+
+    if(!Array.isArray(mealPreference)) {
+        mealPreference = mealPreference.split(" ");
     }
 
     //Check if birthday is valid: 

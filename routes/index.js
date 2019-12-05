@@ -1,4 +1,3 @@
-
 const signup = require('./signup');
 const loginRoutes = require('./login');
 const userPrefRoutes = require('./userPreferences');

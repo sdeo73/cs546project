@@ -104,6 +104,16 @@ form.addEventListener("submit", event => {
         $("#ntravelers-missing").hide();
     }
 
+    const specialNeedsButton = document.querySelector('input[name="specialNeeds"]:checked');
+    if (!specialNeedsButton) {
+        event.preventDefault();
+        $("#specialneeds-missing").show();
+        errors = true;
+    } else {
+        event.preventDefault();
+        $("#specialneeds-missing").hide();
+    }
+
     const budgetInput = document.getElementById("budget-input").value;
     if (!budgetInput) {
         event.preventDefault();

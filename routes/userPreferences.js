@@ -18,13 +18,13 @@ router.get('/preferences', async (req, res) => {
 router.post('/preferences', async (req, res) => {
     try {
         let userPrefInput = req.body;
-        let specialNeeds;
-        if (!userPrefInput.specialNeeds) {
-            specialNeeds = [];
+
+        if (userPrefInput.specialNeeds == 'yes') {
+            userPrefInput.specialNeeds = true;
         } else {
-            specialNeeds = userPrefInput.specialNeeds;
+            userPrefInput.specialNeeds = false;
         }
-        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
+        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, userPrefInput.specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
