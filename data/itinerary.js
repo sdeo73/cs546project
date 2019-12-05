@@ -13,6 +13,8 @@ let hourPerDay = -1;
 let totalNumOfDays = -1
 //the amount of daily budget allocated to dining per day
 let restaurantBudget = 0.2;
+//maximum amount of restaurants to be selected per day
+let maxRestaurantCount = 2;
 //money left after dining
 let excessBudget = 0;
 //total money spent for the entire trip
@@ -77,12 +79,12 @@ function compareDistance(a, b) {
  * @param maxRestaurantCount maximum number of restaurant that can be selected.
  * @returns selectedRestaurants an array of selected restaurant objects.
 */
-function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount, specialNeeds, userMealPreferences) {
+function selectRestaurants(allRestaurants, maxBudget, specialNeeds, userMealPreferences) {
     //validates argumenets type
-    if (arguments.length != 5 || !maxBudget || !maxRestaurantCount || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
+    if (arguments.length != 4 || !maxBudget || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
+    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
     let selectedRestaurants = [];
@@ -144,7 +146,7 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
             dailyBudget -= currentRestaurantBudget;
-            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2, specialNeeds, userMealPreferences);
+            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, specialNeeds, userMealPreferences);
             dailyBudget += excessBudget;
             finalArr[dayCount] = restaurants;
             startOfTheDay = false;
@@ -185,7 +187,7 @@ async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMea
             startLocation = null;
             startOfTheDay = true; 
         }
-        if (dayCount > totalNumOfDays) {  //completes generating all the daily itinerary
+        if (dayCount >= totalNumOfDays) {  //completes generating all the daily itinerary
             break;
         }
     }
@@ -331,5 +333,40 @@ function generateTourTypePriority(tourType) {
     }
     return priorityList[tourType.toLowerCase()];
 }
+
+async function main() {
+    try {
+        //10, 1000, 14, 5
+        //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
+        let userPreferences = {
+            destinationId: "5de54a3ca15f1b052c03ba6a",
+            tourType: "Hiking",         //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
+            hoursPerDay: 8,             //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
+            maxBudgetPerPerson: 2000,   //minimum 2,000 USD
+            numOfDays:  2,              //maximum 7 days
+            numOfTravelers: 1,         //no maximum number of travelers
+            specialNeeds: true,         
+            mealPreference: {
+                vegan: true,
+                vegetarian: false,
+                whiteMeat: true,
+                redMeat: false,
+                seafood: true,
+                eggs: false
+            }
+        };
+        var start = new Date().getTime();
+        let resultItinerary = await generateCompleteItinerary(userPreferences);
+        console.log(resultItinerary);
+        console.log(`totalSpent = ${totalSpent}`);
+        console.log(`totalHours = ${totalHours}`);
+        var end = new Date().getTime();
+        console.log(`generateCompleteItinerary total run time = ${end - start}`);
+    } catch (err) {
+        console.log(err.message);
+    }
+}
+
+main();
 
 module.exports = {generateCompleteItinerary};
