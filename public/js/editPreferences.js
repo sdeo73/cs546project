@@ -18,6 +18,7 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
 });
 
 form.addEventListener("submit", event => {
+    event.preventDefault();
     let errors = false;
     
     const country = document.getElementById("countryId").value;
@@ -33,21 +34,17 @@ form.addEventListener("submit", event => {
 
 
     if ((!country || !state || !city) && mealPrefChecked == 0 && !tourTypeChecked && !tourActivityChecked && !noOfTravelersInput && !budgetInput && !travelStartInput && !travelEndInput) {
-        event.preventDefault();
         $("#no-edits").show();
         errors = true;
     } else {
-        event.preventDefault();
         $("#no-edits").hide();
     }
 
     //Check if travel end date is ahead of travel start date
     if (travelEndInput < travelStartInput) {
-        event.preventDefault();
         $("#invalid-dates").show();
         errors = true;
     } else {
-        event.preventDefault();
         $("#invalid-dates").hide();
     }
 
@@ -55,11 +52,9 @@ form.addEventListener("submit", event => {
     timeDifference= new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
     var numberOfDays = timeDifference / (1000 * 3600 * 24); 
     if(numberOfDays > 14){
-        event.preventDefault();
         $("#number-of-dates").show();
         errors = true;
     } else {
-        event.preventDefault();
         $("#number-of-dates").hide();
     }
 
