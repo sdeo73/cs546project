@@ -43,11 +43,7 @@ router.get('/generateItinerary', async (req, res) => {
         }
 
         const connection = await mongoConnection();
-        if(itineraryFunctions == null || typeof itineraryFunctions == undefined || !itineraryFunctions){
-            console.log("null");
-        }else{
-            console.log("not null");
-        }
+        
         const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
         let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, connection);
         if (done) {
