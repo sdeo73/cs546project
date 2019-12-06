@@ -60,14 +60,16 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         errors.push(error.tourActivityMissing);
     } if (!nTravelers) {
         errors.push(error.nTravelersMissing);
-    } if (!specialNeeds) {
-        errors.push(error.specialNeedsMissing);
     } if (!budget) {
         errors.push(error.budgetMissing);
     } if (!destination) {
         errors.push(error.destinationMissing);
     } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
+    }
+
+    if(!Array.isArray(mealPreference)) {
+        mealPreference = mealPreference.split(" ");
     }
 
     //Check if birthday is valid: 
@@ -402,12 +404,15 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     }
 }
 
+<<<<<<< HEAD
 /**
  * Fetch preferences of a specific user
  * 
  * @param {*} userID ID of user to fetch preferences of
  * @returns Preferences of user
  */
+=======
+>>>>>>> 789f8d2ca4cfcc6e05b2495847e60300c97cfafb
 async function getUserPreferences(userID){
     const user = await userFunctions.getUserById(userID);
     let userPreferences = await user.userPreferences;

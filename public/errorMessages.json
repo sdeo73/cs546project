@@ -36,6 +36,7 @@
     "UserRemovalError": "Could not remove user from mongo database",
     "UpdateUserError": "Could not update user in mongo database",
     "wrongNumberOfArguments": "Wrong number of argument(s) was given to the function!",
+    "negativeUserPreferenceVariables": "User preferences variables can not be negative!",
     "InvalidDateFormat" : "Invalid date string was provided",
     "InvalidGender" : "Invalid gender string was provided",
     "InvalidDateOfBirth" : "Invalid date of brith string was provided",
@@ -108,5 +109,6 @@
     "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary",
     "editPrefNoPref":"No preference selected to change",
     "editPrefNoStartDate":"Please specify a start date",
-    "editPrefNoEndDate":"Please specify an end date" 
+    "editPrefNoEndDate":"Please specify an end date", 
+    "itineraryUndefined": "Error, itinerary object is undefined!"
 }

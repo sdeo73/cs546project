@@ -296,22 +296,21 @@ async function generateCompleteItinerary(destinationId, timePerDay, maxBudgetPer
     return finalItinerary;
 }
 
-async function main() {
-    try {
-        console.log("Start generating itinerary");
-        //Test_Case_01: "10, 1000, 14, 5"
-        var start = new Date().getTime();
-        let itinerary = await generateCompleteItinerary("5ddc1481de423423bcb33e33", 10, 1000, 14, 5);
-        console.log(itinerary);
-        var end = new Date().getTime();
-        console.log(`Start time = ${start}`);
-        console.log(`End time = ${end}`);
-        console.log(`generateCompleteItinerary function took: ${end - start} milliseconds.`);
-    } catch (err) {
-        console.log(err.message);
-    }
-}
+// async function main() {
+//     try {
+//         //Test_Case_01: "10, 1000, 14, 5"
+//         var start = new Date().getTime();
+//         let itinerary = await generateCompleteItinerary("5ddc1481de423423bcb33e33", 10, 1000, 14, 5);
+//         console.log(itinerary);
+//         var end = new Date().getTime();
+//         console.log(`Start time = ${start}`);
+//         console.log(`End time = ${end}`);
+//         console.log(`generateCompleteItinerary function took: ${end - start} milliseconds.`);
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// }
 
-main();
+// main();
 
 module.exports = {generateCompleteItinerary};

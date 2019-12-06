@@ -6,7 +6,7 @@ const userPrefData = data.userPreferences;
 router.get('/preferences', async (req, res) => {
     try {
         if (await data.userPreferences.checkUserPreferenceExists(req.session.userID)) {
-            res.status(200).redirect('/home');
+            res.status(200).redirect('/viewItinerary');
         } else {
             res.status(200).render('pages/userPreferencesForm', { title: "Tell Us What You Like", partial: "preferences-scripts" });
         }
@@ -18,17 +18,17 @@ router.get('/preferences', async (req, res) => {
 router.post('/preferences', async (req, res) => {
     try {
         let userPrefInput = req.body;
-        let specialNeeds;
-        if (!userPrefInput.specialNeeds) {
-            specialNeeds = [];
+
+        if (userPrefInput.specialNeeds == 'yes') {
+            userPrefInput.specialNeeds = true;
         } else {
-            specialNeeds = userPrefInput.specialNeeds;
+            userPrefInput.specialNeeds = false;
         }
-        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
+        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, userPrefInput.specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
-            res.status(200).redirect('/home');
+            return res.status(200).redirect('/generateItinerary');
         }
     } catch (e) {
         return res.status(400).json({ error: e.message });

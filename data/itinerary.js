@@ -13,6 +13,8 @@ let hourPerDay = -1;
 let totalNumOfDays = -1
 //the amount of daily budget allocated to dining per day
 let restaurantBudget = 0.2;
+//maximum amount of restaurants to be selected per day
+let maxRestaurantCount = 2;
 //money left after dining
 let excessBudget = 0;
 //total money spent for the entire trip
@@ -77,21 +79,29 @@ function compareDistance(a, b) {
  * @param maxRestaurantCount maximum number of restaurant that can be selected.
  * @returns selectedRestaurants an array of selected restaurant objects.
 */
-function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
+function selectRestaurants(allRestaurants, maxBudget, specialNeeds, userMealPreferences) {
     //validates argumenets type
-    if (arguments.length != 3 || !maxBudget || !maxRestaurantCount || !allRestaurants) {
+    if (arguments.length != 4 || !maxBudget || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || Number.isNaN(maxRestaurantCount)) {
+    if (!Array.isArray(allRestaurants) || Number.isNaN(maxBudget) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
     let selectedRestaurants = [];
     let restaurantCount = 0;
     let index = 0;
-    while (restaurantCount < maxRestaurantCount && index != allRestaurants.length) {
+    while (restaurantCount < maxRestaurantCount && index < allRestaurants.length) {
         let currentRestaurant = allRestaurants[index];
         let itemCost = currentRestaurant.avgCostPerPerson;
-        if (maxBudget >= itemCost) {    //within budget
+        let itemSpecialNeeds = currentRestaurant.specialNeeds;
+        let itemMealPreferences = currentRestaurant.mealPreferences;
+        //checks if current restaurant offers all meal preferences selected by the user
+        const difference = userMealPreferences.every(val => itemMealPreferences.includes(val));
+        if (maxBudget >= itemCost && difference) {    //within budget
+            if (specialNeeds && specialNeeds !== itemSpecialNeeds) {  //skips this item due to invalid specialNeeds
+                index++;
+                continue;
+            }
             maxBudget -= itemCost;
             totalSpent += itemCost;     
             restaurantCount++;
@@ -114,12 +124,12 @@ function selectRestaurants(allRestaurants, maxBudget, maxRestaurantCount) {
  * @param maxTime maximum time allotted.
  * @returns finalArr an array of daily itinerary objects.
  */
-async function selectThingsToDo(allThings) {
+async function selectThingsToDo(allThings, allRestaurants, specialNeeds, userMealPreferences) {
     //validates argument number and type
-    if (arguments.length != 2 || !allThings) {
+    if (arguments.length != 4 || !allThings || !allRestaurants || specialNeeds === undefined || specialNeeds == null || !userMealPreferences) {
         throw new Error(errorMessages.itineraryArgumentMissing);
     }
-    if (!Array.isArray(allThings)) {
+    if (!Array.isArray(allThings) || !Array.isArray(allRestaurants) || typeof specialNeeds !== "boolean" || !Array.isArray(userMealPreferences)) {
         throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
@@ -132,11 +142,11 @@ async function selectThingsToDo(allThings) {
     let startLocation = null;   
 
     for (let thing in allThings) {  //scans through all the available thingsToDo
-        let restaurants = [];
+        let restaurants = [];   //should be outside the loop
         if (startOfTheDay) {   //select restaurants for the current day
             let currentRestaurantBudget = dailyBudget * restaurantBudget;
             dailyBudget -= currentRestaurantBudget;
-            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, 2);
+            restaurants = selectRestaurants(allRestaurants, currentRestaurantBudget, specialNeeds, userMealPreferences);
             dailyBudget += excessBudget;
             finalArr[dayCount] = restaurants;
             startOfTheDay = false;
@@ -144,12 +154,16 @@ async function selectThingsToDo(allThings) {
         let currentItem = allThings[thing];
         let itemCost = currentItem.avgCostPerPerson;
         let itemTime = currentItem.avgTimeSpent;
+        let itemSpecialNeeds = currentItem.specialNeeds;
         if (startLocation === null) {   //set current day's starting address
             startLocation = allThings[thing].location;
         }
         
         //selects thingsToDo for the current day
         if (dailyBudget >= itemCost && dailyTime >= itemTime) { //within budget
+            if (specialNeeds && specialNeeds !== itemSpecialNeeds) {  //skips this item due to invalid specialNeeds
+                continue;
+            }
             allThings[thing].group = "thingToDo";
             allThings[thing].distance = await location.calculateDistanceAddress(startLocation, allThings[thing].location);
             dailyItems.push(allThings[thing]);  //add the items to current day's itinerary
@@ -177,6 +191,7 @@ async function selectThingsToDo(allThings) {
             break;
         }
     }
+
     return finalArr;
 }
 
@@ -215,6 +230,31 @@ function sortThingsByTourType(allThings, tourTypeList) {
     return resultThings;
 }
 
+/**
+ * Generates an array of strings with all meal preference categories selected by the user.
+ * Throws errors if invalid argument was provided. 
+ * 
+ * @param {*} mealPreference an object with meal preference category as key and boolean as value.
+ * @returns userMealPreferences an array of strings with meal preference categories.
+ */
+function generatePreferencesArr(mealPreference) {
+    //validates argument number and type
+    if (arguments.length != 1 || !mealPreference) {
+        throw new Error(errorMessages.itineraryArgumentMissing);
+    }
+    if (typeof mealPreference !== "object") {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
+    //turns user provided meal preferences into a string array
+    let userMealPreferences = [];
+    for (let type in mealPreference) {
+        if (mealPreference[type]) {
+            userMealPreferences.push(type);
+        }
+    }
+    return userMealPreferences;
+}
+
 /** 
  * Generates a complete itinerary object based on the given user preference. Throws errors
  * if invalid argument was provided.
@@ -228,8 +268,14 @@ async function generateCompleteItinerary(userPreferences) {
         throw new Error(errorMessages.wrongNumberOfArguments);  
     }
     //validates argument type
-    if (typeof userPreferences != "object") {
-        throw new Error(errorMessages.itineraryArgumentMissing); 
+    if (typeof userPreferences != "object" || Object.keys(userPreferences).length != 8) {
+        throw new Error(errorMessages.InvalidItineraryObject); 
+    }
+    if (typeof userPreferences.destinationId != "string" || userPreferences.destinationId.length === 0 || typeof userPreferences.tourType != "string" || userPreferences.tourType.length === 0) {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
+    if (Number.isNaN(userPreferences.hoursPerDay) || Number.isNaN(userPreferences.maxBudgetPerPerson) || Number.isNaN(userPreferences.numOfDays) || Number.isNaN(userPreferences.numOfTravelers)) {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
 
     //gets thingsToDo and restaurants from the database.
@@ -241,12 +287,26 @@ async function generateCompleteItinerary(userPreferences) {
     let tourTypeList = generateTourTypePriority(userPreferences.tourType);
     let sortedThings = sortThingsByTourType(allThings, tourTypeList);
 
+    let completeItinerary = [];
+    let totalTravelers = userPreferences.numOfTravelers;
+    let maxBudgetPerPerson = userPreferences.maxBudgetPerPerson;
     totalNumOfDays = userPreferences.numOfDays;
     hourPerDay = userPreferences.hoursPerDay;
     budgetPerDay = userPreferences.maxBudgetPerPerson / userPreferences.numOfDays;
+    //checks if user preferences variables are negative or not
+    if (totalNumOfDays < 0 || hourPerDay < 0 || maxBudgetPerPerson < 0 || totalTravelers < 0) {
+        throw new Error(errorMessages.negativeUserPreferenceVariables);  
+    }
+    if (totalNumOfDays == 0 || hourPerDay == 0) {   //returns empty array
+        return completeItinerary;
+    }
+    let specialNeeds = userPreferences.specialNeeds;
+    let mealPreference = userPreferences.mealPreference;
+    //converts the user meal preferences from object to an array of strings
+    let userMealPreferences = generatePreferencesArr(mealPreference);
 
     //calls helper function to generate itinerary
-    let completeItinerary = await selectThingsToDo(sortedThings, allRestaurants);
+    completeItinerary = await selectThingsToDo(sortedThings, allRestaurants, specialNeeds, userMealPreferences);
 
     return completeItinerary;
 }
@@ -260,7 +320,7 @@ async function generateCompleteItinerary(userPreferences) {
 */
 function generateTourTypePriority(tourType) {
     //validates number of argument
-    if (arguments.length != 1 || typeof tourType != "string") {
+    if (arguments.length != 1 || typeof tourType != "string" || tourType.length === 0) {
         throw new Error(errorMessages.wrongNumberOfArguments);  
     }
     let priorityList = {    //tour type with smaller index has higher priority
@@ -273,30 +333,5 @@ function generateTourTypePriority(tourType) {
     }
     return priorityList[tourType.toLowerCase()];
 }
-
-/** */
-async function main() {
-    try {
-        //10, 1000, 14, 5
-        //destinationId, tourType, timePerDay, maxBudgetPerPerson, noOfDays, noOfTravellers
-        let userPreferences = {
-            destinationId: "5ddfeb603bb0fb359c094fb7",
-            tourType: "Historical", //Business, Hiking, Scenic, Adventure, Historical, Sightseeing
-            hoursPerDay: 14,    //Relaxed(8 hrs), moderate(10 hrs), high(14 hrs)
-            maxBudgetPerPerson: 2000,
-            numOfDays: 14,
-            numOfTravelers: 5
-        };
-        var start = new Date().getTime();
-        let resultItinerary = await generateCompleteItinerary(userPreferences);
-        console.log(resultItinerary);
-        var end = new Date().getTime();
-        console.log(`generateCompleteItinerary total run time = ${end - start}`);
-    } catch (err) {
-        console.log(err.message);
-    }
-}
-
-main();
 
 module.exports = {generateCompleteItinerary};
