@@ -36,6 +36,7 @@
     "UserRemovalError": "Could not remove user from mongo database",
     "UpdateUserError": "Could not update user in mongo database",
     "wrongNumberOfArguments": "Wrong number of argument(s) was given to the function!",
+    "negativeUserPreferenceVariables": "User preferences variables can not be negative!",
     "InvalidDateFormat" : "Invalid date string was provided",
     "InvalidGender" : "Invalid gender string was provided",
     "InvalidDateOfBirth" : "Invalid date of brith string was provided",
@@ -105,5 +106,6 @@
     "locationArgumentMissing": "Argument missing in location!",
     "locationArgumentIncorrectType": "Argument of incorrect type in location!",
     "itineraryArgumentMissing": "Argument missing in itinerary!",
-    "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary"
+    "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary",
+    "itineraryUndefined": "Error, itinerary object is undefined!"
 }

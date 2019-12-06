@@ -77,501 +77,556 @@
 	],
 	"thingsToDo": [
 		{
-			"name": "Burj Khalifa - Level 124 + 125",
-			"location": "1 Sheikh Mohammed bin Rashid Blvd",
-			"type": "Sightseeing",
-			"avgCostPerPerson": 41,
-			"avgTimeSpent": 2
-		},
-		{
 			"name": "Burj Khalifa - Level 124 + 125 + 148",
 			"location": "1 Sheikh Mohammed bin Rashid Blvd",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 103,
-			"avgTimeSpent": 2
-		},
-		{
-			"name": "Burj Khalifa - Level 152 + 153 + 154",
-			"location": "1 Sheikh Mohammed bin Rashid Blvd",
-			"type": "Sightseeing",
-			"avgCostPerPerson": 165,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "The Dubai Mall",
 			"location": "Financial Center Rd, Along Sheikh Zayed Road, next to Burj Khalifa tower",
 			"type": "Leisure",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Burj Al Arab",
 			"location": "Jumeirah St - Dubai",
-			"type": "Luxury",
+			"type": "Leisure",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": false
 		},
 		{
 			"name": "Atlantis - The Palm",
 			"location": "Crescent Road",
-			"type": "Luxury",
+			"type": "Leisure",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": false
 		},
 		{
 			"name": "Aquaventure",
 			"location": "Atlantis The Palm - Crescent Road",
 			"type": "Entertainment",
 			"avgCostPerPerson": 80,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": false
 		},
 		{
 			"name": "Wild Wadi Amusement Park",
 			"location": "Jumeirah Street, Opp. Burj Al Arab",
 			"type": "Theme Park",
 			"avgCostPerPerson": 80,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": false
 		},
 		{
 			"name": "Ski Dubai",
 			"location": "Sheikh Zayed Road, Mall of the Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 61,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		},
 		{
 			"name": "Dubai Frame",
 			"location": "Sheikh Rashid Road, Zabeel Park, Gate 4",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 21,
-			"avgTimeSpent": 1.5
+			"avgTimeSpent": 1.5,
+			"specialNeeds": true
 		},
 		{
 			"name": "Bollywood Parks Dubai",
 			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
 			"type": "Entertainment",
 			"avgCostPerPerson": 47,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Motiongate Dubai",
 			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
 			"type": "Entertainment",
 			"avgCostPerPerson": 75,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Legoland Dubai",
 			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
 			"type": "Entertainment",
 			"avgCostPerPerson": 75,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Legoland Water Park",
 			"location": "Dubai Parks and Resorts - Sheikh Zayed Rd",
 			"type": "Theme Park",
 			"avgCostPerPerson": 75,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": false
 		},
 		{
 			"name": "Global Village",
 			"location": "Sheikh Mohammed Bin Zayed Road",
 			"type": "Entertainment",
 			"avgCostPerPerson": 4,
-			"avgTimeSpent": 7
+			"avgTimeSpent": 7,
+			"specialNeeds": true
 		},
 		{
 			"name": "Gold and Spice Souks",
 			"location": "5 Old Baladiya St - Dubai - United Arab Emirates",
-			"type": "Sighseeing",
+			"type": "Sightseeing",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Skydive Dubai - The Palm",
 			"location": "Al Seyahi St",
 			"type": "Adventure",
-			"avgCostPerPerson": 600,
-			"avgTimeSpent": 3
+			"avgCostPerPerson": 60,
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		},
 		{
 			"name": "Skydive Dubai - Desert Campus",
 			"location": "Al Seyahi St",
 			"type": "Adventure",
-			"avgCostPerPerson": 462,
-			"avgTimeSpent": 3
+			"avgCostPerPerson": 55,
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		},
 		{
 			"name": "Sheikh Zayed Grand Mosque",
 			"location": "Sheikh Rashid Bin Saeed St - Abu Dhabi",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": false
 		},
 		{
 			"name": "Ferrari World",
 			"location": "Yas Island, Abu Dhabi",
 			"type": "Entertainment",
 			"avgCostPerPerson": 80,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Yas Waterworld",
 			"location": "Yas Island, Abu Dhabi",
 			"type": "Entertainment",
 			"avgCostPerPerson": 70,
-			"avgTimeSpent": 8
+			"avgTimeSpent": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Museum Gold Souk",
 			"location": "Al Fahidi Street Bur Dubai United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 45,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Museum of Illusions",
 			"location": "Al Seef - Dubai Creek - Dubai - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 22,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Olioli Children's Museum",
 			"location": "60 4th St - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 30,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Pearl Museum Emirates NBD",
 			"location": "10 Beniyas Rd - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 20,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Etihad Museum",
 			"location": "Jumeira Street, Dubai, United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 7,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Coin Museum",
 			"location": "Dubai Heritage Village, Bur Dubai - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 20,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": true
 		},
 		{
 			"name": "Coffee Museum",
 			"location": "Villa 44, Al Fahidi Historical Neighborhood, Bastakiya - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": true
 		},
 		{
 			"name": "Women's Museum - Bait Al Banat",
 			"location": "Al Sabkha, Gold Souq, Near - Al Khor St - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 6,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": false
 		},
 		{
 			"name": "Sheikh Saeed al-Maktoum's House",
 			"location": "Al Khaleej Rd, Bur Dubai, Dubai, United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 1,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": true
 		},
 		{
 			"name": "The Dubai Fountain",
 			"location": "Fashion Parking - Dubai Mall - Sheikh Mohammed bin Rashid Blvd - Dubai",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Aquarium & Underwater Zoo",
 			"location": "Sheikh Zayed Road | The Dubai Mall, Doha Street Off 1st Interchange, Dubai, United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 37,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Desert Safari 4WD Tour",
 			"location": "Rolla Street - Dubai - United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 70,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Speedboat Tour",
 			"location": "Jumeirah St - Dubai - United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 35,
-			"avgTimeSpent": 1.5
+			"avgTimeSpent": 1.5,
+			"specialNeeds": true
 		},
 		{
 			"name": "Bastakia Quarter",
 			"location": "Bur dubai | Building 20, Dubai, United Arab Emirates",
 			"type": "Historical",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Luxury Yacht Tour",
 			"location": "Jumeirah St - Dubai - United Arab Emirates",
 			"type": "Leisure",
 			"avgCostPerPerson": 70,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Aquaventure Waterpark",
 			"location": "Atlantis The Palm - Crescent Rd - Dubai - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 135,
-			"avgTimeSpent": 5
+			"avgTimeSpent": 5,
+			"specialNeeds": false
 		},
 		{
 			"name": "Dubai Aventura Parks",
 			"location": "Mushrif Park، Gate 1، POB 30929 - Dubai - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 185,
-			"avgTimeSpent": 6
+			"avgTimeSpent": 6,
+			"specialNeeds": false
 		},
 		{
 			"name": "Adventureland",
 			"location": "Level 1 , Sahara Centre, Al Nahda Interchange - Dubai - Sharjah Rd - Sharjah - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 25,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Garden Glow",
 			"location": "Zabeel Park, Gate No- 6 & 7 Area - B - Dubai - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 18,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Laguna Waterpark by Meraas",
 			"location": "La Mer - Dubai - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 50,
-			"avgTimeSpent": 5
+			"avgTimeSpent": 5,
+			"specialNeeds": false
 		},
 		{
 			"name": "Hub Zero Dubai",
 			"location": "Al Mustaqbal, City Walk, Phase Two - Dubai - United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 25,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		},
 		{
 			"name": "Al Khazzan Park",
 			"location": "Mohammed Elhenaway - Dubai - United Arab Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": true
 		},
 		{
 			"name": "BurJuman",
 			"location": "Khalid Bin Al Waleed Rd - Dubai - United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Deira City Center Shopping Mall",
 			"location": "8th Street, Dubai, United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Festival Mall",
 			"location": "Al Rebat Road, Dubai Festival City - Dubai - United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		},
 		{
 			"name": "Global Village",
 			"location": "Sheikh Mohammed Bin Zayed Road, Dubai, United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Jumeirah Mosque",
 			"location": "Jumeirah Beach Road, Jumeirah 1, Dubai, United Arab Emirates",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 8,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": false
 		},
 		{
 			"name": "The Sheikh Mohammed Centre for Cultural Understanding",
 			"location": "House 26 & 47, Al Fahidi Historical Neighbourhood, Al Musallah Street, Bur Dubai, Dubai, United Arab Emirates",
 			"type": "Historical",
 			"avgCostPerPerson": 30,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Jumeirah Beach",
 			"location": "1 Al Ghelaan Street - Dubai - United Arab Emirates",
 			"type": "Leisure",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Desert Conservation Reserve",
 			"location": "Camelicious - Dubai Al Ain Road, Exit 26, Um Nahad 3 area - Dubai - United Arab Emirates",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 50,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Dubai Outlet Mall",
 			"location": "Route 66 - Dubai - Al Ain Rd - Dubai - United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Miracle Garden",
 			"location": "Al Barsha South 3 - Dubai - United Arab Emirates",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 15,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Kite Beach",
 			"location": "Kite Beach - Dubai - United Arab Emirates",
 			"type": "Sightseeing",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": false
 		},
 		{
 			"name": "Al Fahidi District",
 			"location": "Al Fahidi Neighborhood, 312th Road - Al Fahidi St - Dubai - United Arab Emirates",
 			"type": "Historical",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Phobia Dubai Escape Game",
 			"location": "Red Diamond Building | Office F112, Dubai, United Arab Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 30,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Pavilion Dive Centre",
 			"location": "Jumeirah Beach Road, Dubai, United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 45,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": false
 		},
 		{
 			"name": "Inflight Dubai Indoor Skydiving",
 			"location": "E 66 | Skydive Dubai Desert Campus, Dubai, United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 50,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Self-drive Quad Bike Ride",
 			"location": "Dubai - United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 55,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": false
 		},
 		{
 			"name": "Dubai Helicopter Tour",
 			"location": "Dubai - United Arab Emirates",
 			"type": "Adventure",
 			"avgCostPerPerson": 150,
-			"avgTimeSpent": 1
+			"avgTimeSpent": 1,
+			"specialNeeds": true
 		},
 		{
 			"name": "Zabeel Palace",
 			"location": "Zabeel, Bur Dubai",
 			"type": "Historical",
 			"avgCostPerPerson": 55,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Round 10 Boxing Club",
 			"location": "364/8 Street | Al Quoz First, Capitol Warehouse 42, Dubai 128281, United Arab Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 35,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "3D Blacklight Minigolf",
 			"location": "Jumeirah Beach Residence, Bahar Plaza Level | JBR 03 Bahar, Unit P24 E, Dubai, United Arab Emirates",
 			"type": "Leisure",
 			"avgCostPerPerson": 30,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Mountain Extreme Rock Climbing",
 			"location": "Capital Golden Tower - Mountain Extreme shop | Ground Floor Back of The Building, Dubai, United Arab Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 30,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": false
 		},
 		{
 			"name": "Reel Cinemas",
 			"location": "The Dubai Mall Upper Deck Rd | Off Exit 32, Sheikh Zayed Road, Dubai, United Arab Emirates",
 			"type": "Leisure",
 			"avgCostPerPerson": 20,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Grand Cinemas Mercato Mall",
 			"location": "Jumeirah 2 Jumeirah Beach Road 1 St, Dubai, United Arab Emirates",
 			"type": "Shopping",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Dubai Bollywood",
 			"location": "53 22 Street | Al Quoz Industrial Area 3, Dubai, United Arab Emirates",
 			"type": "Theme Park",
 			"avgCostPerPerson": 40,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": true
 		},
 		{
 			"name": "Switch Bowling",
 			"location": "Ibn Battuta Mall Orchid St | Garden Cross Road, 1, Dubai, United Arab Emirates",
 			"type": "Entertainment",
 			"avgCostPerPerson": 20,
-			"avgTimeSpent": 4
+			"avgTimeSpent": 4,
+			"specialNeeds": false
 		},
 		{
 			"name": "Al Jaber Gallery",
 			"location": "1 St, Dubai 1940, United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Alserkal Cultural Foundation",
 			"location": "Heritage House No. 13, Al Fahidi Historical Neighbourhood - Dubai - United Arab Emirates",
 			"type": "Museum",
 			"avgCostPerPerson": 15,
-			"avgTimeSpent": 2
+			"avgTimeSpent": 2,
+			"specialNeeds": true
 		},
 		{
 			"name": "Al Bastakiya District",
 			"location": "Bastakiya Opposite Musalla Post Office - Al Fahidi St - Dubai - United Arab Emirates",
 			"type": "Historical",
 			"avgCostPerPerson": 0,
-			"avgTimeSpent": 3
+			"avgTimeSpent": 3,
+			"specialNeeds": false
 		}
 	],
 	"restaurants": [
@@ -584,7 +639,9 @@
 				"North Indian",
 				"Chinese"
 			],
-			"avgCostPerPerson": 8
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 8,
+			"specialNeeds": true
 		},
 		{
 			"name": "Maisan 15",
@@ -592,7 +649,9 @@
 			"cuisine": [
 				"Cafe"
 			],
-			"avgCostPerPerson": 21
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 21,
+			"specialNeeds": true
 		},
 		{
 			"name": "Papa Murphy's Pizza",
@@ -600,7 +659,9 @@
 			"cuisine": [
 				"Pizza"
 			],
-			"avgCostPerPerson": 14
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 14,
+			"specialNeeds": true
 		},
 		{
 			"name": "Fusion Restaurant - The S Hotel, Al Barsha South",
@@ -608,7 +669,9 @@
 			"cuisine": [
 				"International"
 			],
-			"avgCostPerPerson": 20
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood"],
+			"avgCostPerPerson": 20,
+			"specialNeeds": true
 		},
 		{
 			"name": "Smart Cook",
@@ -618,7 +681,9 @@
 				"Chinese",
 				"South Indian"
 			],
-			"avgCostPerPerson": 6
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
+			"avgCostPerPerson": 6,
+			"specialNeeds": false
 		},
 		{
 			"name": "Shakespeare and Co.",
@@ -630,7 +695,9 @@
 				"Middle Eastern",
 				"Desserts"
 			],
-			"avgCostPerPerson": 30
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
+			"avgCostPerPerson": 30,
+			"specialNeeds": true
 		},
 		{
 			"name": "McDonald's",
@@ -638,15 +705,19 @@
 			"cuisine": [
 				"Fast Food"
 			],
-			"avgCostPerPerson": 7
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 7,
+			"specialNeeds": true
 		},
 		{
-			"name": "Tim Hortons - تيم هورتنز",
+			"name": "Tim Hortons",
 			"location": "Ground Floor, My City Centre Al Barsha, Al Barsha South, Dubai",
 			"cuisine": [
 				"Cafe"
 			],
-			"avgCostPerPerson": 11
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "eggs"],
+			"avgCostPerPerson": 11,
+			"specialNeeds": false
 		},
 		{
 			"name": "Baker & Spice",
@@ -656,7 +727,517 @@
 				"Desserts",
 				"Bakery"
 			],
-			"avgCostPerPerson": 35
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 35,
+			"specialNeeds": true
+		},
+		{
+			"name": "24th St. Restaurant",
+			"location": "24th Floor, Dusit Thani Dubai, Sheikh Zayed Road, Trade Centre Area, Dubai",
+			"cuisine": [
+				"Asian",
+				"Italian",
+				"Arabian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 40,
+			"specialNeeds": true
+		},
+		{
+			"name": "The Cheesecake Factory",
+			"location": "Ground Level, Near Aquarium, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"American",
+				"Desserts",
+				"Salad"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 25,
+			"specialNeeds": false
+		},
+		{
+			"name": "Social House",
+			"location": "Lower Ground Floor, Near Waterfall, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Japanese",
+				"seafood",
+				"Italian",
+				"Beverages"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood"],
+			"avgCostPerPerson": 20,
+			"specialNeeds": true
+		},
+		{
+			"name": "Huqqa",
+			"location": "Level 3, New Extension, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Turkish"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 25,
+			"specialNeeds": false
+		},
+		{
+			"name": "Two at Symphony",
+			"location": "Level 1 New Fashion Avenue, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Salad",
+				"Healthy Food"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 21,
+			"specialNeeds": true
+		},
+		{
+			"name": "Shake Shack - The Dubai Mall",
+			"location": "Level 1, Near Waterfront, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Fast Food",
+				"Burger"
+			],
+			"mealPreferences": ["redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": true
+		},
+		{
+			"name": "Walnut Grove",
+			"location": "Ground Level, Near Waterfall, The Dubai Mall, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Cafe",
+				"Bakery"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "eggs"],
+			"avgCostPerPerson": 22,
+			"specialNeeds": true
+		},
+		{
+			"name": "Filful",
+			"location": "Claren Tower, Sheikh Mohammed Bin Rashid Boulevard Road, Downtown Dubai, Dubai",
+			"cuisine": [
+				"Lebanese",
+				"Arabian",
+				"Street Food"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "eggs"],
+			"avgCostPerPerson": 30,
+			"specialNeeds": false
+		},
+		{
+			"name": "PizzaExpress Live",
+			"location": "Ground Floor, DoubleTree by Hilton Dubai Business Bay, Bay Square, Business Bay, Dubai",
+			"cuisine": [
+				"Italian",
+				"Pizza"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 14,
+			"specialNeeds": false
+		},
+		{
+			"name": "Appam Corner Restaurant",
+			"location": "Shop 7 Ground Floor, RDK Building, Opposite Nibras International School, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"South Indian",
+				"North Indian",
+				"Chinese",
+				"Chettinad",
+				"Hyderabadi"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 23,
+			"specialNeeds": true
+		},
+		{
+			"name": "The Green Fridge",
+			"location": "Shop 8, Ground Floor, CEO Building, Opposite Carrefour Market, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Healthy Food",
+				"Salad"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": false
+		},
+		{
+			"name": "Royal Grill Restaurant",
+			"location": "Shop 1, Ground Floor, CEO Building, Opposite Carrefour Market, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Indian",
+				"North Indian",
+				"Arabian"
+			],
+			"mealPreferences": ["whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 34,
+			"specialNeeds": true
+		},
+		{
+			"name": "Foodies Bhavan",
+			"location": "Ewan Residences, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"South Indian",
+				"North Indian",
+				"Chinese",
+				"Street Food"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "eggs"],
+			"avgCostPerPerson": 42,
+			"specialNeeds": true
+		},
+		{
+			"name": "Veg Hut Restaurant",
+			"location": "Shop 1, Ground Floor, RDK Building, Block A, Opposite Nibras International School, Dubai Investment Park, Dubai, Dubai",
+			"cuisine": [
+				"Indian",
+				"South Indian"
+			],
+			"mealPreferences": ["vegan", "vegetarian"],
+			"avgCostPerPerson": 20,
+			"specialNeeds": false
+		},
+		{
+			"name": "ChicKing",
+			"location": "Level 1, Carrefour, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Burger",
+				"Fast Food",
+				"Pizza"
+			],
+			"mealPreferences": ["whiteMeat", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": false
+		},
+		{
+			"name": "Foods Sagar Restaurant",
+			"location": "Beside Jamia Masjid, Dubai Investment Park 1, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Indian",
+				"Mughlai",
+				"North Indian",
+				"Chinese",
+				"seafood"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood"],
+			"avgCostPerPerson": 17,
+			"specialNeeds": true
+		},
+		{
+			"name": "Puranmal",
+			"location": "Shop 8, Ground Floor, RDK Building, Opposite Nibras International School, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"North Indian",
+				"South Indian",
+				"Street Food",
+				"Desserts"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 20,
+			"specialNeeds": true
+		},
+		{
+			"name": "Wendy's",
+			"location": "Ground Level, Carrefour Centre, Dubai Investment Park, Dubai",
+			"cuisine": [
+				"Fast Food",
+				"Burger"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 10,
+			"specialNeeds": false
+		},
+		{
+			"name": "Chili's",
+			"location": "Ground Floor, City Centre Me'aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"American",
+				"Mexican"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood"],
+			"avgCostPerPerson": 9,
+			"specialNeeds": true
+		},
+		{
+			"name": "Al Shams",
+			"location": "Ground Floor, Damac Lago Vista Tower B, IMPZ, Dubai",
+			"cuisine": [
+				"North Indian",
+				"South Indian",
+				"Chinese",
+				"Arabian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 11,
+			"specialNeeds": true
+		},
+		{
+			"name": "Leila",
+			"location": "Ground Level, City Centre Me’aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Lebanese"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 16,
+			"specialNeeds": false
+		},
+		{
+			"name": "800 Degrees Neapolitan Pizzeria",
+			"location": "Ground Level, City Centre Me’aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Pizza",
+				"Italian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": true
+		},
+		{
+			"name": "PAUL Bakery & Restaurant",
+			"location": "Ground Level, City Centre Me'aisem, Al Fay Road, IMPZ, Dubai",
+			"cuisine": [
+				"Cafe",
+				"French"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "seafood", "eggs"],
+			"avgCostPerPerson": 27,
+			"specialNeeds": false
+		},
+		{
+			"name": "Pizza Hut",
+			"location": "ENOC Petrol Station, Near Me'aisem City Center, Sheikh Mohammad Bin Zayed Road, IMPZ, Dubai",
+			"cuisine": [
+				"Pizza"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 12,
+			"specialNeeds": true
+		},
+		{
+			"name": "Fusion - Ghaya Grand Hotel",
+			"location": "Podium Level, Ghaya Grand Hotel, IMPZ, Dubai",
+			"cuisine": [
+				"Asian",
+				"Indian",
+				"Italian"
+			],
+			"mealPreferences": ["vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 38,
+			"specialNeeds": true
+		},
+		{
+			"name": "The Big Wok",
+			"location": "Floor 1, Circular Building, Block B, IMPZ, Dubai",
+			"cuisine": [
+				"Chinese",
+				"Indian",
+				"North Indian",
+				"Continental"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 17,
+			"specialNeeds": false
+		},
+		{
+			"name": "Little Lahore",
+			"location": "Shop 01, Ground Floor, Goldcrest Views 2 Tower, Cluster J, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Pakistani",
+				"Indian",
+				"Beverages",
+				"Desserts"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": false
+		},
+		{
+			"name": "Highway 311 Grills and Eatery",
+			"location": "Shop 12, Basement Level, Mag 214 Tower, Cluster R, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Mexican",
+				"Peruvian",
+				"Latin American"
+			],
+			"mealPreferences": ["redMeat", "eggs"],
+			"avgCostPerPerson": 26,
+			"specialNeeds": true
+		},
+		{
+			"name": "Jazz@PizzaExpress",
+			"location": "Basement Level, Mövenpick Hotel, Cluster A, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Italian",
+				"Pizza"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 13,
+			"specialNeeds": false
+		},
+		{
+			"name": "Greek & Delicious",
+			"location": "Shop 01-A, Ground Floor, Goldcrest Views 2 Tower, Cluster J, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Greek",
+				"Salad",
+				"Grill"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 43,
+			"specialNeeds": true
+		},
+		{
+			"name": "Operation:Falafel",
+			"location": "The Beach, Jumeirah Beach Residence (JBR), Dubai",
+			"cuisine": [
+				"Street Food",
+				"Arabian",
+				"Middle Eastern",
+				"Salad"
+			],
+			"mealPreferences": ["whiteMeat", "redMeat", "eggs"],
+			"avgCostPerPerson": 20,
+			"specialNeeds": true
+		},
+		{
+			"name": "Bombay Bungalow",
+			"location": "The Beach, Jumeirah Beach Residence (JBR), Dubai",
+			"cuisine": [
+				"Indian",
+				"North Indian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 34,
+			"specialNeeds": true
+		},
+		{
+			"name": "Rajdhani Street",
+			"location": "Shop 07, Ground Floor, Platinum Tower, Cluster I, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Street Food",
+				"Indian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": true
+		},
+		{
+			"name": "Kulcha King",
+			"location": "Basement Level, O2 Residence, Cluster O, Jumeirah Lake Towers (JLT), Dubai",
+			"cuisine": [
+				"Indian",
+				"Biryani",
+				"North Indian",
+				"Kebab"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 12,
+			"specialNeeds": false
+		},
+		{
+			"name": "Delhi Nihari Restaurant",
+			"location": "Ground Floor, Al Zarouni Building, Behind IMall, Genata Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Mughlai",
+				"Indian",
+				"Pakistani"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "eggs"],
+			"avgCostPerPerson": 7,
+			"specialNeeds": true
+		},
+		{
+			"name": "Masala Wok",
+			"location": "Ground Floor, Al Bahri Building, Amman Street, Al Nahda 2, Al Nahda, Dubai",
+			"cuisine": [
+				"Indian",
+				"Chinese",
+				"Kebab"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": true
+		},
+		{
+			"name": "Biryaniwalla & Co",
+			"location": "Ground Floor, Ahali Building, Bagdat Street, Al Nahda 2, Al Nahda, Dubai",
+			"cuisine": [
+				"Biryani",
+				"Hyderabadi",
+				"North Indian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "eggs"],
+			"avgCostPerPerson": 13,
+			"specialNeeds": false
+		},
+		{
+			"name": "Nayaab Haandi",
+			"location": "Shop 3, Ground Floor, City Tower, Beside Power Zone Body Building, Samarqand Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Pakistani",
+				"Indian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 11,
+			"specialNeeds": true
+		},
+		{
+			"name": "Salkara Restaurant",
+			"location": "Food Court, Level 6, Ansar Mall, Al Ittihad Road, Al Nahda, Sharjah",
+			"cuisine": [
+				"South Indian",
+				"Kerala"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 17,
+			"specialNeeds": true
+		},
+		{
+			"name": "Makani Restaurant",
+			"location": "Food Court, Level 2, East Atrium Area, Sahara Centre, Al Nahda, Sharjah",
+			"cuisine": [
+				"Indian",
+				"North Indian",
+				"Mughlai"
+			],
+			"mealPreferences": ["vegan", "vegetarian"],
+			"avgCostPerPerson": 22,
+			"specialNeeds": false
+		},
+		{
+			"name": "Levant'ish",
+			"location": "Grand Service Station, Baghdad Street, Qusais, Dubai",
+			"cuisine": [
+				"Lebanese",
+				"Turkish",
+				"Syrian"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 37,
+			"specialNeeds": true
+		},
+		{
+			"name": "Kabab Karachi",
+			"location": "Shop 19, Ground Floor, Abdullah Al Sheeba Building, Bukhara Street, Al Nahda, Sharjah",
+			"cuisine": [
+				"Pakistani",
+				"Kebab",
+				"Biryani"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat", "seafood", "eggs"],
+			"avgCostPerPerson": 10,
+			"specialNeeds": true
+		},
+		{
+			"name": "Applebee's",
+			"location": "Level 2, Opposite Jumbo Electronics, Sahara Centre, Al Nahda Road, Al Nahda, Sharjah",
+			"cuisine": [
+				"American",
+				"Mexican",
+				"Burger"
+			],
+			"mealPreferences": ["vegan", "vegetarian", "whiteMeat", "redMeat"],
+			"avgCostPerPerson": 15,
+			"specialNeeds": true
 		}
 	],
 	"countryCustoms": {

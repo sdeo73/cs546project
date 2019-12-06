@@ -11,7 +11,7 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
         month = '0' + month.toString();
     if (day < 10)
         day = '0' + day.toString();
-        todaysDate = year + '-' + month + '-' + day;
+    todaysDate = year + '-' + month + '-' + day;
     $('#travelStart-input').attr('min', todaysDate);
     $('#travelEnd-input').attr('min', todaysDate);
     $('#dob-input').attr('max', todaysDate);
@@ -36,10 +36,10 @@ form.addEventListener("submit", event => {
         $("#birthday-missing").show();
         $("#underage").hide();
         errors = true;
-    } 
-    let timeDifference= new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
-    let age = parseInt((timeDifference / (1000 * 3600 * 24))/365); 
-    if(age<16) {
+    }
+    let timeDifference = new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
+    let age = parseInt((timeDifference / (1000 * 3600 * 24)) / 365);
+    if (age < 16) {
         event.preventDefault();
         $("#underage").show();
         $("#birthday-missing").hide();
@@ -104,6 +104,16 @@ form.addEventListener("submit", event => {
         $("#ntravelers-missing").hide();
     }
 
+    const specialNeedsButton = document.querySelector('input[name="specialNeeds"]:checked');
+    if (!specialNeedsButton) {
+        event.preventDefault();
+        $("#specialneeds-missing").show();
+        errors = true;
+    } else {
+        event.preventDefault();
+        $("#specialneeds-missing").hide();
+    }
+
     const budgetInput = document.getElementById("budget-input").value;
     if (!budgetInput) {
         event.preventDefault();
@@ -146,9 +156,9 @@ form.addEventListener("submit", event => {
     }
 
     //Check if travel time is not more than two weeks
-    timeDifference= new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
-    var numberOfDays = timeDifference / (1000 * 3600 * 24); 
-    if(numberOfDays > 14){
+    timeDifference = new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
+    var numberOfDays = timeDifference / (1000 * 3600 * 24);
+    if (numberOfDays > 14) {
         event.preventDefault();
         $("#number-of-dates").show();
         errors = true;

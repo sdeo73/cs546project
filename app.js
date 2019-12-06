@@ -51,6 +51,22 @@ app.use('/preferences', function (req, res, next) {
   }
 });
 
+app.use('/generateItinerary', function (req, res, next) {
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
+app.use('/viewItinerary', function (req, res, next) {
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 

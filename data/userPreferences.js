@@ -60,14 +60,16 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         errors.push(error.tourActivityMissing);
     } if (!nTravelers) {
         errors.push(error.nTravelersMissing);
-    } if (!specialNeeds) {
-        errors.push(error.specialNeedsMissing);
     } if (!budget) {
         errors.push(error.budgetMissing);
     } if (!destination) {
         errors.push(error.destinationMissing);
     } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
+    }
+
+    if(!Array.isArray(mealPreference)) {
+        mealPreference = mealPreference.split(" ");
     }
 
     //Check if birthday is valid: 
@@ -265,7 +267,7 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     let errors = [];
     if (!newSpecialNeeds) {
         errors.push(error.specialNeedsMissing);
-    } else if (!Array.isArray(newSpecialNeeds)) {
+    } else if (typeof newSpecialNeeds == "boolean") {
         throw new Error(error.specialNeedsInvalidType);
     }
 
@@ -393,8 +395,12 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     }
 }
 
-
+async function getUserPreferences(userID){
+    const user = await userFunctions.getUserById(userID);
+    let userPreferences = await user.userPreferences;
+    return userPreferences;
+}
 
 module.exports = {
-    addUserPreferences, checkUserPreferenceExists, updateUserMealPref, updateUserTourActivity, updateUserTourType, updateNumOfTravelers, updateSpecialNeeds, updateBudget, updateUserDestination, updateTravelDates
+    addUserPreferences, checkUserPreferenceExists, updateUserMealPref, updateUserTourActivity, updateUserTourType, updateNumOfTravelers, updateSpecialNeeds, updateBudget, updateUserDestination, updateTravelDates, getUserPreferences
 }

@@ -7,7 +7,7 @@
       <div id="shadow">
         <label for="userEmail">Email:</label>
         <input id="userEmail" type="email" name="user_email" placeholder="Enter your email" class="full-width-input">
-
+        <br>
         <div class="error-msg" id="noEmail">
           <i class="fa fa-times-circle"></i>
           Email is required!
@@ -17,32 +17,28 @@
         <input id="userPass" type="password" name="user_password" placeholder="Enter your password"
           class="full-width-input">
         <br>
-        <br>
         <div class="error-msg" id="noPassword">
           <i class="fa fa-times-circle"></i>
           Password is required!
         </div>
+         <br>
 
-        <button type="submit" formmethod="post">Login</button>
+        <p class="invalidPassword">{{invalidPasswordError}}</p>
+        <button type="submit" formmethod="post">Log In</button>
         <br>
-        <u><b>
-        <a href="forgotpassword">Forgot Password?</a>
-        </b></u>
-        <br><br>
-        <div id="invalidEmailFormat">
-          <p>Invalid email format was provided</p>
-        </div>
+        <br>
+        <a id="signup_button" href="/signup" type="text/html">Sign up here</a>
+        <br>
+            <a href="forgotpassword">Forgot Password?</a>
+        <br>
+        <br>
 
       </div>
-
     </form>
-
-    
+    <footer id="footer1">
+      <p class="paragraph-content">
+        <center> &copy; 2019 TheLazyTraveller.com</center>
+      </p>
+    </footer>
 </div>
 </main>
-<br>
-<footer id="footer1">
-    <p class="paragraph-content"><center> &copy; 2019 TheLazyTraveller.com</center></p>
-</footer>
-</main>
-</div>

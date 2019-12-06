@@ -3,7 +3,6 @@
         <header class="head1">
             <p class="paragraph-content">The Lazy Traveller </p>
         </header>
-
         <br>
         <form action="/home" method="POST" id="preferences-form">
             <div id="shadow">
@@ -16,8 +15,6 @@
                     <label for="g2">Female</label>
                     <input type="radio" name="gender" value="female" id="g2">
                     <label for="g3">Other</label>
-
-
                     <input type="radio" name="gender" value="other" id="g3"><br>
 
                     <div class="error-msg" id="gender-missing">
@@ -39,12 +36,15 @@
                     <label for="countryId">Destination: </label>
                     <select name="country" class="countries" id="countryId">
                         <option value="">Select Country</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
                     </select>
                     <select name="state" class="states" id="stateId">
                         <option value="">Select State</option>
+                        <option value="Dubai">Dubai</option>
                     </select>
                     <select name="city" class="cities" id="cityId">
                         <option value="">Select City</option>
+                        <option value="Dubai">Dubai</option>
                     </select><br>
                     <div class="error-msg" id="destination-missing">
                         <i class="fa fa-times-circle"></i>
@@ -109,14 +109,14 @@
                     </div>
 
                     <label for="specialNeeds-input">Special Needs: </label>
-                    <label for="specialNeeds1">Physical</label>
-                    <input type="checkbox" name="specialNeeds" value="physical" id="specialNeeds1">
-                    <label for="specialNeeds2">Developmental</label>
-                    <input type="checkbox" name="specialNeeds" value="developmental" id="specialNeeds2">
-                    <label for="specialNeeds3">Behavioral</label>
-                    <input type="checkbox" name="specialNeeds" value="behavioral" id="specialNeeds3">
-                    <label for="specialNeeds4">Sensory Impaired</label>
-                    <input type="checkbox" name="specialNeeds" value="sensoryImpaired" id="specialNeeds4"><br>
+                    <label for="specialNeeds1">Yes</label>
+                    <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1">
+                    <label for="specialNeeds2">No</label>
+                    <input type="radio" name="specialNeeds" value="no" id="specialNeeds2"><br>
+                    <div class="error-msg" id="specialneeds-missing">
+                        <i class="fa fa-times-circle"></i>
+                        Please select an option for special needs.
+                    </div>
 
                     <label for="budget-input">Budget per person: </label>
                     <input type="number" name="budget" id="budget-input" placeholder="Enter your budget" min=2000><br>
@@ -154,7 +154,7 @@
                 <br><br>
             </div>
             <br><br><br>
-            <footer class="head1">
+            <footer id="footer1">
                 <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
             </footer>
     </main>
