@@ -17,11 +17,19 @@ router.get('/editpreferences', async (req, res) => {
         if (await userPrefData.checkUserPreferenceExists(req.session.userID)) {
 
             // Handlebars helper code reused from https://stackoverflow.com/questions/34252817/handlebarsjs-check-if-a-string-is-equal-to-a-value
-            Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
-                return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-            });
             let userPreferences = await userPrefData.getUserPreferences(req.session.userID);
-            return res.status(200).render('pages/editPreferencesForm', { title: "Change your preferences", partial: "edit-preferences-scripts" , userPreferences: userPreferences});
+            return res.status(200).render('pages/editPreferencesForm', { 
+                title: "Change your preferences", 
+                partial: "edit-preferences-scripts" , userPreferences: userPreferences,
+                helpers: {
+                    'ifEquals': function(arg1, arg2, options) {
+                        return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+                    },
+                    'ifIncludes': function(arg1, arg2, options){
+                        return (arg1.includes(arg2)) ? options.fn(this) : options.inverse(this);
+                    }
+                }
+            });
         } else {
             return res.status(200).redirect('preferences');
         }
@@ -37,6 +45,7 @@ router.post('/editpreferences', async (req, res) => {
 
         if (req.session.userID) {
             if (await userPrefData.checkUserPreferenceExists(req.session.userID)) {
+                const existingPref = await userPrefData.getUserPreferences(req.session.userID);
                 if(editPrefInput.city){
                     await userPrefData.updateUserDestination(req.session.userID, editPrefInput.city);
                     oneSelected = true;
@@ -68,7 +77,9 @@ router.post('/editpreferences', async (req, res) => {
 
                 if(editPrefInput.travelDateStart && editPrefInput.travelDateEnd){
                     if(editPrefInput.travelDateEnd < editPrefInput.travelDateStart) throw new Error(errorMessages.travelDatesInvalid);
-                    await userPrefData.updateTravelDates(req.session.userID, editPrefInput.travelDateStart, editPrefInput.travelDateEnd);
+                    if(editPrefInput.travelDateEnd != existingPref.travelDates.end && editPrefInput.travelDateStart != existingPref.travelDates.start){
+                        await userPrefData.updateTravelDates(req.session.userID, editPrefInput.travelDateStart, editPrefInput.travelDateEnd);
+                    }
                     oneSelected = true;
                 }else if(editPrefInput.travelDateStart){
                     throw new Error(errorMessages.editPrefNoEndDate);
@@ -89,7 +100,7 @@ router.post('/editpreferences', async (req, res) => {
             return res.status(200).redirect('/home');
         }
     } catch (error) {
-        return res.status(404).json({ error: e.message });
+        return res.status(404).json({ error: error.message });
     }
 });
 
