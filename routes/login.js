@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const loginData = data.login;
-const errorMessages = require('../public/errorMessages');
 const passwordHash = require('password-hash');
+var xss = require("xss");
 
 // Render the login page when user hits /login.
 // If session contains user ID, redirect user to loginSuccess page, else render the login page.
@@ -30,8 +30,16 @@ router.get('/home', async(req,res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const user_email = req.body.user_email;
-        const user_pass = req.body.user_password;
+        const user_email = xss(req.body.user_email, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const user_pass = xss(req.body.user_password, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
         const currentUser = await loginData.getHashPassword(user_email);
 
         let validPass = false;
