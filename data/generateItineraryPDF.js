@@ -24,8 +24,13 @@ async function generateItineraryPDF(itinerary, userID, connection) {
         throw new Error(errorMessages.userIDInvalid);
     }
 
+    //Check if local copy already exists
+    const path = 'public/uploads/itinerary.pdf';
+    if (fs.existsSync(path)) {
+        deleteLocalItinerary();
+    }
+
     //Initialize new PDF document
-    deleteLocalItinerary();
     let doc = new PDFDocument();
     doc.pipe(fs.createWriteStream('public/uploads/itinerary.pdf'));
     let day = 1;
@@ -72,7 +77,13 @@ async function fetchUserItinerary(userID, connection) {
     } else if (!ObjectId.isValid) {
         throw new Error(errorMessages.userIDInvalid);
     }
-    deleteLocalItinerary();
+
+    //Check if local copy already exists
+    const path = 'public/uploads/itinerary.pdf';
+    if (fs.existsSync(path)) {
+        deleteLocalItinerary();
+    }
+
     var bucket = new mongodb.GridFSBucket(connection, {
         bucketName: 'itineraries'
     });
