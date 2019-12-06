@@ -1,21 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
+const itineraryFunctions = data.itinerary;
+const displayItineraryFunctions = data.displayItinerary;
 const mongoCollections = require("./../config/mongoCollections");
 const destination = mongoCollections.destinations;
+const userPrefFunctions = data.userPreferences;
 const mongoConnection = require("./../config/mongoConnection");
 
 router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
-        let userPref = req.session.userPreferences;
-        let mealPreference = req.session.userPreferences.mealPref;
-
-        //Convert to array if only one selection is present
-        if(!Array.isArray(mealPreference)) {
-            mealPreference = mealPreference.split(" ");
-        }
+        let userPref = await userPrefFunctions.getUserPreferences(req.session.userID);
+        
         let numOfHrs;
         //Set number of hours based on tour type
         if (userPref.tourActivity == 'relaxed') {
@@ -26,34 +24,32 @@ router.get('/generateItinerary', async (req, res) => {
             numOfHrs = 14;
         }
         //Calculate number of days of travel
-        let timeDifference = new Date(userPref.travelDateEnd).getTime() - new Date(userPref.travelDateStart).getTime();
+        let timeDifference = new Date(userPref.travelDates.end).getTime() - new Date(userPref.travelDates.start).getTime();
         let numberOfDays = timeDifference / (1000 * 3600 * 24);
 
         //Get destination ID 
-        let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.city }))._id.toString();
+        let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.destination }))._id.toString();
 
         //Create user preference object for the generateCompleteItinerary() function
         let userPreferences = {
-            mealPreference: {
-                vegan: mealPreference.includes("vegan"),
-                vegetarian: mealPreference.includes("vegetarian"),
-                whiteMeat: mealPreference.includes("whiteMeat"),
-                redMeat: mealPreference.includes("redMeat"),
-                seafood: mealPreference.includes("seafood"),
-                eggs: mealPreference.includes("eggs")
-            },
+            mealPreference: userPref.mealPreference,
             destinationId: destinationID,
             tourType: userPref.tourType,
             hoursPerDay: numOfHrs,
             maxBudgetPerPerson: userPref.budget,
             numOfDays: numberOfDays,
-            numOfTravelers: userPref.nTravelers,
+            numOfTravelers: userPref.noOfTravelers,
             specialNeeds: userPref.specialNeeds,
         }
 
         const connection = await mongoConnection();
-        const result = await data.itinerary.generateCompleteItinerary(userPreferences);
-        let done = await data.displayItinerary.generateItineraryPDF(result, userID, connection);
+        if(itineraryFunctions == null || typeof itineraryFunctions == undefined || !itineraryFunctions){
+            console.log("null");
+        }else{
+            console.log("not null");
+        }
+        const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
+        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, connection);
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         }
