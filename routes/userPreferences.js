@@ -28,7 +28,6 @@ router.post('/preferences', async (req, res) => {
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
-            req.session.userPreferences = userPrefInput;
             return res.status(200).redirect('/generateItinerary');
         }
     } catch (e) {
