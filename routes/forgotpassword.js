@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
-const loginData = data.login;
-const errorMessages = require('../public/errorMessages');
-const passwordHash = require('password-hash');
 
 router.get('/forgotpassword', async (req, res) => {
     try {

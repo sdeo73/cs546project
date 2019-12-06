@@ -36,18 +36,19 @@ form.addEventListener("submit", event => {
         $("#birthday-missing").show();
         $("#underage").hide();
         errors = true;
-    }
-    let timeDifference = new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
-    let age = parseInt((timeDifference / (1000 * 3600 * 24)) / 365);
-    if (age < 16) {
-        event.preventDefault();
-        $("#underage").show();
-        $("#birthday-missing").hide();
-        errors = true;
     } else {
-        event.preventDefault();
-        $("#birthday-missing").hide();
-        $("#underage").hide();
+        let timeDifference = new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
+        let age = parseInt((timeDifference / (1000 * 3600 * 24)) / 365);
+        if (age < 16) {
+            event.preventDefault();
+            $("#underage").show();
+            $("#birthday-missing").hide();
+            errors = true;
+        } else {
+            event.preventDefault();
+            $("#birthday-missing").hide();
+            $("#underage").hide();
+        }
     }
 
     const country = document.getElementById("countryId").value;
