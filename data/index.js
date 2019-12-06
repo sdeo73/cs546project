@@ -8,6 +8,7 @@ const packingData = require('./packing');
 const itineraryData = require('./itinerary');
 const displayItineraryData = require('./generateItineraryPDF');
 const knapsackData = require('./knapsack');
+const usersData = require('./users');
 
 module.exports = {
     signup: signup,
@@ -19,5 +20,6 @@ module.exports = {
     packing: packingData,
     itinerary: itineraryData,
     displayItinerary: displayItineraryData,
-    knapsack: knapsackData
+    knapsack: knapsackData,
+    users: usersData
 };

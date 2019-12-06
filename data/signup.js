@@ -41,7 +41,9 @@ async function addUser(firstName, lastName, email, password, nationality){
         lastName: lastName,
         email: email,
         password: await passwordHash.generate(password),
-        nationality: nationality
+        nationality: nationality,
+        failedAttempts: 0,
+        latestTimeStamp: Date.now()
     }
     const insertInfo = await userCollection.insertOne(newUser);
 
@@ -52,4 +54,23 @@ async function addUser(firstName, lastName, email, password, nationality){
     return true;  
 }
 
-module.exports = {addUser};
+/**
+ * Function to check if the email user is trying to sign up with already exists in the DB
+ * @param {*} email User's email in string format
+ */
+async function checkIfEmailTaken(email) {
+    let errors = [];
+    if(!email || typeof(email) != "string" || email.length == 0)
+    errors.push(errorMessages.emailMissing);
+
+    if(errors.length > 0) return errors;
+    const userCollection = await users();
+    const user = await userCollection.findOne({'email': email});
+    if(user==null) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+module.exports = {addUser, checkIfEmailTaken};

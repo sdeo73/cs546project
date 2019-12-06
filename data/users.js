@@ -284,6 +284,101 @@ let exportedMethods = {
         }
 
         return this.getUserById(userId);
+    },
+
+    /**
+     * Function to retrieve number of failed login attempts 
+     * @param {*} email - Email of a user in string format
+     * @returns -1 if user was not found, else returns the number of failed attempts
+     */
+    async getFailedAttempts(email) {
+        if(!email) {
+            throw new Error(errorMessages.noEmailWasProvided);
+        }
+
+        const usersCollection = await users();
+        const user = await usersCollection.findOne({'email': email});
+        if(user==null) {
+            return -1;
+        } else {
+            return user.failedAttempts;
+        }
+    },
+
+    /**
+     *  Function to retrieve time stamp from the user
+     * @param {*} email - Email of a user in string format
+     * @returns -1 if user was not found, else returns the timestamp
+     */
+    async getTimeStamp(email) {
+        if(!email) {
+            throw new Error(errorMessages.noEmailWasProvided);
+        }
+
+        const usersCollection = await users();
+        const user = await usersCollection.findOne({'email': email});
+        if(user==null) {
+            return -1;
+        } else {
+            return user.latestTimeStamp;
+        }
+    },
+
+    /**
+     * Function to increment number of failed attempts by 1
+     * @param {*} email - Email of a user in string format
+     * @returns False if not updated, else returns number of failed attempts
+     */
+    async updateFailedAttempts(email) {
+        if(!email) {
+            throw new Error(errorMessages.noEmailWasProvided);
+        }
+
+        const usersCollection = await users();
+        const user = await usersCollection.updateOne({'email': email},{$inc : {'failedAttempts': 1}});
+        if(user==null || user.modifiedCount==0) {
+            return false;
+        } else {
+           return (await usersCollection.findOne({'email': email})).failedAttempts;
+        }
+    },
+
+    /**
+     * Function to reset number of failed attempts to 0
+     * @param {*} email - Email of a user in string format
+     * @returns False if not reset, else true
+     */
+    async resetFailedAttempts(email) {
+        if(!email) {
+            throw new Error(errorMessages.noEmailWasProvided);
+        }
+
+        const usersCollection = await users();
+        const user = await usersCollection.updateOne({'email': email},{$set: {'failedAttempts': 0}});
+        if(user==null || user.modifiedCount==0) {
+            return false;
+        } else {
+           return true;
+        }
+    },
+
+      /**
+     * Function to update time stamp to current time
+     * @param {*} email - Email of a user in string format
+     * @returns False if not updated, else true
+     */
+    async updateTimeStamp(email) {
+        if(!email) {
+            throw new Error(errorMessages.noEmailWasProvided);
+        }
+
+        const usersCollection = await users();
+        const user = await usersCollection.updateOne({'email': email},{$set: {'latestTimeStamp': Date.now()}});
+        if(user.modifiedCount==0) {
+            return false;
+        } else {
+           return true;
+        }
     }
 };
 

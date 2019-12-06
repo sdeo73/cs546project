@@ -16,20 +16,24 @@ router.get('/signup', async (req, res) => {
     }
 });
 
-router.post('/signup', async (req, res) => {  
+router.post('/signup', async (req, res) => {
     try {
         const inputs = req.body;
-        if(!Array.isArray(inputs.nationality)){
-            inputs.nationality = [inputs.nationality];
-        }
-        const inserted = await signupData.addUser(firstName = inputs.firstName, lastName = inputs.lastName, email = inputs.email, password = inputs.password, nationality = inputs.nationality);
-        if(inserted == true){
-            res.status(200).redirect("../login");
-        }else{
-            res.status(400).json({error: inserted});
+        if (await signupData.checkIfEmailTaken(inputs.email)) {
+            return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
+        } else {
+            if (!Array.isArray(inputs.nationality)) {
+                inputs.nationality = [inputs.nationality];
+            }
+            const inserted = await signupData.addUser(firstName = inputs.firstName, lastName = inputs.lastName, email = inputs.email, password = inputs.password, nationality = inputs.nationality);
+            if (inserted == true) {
+                res.status(200).redirect("../login");
+            } else {
+                res.status(400).json({ error: inserted });
+            }
         }
     } catch (error) {
-        res.status(400).json({error:error.message});
+        res.status(400).json({ error: error.message });
     }
 });
 
