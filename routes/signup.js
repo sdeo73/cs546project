@@ -17,7 +17,7 @@ router.get('/signup', async (req, res) => {
     }
 });
 
-router.post('/signup', async (req, res) => {  
+router.post('/signup', async (req, res) => {
     try {
         const firstName = xss(req.body.firstName, {
             whiteList: [], 
@@ -44,19 +44,22 @@ router.post('/signup', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        let nationalities = [];
-        // const inputs = req.body;
-        if(!Array.isArray(nationality)){
-            nationalities = [nationality];
-        }
-        const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
-        if(inserted == true){
-            res.status(200).redirect("../login");
-        }else{
-            res.status(400).json({error: inserted});
+        if (await signupData.checkIfEmailTaken(email)) {
+            return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
+        } else {
+            let nationalities = [];
+            if(!Array.isArray(nationality)){
+                nationalities = [nationality];
+            }
+            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
+            if (inserted == true) {
+                res.status(200).redirect("../login");
+            } else {
+                res.status(400).json({ error: inserted });
+            }
         }
     } catch (error) {
-        res.status(400).json({error:error.message});
+        res.status(400).json({ error: error.message });
     }
 });
 

@@ -84,7 +84,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
     let numberOfDays = timeDifference / (1000 * 3600 * 24);
     if (travelDateEnd < travelDateStart) {
         errors.push(error.travelDatesInvalid)
-    } else if (numberOfDays > 14) {
+    } else if (numberOfDays > 7) {
         errors.push(error.travelDatesMaxLimit);
     }
 
