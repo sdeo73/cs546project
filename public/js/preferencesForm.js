@@ -158,7 +158,7 @@ form.addEventListener("submit", event => {
     //Check if travel time is not more than two weeks
     timeDifference = new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
     var numberOfDays = timeDifference / (1000 * 3600 * 24);
-    if (numberOfDays > 14) {
+    if (numberOfDays > 7) {
         event.preventDefault();
         $("#number-of-dates").show();
         errors = true;

@@ -12,7 +12,7 @@
     "budgetMissing" : "Budget missing.",
     "destinationMissing" : "Destination missing.",
     "travelDatesMissing" : "Travel dates missing.",
-    "travelDatesMaxLimit": "Maximum travel time is two weeks (14 days).",
+    "travelDatesMaxLimit": "Maximum travel time is one week (7 days).",
     "travelDatesInvalid": "Travel start date cannot be ahead of end date.",
     "minimumAgeError": "Minimum age is 16 years.",
     "userPrefCreationError": "Sorry, your preferences were not saved. Please try again later!",
