@@ -14,25 +14,25 @@ const passwordHash = require('password-hash');
  * @param nationality user's nationality in string format
  * @returns boolean indicates whether the new user has been added successfully into the database
  */
-async function addUser(firstName, lastName, email, password, nationality){
+async function addUser(firstName, lastName, email, password, nationality) {
     let errors = [];
     //validates number of arguments
     if (arguments.length != 5) {
         throw new Error(errorMessages.wrongNumberOfArguments);
     }
     //validates argument type
-    if(!firstName || typeof(firstName) != "string" || firstName.length == 0)
+    if (!firstName || typeof (firstName) != "string" || firstName.length == 0)
         errors.push(errorMessages.firstNameMissing);
-    if(!lastName || typeof(lastName) != "string" || lastName.length == 0)
+    if (!lastName || typeof (lastName) != "string" || lastName.length == 0)
         errors.push(errorMessages.lastNameMissing);
-    if(!email || typeof(email) != "string" || email.length == 0)
+    if (!email || typeof (email) != "string" || email.length == 0)
         errors.push(errorMessages.emailMissing);
-    if(!password || typeof(password) != "string" || password.length == 0)
+    if (!password || typeof (password) != "string" || password.length == 0)
         errors.push(errorMessages.passwordMissing);
-    if(!nationality || !Array.isArray(nationality) || nationality.length == 0)
+    if (!nationality || !Array.isArray(nationality) || nationality.length == 0)
         errors.push(errorMessages.nationalityMissing);
-        
-    if(errors.length > 0) return errors;
+
+    if (errors.length > 0) return errors;
 
     //inserts the new user into the users collection
     const userCollection = await users();
@@ -48,10 +48,10 @@ async function addUser(firstName, lastName, email, password, nationality){
     const insertInfo = await userCollection.insertOne(newUser);
 
     //insertion failed
-    if(insertInfo == null) throw new Error(errorMessages.userCreationError);
-    if(insertInfo.insertedCount == 0) throw new Error(errorMessages.userCreationError);
+    if (insertInfo == null) throw new Error(errorMessages.userCreationError);
+    if (insertInfo.insertedCount == 0) throw new Error(errorMessages.userCreationError);
 
-    return true;  
+    return true;
 }
 
 /**
@@ -60,17 +60,21 @@ async function addUser(firstName, lastName, email, password, nationality){
  */
 async function checkIfEmailTaken(email) {
     let errors = [];
-    if(!email || typeof(email) != "string" || email.length == 0)
-    errors.push(errorMessages.emailMissing);
+    if (arguments.length !== 1) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    }
+    if (!email || typeof (email) != "string" || email.length == 0) {
+        throw new Error(errorMessages.emailMissing);
+    }
 
-    if(errors.length > 0) return errors;
+    if (errors.length > 0) return errors;
     const userCollection = await users();
-    const user = await userCollection.findOne({'email': email});
-    if(user==null) {
+    const user = await userCollection.findOne({ 'email': email });
+    if (user == null) {
         return false;
     } else {
         return true;
     }
 }
 
-module.exports = {addUser, checkIfEmailTaken};
+module.exports = { addUser, checkIfEmailTaken };
