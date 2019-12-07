@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const userPrefData = data.userPreferences;
+var xss = require("xss");
 
 router.get('/preferences', async (req, res) => {
     try {
@@ -17,19 +18,76 @@ router.get('/preferences', async (req, res) => {
 
 router.post('/preferences', async (req, res) => {
     try {
-        let userPrefInput = req.body;
+        const gender = xss(req.body.gender, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const dob = xss(req.body.dob, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const mealPref = xss(req.body.mealPref, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const tourType = xss(req.body.tourType, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const tourActivity = xss(req.body.tourActivity, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const nTravelers = xss(req.body.nTravelers, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        let specialNeeds = xss(req.body.specialNeeds, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const budget = xss(req.body.budget, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const city = xss(req.body.city, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const travelDateStart = xss(req.body.travelDateStart, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const travelDateEnd = xss(req.body.travelDateEnd, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
 
-        if (userPrefInput.specialNeeds == 'yes') {
-            userPrefInput.specialNeeds = true;
+        if (specialNeeds == 'yes') {
+            specialNeeds = true;
         } else {
-            userPrefInput.specialNeeds = false;
+            specialNeeds = false;
         }
-        const userPref = await userPrefData.addUserPreferences(userPrefInput.gender, userPrefInput.dob, userPrefInput.mealPref, userPrefInput.tourType, userPrefInput.tourActivity, userPrefInput.nTravelers, userPrefInput.specialNeeds, userPrefInput.budget, userPrefInput.city, userPrefInput.travelDateStart, userPrefInput.travelDateEnd, req.session.userID);
+        const userPref = await userPrefData.addUserPreferences(gender, dob, mealPref, tourType, tourActivity,
+                nTravelers, specialNeeds, budget, city, travelDateStart, travelDateEnd, req.session.userID);
+        
         if (!userPref) {
             return res.status(400).json({ error: userPref });
         } else {
             return res.status(200).redirect('/generateItinerary');
         }
+        
     } catch (e) {
         return res.status(400).json({ error: e.message });
     }

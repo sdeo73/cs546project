@@ -3,6 +3,7 @@ const router = express.Router();
 const data = require('../data');
 const signupData = data.signup;
 const errorMessages = require('../public/errorMessages');
+var xss = require("xss");
 
 router.get('/signup', async (req, res) => {
     try {
@@ -18,14 +19,39 @@ router.get('/signup', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        const inputs = req.body;
-        if (await signupData.checkIfEmailTaken(inputs.email)) {
+        const firstName = xss(req.body.firstName, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const lastName = xss(req.body.lastName, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const email = xss(req.body.email, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const password = xss(req.body.password, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        const nationality = xss(req.body.nationality, {
+            whiteList: [], 
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: []
+        });
+        if (await signupData.checkIfEmailTaken(email)) {
             return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
         } else {
-            if (!Array.isArray(inputs.nationality)) {
-                inputs.nationality = [inputs.nationality];
+            let nationalities = [];
+            if(!Array.isArray(nationality)){
+                nationalities = [nationality];
             }
-            const inserted = await signupData.addUser(firstName = inputs.firstName, lastName = inputs.lastName, email = inputs.email, password = inputs.password, nationality = inputs.nationality);
+            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
             if (inserted == true) {
                 res.status(200).redirect("../login");
             } else {
