@@ -13,7 +13,7 @@ router.get('/login', async (req, res) => {
         if (req.session.userID) {
            res.status(200).redirect('/home');
         } else {
-            return res.render('pages/loginPage',{ title: "Login", partial: "login-scripts" });
+            return res.render('pages/loginPage',{ title: "Login", partial: "login-ajax-scripts" });
         }
     } catch (error) {
         return res.status(404).json(error);
@@ -48,16 +48,17 @@ router.post('/login', async (req, res) => {
 
             //redirect to home page
             if (await data.userPreferences.checkUserPreferenceExists(currentUser._id)) {
-                res.status(200).redirect('/home');
+                return res.status(200).json({message: "successHome"})
             } else {
-                return res.status(200).redirect('../preferences');
+                return res.status(200).json({message: "successPref"});
             }
         } else {
             //redirect to the login page again
-            return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid username or password!", partial: "login-scripts" });
+            return res.status(200).json({message: "failedInvalidDetails"});
+            //return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid username or password!", partial: "login-scripts" });
         }
     } catch (error) {
-        return res.status(404).json(error.message);
+        return res.status(404).json({message: "failedError"});
     }
 });
 
