@@ -292,7 +292,7 @@ let exportedMethods = {
      * @returns -1 if user was not found, else returns the number of failed attempts
      */
     async getFailedAttempts(email) {
-        if (arguments.length != 1) {
+        if (arguments.length !== 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
         }
         if (!email) {
@@ -316,7 +316,7 @@ let exportedMethods = {
      * @returns -1 if user was not found, else returns the timestamp
      */
     async getTimeStamp(email) {
-        if (arguments.length != 1) {
+        if (arguments.length !== 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
         }
         if (!email) {
@@ -340,7 +340,7 @@ let exportedMethods = {
      * @returns False if not updated, else returns number of failed attempts
      */
     async updateFailedAttempts(email) {
-        if (arguments.length != 1) {
+        if (arguments.length !== 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
         }
         if (!email) {
@@ -364,7 +364,7 @@ let exportedMethods = {
      * @returns False if not reset, else true
      */
     async resetFailedAttempts(email) {
-        if (arguments.length != 1) {
+        if (arguments.length !== 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
         }
         if (!email) {
@@ -388,7 +388,7 @@ let exportedMethods = {
    * @returns False if not updated, else true
    */
     async updateTimeStamp(email) {
-        if (arguments.length != 1) {
+        if (arguments.length !== 1) {
             throw new Error(errorMessages.wrongNumberOfArguments);
         }
         if (!email) {
