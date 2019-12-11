@@ -404,15 +404,12 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     }
 }
 
-<<<<<<< HEAD
 /**
  * Fetch preferences of a specific user
  * 
  * @param {*} userID ID of user to fetch preferences of
  * @returns Preferences of user
  */
-=======
->>>>>>> 789f8d2ca4cfcc6e05b2495847e60300c97cfafb
 async function getUserPreferences(userID){
     const user = await userFunctions.getUserById(userID);
     let userPreferences = await user.userPreferences;
