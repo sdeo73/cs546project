@@ -12,7 +12,7 @@ router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
-        let userPref = await userPrefFunctions.getUserPreferences(req.session.userID);
+        let userPref = await userPrefFunctions.getUserPreferences(userID);
         
         let numOfHrs;
         //Set number of hours based on tour type
@@ -45,7 +45,7 @@ router.get('/generateItinerary', async (req, res) => {
         const connection = await mongoConnection();
         
         const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
-        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, connection);
+        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,connection);
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         }
