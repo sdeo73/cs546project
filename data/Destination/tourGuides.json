@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Thokozani Crescenzo",
+        "email": "thokozani_crescenzo@toursbylocals.com",
+        "phone": "+971-04-5582595",
+        "dailyCost": 100,
+        "city": "Dubai",
+        "language": ["Arabic", "English", "French"]
+    },
+    {
+        "name": "Sandeep Sámuel",
+        "email": "sandeep_sámuel@dubaiprivatetour.com",
+        "phone": "+971-04-0728975",
+        "dailyCost": 150,
+        "city": "Dubai",
+        "language": ["Arabic", "Chinese", "English"]
+    },
+    {
+        "name": "Kasimira Timo",
+        "email": "kasimira_timo@milantoursdubai.com",
+        "phone": "+971-04-4032683",
+        "dailyCost": 85,
+        "city": "Dubai",
+        "language": ["Arabic", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Allochka Tryphaina",
+        "email": "allochka_tryphaina@isango.com",
+        "phone": "+971-04-4836146",
+        "dailyCost": 165,
+        "city": "Dubai",
+        "language": ["Arabic", "English", "Malayalam"]
+    },
+    {
+        "name": "Dorita Lázár",
+        "email": "dorita_lázár@meetingpoint.com",
+        "phone": "+971-04-5679306",
+        "dailyCost": 120,
+        "city": "Dubai",
+        "language": ["Arabic", "English", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Joann Nedyalko",
+        "email": "joann_nedyalko@raynatours.com",
+        "phone": "+971-04-2208121",
+        "dailyCost": 200,
+        "city": "Dubai",
+        "language": ["Arabic", "Chinese", "English", "French", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Vilhelmi Hiroko",
+        "email": "vilhelmi_hiroko@toursbylocals.com",
+        "phone": "+971-02-9040244",
+        "dailyCost": 100,
+        "city": "Abu Dhabi",
+        "language": ["Arabic", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Ernest Vinay",
+        "email": "ernest_vinay@dubaiprivatetour.com",
+        "phone": "+971-02-9360031",
+        "dailyCost": 140,
+        "city": "Abu Dhabi",
+        "language": ["Arabic", "English", "French"]
+    },
+    {
+        "name": "Lucilla Nzinga",
+        "email": "lucilla_nzinga@milantoursdubai.com",
+        "phone": "+971-02-8444289",
+        "dailyCost": 210,
+        "city": "Abu Dhabi",
+        "language": ["Arabic", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Mable Julijana",
+        "email": "mable_julijana@isango.com",
+        "phone": "+971-02-5331051",
+        "dailyCost": 243,
+        "city": "Abu Dhabi",
+        "language": ["Arabic", "Chinese", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Peg Fingal",
+        "email": "peg_fingal@toursbylocals.com",
+        "phone": "+971-09-1373072",
+        "dailyCost": 265,
+        "city": "Fujairah",
+        "language": ["Arabic", "English", "French"]
+    },
+    {
+        "name": "Amabel Ulisses",
+        "email": "amabel_ulisses@dubaiprivatetour.com",
+        "phone": "+971-09-2304999",
+        "dailyCost": 120,
+        "city": "Fujairah",
+        "language": ["Arabic", "French", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Sabina Diocles",
+        "email": "sabina_diocles@milantoursdubai.com",
+        "phone": "+971-09-9306680",
+        "dailyCost": 100,
+        "city": "Fujairah",
+        "language": ["Arabic", "Hindi", "Malayalam"]
+    },
+    {
+        "name": "Chlothar Isaak",
+        "email": "chlothar_isaak@isango.com",
+        "phone": "+971-09-8623890",
+        "dailyCost": 120,
+        "city": "Fujairah",
+        "language": ["Arabic", "Chinese", "English", "Malayalam"]
+    },
+    {
+        "name": "Silvie Yutke",
+        "email": "silvie_yutke@toursbylocals.com",
+        "phone": "+971-09-2188152",
+        "dailyCost": 175,
+        "city": "Fujairah",
+        "language": ["Arabic", "English", "French", "Hindi", "Malayalam"]
+    }
+]
