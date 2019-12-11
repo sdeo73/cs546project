@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/contact', async (req, res) => {
     try {
         res.status(200).render("pages/contact", {
-            title: "Contact Us"
+            title: "Contact"
         });
     } catch (error) {
         console.log("not found");

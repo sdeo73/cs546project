@@ -26,7 +26,7 @@
      display: inline-block;
 }
 
-body {
+.signupForm{
      background-image: url("../images/travelBackground.png");
      background-position: center;
      background-repeat: no-repeat;
@@ -35,7 +35,7 @@ body {
 }
 
 .head1 {
-     background-color: #007fac;
+     background-color: black;
      color: AliceBlue;
      font-weight: bold;
      font-size: 22px;
@@ -47,7 +47,7 @@ body {
 }
 
 #footer1 {
-     background-color: #007fac;
+     background-color: black;
      color: AliceBlue;
      font-weight: bold;
      font-size: 22px;
@@ -96,6 +96,12 @@ li a:hover {
      margin-top: 80px;
 }
 
+
+.home1 {
+     color: black;
+     display: inline-block;
+}
+
 .exact {
      margin-left: 45%;
 }
@@ -121,9 +127,9 @@ h1 {
      color: #4a8ab4;
 }
 
-.signupForm, .loginForm, .preferenceForm, .forgotpassword {
-     display: block;
-     text-align: center;
+.signupForm, .loginForm, .preferenceForm ,.forgotpassword,#termsForm{
+    display: block;
+    text-align: center;
 }
 
 #loginForm {
@@ -174,7 +180,20 @@ h1 {
      display: inline-block;
 }
 
-#preferences-form {
+#termsForm{
+     height: auto;
+     width: 50%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #80b5d8;
+     display: inline-block;
+     margin-top:5%;
+ }
+
+#preferences-form{
+
      height: auto;
      width: 68%;
      padding: 20px;
@@ -185,10 +204,10 @@ h1 {
      display: inline-block;
 }
 
-#shadow {
+/* #shadow {
      border: 3px solid;
      box-shadow: 5px 10px 18px #888888;
-}
+} */
 
 #signupForm label, #loginForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: black;
@@ -374,18 +393,17 @@ img {
 }
 
 #eg2 {
-     color: black;
+     color:black;
      font-weight: bold;
      font-family: 'Amatic SC', cursive;
      font-size: 30px;
 }
 
 .head1 {
-     background-color: #007fac;
+     background-color:black;;
      color: AliceBlue;
      font-weight: bold;
      font-size: 22px;
-     padding: 1px;
      font-weight: bold;
      font-family: 'Amatic SC', cursive;
 }
@@ -422,7 +440,7 @@ img {
 }
 
 .abtus-p2 {
-     color: teal;
+     color:#007fac;
      font-size: 34px;
      position: absolute;
      font-weight: bolder;
@@ -431,10 +449,12 @@ img {
 }
 
 .abtus-p1 {
-     color: teal;
-     font-size: 20px;
+     color:black;
+     font-size: 30px;
      position: absolute;
      font-weight: bolder;
+     font-family: 'Amatic SC', cursive;
+     margin-left:90px;
 }
 
 .img-abtus {
@@ -446,9 +466,11 @@ img {
 }
 
 .ctus {
-     width: 100%;
-}
+     width: 213%;
+     height: 400px;
 
+
+}
 .ctus-p {
      color: teal;
      font-size: 34px;
@@ -458,3 +480,28 @@ img {
      margin-left: 35%;
      margin-top: 1%;
 }
+
+.centered {
+     position: absolute;
+     top: 20%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     font-size: 60px;
+     font-weight: bolder;
+     font-family: 'Amatic SC', cursive ;
+     color:black;
+
+   }
+
+
+   .centered1 {
+     position: absolute;
+     top: 30%;
+     left: 46%;
+     transform: translate(-50%, -50%);
+     font-size: 22px;
+     font-family: 'Amatic SC', cursive ;
+     color:black;
+     font-weight: bold;
+
+   }
