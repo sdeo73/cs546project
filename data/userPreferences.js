@@ -153,7 +153,16 @@ async function updateUserMealPref(userID, newMealPreference) {
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
     }
-    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.mealPreference': newMealPreference } });
+
+    const mealPreferenceObject =  {
+        vegan: newMealPreference.includes("vegan"),
+        vegetarian: newMealPreference.includes("vegetarian"),
+        whiteMeat: newMealPreference.includes("whiteMeat"),
+        redMeat: newMealPreference.includes("redMeat"),
+        seafood: newMealPreference.includes("seafood"),
+        eggs: newMealPreference.includes("eggs")
+    }
+    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.mealPreference': mealPreferenceObject } });
     if (!updatedObject) {
         throw new Error(error.mealPrefUpdationFailed);
     } else {
@@ -395,6 +404,12 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     }
 }
 
+/**
+ * Fetch preferences of a specific user
+ * 
+ * @param {*} userID ID of user to fetch preferences of
+ * @returns Preferences of user
+ */
 async function getUserPreferences(userID){
     const user = await userFunctions.getUserById(userID);
     let userPreferences = await user.userPreferences;
