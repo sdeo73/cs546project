@@ -3,6 +3,8 @@ const dubai = require("../data/Destination/dubai.json");
 const prohibitedItems = require("../data/Destination/prohibitedItems.json");
 const packingList = require("../data/Destination/packingList.json");
 const tourGuides = require("../data/Destination/tourGuides.json");
+const users = require("../data/Destination/users.json");
+const signupFunctions = require("../data/signup");
 const tourGuidesFunctions = require("../data/tourGuides");
 const lawFunctions = require('../data/laws');
 const prohibitedItemFunctions = require('../data/prohibitedItems');
@@ -15,6 +17,18 @@ const destinations = mongoCollections.destinations;
 (async () => {
     try {
         let index;
+        //Insert initial user(s) from users.JSON into the database
+        for (index in users) {
+            try {
+                let user = users[index];
+                await signupFunctions.addUserWithoutHash(user.firstName, user.lastName, user.email, user.password, user.nationality);
+            } catch (error) {
+                if (error.name == "MongoError" && error.code == 11000) { //Error message and code in case of duplicate insertion
+                    index++; //Skip duplicate entry and continue
+                }
+            }
+        }
+
         //Insert all tour guides from tourGuides.JSON into the database
         for (index in tourGuides) {
             try {
