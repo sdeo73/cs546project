@@ -12,7 +12,7 @@
      text-align: center;
 }
 
-.invalidPassword{
+.invalidPassword, .emailExists{
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;

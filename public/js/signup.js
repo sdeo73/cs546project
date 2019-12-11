@@ -10,8 +10,6 @@ document.getElementById("addNationalities").addEventListener("click", event =>{
     $("#nationalities").append($dropdown);
 });
 
-
-
 $(document).on('click', '.deleteNationalities', function (event) {
     let id = event.target.id;
     let split_id = id.split('_');
@@ -20,7 +18,6 @@ $(document).on('click', '.deleteNationalities', function (event) {
     $("#"+nationality_to_delete).remove();
     this.remove();
 });
-
 
 $('#signupForm').submit( function(ev) {
     ev.preventDefault();
