@@ -3,6 +3,8 @@ const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
 const ObjectId = require("mongodb").ObjectID;
 
+// Removed modified count check in update functions so as to not throw an error in case user's new entered data in edit profile is same as existing data
+
 let exportedMethods = {
     /** 
      * Finds a specific user with the matching user id.
@@ -147,7 +149,7 @@ let exportedMethods = {
         };
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({ _id: ObjectId(userId) }, { $set: newUser });
-        if (!updatedUser || updatedUser.modifiedCount === 0) {
+        if (!updatedUser) {
             throw new errorMessages.UpdateUserError;
         }
 
@@ -180,7 +182,7 @@ let exportedMethods = {
         };
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({ _id: ObjectId(userId) }, { $set: newUser });
-        if (!updatedUser || updatedUser.modifiedCount === 0) {
+        if (!updatedUser) {
             throw new errorMessages.UpdateUserError;
         }
 
@@ -213,7 +215,7 @@ let exportedMethods = {
         };
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({ _id: ObjectId(userId) }, { $set: newUser });
-        if (!updatedUser || updatedUser.modifiedCount === 0) {
+        if (!updatedUser) {
             throw new errorMessages.UpdateUserError;
         }
 
@@ -246,7 +248,7 @@ let exportedMethods = {
         };
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({ _id: ObjectId(userId) }, { $set: newUser });
-        if (!updatedUser || updatedUser.modifiedCount === 0) {
+        if (!updatedUser) {
             throw new errorMessages.UpdateUserError;
         }
 
