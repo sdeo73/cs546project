@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        const nationality = xss(req.body.nationality, {
+        let nationality = xss(req.body.nationality, {
             whiteList: [], 
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
@@ -47,10 +47,7 @@ router.post('/signup', async (req, res) => {
         if (await signupData.checkIfEmailTaken(email)) {
             return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
         } else {
-            let nationalities = [];
-            if(!Array.isArray(nationality)){
-                nationalities = [nationality];
-            }
+            let nationalities = nationality.split(',');
             const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
             if (inserted == true) {
                 res.status(200).redirect("../login");
