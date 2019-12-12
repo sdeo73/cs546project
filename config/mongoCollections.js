@@ -18,5 +18,6 @@ module.exports = {
   destinations: getCollectionFn("destinations"),
   laws: getCollectionFn("laws"),
   prohibitedItems: getCollectionFn("prohibitedItems"),
-  packing: getCollectionFn("packing")
+  packing: getCollectionFn("packing"),
+  tourGuides: getCollectionFn("tourGuides")
 };
