@@ -178,7 +178,7 @@ let exportedMethods = {
 
         //updates the user's last name
         const newUser = {
-            firstName: newlastName
+            lastName: newlastName
         };
         const usersCollection = await users();
         const updatedUser = await usersCollection.updateOne({ _id: ObjectId(userId) }, { $set: newUser });
