@@ -26,12 +26,21 @@
      display: inline-block;
 }
 
-.signupForm{
+.signupForm,.loginForm,.forgotpassword{
      background-image: url("../images/travelBackground.png");
      background-position: center;
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-size: 100% 100%;
+}
+
+.background,.home{
+     background-image: url("../images/travelBackground.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+     margin-bottom: 40px;
 }
 
 .head1 {
@@ -93,7 +102,7 @@ li a:hover {
 .home {
      color: black;
      display: inline-block;
-     margin-top: 80px;
+     margin-top: 100px;
 }
 
 
@@ -103,13 +112,12 @@ li a:hover {
 }
 
 .exact {
-     margin-left: 45%;
+     margin-left: 45%
 }
-
 .button1 {
      background-color: teal;
      border: none;
-     color: blanchedalmond;
+     color:blanchedalmond;
      padding: 15px 32px;
      text-align: center;
      text-decoration: none;
@@ -169,7 +177,7 @@ h1 {
      text-align: initial;
 }
 
-#signupForm, #loginForm {
+#signupForm  {
      height: auto;
      width: 30%;
      padding: 20px;
@@ -178,6 +186,22 @@ h1 {
      box-shadow: 5px 10px 18px #888888;
      background-color: #80b5d8;
      display: inline-block;
+     margin-bottom: 100px;
+     margin-top:10px;
+}
+
+#loginForm
+{
+     height: auto;
+     width: 30%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #80b5d8;
+     display: inline-block;
+     margin-bottom: 100px;
+     margin-top:100px;
 }
 
 #termsForm{
@@ -355,7 +379,7 @@ img {
      width: 100%;
      opacity: 0;
      transition: .5s ease;
-     background-color: teal;
+     background-color:teal;
 }
 
 .container:hover .overlay {
@@ -431,20 +455,18 @@ img {
 
 .abtus-p {
      color:teal;
-     font-size: 34px;
+     font-size: 25px;
      position: absolute;
-     font-weight: bolder;
-     font-family: 'Amatic SC', cursive;
+    font-family: 'Titillium Web', sans-serif;
      margin-left: 25%;
      margin-top: 1%;
 }
 
 .abtus-p2 {
      color:teal;
-     font-size: 34px;
+     font-size: 25px;
      position: absolute;
-     font-weight: bolder;
-     font-family: 'Amatic SC', cursive;
+     font-family: 'Titillium Web', sans-serif;
      margin-left: 5%;
 }
 
@@ -506,3 +528,8 @@ img {
      font-weight: bold;
 
    }
+/* 
+   .footerspace
+   {
+        margin-top: 10%;
+   } */
