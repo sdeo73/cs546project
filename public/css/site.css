@@ -2,14 +2,9 @@
 
 #firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing,
  #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage,#destination-missing,
-<<<<<<< HEAD
- #mealPref-missing, #tourType-missing, #activity-missing, #specialneeds-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
- #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits{
-=======
  #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
  #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError,
  #duplicateNationalities, #specialneeds-missing{
->>>>>>> 57fc10b353a8275220e539be25138e2ad17b9560
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
