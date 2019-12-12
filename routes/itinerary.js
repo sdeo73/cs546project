@@ -45,7 +45,8 @@ router.get('/generateItinerary', async (req, res) => {
         const connection = await mongoConnection();
         
         const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
-        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,connection);
+        const totalSpent = await itineraryFunctions.getTotalExpense();
+        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,totalSpent,connection);
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         }

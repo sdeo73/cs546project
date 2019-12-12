@@ -16,8 +16,8 @@ const fs = require('fs');
  * @param {*} userID The user ID for whom the itinerary is being generated
  * @param {*} connection Mongo connection
  */
-async function generateItineraryPDF(itinerary, userID, travelDates, destination, tourType, connection) {
-    if (arguments.length != 6) {
+async function generateItineraryPDF(itinerary, userID, travelDates, destination, tourType, totalSpent, connection) {
+    if (arguments.length != 7) {
         throw new Error(errorMessages.wrongNumberOfArguments);
     } else if (!itinerary) {
         throw new Error(errorMessages.itineraryUndefined);
@@ -46,36 +46,55 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
     //Initialize new PDF document
     let doc = new PDFDocument();
     let page = doc.page;
+    doc.registerFont('Regular', 'public/fonts/TitilliumWeb-Regular.ttf');
+    doc.registerFont('Bold', 'public/fonts/TitilliumWeb-Bold.ttf');
+    doc.registerFont('SemiBold', 'public/fonts/TitilliumWeb-SemiBold.ttf');
+
     doc.pipe(fs.createWriteStream('public/uploads/itinerary.pdf'));
-    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Destination: " + `${destination}`);
-    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Travel Start Date: " + `${travelDates.start}`);
-    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Travel End Date: " + `${travelDates.end}`);
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Destination: " + `${destination}`);
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Travel Start Date: " + `${travelDates.start}`);
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Travel End Date: " + `${travelDates.end}`);
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Total Cost: $" + `${totalSpent}`);
     doc.image('public/images/plane.jpg', 350, 35, { fit: [100, 100], align: 'right', valign: 'center' });
     doc.moveDown();
     let day = 1;
     for (var key in itinerary) {
-        doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight() + 7).fill('#4a8ab4');
-        doc.fillColor('white').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Day " + `${day}`);
+        doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight()).fill('#4a8ab4');
+        doc.fillColor('white').font('Bold').fontSize(14).text("Day " + `${day}`);
         ++day;
-        for (var index = 0; index < itinerary[key].length; index++) {
-            doc.moveDown();
-            let color;
-            if (itinerary[key][index].group == 'thingToDo') {
-                color = "#00b3b3";
-            } else {
-                color = "#ffaa00";
-            }
-            doc.fillColor(`${color}`).font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Name:" + `${itinerary[key][index].name}`);
-            doc.fillColor(`${color}`).font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Address:" + `${itinerary[key][index].location}`);
-            doc.fillColor(`${color}`).font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Average cost per person: $" + `${itinerary[key][index].avgCostPerPerson}`);
+        doc.moveDown();
 
-            if (itinerary[key][index].group == 'thingToDo') {
-                doc.fillColor(`${color}`).font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Average time spent: " + `${itinerary[key][index].avgTimeSpent}` + " hr");
-            } else {
-                doc.fillColor(`${color}`).font('public/fonts/Titillium-Regular.otf').fontSize(15).text("Type: Restaurant");
+        //Add all restaurants 
+        doc.fillColor('#00b3b3').font('Bold').fontSize(14).text("Restaurants:");
+        for (let index = 0; index < itinerary[key].length; index++) {
+            if (itinerary[key][index].group == 'restaurant') {
+                let cuisine = itinerary[key][index].cuisine;
+                let mealPreference = constructMealPreference(itinerary[key][index].mealPreferences);
+                let specialNeeds = itinerary[key][index].specialNeeds ? 'Yes' : 'No';
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Name: ", { continued: true }).font('Regular').text(`${itinerary[key][index].name}`);
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Address: ", { continued: true }).font('Regular').text(`${itinerary[key][index].location}`);
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Cuisine: ", { continued: true }).font('Regular').text(`${cuisine.slice(0, cuisine.length)}`);
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Meal Type: ", { continued: true }).font('Regular').text(`${mealPreference.slice(0, mealPreference.length)}`);
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Average Cost Per Person: $", { continued: true }).font('Regular').text(`${itinerary[key][index].avgCostPerPerson}`);
+                doc.fillColor('#00b3b3').font('SemiBold').fontSize(14).text("Special Needs Assistance: ", { continued: true }).font('Regular').text(`${specialNeeds}`);
+                doc.moveDown();
             }
         }
-        doc.moveDown();
+
+        //Add all things to do
+        doc.fillColor('#ffaa00').font('Bold').fontSize(14).text("Things To Do:");
+        for (let index = 0; index < itinerary[key].length; index++) {
+            if (itinerary[key][index].group == 'thingToDo') {
+                let specialNeeds = itinerary[key][index].specialNeeds ? 'Yes' : 'No';
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Name: ", { continued: true }).font('Regular').text(`${itinerary[key][index].name}`);
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Address: ", { continued: true }).font('Regular').text(`${itinerary[key][index].location}`);
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Type: ", { continued: true }).font('Regular').text(`${itinerary[key][index].type}`);
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Average Time Spent: ", { continued: true }).font('Regular').text(`${itinerary[key][index].avgTimeSpent}` + " hr");
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Average Cost Per Person: $", { continued: true }).font('Regular').text("Average cost per person: $" + `${itinerary[key][index].avgCostPerPerson}`);
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Special Needs Assistance: ", { continued: true }).font('Regular').text(`${specialNeeds}`);
+                doc.moveDown();
+            }
+        }
     }
 
     const destinationCollection = await destinations();
@@ -84,60 +103,60 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
     //Add Packing List
     doc.addPage();
     const packingList = await packingFunctions.generatePackingList(travelDates, country, tourType);
-    doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight() + 7).fill('#4a8ab4');
-    doc.fillColor('white').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Packing List");
+    doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight()).fill('#4a8ab4');
+    doc.fillColor('white').font('Bold').fontSize(14).text("Packing List", { lineBreak: true, align: 'left' });
     doc.moveDown();
-    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(packingList, { indent: 20, bulletIndent: 20, textIndent: 20, columns: 2, columnGap: 50, align: 'justify' })
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(packingList, { indent: 20, bulletIndent: 20, textIndent: 20, columns: 2, columnGap: 50, align: 'justify' })
 
 
     //Add Country Customs
     doc.addPage();
     if (country !== null) {
-        doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight() + 7).fill('#4a8ab4');
-        doc.fillColor('white').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Country Customs");
+        doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight()).fill('#4a8ab4');
+        doc.fillColor('white').font('Bold').fontSize(14).text("Country Customs");
         doc.moveDown();
 
         //Add Vaccinations
         let countryCustoms = country.countryCustoms;
         let vaccinations = countryCustoms.vaccinations;
         if (vaccinations.length == 0) {
-            doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Vaccinations: None");
+            doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Vaccinations: None");
         } else {
             vaccinations = vaccinations.toString();
             vaccinations.slice(1, vaccinations.length - 1);
-            doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Vaccinations: " + `${vaccinations}`);
+            doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Vaccinations: " + `${vaccinations}`);
         }
-        doc.moveDown();
 
         //Add Cash Limit
-        doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Cash Limit: " + `${countryCustoms.cashLimit}`);
+        doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Cash Limit: $" + `${countryCustoms.cashLimit}`);
         doc.moveDown();
 
         //Add Prohibited Items
-        doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Prohibited Items:");
+        doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Prohibited Items:");
         for (index in countryCustoms.prohibitedItems) {
             let item = await itemFunctions.getProhibitedItemById(countryCustoms.prohibitedItems[index]);
-            doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list([`${item.item_name}`], { indent: 20, bulletIndent: 20, textIndent: 20 })
+            doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list([`${item.item_name}`], { bulletIndent: 20, textIndent: 20, align: 'justify' })
         }
         doc.moveDown();
 
         //Add Laws
-        doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Local Laws:");
+        doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Local Laws:");
         for (index in countryCustoms.laws) {
+            doc.text("");
             let law = await lawFunctions.getLawById(countryCustoms.laws[index]);
-            doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list([`${law.description}`], { indent: 20, bulletIndent: 20, textIndent: 20 })
+            doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list([`${law.description}`], { bulletIndent: 20, textIndent: 20, align: 'left' })
         }
         doc.moveDown();
 
         //Add Emergency Contacts
-        doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Emergency Contacts:");
+        doc.fillColor('#4a8ab4').font('Bold').fontSize(14).text("Emergency Contacts:");
         let emergencyContact = countryCustoms.emergencyContacts;
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Police: " + `${emergencyContact.police}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Ambulance: " + `${emergencyContact.ambulance}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Fire Department: " + `${emergencyContact.fireDepartment}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Coastguard: " + `${emergencyContact.coastguard}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Electricity Concern: " + `${emergencyContact.electricityFailure}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
-        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Water Concern: " + `${emergencyContact.waterFailure}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Police: " + `${emergencyContact.police}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Ambulance: " + `${emergencyContact.ambulance}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Fire Department: " + `${emergencyContact.fireDepartment}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Coastguard: " + `${emergencyContact.coastguard}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Electricity Concern: " + `${emergencyContact.electricityFailure}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
+        doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Water Concern: " + `${emergencyContact.waterFailure}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
     }
 
     doc.end();
@@ -220,6 +239,30 @@ async function deleteItineraryFromDatabase(userID, bucket) {
     if (file.length != 0) {
         bucket.delete(file[0]._id);
     }
+}
+
+function constructMealPreference(mealPreference) {
+    if (arguments.length !== 1) {
+        throw new Error(errorMessages.wrongNumberOfArguments);
+    }
+
+    for (index in mealPreference) {
+        if (mealPreference[index] == 'vegan') {
+            mealPreference[index] = 'Vegan';
+        } else if (mealPreference[index] == 'vegetarian') {
+            mealPreference[index] = 'Vegetarian';
+        } else if (mealPreference[index] == 'whiteMeat') {
+            mealPreference[index] = 'White Meat';
+        } else if (mealPreference[index] == 'redMeat') {
+            mealPreference[index] = 'Red Meat';
+        } else if (mealPreference[index] == 'seafood') {
+            mealPreference[index] = 'Seafood';
+        } else if (mealPreference[index] == 'eggs') {
+            mealPreference[index] = 'Eggs';
+        }
+    }
+
+    return mealPreference;
 }
 
 module.exports = {
