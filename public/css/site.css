@@ -43,6 +43,16 @@
      margin-bottom: 40px;
 }
 
+#error404
+{
+     background-image: url("../images/travelBackground.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+    
+}
+
 .head1 {
      background-color: black;
      color: AliceBlue;
@@ -402,7 +412,6 @@ img {
 
 #eg {
      color: black;
-     font-weight: bold;
      font-family: 'Titillium Web', sans-serif;
      font-size: 30px;
 }
@@ -418,7 +427,6 @@ img {
 
 #eg2 {
      color:black;
-     font-weight: bold;
      font-family: 'Titillium Web', sans-serif;
      font-size: 30px;
 }
@@ -458,16 +466,17 @@ img {
      font-size: 25px;
      position: absolute;
     font-family: 'Titillium Web', sans-serif;
-     margin-left: 25%;
+     
      margin-top: 1%;
 }
 
 .abtus-p2 {
      color:teal;
-     font-size: 25px;
+     font-size: 23px;
      position: absolute;
      font-family: 'Titillium Web', sans-serif;
-     margin-left: 5%;
+     margin-left: 20%;
+    margin-top: 2%;
 }
 
 .abtus-p1 {
@@ -480,6 +489,11 @@ img {
 }
 
 .img-abtus {
+     width: 120%;
+     height: 400px;
+}
+
+.img-er404 {
      width: 100%;
      height: 400px;
 }
