@@ -48,7 +48,13 @@ router.post('/signup', async (req, res) => {
             return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
         } else {
             let nationalities = nationality.split(',');
-            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
+            let nationalitiesNoNull = [];
+            for(let i=0; i<nationalities.length; i++){
+                if(nationalities[i] != ""){
+                    nationalitiesNoNull.push(nationalities[i]);
+                }
+            }
+            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalitiesNoNull);
             if (inserted == true) {
                 res.status(200).redirect("../login");
             } else {

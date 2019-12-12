@@ -3,6 +3,7 @@ const loginRoutes = require('./login');
 const userPrefRoutes = require('./userPreferences');
 const editPrefRoutes = require('./editPreferences');
 const itineraryRoutes = require('./itinerary');
+const editProfileRoutes = require('./editProfile');
 
 const constructorMethod = app => {
     app.use("/", loginRoutes);
@@ -10,6 +11,7 @@ const constructorMethod = app => {
     app.use("/", userPrefRoutes);
     app.use("/", editPrefRoutes);
     app.use("/", itineraryRoutes);
+    app.use("/", editProfileRoutes);
   
     app.use("*", (req, res) => {
       res.sendStatus(404);
