@@ -10,7 +10,6 @@ const error404 =require('./error404');
 const terms= require('./terms');
 const explore= require('./explore');
 const editPrefRoutes = require('./editPreferences');
-const itineraryRoutes = require('./itinerary');
 const editProfileRoutes = require('./editProfile');
 
 const constructorMethod = app => {
