@@ -3,12 +3,22 @@
 #firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing,
  #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage,#destination-missing,
  #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
- #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits, #specialneeds-missing{
+ #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError,
+ #duplicateNationalities, #specialneeds-missing{
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
      color: red;
+     text-align: center;
+}
+
+#updateSuccess{
+     display: none;
+     font-size: 15px;
+     font-family: 'Titillium Web', sans-serif;
+     font-weight: bold;
+     color: green;
      text-align: center;
 }
 
@@ -21,6 +31,16 @@
 }
 
 .error-msg {
+     background-color: #a0c0d4;
+     padding: 5px;
+     margin: 5px;
+     width: 300px;
+     margin-left: auto;
+     margin-right: auto;
+     display: inline-block;
+}
+
+.success-msg{
      background-color: #a0c0d4;
      padding: 5px;
      margin: 5px;
@@ -46,7 +66,7 @@ h1 {
      color: #4a8ab4;
 }
 
-.signupForm, .loginForm, .preferenceForm, .editPreferenceForm {
+.signupForm, .loginForm, .preferenceForm, .editPreferenceForm, .editProfileForm{
     display: block;
     text-align: center;
 }
@@ -67,7 +87,7 @@ h1 {
      text-align: initial;
 }
 
-#signupForm,#loginForm{
+#signupForm,#loginForm, #editProfileForm{
     height: auto;
     width: 30%;
     padding: 20px;
@@ -78,7 +98,7 @@ h1 {
     display: inline-block;
 }
 
-#signupForm label, #loginForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], 
+#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], 
 label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input],
 label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: white;
@@ -97,7 +117,7 @@ label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input
      margin-left: 6%;
 }
 
-#signupForm input, #loginForm input{
+#signupForm input, #loginForm input, #editProfileForm input{
      padding: 5px;
 }
 
@@ -107,7 +127,7 @@ label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input
 
 }
 
-#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder, #edit-preferences-form input::placeholder {
+#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder, #edit-preferences-form input::placeholder , #editProfileForm input::placeholder{
      font-family: 'Titillium Web', sans-serif;
      text-align: center;
      color: #4a8ab4;
@@ -136,7 +156,11 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
     cursor: pointer;
 }
 
-#signupForm ul {
+#signupForm , #editProfileForm ul{
+     list-style: none;
+}
+
+#nationalities{
      list-style: none;
 }
 

@@ -1,46 +1,18 @@
-<div class="signupForm">
+<div class="editProfileForm">
     <main>
-        <form id="signupForm" action="/signup" , method="POST">
+        <form id="editProfileForm" action="/editprofile" method="POST">
             <label>First Name:</label>
-            <input type="text" name="firstName" value="" placeholder="Enter your first name">
-            <br>
-            <div class="error-msg" id="firstNameMissing">
-                <!--Referred from https://dobsondev.com/2014/11/14/error-success-warning-info-messages/ -->
-                <i class="fa fa-times-circle"></i>
-                First name is required!
-            </div>
+            <input type="text" name="firstName" id= "firstName" value="" placeholder="Enter new first name">
             <br>
             <label>Last Name:</label>
-            <input type="text" name="lastName" value="" placeholder="Enter your last name">
-            <br>
-            <div class="error-msg" id="lastNameMissing">
-                <i class="fa fa-times-circle"></i>
-                Last name is required!
-            </div>
+            <input type="text" name="lastName" id= "lastName" value="" placeholder="Enter new last name">
             <br>
             <label>Email:</label>
-            <input type="email" name="email" value="" placeholder="Enter your email">
+            <input type="email" name="email" id = "email" value="" placeholder="Enter new email">
             <br>
-            <div class="error-msg" id="emailMissing">
+            <div class="error-msg" id="emailExists">
                 <i class="fa fa-times-circle"></i>
-                Email is required!
-            </div>
-            <br>
-            <label>Password:</label>
-            <input type="password" name="password" value="" placeholder="Enter your password" pattern=".{8,15}"
-                title="Password must be between 8 to 15 characters">
-            <br>
-            <div class="error-msg" id="passwordMissing">
-                <i class="fa fa-times-circle"></i>
-                Password is required!
-            </div>
-            <br>
-            <label>Re-enter password:</label>
-            <input type="password" name="repassword" value="" placeholder="Re-enter your password">
-            <br>
-            <div class="error-msg" id="repasswordMissing">
-                <i class="fa fa-times-circle"></i>
-                Passwords do not match!
+                This email already exists!
             </div>
             <br>
             <label for="nationalities">Nationality:</label>
@@ -244,21 +216,26 @@
                     <button id="addNationalities" type="button">+</button>
                 </li>
             </ul>
-            <div class="error-msg" id="nationalityMissing">
-                <i class="fa fa-times-circle"></i>
-                Please select atleast one nationality!
-            </div>
+            <br>
+            <button type="submit" formmethod="post">Submit</button>
+            <br>
+            <br>
             <div class="error-msg" id="duplicateNationalities">
                 <i class="fa fa-times-circle"></i>
                 Please do not select duplicate nationalities!
             </div>
-            <p class="emailExists">{{emailExistsError}}</p>
-            <br>
-            <br>
-            <button type="submit">Submit</button>
-            <br>
-            <br>
-            <a id="login_button" href="/login" type="text/html">Log In Here</a>
+             <div class="error-msg" id="noChangeError">
+                <i class="fa fa-times-circle"></i>
+                Please select atleast one field to change!
+            </div>
+             <div class="error-msg" id="serverError">
+                <i class="fa fa-times-circle"></i>
+                Profile Updation failed!
+            </div>
+             <div class="error-msg" id="updateSuccess">
+                <i class="fa fa-times-circle"></i>
+                Profile Updated Successfully!
+            </div>
         </form>
     </main>
 </div>
