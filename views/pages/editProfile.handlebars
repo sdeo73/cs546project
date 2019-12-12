@@ -220,14 +220,21 @@
             <button type="submit" formmethod="post">Submit</button>
             <br>
             <br>
+            <div class="error-msg" id="duplicateNationalities">
+                <i class="fa fa-times-circle"></i>
+                Please do not select duplicate nationalities!
+            </div>
              <div class="error-msg" id="noChangeError">
                 <i class="fa fa-times-circle"></i>
                 Please select atleast one field to change!
             </div>
-            <br>
              <div class="error-msg" id="serverError">
                 <i class="fa fa-times-circle"></i>
                 Profile Updation failed!
+            </div>
+             <div class="error-msg" id="updateSuccess">
+                <i class="fa fa-times-circle"></i>
+                Profile Updated Successfully!
             </div>
         </form>
     </main>

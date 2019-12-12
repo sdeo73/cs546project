@@ -238,7 +238,7 @@ let exportedMethods = {
         if (!userId || typeof (userId) != "string" || userId.length == 0) {
             throw new errorMessages.userIDInvalid;
         }
-        if (!nation || typeof (nation) != "string" || nation.length == 0) {
+        if (!nation || !Array.isArray(nation) || nation.length == 0) {
             throw new errorMessages.InvalidCountryName;
         }
 

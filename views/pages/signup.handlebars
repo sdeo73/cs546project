@@ -1,4 +1,4 @@
-<div class=signupForm>
+<div class="signupForm">
     <main>
         <form id="signupForm" action="/signup" , method="POST">
             <label>First Name:</label>
@@ -247,6 +247,10 @@
             <div class="error-msg" id="nationalityMissing">
                 <i class="fa fa-times-circle"></i>
                 Please select atleast one nationality!
+            </div>
+            <div class="error-msg" id="duplicateNationalities">
+                <i class="fa fa-times-circle"></i>
+                Please do not select duplicate nationalities!
             </div>
             <p class="emailExists">{{emailExistsError}}</p>
             <br>

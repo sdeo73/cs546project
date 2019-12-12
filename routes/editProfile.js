@@ -21,7 +21,6 @@ router.get('/editprofile', async (req, res) => {
             title: "Edit Profile"
         });
     } catch (error) {
-        console.log("not found");
         res.sendStatus(404);
     }
 });
@@ -48,34 +47,51 @@ router.post('/editprofile', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        if (email && email.length > 0 && await signupData.checkIfEmailTaken(email)) {
-            res.writeHead(200, { 'Content-Type': 'application/json' }); 
-            return res.end(JSON.stringify({message: "emailExists"}));
-        } else {
-            let nationalities = [];
-            if(!Array.isArray(nationality)){
-                nationalities = [nationality];
-            }
-    
-            if(firstName && firstName.length > 0){
-                await userData.updateFirstName(req.session.userID, firstName);
-            }
-            if(lastName && lastName.length > 0){
-                await userData.updateLastName(req.session.userID, lastName);
-            }
-            if(email && email.length > 0){
-                await userData.updateEmail(req.session.userID, email);
-            }
-            if(nationality && nationality.length > 0){
-                await userData.updateNationality(req.session.userID, nationality);
-            }
-            const updatedUser = await userData.getUserById(req.session.userID);
-            const newName = updatedUser.firstName + " " + updatedUser.lastName;
-            res.writeHead(200, { 'Content-Type': 'application/json' }); 
-            return res.end(JSON.stringify({message: newName}));
+        if (email && email.length > 0) {
+            if(await signupData.checkIfEmailTaken(email)){
+                let user = await userData.getUserById(req.session.userID);
+                if(user.email != email){
+                    res.writeHead(401, { 'Content-Type': 'application/json' }); 
+                    return res.end(JSON.stringify({message: "emailExists"}));
+                }
+            } 
+        } 
+        let nationalities = nationality.split(',');
+
+        if(firstName && firstName.length > 0){
+            await userData.updateFirstName(req.session.userID, firstName);
         }
-    } catch (error) {
+        if(lastName && lastName.length > 0){
+            await userData.updateLastName(req.session.userID, lastName);
+        }
+        if(email && email.length > 0){
+            await userData.updateEmail(req.session.userID, email);
+        }
+        if(nationalities && nationalities.length > 0){
+            let nationalitiesNoNull = [];
+            for(let i=0; i<nationalities.length; i++){
+                if(nationalities[i] != ""){
+                    nationalitiesNoNull.push(nationalities[i]);
+                }
+            }
+            if(nationalitiesNoNull.length > 0){
+                let nationalitiesSetSize = (new Set(nationalitiesNoNull)).size;
+                if(nationalitiesSetSize != nationalitiesNoNull.length){
+                    res.writeHead(401, { 'Content-Type': 'application/json' }); 
+                    return res.end(JSON.stringify({message: "duplicateNationalities"}));
+                }else{
+                    await userData.updateNationality(req.session.userID, nationalitiesNoNull);
+                }
+            }  
+        }
+        const updatedUser = await userData.getUserById(req.session.userID);
+        const newName = updatedUser.firstName + " " + updatedUser.lastName;
         res.writeHead(200, { 'Content-Type': 'application/json' }); 
+        return res.end(JSON.stringify({message: newName}));
+        
+    } catch (error) {
+        console.log(error);
+        res.writeHead(400, { 'Content-Type': 'application/json' }); 
         return res.end(JSON.stringify({message: "serverError"}));
     }
 });

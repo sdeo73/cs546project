@@ -47,11 +47,14 @@ router.post('/signup', async (req, res) => {
         if (await signupData.checkIfEmailTaken(email)) {
             return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
         } else {
-            let nationalities = [];
-            if(!Array.isArray(nationality)){
-                nationalities = [nationality];
+            let nationalities = nationality.split(',');
+            let nationalitiesNoNull = [];
+            for(let i=0; i<nationalities.length; i++){
+                if(nationalities[i] != ""){
+                    nationalitiesNoNull.push(nationalities[i]);
+                }
             }
-            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalities);
+            const inserted = await signupData.addUser(firstName, lastName, email, password, nationalitiesNoNull);
             if (inserted == true) {
                 res.status(200).redirect("../login");
             } else {
