@@ -277,6 +277,9 @@ async function generateCompleteItinerary(userPreferences) {
     if (Number.isNaN(userPreferences.hoursPerDay) || Number.isNaN(userPreferences.maxBudgetPerPerson) || Number.isNaN(userPreferences.numOfDays) || Number.isNaN(userPreferences.numOfTravelers)) {
         throw new Error(errorMessages.itineraryArgumentIncorrectType);
     }
+    if (typeof userPreferences.mealPreference != "object" || Object.keys(userPreferences.mealPreference).length != 6 || typeof userPreferences.specialNeeds != "boolean") {
+        throw new Error(errorMessages.itineraryArgumentIncorrectType);
+    }
 
     //gets thingsToDo and restaurants from the database.
     let destinationObj = await destinationFunctions.getDestinationById(userPreferences.destinationId);
@@ -334,4 +337,18 @@ function generateTourTypePriority(tourType) {
     return priorityList[tourType.toLowerCase()];
 }
 
-module.exports = {generateCompleteItinerary};
+/** 
+ * Returns the total number of hours spent for the whole trip.
+*/
+function getTotalHoursSpent() {
+    return totalHours;
+}
+
+/** 
+ * Returns the total amount of money spent for the whole trip.
+*/
+function getTotalExpense() {
+    return totalSpent;
+}
+
+module.exports = {generateCompleteItinerary, getTotalHoursSpent, getTotalExpense};
