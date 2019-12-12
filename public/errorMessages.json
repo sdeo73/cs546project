@@ -116,5 +116,8 @@
     "locationArgumentIncorrectType": "Argument of incorrect type in location!",
     "itineraryArgumentMissing": "Argument missing in itinerary!",
     "itineraryArgumentIncorrectType": "Argument of incorrect type in itinerary",
+    "editPrefNoPref":"No preference selected to change",
+    "editPrefNoStartDate":"Please specify a start date",
+    "editPrefNoEndDate":"Please specify an end date", 
     "itineraryUndefined": "Error, itinerary object is undefined!"
 }
