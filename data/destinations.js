@@ -415,7 +415,6 @@ let exportedMethods = {
         if (!singleDestination) {
             throw new Error(errorMessages.DestinationNotFound);
         }
-        console.log(singleDestination.countryCustoms.emergencyContacts);
         return singleDestination.countryCustoms.emergencyContacts;
     }
 };
