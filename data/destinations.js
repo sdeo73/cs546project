@@ -59,7 +59,7 @@ let exportedMethods = {
             throw new Error(errorMessages.DestinationInsertionError);
         }
         
-        //gets the inserted animal and returns it
+        //gets the inserted destination and returns it
         const newId = insertedDestination.insertedId;
         const destinationResult = await this.getDestinationById(newId.toString()); 
         return destinationResult; 
@@ -391,6 +391,31 @@ let exportedMethods = {
             throw new Error(errorMessages.UpdateDestinationError);
         }
         return newThing;
+    },
+    /** 
+     * Gets the emergency contacts of a specific destination. 
+     * Returns the destination's emergency contacts found else throws error if invalid argument type
+     * was provided or no destination object was found.
+     * 
+     * @param destinationId destination id in string format
+     * @returns emergencyContacts an object of emergency contacts of the given destination
+    */
+    async getDestinationEmergencyById(destinationId) {
+        //validates number of arguments
+        if (arguments.length != 1) {
+            throw new Error(errorMessages.wrongNumberOfArguments);
+        }
+        //validates arguments type
+        if (!destinationId || typeof(destinationId) != "string" || destinationId.length == 0) {
+            throw new Error(errorMessages.InvalidDestinationId);
+        }
+        //gets the specific destination
+        const destinationsCollection = await destinations();
+        const singleDestination = await destinationsCollection.findOne({_id: ObjectId(destinationId)});
+        if (!singleDestination) {
+            throw new Error(errorMessages.DestinationNotFound);
+        }
+        return singleDestination.countryCustoms.emergencyContacts;
     }
 };
 

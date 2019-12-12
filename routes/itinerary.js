@@ -25,7 +25,7 @@ router.get('/generateItinerary', async (req, res) => {
         }
         //Calculate number of days of travel
         let timeDifference = new Date(userPref.travelDates.end).getTime() - new Date(userPref.travelDates.start).getTime();
-        let numberOfDays = timeDifference / (1000 * 3600 * 24);
+        let numberOfDays = (timeDifference / (1000 * 3600 * 24))+1;
 
         //Get destination ID 
         let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.destination }))._id.toString();

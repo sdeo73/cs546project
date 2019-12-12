@@ -87,7 +87,7 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
     doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight() + 7).fill('#4a8ab4');
     doc.fillColor('white').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Packing List");
     doc.moveDown();
-    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(packingList, { indent: 20, bulletIndent: 20, textIndent: 20, columns:2, columnGap:50, align: 'justify'})
+    doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(packingList, { indent: 20, bulletIndent: 20, textIndent: 20, columns: 2, columnGap: 50, align: 'justify' })
 
 
     //Add Country Customs
@@ -129,6 +129,15 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
         }
         doc.moveDown();
 
+        //Add Emergency Contacts
+        doc.fillColor('#4a8ab4').font('public/fonts/TitilliumWeb-Bold.ttf').fontSize(15).text("Emergency Contacts:");
+        let emergencyContact = countryCustoms.emergencyContacts;
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Police: " + `${emergencyContact.police}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Ambulance: " + `${emergencyContact.ambulance}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Fire Department: " + `${emergencyContact.fireDepartment}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Coastguard: " + `${emergencyContact.coastguard}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Electricity Concern: " + `${emergencyContact.electricityFailure}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
+        doc.fillColor('#4a8ab4').font('public/fonts/Titillium-Regular.otf').fontSize(15).list(["Water Concern: " + `${emergencyContact.waterFailure}`], { indent: 20, bulletIndent: 20, textIndent: 20 });
     }
 
     doc.end();
