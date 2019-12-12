@@ -4,7 +4,7 @@
  #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage,#destination-missing,
  #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
  #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError,
- #duplicateNationalities{
+ #duplicateNationalities, #specialneeds-missing{
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;

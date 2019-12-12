@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        const nationality = xss(req.body.nationality, {
+        let nationality = xss(req.body.nationality, {
             whiteList: [], 
             stripIgnoreTag: true,
             stripIgnoreTagBody: []

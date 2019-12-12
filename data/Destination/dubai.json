@@ -1308,6 +1308,14 @@
 		"vaccinations": [],
 		"cashLimit": 27226,
 		"prohibitedItems": [],
-		"laws": []
+		"laws": [],
+		"emergencyContacts": {
+			"Police": "999",
+			"Ambulance": "998",
+			"Fire Department": "997",
+			"Coastguard": "996",
+			"Water Failure": "992",
+			"Electricity Failure": "991"
+		}
 	}
 }
