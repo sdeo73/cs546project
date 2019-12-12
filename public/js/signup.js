@@ -10,8 +10,6 @@ document.getElementById("addNationalities").addEventListener("click", event =>{
     $("#nationalities").append($dropdown);
 });
 
-
-
 $(document).on('click', '.deleteNationalities', function (event) {
     let id = event.target.id;
     let split_id = id.split('_');
@@ -21,7 +19,6 @@ $(document).on('click', '.deleteNationalities', function (event) {
     this.remove();
 });
 
-
 $('#signupForm').submit( function(ev) {
     ev.preventDefault();
     
@@ -30,7 +27,7 @@ $('#signupForm').submit( function(ev) {
     const email = document.getElementsByName("email")[0].value;
     const password = document.getElementsByName("password")[0].value;
     const repassword = document.getElementsByName("repassword")[0].value;
-    const nationality = document.getElementsByName("nationality")[0].value;
+    const nationality = document.getElementsByName("nationality");
     
     let errors = false;
 
@@ -68,8 +65,30 @@ $('#signupForm').submit( function(ev) {
     }else{
         document.getElementById("repasswordMissing").style.display = "none";
     }
-
-    if(nationality == "" || !nationality || typeof nationality == "undefined" || typeof nationality =="null"){
+    let nationalitySelected = false;
+    for(let i=0; i<nationality.length; i++){
+        if(nationality[i].value != "" && nationality[i].value && typeof nationality[i].value != "undefined" && typeof nationality[i].value !="null"){
+            document.getElementById("nationalityMissing").style.display = "none";
+            nationalitySelected = true;
+            break;
+        }
+    }
+    if(nationality && nationality.length > 0){
+        let nationalitiesNoNull = [];
+        for(let i=0; i<nationality.length; i++){
+            if(nationality[i].value != ""){
+                nationalitiesNoNull.push(nationality[i].value);
+            }
+        }
+        let nationalitiesSetSize = (new Set(nationalitiesNoNull)).size;
+        if(nationalitiesSetSize != nationalitiesNoNull.length){
+            document.getElementById("duplicateNationalities").style.display = "inline-block";
+            errors = true;
+        }else{
+            document.getElementById("duplicateNationalities").style.display = "none";
+        }
+    }
+    if(!nationalitySelected){
         document.getElementById("nationalityMissing").style.display = "inline-block";
         errors = true;
     }else{

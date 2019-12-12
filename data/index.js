@@ -7,7 +7,8 @@ const prohibitedItemsData = require("./prohibitedItems");
 const packingData = require('./packing');
 const itineraryData = require('./itinerary');
 const displayItineraryData = require('./generateItineraryPDF');
-const knapsackData = require('./knapsack');
+const usersData = require('./users');
+const tourGuideData = require('./tourGuides');
 
 module.exports = {
     signup: signup,
@@ -19,5 +20,6 @@ module.exports = {
     packing: packingData,
     itinerary: itineraryData,
     displayItinerary: displayItineraryData,
-    knapsack: knapsackData
+    users: usersData,
+    tourGuides: tourGuideData
 };

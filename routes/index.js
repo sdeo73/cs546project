@@ -9,9 +9,9 @@ const aboutus=require('./aboutus');
 const error404 =require('./error404');
 const terms= require('./terms');
 const explore= require('./explore');
-
-
-
+const editPrefRoutes = require('./editPreferences');
+const itineraryRoutes = require('./itinerary');
+const editProfileRoutes = require('./editProfile');
 
 const constructorMethod = app => {
     app.use("/", loginRoutes);
@@ -25,7 +25,10 @@ const constructorMethod = app => {
     app.use("/",error404);
     app.use("/",terms);
     app.use("/",explore);
-
+    app.use("/", editPrefRoutes);
+    app.use("/", itineraryRoutes);
+    app.use("/", editProfileRoutes);
+  
     app.use("*", (req, res) => {
       res.sendStatus(404);
     });

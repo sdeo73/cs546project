@@ -33,6 +33,7 @@
     "node-geocoder": "^3.25.0",
     "password-hash": "^1.2.2",
     "pdfkit": "^0.10.0",
+    "xss": "^1.0.6",
     "zomato-api": "^0.1.2"
   }
 }
