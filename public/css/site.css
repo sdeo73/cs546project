@@ -154,7 +154,7 @@ h1 {
 }
 
 #loginForm {
-     margin-top: 120px;
+     margin-top: 10%;
 }
 
 #userEmail, #firstName {
@@ -216,7 +216,20 @@ a[href="terms"] {
      margin-top: 10px;
 }
 
-#loginForm, #editProfileForm {
+#loginForm {
+     height: auto;
+     width: 30%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #50cdd4;
+     display: inline-block;
+     margin-bottom: 100px;
+     margin-top: 2%;
+}
+
+#editProfileForm {
      height: auto;
      width: 30%;
      padding: 20px;
@@ -598,7 +611,6 @@ img {
      color: black;
      text-align: center;
      display: inline-block;
-     /* overflow-y: scroll; */
      position: relative;
 }
 
