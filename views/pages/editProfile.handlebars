@@ -1,14 +1,40 @@
+<header class="head1">
+    <div class="navigation">
+        <ul class="navbar">
+            <li class="left"><a href="/home">The Lazy Traveller</a></li>
+
+            <li class="left"><a href="/userHome">Home</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/editProfile">Edit Profile</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/editPreferences">Edit Preferences</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <li class="left"><a href="/contact">Contact</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/aboutus">About Us</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="right"><a href="/logout">Log Out</a></li>
+        </ul>
+    </div>
+</header>
 <div class="editProfileForm">
     <main>
         <form id="editProfileForm" action="/editprofile" method="POST">
+            <h1>{{title}}</h1>
             <label>First Name:</label>
-            <input type="text" name="firstName" id= "firstName" value="" placeholder="Enter new first name">
+            <input type="text" name="firstName" id="firstName" value="" placeholder="Enter new first name">
             <br>
             <label>Last Name:</label>
-            <input type="text" name="lastName" id= "lastName" value="" placeholder="Enter new last name">
+            <input type="text" name="lastName" id="lastName" value="" placeholder="Enter new last name">
             <br>
             <label>Email:</label>
-            <input type="email" name="email" id = "email" value="" placeholder="Enter new email">
+            <input type="email" name="email" id="email" value="" placeholder="Enter new email">
             <br>
             <div class="error-msg" id="emailExists">
                 <i class="fa fa-times-circle"></i>
@@ -224,15 +250,15 @@
                 <i class="fa fa-times-circle"></i>
                 Please do not select duplicate nationalities!
             </div>
-             <div class="error-msg" id="noChangeError">
+            <div class="error-msg" id="noChangeError">
                 <i class="fa fa-times-circle"></i>
                 Please select atleast one field to change!
             </div>
-             <div class="error-msg" id="serverError">
+            <div class="error-msg" id="serverError">
                 <i class="fa fa-times-circle"></i>
                 Profile Updation failed!
             </div>
-             <div class="error-msg" id="updateSuccess">
+            <div class="error-msg" id="updateSuccess">
                 <i class="fa fa-times-circle"></i>
                 Profile Updated Successfully!
             </div>

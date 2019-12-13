@@ -28,6 +28,14 @@ app.use(function (req, res, next) {
 });
 
 app.use('/home', function (req, res, next) {
+  if (!req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/userHome');
+  }
+});
+
+app.use('/userhome', function (req, res, next) {
   if (req.session.userID) {
     return next();
   } else {
@@ -37,7 +45,7 @@ app.use('/home', function (req, res, next) {
 
 app.use('/signup', function (req, res, next) {
   if (req.session.userID) {
-    return res.status(200).redirect('/home');
+    return res.status(200).redirect('/userHome');
   } else {
     return next();
   }

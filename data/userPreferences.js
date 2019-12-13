@@ -68,12 +68,12 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
         errors.push(error.travelDatesMissing);
     }
 
-    if(!Array.isArray(mealPreference)) {
+    if (!Array.isArray(mealPreference)) {
         mealPreference = mealPreference.split(" ");
     }
 
     //Check if birthday is valid: 
-    const getAge = dob => Math.floor((new Date() - new Date(dob).getTime())/(365.25 * 24 * 60 * 60 * 1000)); //Referenced from https://stackoverflow.com/questions/4060004/calculate-age-given-the-birth-date-in-the-format-yyyymmdd
+    const getAge = dob => Math.floor((new Date() - new Date(dob).getTime()) / (365.25 * 24 * 60 * 60 * 1000)); //Referenced from https://stackoverflow.com/questions/4060004/calculate-age-given-the-birth-date-in-the-format-yyyymmdd
     let age = getAge(dob);
     if (age < 16) {
         errors.push(error.minimumAgeError);
@@ -81,7 +81,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
 
     //Check if travel dates are valid:
     let timeDifference = new Date(travelDateEnd).getTime() - new Date(travelDateStart).getTime();
-    let numberOfDays = timeDifference / (1000 * 3600 * 24);
+    let numberOfDays = (timeDifference / (1000 * 3600 * 24)) + 1;
     if (travelDateEnd < travelDateStart) {
         errors.push(error.travelDatesInvalid)
     } else if (numberOfDays > 7) {
@@ -137,8 +137,10 @@ async function updateUserMealPref(userID, newMealPreference) {
     let errors = [];
     if (!newMealPreference) {
         errors.push(error.mealPrefMissing);
-    } else if (!Array.isArray(newMealPreference)) {
-        throw new Error(error.mealPrefInvalidType);
+    }
+
+    if (!Array.isArray(newMealPreference)) {
+        newMealPreference = newMealPreference.split();
     }
 
     if (errors.length > 0) {
@@ -154,7 +156,7 @@ async function updateUserMealPref(userID, newMealPreference) {
         throw new Error(error.userDoesNotExist);
     }
 
-    const mealPreferenceObject =  {
+    const mealPreferenceObject = {
         vegan: newMealPreference.includes("vegan"),
         vegetarian: newMealPreference.includes("vegetarian"),
         whiteMeat: newMealPreference.includes("whiteMeat"),
@@ -415,7 +417,7 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
  * @param {*} userID ID of user to fetch preferences of
  * @returns Preferences of user
  */
-async function getUserPreferences(userID){
+async function getUserPreferences(userID) {
     const user = await userFunctions.getUserById(userID);
     let userPreferences = await user.userPreferences;
     return userPreferences;

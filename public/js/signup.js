@@ -94,6 +94,14 @@ $('#signupForm').submit( function(ev) {
     }else{
         document.getElementById("nationalityMissing").style.display = "none";
     }
+    
+    const termsAccepted = $('input[id^=acceptTerms]:checked').length;
+    if(termsAccepted==0) {
+        $("#terms-not-accepted").show();
+        errors = true;
+    } else {
+        $("#terms-not-accepted").hide();
+    }
 
     if(!errors){
         $(this).unbind('submit').submit()

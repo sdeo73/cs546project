@@ -4,15 +4,19 @@ const router = express.Router();
 
 router.get('/contact', async (req, res) => {
     try {
-           res.status(200).render("pages/contact", {
-            title: "Contact Us"
-        });
-    } 
-    
-    catch (error) 
-    {
-        console.log("not found");
-        res.sendStatus(404);
+        if (!req.session.userID) {
+            res.status(200).render("pages/contactLoggedOut", {
+                title: "Contact Us"
+            });
+        } else {
+            res.status(200).render("pages/contact", {
+                title: "Contact Us"
+            });
+        }
+    }
+
+    catch (error) {
+        res.status(404).render("pages/error404");
     }
 });
 

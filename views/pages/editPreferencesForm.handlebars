@@ -1,78 +1,122 @@
+<header class="head1">
+    <div class="navigation">
+        <ul class="navbar">
+            <li class="left"><a href="/home">The Lazy Traveller</a></li>
+
+            <li class="left"><a href="/userHome">Home</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/editProfile">Edit Profile</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/editPreferences">Edit Preferences</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/contact">Contact</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/aboutus">About Us</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="right"><a href="/logout">Log Out</a></li>
+        </ul>
+    </div>
+</header>
 <div class="editPreferenceForm">
     <main>
         <form action="/editpreferences" method="POST" id="edit-preferences-form">
-           <label for="countryId">Destination: </label>
+            <h1>{{title}}</h1>
+            <label for="countryId">Destination: </label>
             <select name="country" class="countries" id="countryId">
                 <option value="">Select Country</option>
-                <option value="United Arab Emirates" selected = "selected">United Arab Emirates</option>
+                <option value="United Arab Emirates" selected="selected">United Arab Emirates</option>
             </select>
             <select name="state" class="states" id="stateId">
                 <option value="">Select State</option>
-                <option value="Dubai" selected = "selected">Dubai</option>
+                <option value="Dubai" selected="selected">Dubai</option>
             </select>
             <select name="city" class="cities" id="cityId">
                 <option value="">Select City</option>
-                <option value="Dubai" selected = "selected">Dubai</option>
+                <option value="Dubai" selected="selected">Dubai</option>
             </select><br>
-            
+
             <label for="mealPref-input">Meal Preference: </label>
             <label for="mealPref1">Vegan</label>
-            <input type="checkbox" name="mealPref" value="vegan" id="mealPref1" {{#if userPreferences.mealPreference.vegan}} checked {{/if}}>
+            <input type="checkbox" name="mealPref" value="vegan" id="mealPref1"
+                {{#if userPreferences.mealPreference.vegan}} checked {{/if}}>
             <label for="mealPref2">Vegetarian</label>
-            <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2" {{#if userPreferences.mealPreference.vegetarian}} checked {{/if}}>
+            <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2"
+                {{#if userPreferences.mealPreference.vegetarian}} checked {{/if}}>
             <label for="mealPref3">White Meat</label>
-            <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3" {{#if userPreferences.mealPreference.whiteMeat}} checked {{/if}}>
+            <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3"
+                {{#if userPreferences.mealPreference.whiteMeat}} checked {{/if}}>
             <label for="mealPref4">Red Meat</label>
-            <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4" {{#if userPreferences.mealPreference.redMeat}} checked {{/if}}>
+            <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4"
+                {{#if userPreferences.mealPreference.redMeat}} checked {{/if}}>
             <label for="mealPref5">Seafood</label>
-            <input type="checkbox" name="mealPref" value="seafood" id="mealPref5" {{#if userPreferences.mealPreference.seafood}} checked {{/if}}>
+            <input type="checkbox" name="mealPref" value="seafood" id="mealPref5"
+                {{#if userPreferences.mealPreference.seafood}} checked {{/if}}>
             <label for="mealPref6">Eggs</label>
-            <input type="checkbox" name="mealPref" value="eggs" id="mealPref6" {{#if userPreferences.mealPreference.eggs}} checked {{/if}}><br>
-            
+            <input type="checkbox" name="mealPref" value="eggs" id="mealPref6"
+                {{#if userPreferences.mealPreference.eggs}} checked {{/if}}><br>
+
 
             <label for="tourType-input">Tour type: </label>
             <label for="tourType1">Business</label>
-            <input type="radio" name="tourType" value="business" id="tourType1" {{#ifEquals userPreferences.tourType "business"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourType" value="business" id="tourType1"
+                {{#ifEquals userPreferences.tourType "business"}}checked{{/ifEquals}}>
             <label for="tourType2">Hiking</label>
-            <input type="radio" name="tourType" value="hiking" id="tourType2" {{#ifEquals userPreferences.tourType "hiking"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourType" value="hiking" id="tourType2"
+                {{#ifEquals userPreferences.tourType "hiking"}}checked{{/ifEquals}}>
             <label for="tourType3">Scenic</label>
-            <input type="radio" name="tourType" value="scenic" id="tourType3" {{#ifEquals userPreferences.tourType "scenic"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourType" value="scenic" id="tourType3"
+                {{#ifEquals userPreferences.tourType "scenic"}}checked{{/ifEquals}}>
             <label for="tourType4">Adventure Sports</label>
-            <input type="radio" name="tourType" value="adventureSports" id="tourType4" {{#ifEquals userPreferences.tourType "adventureSports"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourType" value="adventureSports" id="tourType4"
+                {{#ifEquals userPreferences.tourType "adventureSports"}}checked{{/ifEquals}}>
             <label for="tourType5">Historical</label>
-            <input type="radio" name="tourType" value="historical" id="tourType5" {{#ifEquals userPreferences.tourType "historical"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourType" value="historical" id="tourType5"
+                {{#ifEquals userPreferences.tourType "historical"}}checked{{/ifEquals}}>
             <label for="tourType6">Sightseeing</label>
-            <input type="radio" name="tourType" value="sightseeing" id="tourType6" {{#ifEquals userPreferences.tourType "sightseeing"}}checked{{/ifEquals}}><br>
-            
+            <input type="radio" name="tourType" value="sightseeing" id="tourType6"
+                {{#ifEquals userPreferences.tourType "sightseeing"}}checked{{/ifEquals}}><br>
+
 
             <label for="tourActivity-input"> Tour Activity: </label>
             <label for="tourActivity1">Relaxed</label>
-            <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1" {{#ifEquals userPreferences.tourActivity "relaxed"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1"
+                {{#ifEquals userPreferences.tourActivity "relaxed"}}checked{{/ifEquals}}>
             <label for="tourActivity2">Moderate</label>
-            <input type="radio" name="tourActivity" value="moderate" id="tourActivity2" {{#ifEquals userPreferences.tourActivity "moderate"}}checked{{/ifEquals}}>
+            <input type="radio" name="tourActivity" value="moderate" id="tourActivity2"
+                {{#ifEquals userPreferences.tourActivity "moderate"}}checked{{/ifEquals}}>
             <label for="tourActivity3">High</label>
-            <input type="radio" name="tourActivity" value="high" id="tourActivity3" {{#ifEquals userPreferences.tourActivity "high"}}checked{{/ifEquals}}><br>
+            <input type="radio" name="tourActivity" value="high" id="tourActivity3"
+                {{#ifEquals userPreferences.tourActivity "high"}}checked{{/ifEquals}}><br>
 
             <label for="travelers-input">Travelers: </label>
-            <input type="number" name="nTravelers" id="travelers-input" placeholder={{userPreferences.noOfTravelers}} min=0><br>
-            
+            <input type="number" name="nTravelers" id="travelers-input" placeholder={{userPreferences.noOfTravelers}}
+                min=0><br>
+
 
             <label for="specialNeeds-input">Special Needs: </label>
-             <label for="specialNeeds1">Yes</label>
-            <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1" {{#ifEquals userPreferences.specialNeeds true}}checked{{/ifEquals}}>
+            <label for="specialNeeds1">Yes</label>
+            <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1"
+                {{#ifEquals userPreferences.specialNeeds true}}checked{{/ifEquals}}>
             <label for="specialNeeds2">No</label>
-            <input type="radio" name="specialNeeds" value="no" id="specialNeeds2" {{#ifEquals userPreferences.specialNeeds false}}checked{{/ifEquals}}><br>
+            <input type="radio" name="specialNeeds" value="no" id="specialNeeds2"
+                {{#ifEquals userPreferences.specialNeeds false}}checked{{/ifEquals}}><br>
 
             <label for="budget-input">Budget per person: </label>
             <input type="number" name="budget" id="budget-input" placeholder={{userPreferences.budget}} min=2000><br>
-            
+
 
             <label for="travelStart-input">Travel Start Date: </label>
-            <input type="date" name="travelDateStart" id="travelStart-input" value = {{userPreferences.travelDates.start}}><br>
-            
+            <input type="date" name="travelDateStart" id="travelStart-input"
+                value={{userPreferences.travelDates.start}}><br>
+
 
             <label for="travelEnd-input">Travel End Date: </label>
-            <input type="date" name="travelDateEnd" id="travelEnd-input" value = {{userPreferences.travelDates.end}}><br>
+            <input type="date" name="travelDateEnd" id="travelEnd-input" value={{userPreferences.travelDates.end}}><br>
 
             <div class="error-msg" id="invalid-dates">
                 <i class="fa fa-times-circle"></i>
@@ -81,9 +125,9 @@
 
             <div class="error-msg" id="number-of-dates">
                 <i class="fa fa-times-circle"></i>
-                Error! Maximum travel time is two weeks (14 days).
+                Error! Maximum travel time is 1 week (7days).
             </div>
-            
+
 
             <div class="error-msg" id="no-edits">
                 <i class="fa fa-times-circle"></i>

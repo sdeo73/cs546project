@@ -21,7 +21,7 @@ router.get('/editprofile', async (req, res) => {
             title: "Edit Profile"
         });
     } catch (error) {
-        res.sendStatus(404);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
@@ -90,7 +90,6 @@ router.post('/editprofile', async (req, res) => {
         return res.end(JSON.stringify({message: newName}));
         
     } catch (error) {
-        console.log(error);
         res.writeHead(400, { 'Content-Type': 'application/json' }); 
         return res.end(JSON.stringify({message: "serverError"}));
     }

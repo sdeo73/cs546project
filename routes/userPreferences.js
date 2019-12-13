@@ -12,7 +12,7 @@ router.get('/preferences', async (req, res) => {
             res.status(200).render('pages/userPreferencesForm', { title: "Tell Us What You Like", partial: "preferences-scripts" });
         }
     } catch (e) {
-        return res.status(404).json({ error: e.message });
+        res.status(404).render("pages/somethingWentWrong");
     }
 })
 
@@ -87,9 +87,8 @@ router.post('/preferences', async (req, res) => {
         } else {
             return res.status(200).redirect('/generateItinerary');
         }
-        
     } catch (e) {
-        return res.status(400).json({ error: e.message });
+        res.status(404).render("pages/somethingWentWrong");
     }
 })
 

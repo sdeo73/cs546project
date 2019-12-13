@@ -3,12 +3,17 @@ const router = express.Router();
 
 router.get('/aboutus', async (req, res) => {
     try {
-        res.status(200).render("pages/aboutus", {
-            title: "About Us"
-        });
+        if (!req.session.userID) {
+            res.status(200).render("pages/aboutusLoggedOut", {
+                title: "About Us"
+            });
+        } else {
+            res.status(200).render("pages/aboutus", {
+                title: "About Us"
+            });
+        }
     } catch (error) {
-        console.log("not found");
-        res.sendStatus(404);
+        res.status(404).render("pages/error404");
     }
 });
 
