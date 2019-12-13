@@ -35,6 +35,14 @@ app.use('/home', function (req, res, next) {
   }
 });
 
+app.use('/login', function (req, res, next) {
+  if (req.session.userID) {
+    return res.status(200).redirect('/home');
+  } else {
+    return next();
+  }
+});
+
 app.use('/signup', function (req, res, next) {
   if (req.session.userID) {
     return res.status(200).redirect('/home');
