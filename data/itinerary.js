@@ -285,7 +285,8 @@ async function generateCompleteItinerary(userPreferences) {
     let destinationObj = await destinationFunctions.getDestinationById(userPreferences.destinationId);
     let allThings = destinationObj.thingsToDo;
     allRestaurants = destinationObj.restaurants;
-
+    totalSpent = 0;
+    totalHours = 0;
     allThings.sort(compareTourType);   //sorts the allThings alphabetically by tour type
     let tourTypeList = generateTourTypePriority(userPreferences.tourType);
     let sortedThings = sortThingsByTourType(allThings, tourTypeList);
