@@ -24,9 +24,6 @@ router.get('/editpreferences', async (req, res) => {
                 helpers: {
                     'ifEquals': function(arg1, arg2, options) {
                         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-                    },
-                    'ifIncludes': function(arg1, arg2, options){
-                        return (arg1.includes(arg2)) ? options.fn(this) : options.inverse(this);
                     }
                 }
             });
@@ -66,8 +63,14 @@ router.post('/editpreferences', async (req, res) => {
                     await userPrefData.updateNumOfTravelers(req.session.userID, editPrefInput.nTravelers);
                     oneSelected = true;
                 }
+                let specialNeeds = false;
                 if(editPrefInput.specialNeeds){
-                    await userPrefData.updateSpecialNeeds(req.session.userID, editPrefInput.specialNeeds);
+                    if (editPrefInput.specialNeeds == 'yes') {
+                        specialNeeds = true;
+                    } else {
+                        specialNeeds = false;
+                    }
+                    await userPrefData.updateSpecialNeeds(req.session.userID, specialNeeds);
                     oneSelected = true;
                 }
                 if(editPrefInput.budget){
@@ -97,7 +100,7 @@ router.post('/editpreferences', async (req, res) => {
         if(!oneSelected){
             throw new Error(errorMessages.editPrefNoPref);
         }else{
-            return res.status(200).redirect('/home');
+            return res.status(200).redirect('/generateItinerary');
         }
     } catch (error) {
         return res.status(404).json({ error: error.message });

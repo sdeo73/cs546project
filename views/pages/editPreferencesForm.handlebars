@@ -4,12 +4,15 @@
             <label for="countryId">Destination: </label>
             <select name="country" class="countries" id="countryId">
                 <option value="">Select Country</option>
+                <option value="United Arab Emirates" selected="selected">United Arab Emirates</option>
             </select>
             <select name="state" class="states" id="stateId">
                 <option value="">Select State</option>
+                <option value="Dubai" selected="selected">Dubai</option>
             </select>
             <select name="city" class="cities" id="cityId">
                 <option value="">Select City</option>
+                <option value="Dubai" selected="selected">Dubai</option>
             </select><br>
             
             <label for="mealPref-input">Meal Preference: </label>
@@ -55,14 +58,10 @@
             
 
             <label for="specialNeeds-input">Special Needs: </label>
-            <label for="specialNeeds1">Physical</label>
-            <input type="checkbox" name="specialNeeds" value="physical" id="specialNeeds1" {{#ifIncludes userPreferences.specialNeeds "physical"}}checked{{/ifIncludes}}>
-            <label for="specialNeeds2">Developmental</label>
-            <input type="checkbox" name="specialNeeds" value="developmental" id="specialNeeds2" {{#ifIncludes userPreferences.specialNeeds "developmental"}}checked{{/ifIncludes}}>
-            <label for="specialNeeds3">Behavioral</label>
-            <input type="checkbox" name="specialNeeds" value="behavioral" id="specialNeeds3" {{#ifIncludes userPreferences.specialNeeds "behavioral"}}checked{{/ifIncludes}}>
-            <label for="specialNeeds4">Sensory Impaired</label>
-            <input type="checkbox" name="specialNeeds" value="sensoryImpaired" id="specialNeeds4" {{#ifIncludes userPreferences.specialNeeds "sensoryImpaired"}}checked{{/ifIncludes}}><br>
+             <label for="specialNeeds1">Yes</label>
+            <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1" {{#ifEquals userPreferences.specialNeeds true}}checked{{/ifEquals}}>
+            <label for="specialNeeds2">No</label>
+            <input type="radio" name="specialNeeds" value="no" id="specialNeeds2" {{#ifEquals userPreferences.specialNeeds false}}checked{{/ifEquals}}><br>
 
             <label for="budget-input">Budget per person: </label>
             <input type="number" name="budget" id="budget-input" placeholder={{userPreferences.budget}} min=2000><br>
@@ -95,3 +94,4 @@
         </form>
     </main>
 </div>
+<div class = "loader-spinner" id = "loader-itinerary"></div>

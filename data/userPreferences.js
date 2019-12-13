@@ -138,7 +138,7 @@ async function updateUserMealPref(userID, newMealPreference) {
     if (!newMealPreference) {
         errors.push(error.mealPrefMissing);
     } else if (!Array.isArray(newMealPreference)) {
-        throw new Error(error.mealPrefInvalidType);
+        newMealPreference = newMealPreference.split(" ");
     }
 
     if (errors.length > 0) {
@@ -276,7 +276,7 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     let errors = [];
     if (!newSpecialNeeds) {
         errors.push(error.specialNeedsMissing);
-    } else if (typeof newSpecialNeeds == "boolean") {
+    } else if (typeof newSpecialNeeds != "boolean") {
         throw new Error(error.specialNeedsInvalidType);
     }
 
