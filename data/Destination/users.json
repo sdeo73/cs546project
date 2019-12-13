@@ -4,7 +4,7 @@
         "lastName": "Hill",
         "email": "patrick.hill@stevens.edu",
         "password": "sha1$be6a520a$1$b4bbf163cb4d19ac51f9d49c304cf613fcbf36c1",
-        "nationality": ["american"],
+        "nationality": ["American"],
         "failedAttempts": 0,
         "latestTimeStamp": 0
     }

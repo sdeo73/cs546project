@@ -12,7 +12,7 @@ router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
-        let userPref = await userPrefFunctions.getUserPreferences(req.session.userID);
+        let userPref = await userPrefFunctions.getUserPreferences(userID);
         
         let numOfHrs;
         //Set number of hours based on tour type
@@ -25,7 +25,7 @@ router.get('/generateItinerary', async (req, res) => {
         }
         //Calculate number of days of travel
         let timeDifference = new Date(userPref.travelDates.end).getTime() - new Date(userPref.travelDates.start).getTime();
-        let numberOfDays = timeDifference / (1000 * 3600 * 24);
+        let numberOfDays = (timeDifference / (1000 * 3600 * 24))+1;
 
         //Get destination ID 
         let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.destination }))._id.toString();
@@ -45,7 +45,8 @@ router.get('/generateItinerary', async (req, res) => {
         const connection = await mongoConnection();
         
         const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
-        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, connection);
+        const totalSpent = await itineraryFunctions.getTotalExpense();
+        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,totalSpent,connection);
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         }

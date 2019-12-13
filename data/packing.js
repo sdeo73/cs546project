@@ -180,7 +180,7 @@ async function generatePackingList(travelDates, destinationObj, tourType) {
     if (!destinationObj || typeof(destinationObj) != "object") {
         throw new Error(errorMessages.InvalidDestinationObject);
     }
-    if (!tourType || !Array.isArray(tourType)) {
+    if (!tourType || typeof(tourType) !== 'string') {
         throw new Error(errorMessages.tourTypeMissing);
     }
 
@@ -279,15 +279,16 @@ async function generatePackingList(travelDates, destinationObj, tourType) {
  * @returns boolean indicates whether the passed-in string date is valid or not
 */
 function validateDate(dateString) {
-    let inputDate = dateString.split("/");
+    let inputDate = dateString.split("-");
     let newDate = new Date(dateString);
+
     //checks if the date strings provided were valid or not
     if (isNaN(newDate.getFullYear()) || isNaN(newDate.getMonth()) || isNaN(newDate.getDate())) { 
         return false;
     }
     //validates if the date is parsed correctly
-    if ((newDate.getMonth() + 1) == inputDate[0] && newDate.getDate() == inputDate[1] && newDate.getFullYear() == inputDate[2]) {
-        return true;
+    if ((newDate.getUTCMonth()+1) == inputDate[1] && newDate.getUTCDate() == inputDate[2] && newDate.getUTCFullYear() == inputDate[0]) {
+        return true;s
     }
     return false;
 }

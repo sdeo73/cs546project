@@ -1310,12 +1310,12 @@
 		"prohibitedItems": [],
 		"laws": [],
 		"emergencyContacts": {
-			"Police": "999",
-			"Ambulance": "998",
-			"Fire Department": "997",
-			"Coastguard": "996",
-			"Water Failure": "992",
-			"Electricity Failure": "991"
+			"police": "999",
+			"ambulance": "998",
+			"fireDepartment": "997",
+			"coastguard": "996",
+			"waterFailure": "992",
+			"electricityFailure": "991"
 		}
 	}
 }
