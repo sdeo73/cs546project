@@ -24,14 +24,11 @@ router.get('/editpreferences', async (req, res) => {
                 helpers: {
                     'ifEquals': function(arg1, arg2, options) {
                         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-                    },
-                    'ifIncludes': function(arg1, arg2, options){
-                        return (arg1.includes(arg2)) ? options.fn(this) : options.inverse(this);
                     }
                 }
             });
         } else {
-            return res.status(200).redirect('preferences');
+            return res.status(200).redirect('/preferences');
         }
     } catch (e) {
         return res.status(404).json({ error: e.message });
@@ -97,7 +94,7 @@ router.post('/editpreferences', async (req, res) => {
         if(!oneSelected){
             throw new Error(errorMessages.editPrefNoPref);
         }else{
-            return res.status(200).redirect('/home');
+            return res.status(200).redirect('/generateItinerary');
         }
     } catch (error) {
         return res.status(404).json({ error: error.message });
