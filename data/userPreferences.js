@@ -276,7 +276,7 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     let errors = [];
     if (!newSpecialNeeds) {
         errors.push(error.specialNeedsMissing);
-    } else if (typeof newSpecialNeeds == "boolean") {
+    } else if (typeof newSpecialNeeds !== "string") {
         throw new Error(error.specialNeedsInvalidType);
     }
 
@@ -291,6 +291,11 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     const userToUpdate = await usersCollection.findOne({ _id: new ObjectId(userID) });
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
+    }
+    if (newSpecialNeeds == 'yes') {
+        newSpecialNeeds = true;
+    } else {
+        newSpecialNeeds = false;
     }
     const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.specialNeeds': newSpecialNeeds } });
     if (!updatedObject) {
