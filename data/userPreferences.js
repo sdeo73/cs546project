@@ -292,6 +292,11 @@ async function updateSpecialNeeds(userID, newSpecialNeeds) {
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
     }
+    if (newSpecialNeeds == 'yes') {
+        newSpecialNeeds = true;
+    } else {
+        newSpecialNeeds = false;
+    }
     const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.specialNeeds': newSpecialNeeds } });
     if (!updatedObject) {
         throw new Error(error.specialNeedsUpdationFailed);

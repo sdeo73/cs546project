@@ -28,7 +28,7 @@ router.get('/editpreferences', async (req, res) => {
                 }
             });
         } else {
-            return res.status(200).redirect('preferences');
+            return res.status(200).redirect('/preferences');
         }
     } catch (e) {
         return res.status(404).json({ error: e.message });
