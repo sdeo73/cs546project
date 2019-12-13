@@ -13,42 +13,46 @@ router.get('/generateItinerary', async (req, res) => {
         const destinationCollection = await destination();
         let userID = req.session.userID;
         let userPref = await userPrefFunctions.getUserPreferences(userID);
-        
-        let numOfHrs;
-        //Set number of hours based on tour type
-        if (userPref.tourActivity == 'relaxed') {
-            numOfHrs = 8;
-        } else if (userPref.tourActivity == 'moderate') {
-            numOfHrs = 10;
-        } else if (userPref.tourActivity == 'high') {
-            numOfHrs = 14;
-        }
-        //Calculate number of days of travel
-        let timeDifference = new Date(userPref.travelDates.end).getTime() - new Date(userPref.travelDates.start).getTime();
-        let numberOfDays = (timeDifference / (1000 * 3600 * 24))+1;
 
-        //Get destination ID 
-        let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.destination }))._id.toString();
+        if (userPref == null || userPref == undefined) {
+            return res.status(200).redirect('../preferences');
+        } else {
+            let numOfHrs;
+            //Set number of hours based on tour type
+            if (userPref.tourActivity == 'relaxed') {
+                numOfHrs = 8;
+            } else if (userPref.tourActivity == 'moderate') {
+                numOfHrs = 10;
+            } else if (userPref.tourActivity == 'high') {
+                numOfHrs = 14;
+            }
+            //Calculate number of days of travel
+            let timeDifference = new Date(userPref.travelDates.end).getTime() - new Date(userPref.travelDates.start).getTime();
+            let numberOfDays = (timeDifference / (1000 * 3600 * 24)) + 1;
 
-        //Create user preference object for the generateCompleteItinerary() function
-        let userPreferences = {
-            mealPreference: userPref.mealPreference,
-            destinationId: destinationID,
-            tourType: userPref.tourType,
-            hoursPerDay: numOfHrs,
-            maxBudgetPerPerson: userPref.budget,
-            numOfDays: numberOfDays,
-            numOfTravelers: userPref.noOfTravelers,
-            specialNeeds: userPref.specialNeeds,
-        }
+            //Get destination ID 
+            let destinationID = (await destinationCollection.findOne({ 'd_name': userPref.destination }))._id.toString();
 
-        const connection = await mongoConnection();
-        
-        const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
-        const totalSpent = await itineraryFunctions.getTotalExpense();
-        let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,totalSpent,connection);
-        if (done) {
-            return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+            //Create user preference object for the generateCompleteItinerary() function
+            let userPreferences = {
+                mealPreference: userPref.mealPreference,
+                destinationId: destinationID,
+                tourType: userPref.tourType,
+                hoursPerDay: numOfHrs,
+                maxBudgetPerPerson: userPref.budget,
+                numOfDays: numberOfDays,
+                numOfTravelers: userPref.noOfTravelers,
+                specialNeeds: userPref.specialNeeds,
+            }
+
+            const connection = await mongoConnection();
+
+            const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
+            const totalSpent = await itineraryFunctions.getTotalExpense();
+            let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination, userPref.tourType, totalSpent, connection);
+            if (done) {
+                return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+            }
         }
     } catch (error) {
         res.status(404).render("pages/somethingWentWrong");
@@ -63,7 +67,7 @@ router.get('/viewItinerary', async (req, res) => {
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         } else {
-            res.status(404).render("pages/somethingWentWrong");
+            res.status(404).render("pages/noItinerary", { title: "Your Itinerary" });
         }
     } catch (error) {
         res.status(404).render("pages/somethingWentWrong");

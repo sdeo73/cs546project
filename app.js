@@ -75,6 +75,14 @@ app.use('/viewItinerary', function (req, res, next) {
   }
 });
 
+app.use('/noItinerary', function (req, res, next) {
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
