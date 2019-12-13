@@ -144,4 +144,10 @@ form.addEventListener("submit", event => {
     if (!errors) {
         $("#preferences-form")[0].submit();
     }
+
+    // const loader = document.querySelector(".loader");
+    // loader.className += " hidden";
+    $("#preference-loader").hide();
+
+    $.get('/generateItinerary').done(function(data){ alert(data); });
 })

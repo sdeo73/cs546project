@@ -45,6 +45,9 @@ router.get('/generateItinerary', async (req, res) => {
         const connection = await mongoConnection();
         
         const result = await itineraryFunctions.generateCompleteItinerary(userPreferences);
+        if (result) {
+            res.status(200).render("/keeyLoading");
+        }
         const totalSpent = await itineraryFunctions.getTotalExpense();
         let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,totalSpent,connection);
         if (done) {
@@ -53,6 +56,12 @@ router.get('/generateItinerary', async (req, res) => {
     } catch (error) {
         return res.status(404).json({ error: error.message });
     }
+});
+
+router.get('/keeyLoading', async (req, res) => {
+    res.send({
+        stopLoading: true
+    });
 });
 
 router.get('/viewItinerary', async (req, res) => {
