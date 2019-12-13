@@ -51,7 +51,7 @@ router.get('/generateItinerary', async (req, res) => {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
         }
     } catch (error) {
-        return res.status(404).json({ error: error.message });
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
@@ -62,9 +62,11 @@ router.get('/viewItinerary', async (req, res) => {
         let done = await data.displayItinerary.fetchUserItinerary(userID, connection);
         if (done) {
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+        } else {
+            res.status(404).render("pages/somethingWentWrong");
         }
     } catch (error) {
-        return res.status(404).json({ error: error.message });
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 

@@ -12,8 +12,7 @@ router.get('/signup', async (req, res) => {
             title: "Sign up"
         });
     } catch (error) {
-        console.log("not found");
-        res.sendStatus(404);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
@@ -62,7 +61,7 @@ router.post('/signup', async (req, res) => {
             }
         }
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 

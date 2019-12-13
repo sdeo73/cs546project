@@ -33,16 +33,17 @@ form.addEventListener("submit", event => {
         $("#birthday-missing").show();
         $("#underage").hide();
         errors = true;
-    }
-    let timeDifference = new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
-    let age = parseInt((timeDifference / (1000 * 3600 * 24)) / 365);
-    if (age < 16) {
-        $("#underage").show();
-        $("#birthday-missing").hide();
-        errors = true;
     } else {
-        $("#birthday-missing").hide();
-        $("#underage").hide();
+        let timeDifference = new Date(todaysDate).getTime() - new Date(birthdayInput).getTime();
+        let age = parseInt((timeDifference / (1000 * 3600 * 24)) / 365);
+        if (age < 16) {
+            $("#underage").show();
+            $("#birthday-missing").hide();
+            errors = true;
+        } else {
+            $("#birthday-missing").hide();
+            $("#underage").hide();
+        }
     }
 
     const country = document.getElementById("countryId").value;
@@ -132,7 +133,7 @@ form.addEventListener("submit", event => {
 
     //Check if travel time is not more than two weeks
     timeDifference = new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
-    var numberOfDays = timeDifference / (1000 * 3600 * 24);
+    var numberOfDays = (timeDifference / (1000 * 3600 * 24))+1;
     if (numberOfDays > 7) {
         event.preventDefault();
         $("#number-of-dates").show();

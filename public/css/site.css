@@ -1,10 +1,5 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
-
-#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing,
- #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage,#destination-missing,
- #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing,
- #endDate-missing, #invalid-dates,#number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError,
- #duplicateNationalities, #specialneeds-missing{
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage, #destination-missing, #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing, #endDate-missing, #invalid-dates, #number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError, #duplicateNationalities, #specialneeds-missing, #terms-not-accepted {
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
@@ -13,7 +8,12 @@
      text-align: center;
 }
 
-#updateSuccess{
+html, body {
+     height: 100%;
+     margin: 0;
+}
+
+#updateSuccess {
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
@@ -22,7 +22,7 @@
      text-align: center;
 }
 
-.invalidPassword, .emailExists{
+.invalidPassword, .emailExists {
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
@@ -40,7 +40,7 @@
      display: inline-block;
 }
 
-.success-msg{
+.success-msg {
      background-color: #a0c0d4;
      padding: 5px;
      margin: 5px;
@@ -50,31 +50,21 @@
      display: inline-block;
 }
 
-.signupForm,.loginForm,.forgotpassword{
-     background-image: url("../images/travelBackground.png");
+.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm {
+     min-height: 100%;
+     background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-size: 100% 100%;
 }
 
-.background,.home{
+#error404 {
      background-image: url("../images/travelBackground.png");
      background-position: center;
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-size: 100% 100%;
-     margin-bottom: 40px;
-}
-
-#error404
-{
-     background-image: url("../images/travelBackground.png");
-     background-position: center;
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-     background-size: 100% 100%;
-    
 }
 
 .head1 {
@@ -82,7 +72,7 @@
      color: AliceBlue;
      font-weight: bold;
      font-size: 22px;
-     padding: 1px;
+     padding: 3px;
      font-weight: bold;
      font-family: 'Amatic SC', cursive;
      position: fixed;
@@ -102,22 +92,33 @@
      width: 100%;
 }
 
-.paragraph-content {
+.navigation {
      font-weight: bold;
      font-family: 'Amatic SC', cursive;
      font-size: 25px;
 }
 
-ul{
+.navbar {
      list-style-type: none;
      overflow: hidden;
 }
 
-li{
+.navbar .right {
+     margin-right: 20px;
+     float: right;
+}
+
+.navbar .left {
      float: left;
 }
 
-li a {
+.navbar {
+     clear: both;
+}
+
+.navbar li a {
+     -webkit-transition: background-color 0.4s;
+     transition: background-color 0.4s;
      display: block;
      color: white;
      text-align: center;
@@ -126,39 +127,17 @@ li a {
      font-size: 22px;
 }
 
-li a:hover {
+.navbar li a:hover {
+     -webkit-transition-duration: 0.4s;
+     transition-duration: 0.8s;
      background-color: white;
      color: black;
      text-decoration: none;
      padding: 5px;
 }
 
-.home {
-     color: black;
-     display: inline-block;
-     margin-top: 100px;
-}
-
-
-.home1 {
-     color: black;
-     display: inline-block;
-}
-
-.exact {
+.homePageContent {
      margin-left: 45%
-}
-.button1 {
-     background-color: teal;
-     border: none;
-     color:blanchedalmond;
-     padding: 15px 32px;
-     text-align: center;
-     text-decoration: none;
-     display: inline-block;
-     font-size: 16px;
-     margin: 4px 2px;
-     cursor: pointer;
 }
 
 h1 {
@@ -166,99 +145,126 @@ h1 {
      font-family: 'Amatic SC', cursive;
      font-size: 40px;
      font-weight: bold;
-     color: #4a8ab4;
+     color: black;
 }
 
-.signupForm, .loginForm, .preferenceForm ,.forgotpassword,#termsForm, .editPreferenceForm, .editProfileForm{
-    display: block;
-    text-align: center;
+.signupForm, .loginForm, .preferenceForm, .editPreferenceForm, .editProfileForm, .termsPage, .home, .displayItinerary {
+     display: block;
+     text-align: center;
 }
 
 #loginForm {
-     margin-top: 120px;
+     margin-top: 10%;
 }
 
 #userEmail, #firstName {
      margin-top: 20px;
 }
 
-.forgotpassword {
-     margin-top: auto;
-     margin-bottom: auto;
-     margin-left: auto;
-     margin-right: auto;
-     display: inline-block;
-     width: 100%;
-}
-
-#login_button, #signup_button, a[href="forgotpassword"] {
+#login_button, #signup_button {
+     margin-top: 8px;
      font-family: 'Amatic SC', cursive;
      font-size: 20px;
      font-weight: bold;
      color: #004671;
 }
 
-#preferences-form, #edit-preferences-form{
+a[href="terms"] {
+     color: #00555a;
+     margin-left: 5px;
+}
+
+.terms-signup {
+     margin-top: 10px;
+     color: #004671;
+     margin-left: 40%;
+     margin-right: 40%;
+     font-size: 25px;
+     font-weight: bold;
+     font-family: 'Amatic SC', cursive;
+}
+
+.listOfTerms li {
+     display: list-item;
+     list-style-type: circle;
+}
+
+#preferences-form, #edit-preferences-form {
      height: auto;
      width: 60%;
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
      margin-top: 50px;
+     margin-bottom: 50px;
      box-shadow: 5px 10px 18px #888888;
-     background-color: #007fac;
+     background-color: #50cdd4;
      display: inline-block;
      text-align: initial;
 }
 
-#signupForm  {
+#signupForm {
      height: auto;
      width: 30%;
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
      box-shadow: 5px 10px 18px #888888;
-     background-color: #80b5d8;
+     background-color: #50cdd4;
      display: inline-block;
      margin-bottom: 100px;
-     margin-top:10px;
+     margin-top: 10px;
 }
 
-#loginForm,#editProfileForm
-{
+#loginForm {
      height: auto;
      width: 30%;
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
      box-shadow: 5px 10px 18px #888888;
-     background-color: #80b5d8;
+     background-color: #50cdd4;
      display: inline-block;
      margin-bottom: 100px;
-     margin-top:100px;
+     margin-top: 2%;
 }
 
-#termsForm{
+#editProfileForm {
+     height: auto;
+     width: 30%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #50cdd4;
+     display: inline-block;
+     margin-bottom: 100px;
+     margin-top: 100px;
+}
+
+.termsAndConditions {
      height: auto;
      width: 50%;
+     font-size: 18px;
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
      box-shadow: 5px 10px 18px #888888;
-     background-color: #80b5d8;
+     background-color: #50cdd4;
      display: inline-block;
-     margin-top:5%;
- }
+     margin-bottom: 100px;
+     margin-top: 100px;
+     text-align: left;
+}
 
-#preferences-form{
-
+#preferences-form {
      height: auto;
      width: 68%;
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
      box-shadow: 5px 10px 18px #888888;
-     background-color: #80b5d8;
+     background-color: #50cdd4;
      display: inline-block;
 }
 
@@ -267,7 +273,7 @@ h1 {
      box-shadow: 5px 10px 18px #888888;
 } */
 
-#signupForm label, #loginForm label,#editProfileForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
+#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: black;
      display: inline-block;
      font-family: 'Amatic SC', cursive;
@@ -283,7 +289,7 @@ label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=m
      margin-left: 6%;
 }
 
-#signupForm input, #loginForm input, #editProfileForm input{
+#signupForm input, #loginForm input, #editProfileForm input {
      padding: 5px;
 }
 
@@ -292,10 +298,10 @@ label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=m
      text-align: left;
 }
 
-#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder, #edit-preferences-form input::placeholder , #editProfileForm input::placeholder{
+#signupForm input::placeholder, #loginForm input::placeholder, #preferences-form input::placeholder, #edit-preferences-form input::placeholder, #editProfileForm input::placeholder {
      font-family: 'Titillium Web', sans-serif;
      text-align: center;
-     color: #4a8ab4;
+     color: #00838b;
 }
 
 button[type="submit"] {
@@ -304,27 +310,38 @@ button[type="submit"] {
      font-size: 20px;
      font-weight: bold;
      width: 100px;
-     background-color: #007fac;
+     background-color: #00838b;
      color: white;
 }
 
 button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover, #edit-preferences-form input[type=radio]:hover, #edit-preferences-form input[type=checkbox]:hover {
-    cursor: pointer;
+     cursor: pointer;
 }
 
-#signupForm , #editProfileForm ul{
+button[class="viewItineraryButton"] {
+     background-color: #ffcc00;
+     box-shadow: 5px 5px 5px #888888;
+     font-family: 'Amatic SC', cursive;
+     font-weight: bold;
+     font-size: 20px;
+     color: black;
+     margin-top: 30px;
+     padding: 15px;
+}
+
+#signupForm, #editProfileForm ul {
      list-style: none;
 }
 
-#nationalities{
+#nationalities {
      list-style: none;
 }
 
 #addNationalities {
      margin-left: 10px;
      font-size: 16px;
-     background-color: #4a8ab4;
-     color: black;
+     background-color: #00838b;
+     color: white;
      border: none;
 }
 
@@ -339,14 +356,14 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
 .deleteNationalities {
      margin-left: 10px;
      font-size: 16px;
-     background-color: #4a8ab4;
+     background-color: #00838b;
      color: white;
      border: none;
 }
 
 #nationalities li select {
      margin-bottom: 7px;
-     margin-left: 50px;
+     margin-left: 5%;
 }
 
 #nationalities li select, .countries, .states, .cities {
@@ -354,7 +371,7 @@ button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #prefere
      text-align-last: center;
      font-weight: bold;
      font-family: 'Amatic SC', cursive;
-     color: #4a8ab4;
+     color: #00838b;
 }
 
 label[for=g1], label[for=g2], label[for=g3], label[for=mealPref1], label[for=mealPref2], label[for=mealPref3], label[for=mealPref4], label[for=mealPref5], label[for=mealPref6], label[for=tourType1], label[for=tourType2], label[for=tourType3], label[for=tourType4], label[for=tourType5], label[for=tourType6], label[for=tourActivity1], label[for=tourActivity2], label[for=tourActivity3], label[for=specialNeeds1], label[for=specialNeeds2], label[for=specialNeeds3], label[for=specialNeeds4] {
@@ -363,13 +380,13 @@ label[for=g1], label[for=g2], label[for=g3], label[for=mealPref1], label[for=mea
      color: black;
 }
 
-#preferences-form input[type=radio], #preferences-form input[type=checkbox], #edit-preferences-form input[type=radio], #edit-preferences-form input[type=checkbox]{
+#preferences-form input[type=radio], #preferences-form input[type=checkbox], #edit-preferences-form input[type=radio], #edit-preferences-form input[type=checkbox] {
      margin-right: 12px;
 }
 
 input[id=dob-input], input[id=travelStart-input], input[id=travelEnd-input] {
      text-align: center;
-     color: #4a8ab4;
+     color: #00838b;
 }
 
 #preferences-form button[type=submit], #edit-preferences-form button[type=submit] {
@@ -385,8 +402,9 @@ input[id=dob-input], input[id=travelStart-input], input[id=travelEnd-input] {
 }
 
 .column {
-     float: left;
-     width: 33.33%;
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
 }
 
 .row::after {
@@ -407,7 +425,11 @@ img {
      float: left;
 }
 
-.overlay {
+.container img {
+     height: 400px;
+}
+
+.overlayAboutUs {
      position: absolute;
      top: 0;
      bottom: 0;
@@ -417,7 +439,7 @@ img {
      width: 100%;
      opacity: 0;
      transition: .5s ease;
-     background-color:teal;
+     background-color: #ffcc00;
 }
 
 .container:hover .overlay {
@@ -454,18 +476,9 @@ img {
 }
 
 #eg2 {
-     color:black;
+     color: black;
      font-family: 'Titillium Web', sans-serif;
      font-size: 30px;
-}
-
-.head1 {
-     background-color:black;;
-     color: AliceBlue;
-     font-weight: bold;
-     font-size: 22px;
-     font-weight: bold;
-     font-family: 'Amatic SC', cursive;
 }
 
 .abc {
@@ -484,41 +497,21 @@ img {
      font-family: 'Amatic SC', cursive;
 }
 
-.aboutus-img {
-     width: 100%;
-     height: 50%;
-}
-
 .abtus-p {
-     color:teal;
+     color: teal;
      font-size: 25px;
      position: absolute;
-    font-family: 'Titillium Web', sans-serif;
-     
+     font-family: 'Titillium Web', sans-serif;
      margin-top: 1%;
 }
 
 .abtus-p2 {
-     color:teal;
+     color: teal;
      font-size: 23px;
      position: absolute;
      font-family: 'Titillium Web', sans-serif;
      margin-left: 20%;
-    margin-top: 2%;
-}
-
-.abtus-p1 {
-     color:black;
-     font-size: 30px;
-     position: absolute;
-     font-weight: bolder;
-     font-family: 'Amatic SC', cursive;
-     margin-left:90px;
-}
-
-.img-abtus {
-     width: 120%;
-     height: 400px;
+     margin-top: 2%;
 }
 
 .img-er404 {
@@ -530,12 +523,41 @@ img {
      margin-top: 0%;
 }
 
-.ctus {
-     width: 213%;
-     height: 400px;
-
-
+.contactUsImgText h1 {
+     color: black;
 }
+
+.contactUsImgText {
+     margin-left: 10%;
+     text-align: center;
+     position: absolute;
+     font-size: 30px;
+     font-family: 'Amatic SC', cursive;
+     color: black;
+     font-weight: bolder;
+}
+
+.contactUsDetails {
+     min-height: 100%;
+     background-image: url("/public/images/contact.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+}
+
+.contactInfo {
+     color: black;
+     font-size: 30px;
+     position: relative;
+     font-weight: bolder;
+     font-family: 'Amatic SC', cursive;
+     text-align: center;
+     margin-top: 3%;
+     /* transform: translate(-50%, -50%); */
+}
+
+
 .ctus-p {
      color: teal;
      font-size: 34px;
@@ -553,25 +575,197 @@ img {
      transform: translate(-50%, -50%);
      font-size: 60px;
      font-weight: bolder;
-     font-family: 'Amatic SC', cursive ;
-     color:black;
+     font-family: 'Amatic SC', cursive;
+     color: black;
+}
 
-   }
+.column1, .column2 {
+     float: left;
+     width: 33%;
+     background-color: white;
+     padding: 20px;
+     margin: 20px 20px 20px 20px;
+     box-shadow: 5px 10px 18px #888888;
+}
 
+.column2 {
+     margin-bottom: 100px;
+}
 
-   .centered1 {
+.imageContainer img {
+     width: 60%;
+     height: 220px;
+     margin-right: auto;
+     margin-left: auto;
+}
+
+.imageContainer {
+     display: inline-block;
+     margin-right: auto;
+     margin-left: auto;
+}
+
+.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm {
+     width: 100%;
+     margin-top: 50px;
+     color: black;
+     text-align: center;
+     display: inline-block;
+     position: relative;
+}
+
+.userHomeTable {
+     margin-top: 5%;
+     display: inline-block;
+     margin-right: auto;
+     margin-left: auto;
+}
+
+.homeTable {
+     margin-top: 5%;
+     display: inline-block;
+     margin-right: auto;
+     margin-left: auto;
+}
+
+.firstColumn, .secondColumn {
+     display: inline-block;
+     margin: 0 auto;
+}
+
+.aboutUsColumns {
+     width: 80%;
+   margin-left: 20%;
+}
+
+.overlay {
      position: absolute;
-     top: 30%;
-     left: 46%;
-     transform: translate(-50%, -50%);
-     font-size: 22px;
-     font-family: 'Amatic SC', cursive ;
-     color:black;
-     font-weight: bold;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 100%;
+     width: 110%;
+     opacity: 0;
+     transition: .5s ease;
+     background-color: #ffcc00;
+}
 
-   }
-/* 
-   .footerspace
-   {
-        margin-top: 10%;
-   } */
+.text {
+     color: black;
+}
+
+#david, #shivani, #sushrut, #sakshi {
+     position: relative;
+     background-color: #dfeff0;
+}
+
+#david:hover .overlayAboutUs, #shivani:hover .overlayAboutUs, #sushrut:hover .overlayAboutUs, #sakshi:hover .overlayAboutUs {
+     opacity: 1;
+}
+
+#notfound {
+     position: relative;
+     height: 100vh;
+}
+
+.errorPage {
+     min-height: 100%;
+     background-image: url("../images/error.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+}
+
+/*Below CSS referred from https://colorlib.com/wp/free-404-error-page-templates/ */
+
+#notfound {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-image: url("../images/error.jpg");
+     background-size: cover;
+}
+
+#notfound .notfound-bg:after {
+     /* overflow-y: scroll; */
+     content: '';
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.25);
+}
+
+#notfound .notfound {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+}
+
+#notfound .notfound:after {
+     content: '';
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     width: 100%;
+     height: 600px;
+     background-color: rgba(255, 255, 255, 0.7);
+     -webkit-box-shadow: 0px 0px 0px 30px rgba(255, 255, 255, 0.7) inset;
+     box-shadow: 0px 0px 0px 30px rgba(255, 255, 255, 0.7) inset;
+     z-index: -1;
+}
+
+.notfound {
+     max-width: 600px;
+     width: 100%;
+     text-align: center;
+     padding: 30px;
+     line-height: 1.4;
+}
+
+.notfound .notfound-404 {
+     position: relative;
+     height: 200px;
+}
+
+.notfound .notfound-404 h1 {
+     font-family: 'Passion One', cursive;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     font-size: 220px;
+     margin: 0px;
+     color: #222225;
+     text-transform: uppercase;
+}
+
+.notfound h2 {
+     font-family: 'Titillium', sans-serif;
+     padding: 10px;
+     font-size: 22px;
+     font-weight: 400;
+     color: #222225;
+     margin-top: 26px;
+     margin-bottom: 20px;
+}
+
+.notfound a {
+     font-family: 'Titillium', sans-serif;
+     display: inline-block;
+     font-weight: 400;
+     text-decoration: none;
+     background-color: transparent;
+     color: #222225;
+     text-transform: uppercase;
+     font-size: 14px;
+}

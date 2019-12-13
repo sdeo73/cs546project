@@ -18,15 +18,7 @@ router.get('/login', async (req, res) => {
             return res.render('pages/loginPage', { title: "Login", partial: "login-scripts" });
         }
     } catch (error) {
-        return res.status(404).json(error);
-    }
-});
-
-router.get('/home', async (req, res) => {
-    try {
-        return res.status(200).render('pages/loginSuccess', { title: "Successfully Login", partial: "undefined" });
-    } catch (error) {
-        return res.status(404).json(error.message);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
@@ -97,7 +89,7 @@ router.post('/login', async (req, res) => {
             }
         }
     } catch (error) {
-        return res.status(404).json(error.message);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
@@ -106,9 +98,9 @@ router.get('/logout', async (req, res) => {
         //removes the session id from the user collection
         await loginData.removeSessionID(req.session.userID, req.session.AuthCookie);
         //Expire the cookies and render the logoutPage
-        req.session.destroy(res.render('pages/loginPage', { title: "Logout Successfully Page" }));
+        req.session.destroy(res.render('pages/loginPage', { title: "Login" }));
     } catch (err) {
-        return res.status(404).json(err);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 

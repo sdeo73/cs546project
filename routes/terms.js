@@ -7,8 +7,7 @@ router.get('/terms', async (req, res) => {
             title: "Terms and Conditions"
         });
     } catch (error) {
-        console.log("not found");
-        res.sendStatus(404);
+        res.status(404).render("pages/somethingWentWrong");
     }
 });
 
