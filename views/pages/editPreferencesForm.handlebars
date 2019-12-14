@@ -4,25 +4,23 @@
             <li class="left"><a href="/home">The Lazy Traveller</a></li>
 
             <li class="left"><a href="/userHome">Home</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/editProfile">Edit Profile</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/editPreferences">Edit Preferences</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/contact">Contact</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/terms">Terms</a></li>
 
             <li class="left"><a href="/aboutus">About Us</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="right"><a href="/logout">Log Out</a></li>
-            <li class = "right">{{name}}</li>
+            <li class="right">{{name}}</li>
         </ul>
     </div>
 </header>
+
 <div class="editPreferenceForm">
     <main>
         <form action="/editpreferences" method="POST" id="edit-preferences-form">
@@ -41,7 +39,7 @@
                 <option value="Dubai" selected="selected">Dubai</option>
             </select><br>
 
-            <label for="mealPref-input">Meal Preference: </label>
+            <label class="mealPref-input">Meal Preference: </label>
             <label for="mealPref1">Vegan</label>
             <input type="checkbox" name="mealPref" value="vegan" id="mealPref1"
                 {{#if userPreferences.mealPreference.vegan}} checked {{/if}}>
@@ -62,7 +60,7 @@
                 {{#if userPreferences.mealPreference.eggs}} checked {{/if}}><br>
 
 
-            <label for="tourType-input">Tour type: </label>
+            <label class="tourType-input">Tour type: </label>
             <label for="tourType1">Business</label>
             <input type="radio" name="tourType" value="business" id="tourType1"
                 {{#ifEquals userPreferences.tourType "business"}}checked{{/ifEquals}}>
@@ -83,7 +81,7 @@
                 {{#ifEquals userPreferences.tourType "sightseeing"}}checked{{/ifEquals}}><br>
 
 
-            <label for="tourActivity-input"> Tour Activity: </label>
+            <label class="tourActivity-input"> Tour Activity: </label>
             <label for="tourActivity1">Relaxed</label>
             <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1"
                 {{#ifEquals userPreferences.tourActivity "relaxed"}}checked{{/ifEquals}}>
@@ -99,7 +97,7 @@
                 min="1" max= "20"><br>
 
 
-            <label for="specialNeeds-input">Special Needs: </label>
+            <label class="specialNeeds-input">Special Needs: </label>
             <label for="specialNeeds1">Yes</label>
             <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1"
                 {{#ifEquals userPreferences.specialNeeds true}}checked{{/ifEquals}}>
@@ -129,7 +127,6 @@
                 Error! Maximum travel time is 1 week (7days).
             </div>
 
-
             <div class="error-msg" id="no-edits">
                 <i class="fa fa-times-circle"></i>
                 Please select at least one preference to change!
@@ -142,3 +139,6 @@
 <div class = "loader-spinner-outer" id = "loader-itinerary-outer">
     <div class = "loader-spinner" id = "loader-itinerary"></div>
 </div>
+<footer id="footer1">
+    <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
+</footer>

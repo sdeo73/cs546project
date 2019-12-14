@@ -50,7 +50,7 @@ html, body {
      display: inline-block;
 }
 
-.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm {
+.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm{
      min-height: 100%;
      background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
@@ -80,6 +80,7 @@ html, body {
 }
 
 #footer1 {
+     text-align: center;
      background-color: black;
      color: AliceBlue;
      font-weight: bold;
@@ -146,6 +147,49 @@ h1 {
      font-size: 40px;
      font-weight: bold;
      color: black;
+} 
+
+h2 {
+     text-align: center;
+     font-family: 'Amatic SC', cursive;
+     font-size: 20px;
+     font-weight: bold;
+     color: black;  
+}
+
+.download {     
+     margin-top: 20px;
+     font-family: 'Amatic SC', cursive;
+     font-size: 20px;
+     font-weight: bold;
+     color: black;  
+     padding: 10px;
+     background-color: #50cdd4;
+     width: 20%;
+}
+
+.download{
+     -webkit-transition: background-color 0.4s;
+     transition: background-color 0.4s;
+     display: inline-block;
+     color: black;
+     text-align: center;
+     padding: 5px;
+     text-decoration: none;
+     font-size: 22px;
+}
+
+.download:hover {
+     -webkit-transition-duration: 0.4s;
+     transition-duration: 0.8s;
+     background-color: white;
+     color: black;
+     text-decoration: none;
+     padding: 5px;
+}
+
+.viewWindow {
+     margin-top: 30px;
 }
 
 .signupForm, .loginForm, .preferenceForm, .editPreferenceForm, .editProfileForm, .termsPage, .home, .displayItinerary {
@@ -153,7 +197,7 @@ h1 {
      text-align: center;
 }
 
-#loginForm {
+#loginForm, .termsAndConditions {
      margin-top: 10%;
 }
 
@@ -216,7 +260,7 @@ a[href="terms"] {
      margin-top: 10px;
 }
 
-#loginForm {
+#loginForm, .termsAndConditions {
      height: auto;
      width: 30%;
      padding: 20px;
@@ -253,7 +297,7 @@ a[href="terms"] {
      background-color: #50cdd4;
      display: inline-block;
      margin-bottom: 100px;
-     margin-top: 100px;
+     margin-top: 20px;
      text-align: left;
 }
 
@@ -268,12 +312,7 @@ a[href="terms"] {
      display: inline-block;
 }
 
-/* #shadow {
-     border: 3px solid;
-     box-shadow: 5px 10px 18px #888888;
-} */
-
-#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
+#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input],label[for=tourType-input],label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input],label[for=travelers-input], label[for=specialNeeds-input],label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: black;
      display: inline-block;
      font-family: 'Amatic SC', cursive;
@@ -284,7 +323,7 @@ a[href="terms"] {
      border: tomato;
 }
 
-label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[for=tourType-input], label[for=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
+label[for=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input],label[for=tourType-input],label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input],label[for=travelers-input], label[for=specialNeeds-input],label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input]{
      text-align: right;
      margin-left: 6%;
 }
@@ -327,6 +366,7 @@ button[class="viewItineraryButton"] {
      color: black;
      margin-top: 30px;
      padding: 15px;
+     width: 20%;
 }
 
 #signupForm, #editProfileForm ul {
@@ -399,6 +439,10 @@ input[id=dob-input], input[id=travelStart-input], input[id=travelEnd-input] {
 .displayItinerary object {
      width: 100%;
      height: 100vh;
+}
+
+.displayItinerary h2 {
+     font-size: 30px;
 }
 
 .column {
@@ -537,6 +581,11 @@ img {
      font-weight: bolder;
 }
 
+.contactUsImgText p {
+     margin-right: 10px;
+     font-family: 'Amatic SC', cursive;
+}
+
 .contactUsDetails {
      min-height: 100%;
      background-image: url("/public/images/contact.jpg");
@@ -605,7 +654,7 @@ img {
      margin-left: auto;
 }
 
-.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm {
+.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm, .termsPage{
      width: 100%;
      margin-top: 50px;
      color: black;

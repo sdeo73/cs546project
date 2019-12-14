@@ -3,7 +3,7 @@ const form = document.getElementById("preferences-form");
 let todaysDate;
 $(function () { //Referred from https://stackoverflow.com/questions/43274559/how-do-i-restrict-past-dates-in-html5-input-type-date
     var dtToday = new Date();
-
+    
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
     var year = dtToday.getFullYear();
@@ -138,7 +138,7 @@ form.addEventListener("submit", event => {
 
     //Check if travel time is not more than two weeks
     timeDifference = new Date(travelEndInput).getTime() - new Date(travelStartInput).getTime();
-    var numberOfDays = (timeDifference / (1000 * 3600 * 24))+1;
+    var numberOfDays = (timeDifference / (1000 * 3600 * 24)) + 1;
     if (numberOfDays > 7) {
         event.preventDefault();
         $("#number-of-dates").show();

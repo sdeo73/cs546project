@@ -4,31 +4,34 @@
             <li class="left"><a href="/home">The Lazy Traveller</a></li>
 
             <li class="left"><a href="/userHome">Home</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/editProfile">Edit Profile</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/editPreferences">Edit Preferences</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="left"><a href="/contact">Contact</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/terms">Terms</a></li>
 
             <li class="left"><a href="/aboutus">About Us</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="right"><a href="/logout">Log Out</a></li>
+            <li class="right">{{name}}</li>
         </ul>
     </div>
 </header>
 <div class="displayItinerary">
-    <h1>Oops, you don't seem to have an itinerary yet!</h1>
+    <h1>Oops, you don't seem to have an itinerary yet</h1>
+    <h2>What are you waiting for? Come on, generate your itinerary now!</h2>
     <div class="viewItinerary">
         <form action="/generateItinerary" method="GET">
             <button class="viewItineraryButton" type="submit" formmethod="get">Generate Itinerary</button>
         </form>
     </div>
+</div>
+<div class="loader-spinner-outer" id="loader-itinerary-outer">
+    <h1>{{title}}</h1>
+    <div class="loader-spinner" id="loader-itinerary"></div>
 </div>
 <footer id="footer1">
     <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
