@@ -2,18 +2,16 @@
     <div class="navigation">
         <ul class="navbar">
             <li class="left"><a href="/home">The Lazy Traveller</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
-            <li class="left"><a href="/login">Login</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="left"><a href="/signup">Signup</a></li>
 
             <li class="left"><a href="/contact">Contact</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/terms">Terms</a></li>
 
             <li class="left"><a href="/aboutus">About Us</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
-            <li class="right"><a href="/signup">Signup</a></li>
+            <li class="right"><a href="/login">Login</a></li>
         </ul>
     </div>
 </header>
@@ -21,7 +19,7 @@
 <div class="signupForm">
     <main>
         <br><br><br>
-        <form id="signupForm" action="/signup" , method="POST">
+        <form id="signupForm" action="/signup"  method="POST">
             <h1>{{title}}</h1>
 
             <label for="firstName">
@@ -53,7 +51,7 @@
             <label for="email">
                 Email:<span class="screenreader-only">Enter your Email</span>
             </label>
-            <input id="email" name="email" type="text" value="" placeholder="Enter your email">
+            <input id="email" name="email" type="email" value="" placeholder="Enter your email">
             <br>
 
             <div class="error-msg" id="emailMissing">
@@ -77,7 +75,7 @@
             <label for="reEnterPassword">
                 Re-Enter Password:<span class="screenreader-only">Re-Enter your Password</span>
             </label>
-            <input id="repassword" name="repassword" type="password" value="" placeholder="Re-Enter your password">
+            <input id="reEnterPassword" name="repassword" type="password" value="" placeholder="Re-Enter your password">
             <br>
 
             <div class="error-msg" id="repasswordMissing">
@@ -85,7 +83,7 @@
                 Passwords do not match!
             </div>
             <br>
-            <label for="nationalities">Nationality:</label>
+            <label>Nationality:</label>
             <ul id="nationalities">
                 <li id="nationality">
                     <select name="nationality">
@@ -313,6 +311,6 @@
 </div>
 <footer id="footer1">
     <p class="paragraph-content">
-        <center> &copy; 2019 TheLazyTraveller.com</center>
+        &copy; 2019 TheLazyTraveller.com
     </p>
 </footer>

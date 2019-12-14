@@ -13,8 +13,8 @@ router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
+        //let userPrefExists = await userPrefFunctions.checkUserPreferenceExists(userID);
         let userPref = await userPrefFunctions.getUserPreferences(userID);
-
         if (userPref == null || userPref == undefined) {
             return res.status(200).redirect('../preferences');
         } else {
@@ -58,7 +58,7 @@ router.get('/generateItinerary', async (req, res) => {
             }
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong", {title: "Something Went Wrong"});
     }
 });
 
@@ -72,10 +72,12 @@ router.get('/viewItinerary', async (req, res) => {
             let userName = user.firstName + " " + user.lastName;
             return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined", name: userName });
         } else {
-            res.status(404).render("pages/noItinerary", { title: "Your Itinerary" });
+            let user = await usersFunctions.getUserById(req.session.userID);
+            let userName = user.firstName + " " + user.lastName;
+            return res.status(404).render("pages/noItinerary", { title: "Your Itinerary", partial:"no-itinerary-scripts", name: userName });
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong",  {title: "Something Went Wrong"});
     }
 });
 

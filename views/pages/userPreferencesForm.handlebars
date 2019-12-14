@@ -2,18 +2,21 @@
     <div class="navigation">
         <ul class="navbar">
             <li class="left"><a href="/home">The Lazy Traveller</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
-            <li class="left"><a href="/login">Login</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="left"><a href="/userHome">Home</a></li>
+
+            <li class="left"><a href="/editProfile">Edit Profile</a></li>
+
+            <li class="left"><a href="/editPreferences">Edit Preferences</a></li>
 
             <li class="left"><a href="/contact">Contact</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li class="left"><a href="/terms">Terms</a></li>
 
             <li class="left"><a href="/aboutus">About Us</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
 
-            <li class="right"><a href="/signup">Signup</a></li>
+            <li class="right"><a href="/logout">Log Out</a></li>
+            <li class="right">{{name}}</li>
         </ul>
     </div>
 </header>
@@ -23,165 +26,159 @@
         <br>
         <form action="/preferences" method="POST" id="preferences-form">
             <h1>{{title}}</h1>
-            <div id="shadow">
-                <br>
-                <form action="/preferences" method="POST" id="preferences-form">
-                    <label for="gender-input"> Gender: </label>
+            <br>
+                <label class="gender-input"> Gender: </label>
+                <label for="g1">Male</label>
+                <input type="radio" name="gender" value="male" id="g1">
+                <label for="g2">Female</label>
+                <input type="radio" name="gender" value="female" id="g2">
+                <label for="g3">Other</label>
+                <input type="radio" name="gender" value="other" id="g3"><br>
 
-                    <label for="g1">Male</label>
-                    <input type="radio" name="gender" value="male" id="g1">
-                    <label for="g2">Female</label>
-                    <input type="radio" name="gender" value="female" id="g2">
-                    <label for="g3">Other</label>
-                    <input type="radio" name="gender" value="other" id="g3"><br>
+                <div class="error-msg" id="gender-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Gender is required!
+                </div>
 
-                    <div class="error-msg" id="gender-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Gender is required!
-                    </div>
+                <label for="dob-input">Birthday: </label>
+                <input type="date" lang="en" name="dob" id="dob-input" data-placeholder="yyyy-mm-dd"><br>
+                <div class="error-msg" id="birthday-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Birthday is required!
+                </div>
+                <div class="error-msg" id="underage">
+                    <i class="fa fa-times-circle"></i>
+                    You must be at least 16 years old!
+                </div>
+                <div class="error-msg" id="invalidage">
+                    <i class="fa fa-times-circle"></i>
+                    You cannot be more than 120 years old!
+                </div>
 
-                    <label for="dob-input">Birthday: </label>
-                    <input type="date" name="dob" id="dob-input"><br>
-                    <div class="error-msg" id="birthday-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Birthday is required!
-                    </div>
-                    <div class="error-msg" id="underage">
-                        <i class="fa fa-times-circle"></i>
-                        You must be at least 16 years old!
-                    </div>
-                    <div class="error-msg" id="invalidage">
-                        <i class="fa fa-times-circle"></i>
-                        You cannot be more than 120 years old!
-                    </div>
+                <label for="countryId">Destination: </label>
+                <select name="country" class="countries" id="countryId">
+                    <option value="">Select Country</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                </select>
+                <select name="state" class="states" id="stateId">
+                    <option value="">Select State</option>
+                    <option value="Dubai">Dubai</option>
+                </select>
+                <select name="city" class="cities" id="cityId">
+                    <option value="">Select City</option>
+                    <option value="Dubai">Dubai</option>
+                </select><br>
+                <div class="error-msg" id="destination-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Country, state, and city are required!
+                </div>
 
-                    <label for="countryId">Destination: </label>
-                    <select name="country" class="countries" id="countryId">
-                        <option value="">Select Country</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                    </select>
-                    <select name="state" class="states" id="stateId">
-                        <option value="">Select State</option>
-                        <option value="Dubai">Dubai</option>
-                    </select>
-                    <select name="city" class="cities" id="cityId">
-                        <option value="">Select City</option>
-                        <option value="Dubai">Dubai</option>
-                    </select><br>
-                    <div class="error-msg" id="destination-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Country, state, and city are required!
-                    </div>
+                <label class="mealPref-input">Meal Preference: </label>
+                <label for="mealPref1">Vegan</label>
+                <input type="checkbox" name="mealPref" value="vegan" id="mealPref1">
+                <label for="mealPref2">Vegetarian</label>
+                <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2">
+                <label for="mealPref3">White Meat</label>
+                <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3">
+                <label for="mealPref4">Red Meat</label>
+                <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4">
+                <label for="mealPref5">Seafood</label>
+                <input type="checkbox" name="mealPref" value="seafood" id="mealPref5">
+                <label for="mealPref6">Eggs</label>
+                <input type="checkbox" name="mealPref" value="eggs" id="mealPref6"><br>
+                <div class="error-msg" id="mealPref-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Select at least one meal preference!
+                </div>
 
-                    <label for="mealPref-input">Meal Preference: </label>
-                    <label for="mealPref1">Vegan</label>
-                    <input type="checkbox" name="mealPref" value="vegan" id="mealPref1">
-                    <label for="mealPref2">Vegetarian</label>
-                    <input type="checkbox" name="mealPref" value="vegetarian" id="mealPref2">
-                    <label for="mealPref3">White Meat</label>
-                    <input type="checkbox" name="mealPref" value="whiteMeat" id="mealPref3">
-                    <label for="mealPref4">Red Meat</label>
-                    <input type="checkbox" name="mealPref" value="redMeat" id="mealPref4">
-                    <label for="mealPref5">Seafood</label>
-                    <input type="checkbox" name="mealPref" value="seafood" id="mealPref5">
-                    <label for="mealPref6">Eggs</label>
-                    <input type="checkbox" name="mealPref" value="eggs" id="mealPref6"><br>
-                    <div class="error-msg" id="mealPref-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Select at least one meal preference!
-                    </div>
+                <label class="tourType-input">Tour type: </label>
+                <label for="tourType1">Business</label>
+                <input type="radio" name="tourType" value="business" id="tourType1">
+                <label for="tourType2">Hiking</label>
+                <input type="radio" name="tourType" value="hiking" id="tourType2">
+                <label for="tourType3">Scenic</label>
+                <input type="radio" name="tourType" value="scenic" id="tourType3">
+                <label for="tourType4">Adventure Sports</label>
+                <input type="radio" name="tourType" value="adventureSports" id="tourType4">
+                <label for="tourType5">Historical</label>
+                <input type="radio" name="tourType" value="historical" id="tourType5">
+                <label for="tourType6">Sightseeing</label>
+                <input type="radio" name="tourType" value="sightseeing" id="tourType6"><br>
+                <div class="error-msg" id="tourType-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Tour type is required!
+                </div>
 
-                    <label for="tourType-input">Tour type: </label>
-                    <label for="tourType1">Business</label>
-                    <input type="radio" name="tourType" value="business" id="tourType1">
-                    <label for="tourType2">Hiking</label>
-                    <input type="radio" name="tourType" value="hiking" id="tourType2">
-                    <label for="tourType3">Scenic</label>
-                    <input type="radio" name="tourType" value="scenic" id="tourType3">
-                    <label for="tourType4">Adventure Sports</label>
-                    <input type="radio" name="tourType" value="adventureSports" id="tourType4">
-                    <label for="tourType5">Historical</label>
-                    <input type="radio" name="tourType" value="historical" id="tourType5">
-                    <label for="tourType6">Sightseeing</label>
-                    <input type="radio" name="tourType" value="sightseeing" id="tourType6"><br>
-                    <div class="error-msg" id="tourType-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Tour type is required!
-                    </div>
-
-                    <label for="tourActivity-input"> Tour Activity: </label>
-                    <label for="tourActivity1">Relaxed</label>
-                    <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1">
-                    <label for="tourActivity2">Moderate</label>
-                    <input type="radio" name="tourActivity" value="moderate" id="tourActivity2">
-                    <label for="tourActivity3">High</label>
-                    <input type="radio" name="tourActivity" value="high" id="tourActivity3"><br>
-                    <div class="error-msg" id="activity-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Tour Activity is required!
-                    </div>
+                <label class="tourActivity-input"> Tour Activity: </label>
+                <label for="tourActivity1">Relaxed</label>
+                <input type="radio" name="tourActivity" value="relaxed" id="tourActivity1">
+                <label for="tourActivity2">Moderate</label>
+                <input type="radio" name="tourActivity" value="moderate" id="tourActivity2">
+                <label for="tourActivity3">High</label>
+                <input type="radio" name="tourActivity" value="high" id="tourActivity3"><br>
+                <div class="error-msg" id="activity-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Tour Activity is required!
+                </div>
 
 
-                    <label for="travelers-input">Travelers: </label>
-                    <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers"
-                        min="1" max= "20"><br>
-                    <div class="error-msg" id="ntravelers-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Number of travelers is required!
-                    </div>
+                <label for="travelers-input">Travelers: </label>
+                <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers" min="1"
+                    max="20"><br>
+                <div class="error-msg" id="ntravelers-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Number of travelers is required!
+                </div>
 
-                    <label for="specialNeeds-input">Special Needs: </label>
-                    <label for="specialNeeds1">Yes</label>
-                    <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1">
-                    <label for="specialNeeds2">No</label>
-                    <input type="radio" name="specialNeeds" value="no" id="specialNeeds2"><br>
-                    <div class="error-msg" id="specialneeds-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Please select an option for special needs.
-                    </div>
+                <label class="specialNeeds-input">Special Needs: </label>
+                <label for="specialNeeds1">Yes</label>
+                <input type="radio" name="specialNeeds" value="yes" id="specialNeeds1">
+                <label for="specialNeeds2">No</label>
+                <input type="radio" name="specialNeeds" value="no" id="specialNeeds2"><br>
+                <div class="error-msg" id="specialneeds-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Please select an option for special needs.
+                </div>
 
-                    <label for="budget-input">Budget per person: </label>
-                    <input type="number" name="budget" id="budget-input" placeholder="Enter your budget" min=2000><br>
-                    <div class="error-msg" id="budget-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Budget is required!
-                    </div>
+                <label for="budget-input">Budget per person: </label>
+                <input type="number" name="budget" id="budget-input" placeholder="Enter your budget" min=2000><br>
+                <div class="error-msg" id="budget-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Budget is required!
+                </div>
 
-                    <label for="travelStart-input">Travel Start Date: </label>
-                    <input type="date" name="travelDateStart" id="travelStart-input"><br>
-                    <div class="error-msg" id="startDate-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Trip start date is required!
-                    </div>
+                <label for="travelStart-input">Travel Start Date: </label>
+                <input type="date" lang="en" name="travelDateStart" id="travelStart-input" data-placeholder="yyyy-mm-dd"><br>
+                <div class="error-msg" id="startDate-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Trip start date is required!
+                </div>
 
-                    <label for="travelEnd-input">Travel End Date: </label>
-                    <input type="date" name="travelDateEnd" id="travelEnd-input"><br>
-                    <div class="error-msg" id="endDate-missing">
-                        <i class="fa fa-times-circle"></i>
-                        Trip end date is required!.
-                    </div>
+                <label for="travelEnd-input">Travel End Date: </label>
+                <input type="date" lang="en" name="travelDateEnd" id="travelEnd-input" data-placeholder="yyyy-mm-dd"><br>
+                <div class="error-msg" id="endDate-missing">
+                    <i class="fa fa-times-circle"></i>
+                    Trip end date is required!.
+                </div>
 
-                    <div class="error-msg" id="invalid-dates">
-                        <i class="fa fa-times-circle"></i>
-                        Error! Travel start date cannot be ahead of end date.
-                    </div>
-                    <div class="error-msg" id="number-of-dates">
-                        <i class="fa fa-times-circle"></i>
-                        Error! Maximum travel time is one week (7 days).
-                    </div>
+                <div class="error-msg" id="invalid-dates">
+                    <i class="fa fa-times-circle"></i>
+                    Error! Travel start date cannot be ahead of end date.
+                </div>
+                <div class="error-msg" id="number-of-dates">
+                    <i class="fa fa-times-circle"></i>
+                    Error! Maximum travel time is one week (7 days).
+                </div>
 
-
-                    <button type="submit">Submit</button>
-                </form>
-                <br><br>
-            </div>
+                <button type="submit">Submit</button>
+            </form>
+            <br><br>
             <br><br><br>
-            <footer id="footer1">
-                <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
-            </footer>
     </main>
 </div>
-<div class = "loader-spinner-outer" id = "loader-itinerary-outer">
-    <h1>{{title}}</h1>
-    <div class = "loader-spinner" id = "loader-itinerary">
+<div class="loader-spinner-outer" id="loader-itinerary-outer">
+    <div class="loader-spinner" id="loader-itinerary"></div>
 </div>
+<footer id="footer1">
+    <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
+</footer>

@@ -36,7 +36,7 @@ router.get('/editpreferences', async (req, res) => {
             return res.status(200).redirect('/preferences');
         }
     } catch (e) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong", {title: "Something Went Wrong"});
     }
 });
 
@@ -152,7 +152,7 @@ router.post('/editpreferences', async (req, res) => {
             return res.status(200).redirect('/generateItinerary');
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong", {title: "Something Went Wrong"});
     }
 });
 

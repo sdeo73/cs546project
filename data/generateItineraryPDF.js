@@ -90,7 +90,7 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
                 doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Address: ", { continued: true }).font('Regular').text(`${itinerary[key][index].location}`);
                 doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Type: ", { continued: true }).font('Regular').text(`${itinerary[key][index].type}`);
                 doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Average Time Spent: ", { continued: true }).font('Regular').text(`${itinerary[key][index].avgTimeSpent}` + " hr");
-                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Average Cost Per Person: $", { continued: true }).font('Regular').text("Average cost per person: $" + `${itinerary[key][index].avgCostPerPerson}`);
+                doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Average Cost Per Person: $", { continued: true }).font('Regular').text(`${itinerary[key][index].avgCostPerPerson}`);
                 doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Special Needs Assistance: ", { continued: true }).font('Regular').text(`${specialNeeds}`);
                 doc.moveDown();
             }

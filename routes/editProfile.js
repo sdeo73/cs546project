@@ -24,7 +24,7 @@ router.get('/editprofile', async (req, res) => {
             name: userName
         });
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong", {title: "Something Went Wrong"});
     }
 });
 

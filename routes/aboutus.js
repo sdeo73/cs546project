@@ -18,7 +18,7 @@ router.get('/aboutus', async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(404).render("pages/error404");
+        res.status(404).render("pages/error404", {title: "404 Not Found"});
     }
 });
 
