@@ -293,6 +293,6 @@ function validateDate(dateString) {
     return false;
 }
 
-module.exports = {createPackingList, getPackingList, addItemsToPackingList, deletePackingList, removeItemsFromPackingList, generatePackingList};
+module.exports = {createPackingList, getPackingList, addItemsToPackingList, deletePackingList, removeItemsFromPackingList, generatePackingList, validateDate};
 
 

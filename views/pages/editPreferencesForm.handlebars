@@ -113,13 +113,22 @@
             <input data-placeholder="yyyy-mm-dd" type="date" name="travelDateStart" id="travelStart-input"
                 value={{userPreferences.travelDates.start}}><br>
 
+            <div class="error-msg" id="invalid-start-date">
+                <i class="fa fa-times-circle"></i>
+                Error! Travel start date must be date format (yyyy-dd-mmy).
+            </div>
 
             <label for="travelEnd-input">Travel End Date: </label>
             <input type="date" data-placeholder="yyyy-mm-dd" name="travelDateEnd" id="travelEnd-input" value={{userPreferences.travelDates.end}}><br>
 
             <div class="error-msg" id="invalid-dates">
                 <i class="fa fa-times-circle"></i>
-                Error! Travel start date cannot be ahead of end date.
+                Error! Travel start date cannot be ahead of end date (yyyy-dd-mmy).
+            </div>
+
+            <div class="error-msg" id="invalid-end-date">
+                <i class="fa fa-times-circle"></i>
+                Error! Travel end date must be date format.
             </div>
 
             <div class="error-msg" id="number-of-dates">
