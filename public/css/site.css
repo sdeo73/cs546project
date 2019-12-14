@@ -757,3 +757,8 @@ img {
      text-transform: uppercase;
      font-size: 14px;
 }
+
+h3{
+     font-family: 'Amatic SC', cursive;
+     font-weight: bold;
+}
