@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const userPrefData = data.userPreferences;
-var xss = require("xss");
+const xss = require("xss");
 
 router.get('/preferences', async (req, res) => {
     try {

@@ -19,6 +19,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
 
       <li class="right"><a href="/logout">Log Out</a></li>
+      <li class = "right">{{name}}</li>
     </ul>
   </div>
 </header>
@@ -26,10 +27,10 @@
 <div class="homePage">
   <main>
     <div class="viewItinerary">
-        <form action="/viewItinerary">
-         <button class="viewItineraryButton" type="submit">View Itinerary</button>
+      <form action="/viewItinerary" method="GET">
+        <button class="viewItineraryButton" type="submit" formmethod="get">View Itinerary</button>
       </form>
- </div>
+    </div>
     <table class="userHomeTable">
       <tr>
         <td>

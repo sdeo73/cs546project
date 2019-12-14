@@ -19,6 +19,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
 
             <li class="right"><a href="/logout">Log Out</a></li>
+            <li class = "right">{{name}}</li>
         </ul>
     </div>
 </header>
@@ -95,7 +96,7 @@
 
             <label for="travelers-input">Travelers: </label>
             <input type="number" name="nTravelers" id="travelers-input" placeholder={{userPreferences.noOfTravelers}}
-                min=0><br>
+                min="1" max= "20"><br>
 
 
             <label for="specialNeeds-input">Special Needs: </label>
@@ -137,4 +138,7 @@
             <button type="submit">Submit</button>
         </form>
     </main>
+</div>
+<div class = "loader-spinner-outer" id = "loader-itinerary-outer">
+    <div class = "loader-spinner" id = "loader-itinerary"></div>
 </div>

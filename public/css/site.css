@@ -1,5 +1,5 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
-#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage, #destination-missing, #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing, #endDate-missing, #invalid-dates, #number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError, #duplicateNationalities, #specialneeds-missing, #terms-not-accepted {
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage, #destination-missing, #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing, #endDate-missing, #invalid-dates, #number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError, #duplicateNationalities, #specialneeds-missing, #terms-not-accepted, #invalidage {
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
@@ -18,7 +18,7 @@ html, body {
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
-     color: green;
+     color: #005900;
      text-align: center;
 }
 
@@ -154,7 +154,7 @@ h1 {
 }
 
 #loginForm {
-     margin-top: 120px;
+     margin-top: 10%;
 }
 
 #userEmail, #firstName {
@@ -216,7 +216,20 @@ a[href="terms"] {
      margin-top: 10px;
 }
 
-#loginForm, #editProfileForm {
+#loginForm {
+     height: auto;
+     width: 30%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #50cdd4;
+     display: inline-block;
+     margin-bottom: 100px;
+     margin-top: 2%;
+}
+
+#editProfileForm {
      height: auto;
      width: 30%;
      padding: 20px;
@@ -598,7 +611,6 @@ img {
      color: black;
      text-align: center;
      display: inline-block;
-     /* overflow-y: scroll; */
      position: relative;
 }
 

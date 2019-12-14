@@ -79,8 +79,7 @@
                         $("#noChangeError").hide();
                         $("#duplicateNationalities").hide();
                         $("#updateSuccess").show();
-
-                        alert("Change name on navbar to "+response.message+"!");
+                        $("#navbar-name").text(response.message);
                     },
                     error: function(xhr, status, error){
                         switch(xhr.responseJSON.message){

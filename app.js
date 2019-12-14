@@ -43,6 +43,14 @@ app.use('/userhome', function (req, res, next) {
   }
 });
 
+app.use('/login', function (req, res, next) {
+  if (req.session.userID) {
+    return res.status(200).redirect('/home');
+  } else {
+    return next();
+  }
+});
+
 app.use('/signup', function (req, res, next) {
   if (req.session.userID) {
     return res.status(200).redirect('/userHome');
@@ -68,6 +76,14 @@ app.use('/generateItinerary', function (req, res, next) {
 });
 
 app.use('/viewItinerary', function (req, res, next) {
+  if (req.session.userID) {
+    return next();
+  } else {
+    return res.status(200).redirect('/login');
+  }
+});
+
+app.use('/noItinerary', function (req, res, next) {
   if (req.session.userID) {
     return next();
   } else {
