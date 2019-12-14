@@ -260,7 +260,7 @@ async function updateNumOfTravelers(userID, newNTravelers) {
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
     }
-    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.nTravelers': parseInt(newNTravelers) } });
+    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.noOfTravelers': parseInt(newNTravelers) } });
     if (!updatedObject) {
         throw new Error(error.nTravelersUpdationFailed);
     } else {
@@ -331,7 +331,7 @@ async function updateBudget(userID, newBudget) {
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
     }
-    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.budget': parseInt(budget) } });
+    const updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.budget': parseInt(newBudget) } });
     if (!updatedObject) {
         throw new Error(error.budgetUpdationFailed);
     } else {
