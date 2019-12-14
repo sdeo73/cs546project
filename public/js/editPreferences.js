@@ -18,6 +18,23 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
     $('#loader-itinerary-outer').hide();
 });
 
+function validateDate(dateString) {
+    console.log("validateDate function start");
+    alert("validateDate function start");
+    let inputDate = dateString.split("-");
+    let newDate = new Date(dateString);
+
+    //checks if the date strings provided were valid or not
+    if (isNaN(newDate.getFullYear()) || isNaN(newDate.getMonth()) || isNaN(newDate.getDate())) { 
+        return false;
+    }
+    //validates if the date is parsed correctly
+    if ((newDate.getUTCMonth()+1) == inputDate[1] && newDate.getUTCDate() == inputDate[2] && newDate.getUTCFullYear() == inputDate[0]) {
+        return true;
+    }
+    return false;
+}
+
 form.addEventListener("submit", event => {
     event.preventDefault();
     let errors = false;
@@ -39,6 +56,20 @@ form.addEventListener("submit", event => {
         errors = true;
     } else {
         $("#no-edits").hide();
+    }
+
+    if (!validateDate(travelStartInput)) {
+        $("#invalid-start-date").show();
+        errors = true;
+    } else {
+        $("#invalid-start-date").hide();
+    }
+
+    if (!validateDate(travelEndInput)) {
+        $("#invalid-end-date").show();
+        errors = true;
+    } else {
+        $("#invalid-end-date").hide();
     }
 
     //Check if travel end date is ahead of travel start date

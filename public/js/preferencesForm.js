@@ -18,6 +18,23 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
     $('#loader-itinerary-outer').hide();
 });
 
+function validateDate(dateString) {
+    let inputDate = dateString.split("-");
+    let newDate = new Date(dateString);
+    //checks if the date strings provided were valid or not
+    if (isNaN(newDate.getFullYear()) || isNaN(newDate.getMonth()) || isNaN(newDate.getDate())) { 
+        alert("enter first validateDate if statement");
+        return false;
+    }
+    //validates if the date is parsed correctly
+    if ((newDate.getUTCMonth()+1) == inputDate[1] && newDate.getUTCDate() == inputDate[2] && newDate.getUTCFullYear() == inputDate[0]) {
+        alert("enter second validateDate if statement");
+        return true;
+    }
+    alert("didn't enter any validateDate if statement");
+    return false;
+}
+
 form.addEventListener("submit", event => {
     let errors = false;
     event.preventDefault();
@@ -30,6 +47,14 @@ form.addEventListener("submit", event => {
     }
 
     const birthdayInput = document.getElementById("dob-input").value;
+    if (!validateDate(birthdayInput)) {
+        alert("invalid-birthday format show");
+        $("invalid-birthday").show();
+        errors = true;
+    } else {
+        alert("invalid-birthday format hide");
+        $("invalid-birthday").hide();
+    }
     if (!birthdayInput) {
         $("#birthday-missing").show();
         $("#underage").hide();
@@ -120,12 +145,26 @@ form.addEventListener("submit", event => {
         $("#startDate-missing").hide();
     }
 
+    if (!validateDate(travelStartInput)) {
+        $("#invalid-start-date").show();
+        errors = true;
+    } else {
+        $("#invalid-start-date").hide();
+    }
+
     const travelEndInput = document.getElementById("travelEnd-input").value;
     if (!travelEndInput) {
         $("#endDate-missing").show();
         errors = true;
     } else {
         $("#endDate-missing").hide();
+    }
+
+    if (!validateDate(travelEndInput)) {
+        $("#invalid-end-date").show();
+        errors = true;
+    } else {
+        $("#invalid-end-date").hide();
     }
 
     //Check if travel end date is ahead of travel start date

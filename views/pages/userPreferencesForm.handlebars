@@ -46,6 +46,10 @@
                     <i class="fa fa-times-circle"></i>
                     Birthday is required!
                 </div>
+                <div class="error-msg" id="invalid-birthday">
+                    <i class="fa fa-times-circle"></i>
+                    Birthday must be date format (mm-dd-yyyy)!
+                </div>
                 <div class="error-msg" id="underage">
                     <i class="fa fa-times-circle"></i>
                     You must be at least 16 years old!
@@ -153,12 +157,21 @@
                     <i class="fa fa-times-circle"></i>
                     Trip start date is required!
                 </div>
+                <div class="error-msg" id="invalid-start-date">
+                    <i class="fa fa-times-circle"></i>
+                    Error! Travel start date must be date format (mm-dd-yyyy).
+                </div>
 
                 <label for="travelEnd-input">Travel End Date: </label>
                 <input type="date" lang="en" name="travelDateEnd" id="travelEnd-input" data-placeholder="yyyy-mm-dd"><br>
                 <div class="error-msg" id="endDate-missing">
                     <i class="fa fa-times-circle"></i>
                     Trip end date is required!.
+                </div>
+
+                <div class="error-msg" id="invalid-end-date">
+                    <i class="fa fa-times-circle"></i>
+                    Error! Travel end date must be date format (mm-dd-yyyy).
                 </div>
 
                 <div class="error-msg" id="invalid-dates">

@@ -3,6 +3,7 @@ const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const error = require('../public/errorMessages');
 const userFunctions = require('./users');
+const packingFunctions = require("../data/packing");
 
 /**
  * Function to check if user with userID has already selected userPreferences
@@ -67,6 +68,11 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
     } if (!travelDateStart || !travelDateEnd) {
         errors.push(error.travelDatesMissing);
     }
+
+    if (!packingFunctions.validateDate(travelDateStart) || !packingFunctions.validateDate(travelDateEnd)) {
+        throw new Error(errorMessages.InvalidDateFormat);
+    }
+
 
     if (!Array.isArray(mealPreference)) {
         mealPreference = mealPreference.split(",");
@@ -382,6 +388,9 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     let errors = [];
     if (!newTravelStartDate && !newTravelEndDate) {
         errors.push(error.travelDatesMissing);
+    }
+    if (!packingFunctions.validateDate(newTravelStartDate) || !packingFunctions.validateDate(newTravelEndDate)) {
+        throw new Error(errorMessages.InvalidDateFormat);
     }
 
     if (errors.length > 0) {
