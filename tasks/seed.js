@@ -21,7 +21,8 @@ const destinations = mongoCollections.destinations;
         for (index in users) {
             try {
                 let user = users[index];
-                await signupFunctions.addUserWithoutHash(user.firstName, user.lastName, user.email, user.password, user.nationality);
+                email = user.email.toLowerCase();
+                await signupFunctions.addUserWithoutHash(user.firstName, user.lastName, email, user.password, user.nationality);
             } catch (error) {
                 if (error.name == "MongoError" && error.code == 11000) { //Error message and code in case of duplicate insertion
                     index++; //Skip duplicate entry and continue
@@ -76,7 +77,6 @@ const destinations = mongoCollections.destinations;
         //Insert data from Dubai.json into the database
         try {
             const addedDubai = await destinationFunctions.addDestination(dubai.d_name, dubai.country, dubai.weather, dubai.thingsToDo, dubai.restaurants, dubai.countryCustoms);
-            console.log(addedDubai);
         } catch (error) {
             if (error.name == "MongoError" && error.code == 11000) {//Error message and code in case of duplicate insertion
                 index++; //Skip duplicate entry and continue

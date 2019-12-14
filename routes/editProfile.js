@@ -40,7 +40,7 @@ router.post('/editprofile', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        const email = xss(req.body.email, {
+        let email = xss(req.body.email, {
             whiteList: [], 
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
@@ -50,6 +50,7 @@ router.post('/editprofile', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
+        email = email.toLowerCase();
         if (email && email.length > 0) {
             if(await signupData.checkIfEmailTaken(email)){
                 let user = await userData.getUserById(req.session.userID);

@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
-        const email = xss(req.body.email, {
+        let email = xss(req.body.email, {
             whiteList: [], 
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
@@ -43,6 +43,7 @@ router.post('/signup', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
+        email = email.toLowerCase();
         if (await signupData.checkIfEmailTaken(email)) {
             return res.status(401).render('pages/signup', { title: "Sign up", emailExistsError: "Email already taken!", partial: "signup-scripts" });
         } else {

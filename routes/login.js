@@ -24,7 +24,7 @@ router.get('/login', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const user_email = xss(req.body.user_email, {
+        let user_email = xss(req.body.user_email, {
             whiteList: [], 
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
@@ -34,6 +34,7 @@ router.post('/login', async (req, res) => {
             stripIgnoreTag: true,
             stripIgnoreTagBody: []
         });
+        user_email = user_email.toLowerCase();
         const currentUser = await loginData.getHashPassword(user_email);
         let validPass = false;
 
@@ -53,7 +54,7 @@ router.post('/login', async (req, res) => {
             }
             if (!validPass) {
                 await data.users.updateFailedAttempts(user_email);
-                return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid username or password!", partial: "login-scripts" });
+                return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid email or password!", partial: "login-scripts" });
             }
         }
 
@@ -85,7 +86,7 @@ router.post('/login', async (req, res) => {
                 await data.users.updateTimeStamp(user_email);
                 return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Too many incorrect attempts. Try again later.", partial: "login-scripts" });
             } else {
-                return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid username or password!", partial: "login-scripts" });
+                return res.status(401).render('pages/loginPage', { title: "Login", invalidPasswordError: "Invalid email or password!", partial: "login-scripts" });
             }
         }
     } catch (error) {
