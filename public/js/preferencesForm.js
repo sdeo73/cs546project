@@ -45,10 +45,10 @@ form.addEventListener("submit", event => {
 
     const birthdayInput = document.getElementById("dob-input").value;
     if (!validateDate(birthdayInput)) {
-        $("invalid-birthday").show();
+        $("#invalid-birthday").show();
         errors = true;
     } else {
-        $("invalid-birthday").hide();
+        $("#invalid-birthday").hide();
     }
     if (!birthdayInput) {
         $("#birthday-missing").show();
@@ -63,10 +63,12 @@ form.addEventListener("submit", event => {
             errors = true;
         } else if(age > 120){
             $("#invalidage").show();
+            $("#underage").hide();
             $("#birthday-missing").hide();
             errors = true;
         }else {
             $("#birthday-missing").hide();
+            $("#invalidage").hide();
             $("#underage").hide();
         }
     }
@@ -135,13 +137,15 @@ form.addEventListener("submit", event => {
     const travelStartInput = document.getElementById("travelStart-input").value;
     if (!travelStartInput) {
         $("#startDate-missing").show();
+        $("#invalid-start-date").hide();
         errors = true;
     } else {
         $("#startDate-missing").hide();
     }
 
-    if (!validateDate(travelStartInput)) {
+    if (travelStartInput && !validateDate(travelStartInput)) {
         $("#invalid-start-date").show();
+        $("#startDate-missing").hide();
         errors = true;
     } else {
         $("#invalid-start-date").hide();
@@ -150,13 +154,15 @@ form.addEventListener("submit", event => {
     const travelEndInput = document.getElementById("travelEnd-input").value;
     if (!travelEndInput) {
         $("#endDate-missing").show();
+        $("#invalid-end-date").hide();
         errors = true;
     } else {
         $("#endDate-missing").hide();
     }
 
-    if (!validateDate(travelEndInput)) {
+    if (travelEndInput && !validateDate(travelEndInput)) {
         $("#invalid-end-date").show();
+        $("#endDate-missing").hide();
         errors = true;
     } else {
         $("#invalid-end-date").hide();
