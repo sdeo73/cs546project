@@ -19,8 +19,6 @@ $(function () { //Referred from https://stackoverflow.com/questions/43274559/how
 });
 
 function validateDate(dateString) {
-    console.log("validateDate function start");
-    alert("validateDate function start");
     let inputDate = dateString.split("-");
     let newDate = new Date(dateString);
 

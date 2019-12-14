@@ -23,15 +23,12 @@ function validateDate(dateString) {
     let newDate = new Date(dateString);
     //checks if the date strings provided were valid or not
     if (isNaN(newDate.getFullYear()) || isNaN(newDate.getMonth()) || isNaN(newDate.getDate())) { 
-        alert("enter first validateDate if statement");
         return false;
     }
     //validates if the date is parsed correctly
     if ((newDate.getUTCMonth()+1) == inputDate[1] && newDate.getUTCDate() == inputDate[2] && newDate.getUTCFullYear() == inputDate[0]) {
-        alert("enter second validateDate if statement");
         return true;
     }
-    alert("didn't enter any validateDate if statement");
     return false;
 }
 
@@ -48,11 +45,9 @@ form.addEventListener("submit", event => {
 
     const birthdayInput = document.getElementById("dob-input").value;
     if (!validateDate(birthdayInput)) {
-        alert("invalid-birthday format show");
         $("invalid-birthday").show();
         errors = true;
     } else {
-        alert("invalid-birthday format hide");
         $("invalid-birthday").hide();
     }
     if (!birthdayInput) {
