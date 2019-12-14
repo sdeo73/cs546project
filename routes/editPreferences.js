@@ -119,7 +119,7 @@ router.post('/editpreferences', async (req, res) => {
 
                 if(req.body.travelDateStart && req.body.travelDateEnd){
                     if(req.body.travelDateEnd < req.body.travelDateStart) throw new Error(errorMessages.travelDatesInvalid);
-                    if(req.body.travelDateEnd != existingPref.travelDates.end && req.body.travelDateStart != existingPref.travelDates.start){
+                    if(req.body.travelDateEnd != existingPref.travelDates.end || req.body.travelDateStart != existingPref.travelDates.start){
                         let travelDateStart = xss(req.body.travelDateStart, {
                             whiteList: [], 
                             stripIgnoreTag: true,

@@ -405,14 +405,7 @@ async function updateTravelDates(userID, newTravelStartDate, newTravelEndDate) {
     if (!userToUpdate) {
         throw new Error(error.userDoesNotExist);
     }
-    let updatedObject;
-    if (!newTravelStartDate) {
-        updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.travelDates.end': newTravelEndDate } });
-    } else if (!newTravelEndDate) {
-        updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.travelDates.start': newTravelStartDate } });
-    } else {
-        updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.travelDates.start': newTravelStartDate, 'userPreferences.travelDates.end': newTravelEndDate } });
-    }
+    let updatedObject = await usersCollection.updateOne(userToUpdate, { $set: { 'userPreferences.travelDates.start': newTravelStartDate, 'userPreferences.travelDates.end': newTravelEndDate } });
     if (!updatedObject || updatedObject.modifiedCount == 0) {
         throw new Error(error.travelDateUpdationFailed);
     } else {
