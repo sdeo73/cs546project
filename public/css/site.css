@@ -50,7 +50,7 @@ html, body {
      display: inline-block;
 }
 
-.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm{
+.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm {
      min-height: 100%;
      background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
@@ -147,22 +147,22 @@ h1 {
      font-size: 40px;
      font-weight: bold;
      color: black;
-} 
+}
 
 h2 {
      text-align: center;
      font-family: 'Amatic SC', cursive;
      font-size: 20px;
      font-weight: bold;
-     color: black;  
+     color: black;
 }
 
-.download {     
+.download {
      margin-top: 20px;
      font-family: 'Amatic SC', cursive;
      font-size: 20px;
      font-weight: bold;
-     color: black;  
+     color: black;
      padding: 10px;
      background-color: #50cdd4;
      width: 20%;
@@ -174,13 +174,27 @@ h2 {
      font-family: 'Amatic SC', cursive;
      font-size: 20px;
      font-weight: bold;
-     color: black;  
+     color: black;
      padding: 10px;
      background-color: #50cdd4;
      width: 30%;
 }
 
-.download, .backToHome{
+#viewItineraryButton, #generateItineraryButton {
+     font-family: 'Titillium', sans-serif;
+     margin-top: 30px;
+     font-family: 'Amatic SC', cursive;
+     font-size: 20px;
+     font-weight: bold;
+     color: black;
+     padding: 10px;
+     background-color: #50cdd4;
+     width: 20%;
+     background-color: #ffcc00;
+     box-shadow: 5px 5px 5px #888888;
+}
+
+.download, .backToHome, #viewItineraryButton, #generateItineraryButton {
      -webkit-transition: background-color 0.4s;
      transition: background-color 0.4s;
      display: inline-block;
@@ -191,7 +205,7 @@ h2 {
      font-size: 22px;
 }
 
-.download:hover, .backToHome:hover {
+.download:hover, .backToHome:hover, #viewItineraryButton:hover, #generateItineraryButton:hover {
      -webkit-transition-duration: 0.4s;
      transition-duration: 0.8s;
      background-color: white;
@@ -245,7 +259,7 @@ a[href="terms"] {
      font-size: 20px;
 }
 
-.listOfTerms li{
+.listOfTerms li {
      display: list-item;
      list-style-type: circle;
      font-family: 'Titillium Web', sans-serif;
@@ -335,7 +349,7 @@ a[href="terms"] {
      display: inline-block;
 }
 
-#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[class=gender-input],label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input],label[for=tourType-input],label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input],label[for=travelers-input], label[for=specialNeeds-input],label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
+#signupForm label, #loginForm label, #editProfileForm label, label[for=gender-input], label[class=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input], label[for=tourType-input], label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      color: black;
      display: inline-block;
      font-family: 'Amatic SC', cursive;
@@ -346,7 +360,7 @@ a[href="terms"] {
      border: tomato;
 }
 
-label[for=gender-input], label[class=gender-input],label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input],label[for=tourType-input],label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input],label[for=travelers-input], label[for=specialNeeds-input],label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input]{
+label[for=gender-input], label[class=gender-input], label[for=dob-input], label[for=countryId], label[for=mealPref-input], label[class=mealPref-input], label[for=tourType-input], label[class=tourType-input], label[for=tourActivity-input], label[class=tourActivity-input], label[for=travelers-input], label[for=specialNeeds-input], label[class=specialNeeds-input], label[for=budget-input], label[for=travelStart-input], label[for=travelEnd-input] {
      text-align: right;
      margin-left: 6%;
 }
@@ -378,18 +392,6 @@ button[type="submit"] {
 
 button[type="submit"]:hover, #preferences-form input[type=radio]:hover, #preferences-form input[type=checkbox]:hover, #edit-preferences-form input[type=radio]:hover, #edit-preferences-form input[type=checkbox]:hover {
      cursor: pointer;
-}
-
-button[class="viewItineraryButton"] {
-     background-color: #ffcc00;
-     box-shadow: 5px 5px 5px #888888;
-     font-family: 'Amatic SC', cursive;
-     font-weight: bold;
-     font-size: 20px;
-     color: black;
-     margin-top: 30px;
-     padding: 15px;
-     width: 20%;
 }
 
 #signupForm, #editProfileForm ul {
@@ -629,7 +631,6 @@ img {
      /* transform: translate(-50%, -50%); */
 }
 
-
 .ctus-p {
      color: teal;
      font-size: 34px;
@@ -677,7 +678,7 @@ img {
      margin-left: auto;
 }
 
-.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm, .termsPage{
+.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm, .termsPage {
      width: 100%;
      margin-top: 50px;
      color: black;
@@ -707,7 +708,7 @@ img {
 
 .aboutUsColumns {
      width: 80%;
-   margin-left: 20%;
+     margin-left: 20%;
 }
 
 .overlay {
@@ -831,7 +832,7 @@ img {
      margin-bottom: 20px;
 }
 
-h3{
+h3 {
      font-family: 'Amatic SC', cursive;
      font-weight: bold;
 }
