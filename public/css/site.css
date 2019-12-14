@@ -30,17 +30,7 @@ html, body {
      text-align: center;
 }
 
-.error-msg {
-     background-color: #a0c0d4;
-     padding: 5px;
-     margin: 5px;
-     width: 300px;
-     margin-left: auto;
-     margin-right: auto;
-     display: inline-block;
-}
-
-.success-msg {
+.error-msg, .success-msg {
      background-color: #a0c0d4;
      padding: 5px;
      margin: 5px;
@@ -51,6 +41,15 @@ html, body {
 }
 
 .homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm {
+     min-height: 100%;
+     background-image: url("../images/loggedInBackground.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+}
+
+.loader-spinner-outer {
      min-height: 100%;
      background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
