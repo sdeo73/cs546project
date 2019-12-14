@@ -58,7 +58,7 @@ html, body {
      background-size: 100% 100%;
 }
 
-.loader-spinner-outer {
+.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm{
      min-height: 100%;
      background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
@@ -66,6 +66,16 @@ html, body {
      background-attachment: fixed;
      background-size: 100% 100%;
 }
+
+.displayItinerary
+{        min-height: 50%;
+   background-image: url("../images/car2.gif");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: relative;
+     background-size: 100% 100%; 
+}
+
 
 #error404 {
      background-image: url("../images/travelBackground.png");
