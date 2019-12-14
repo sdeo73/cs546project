@@ -8,6 +8,7 @@ const destinations = mongoCollections.destinations;
 const itemFunctions = require("../data/prohibitedItems");
 const lawFunctions = require("../data/laws");
 const packingFunctions = require("../data/packing");
+const tourGuideFunctions = require("../data/tourGuides");
 const fs = require('fs');
 
 /**
@@ -157,8 +158,24 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
         doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Coastguard: " + `${emergencyContact.coastguard}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
         doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Electricity Concern: " + `${emergencyContact.electricityFailure}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
         doc.fillColor('#4a8ab4').font('Regular').fontSize(14).list(["Water Concern: " + `${emergencyContact.waterFailure}`], { bulletIndent: 20, textIndent: 20, align: 'justify' });
-    }
 
+        doc.addPage();
+
+        //Add Tour Guides
+        const tourGuides = await tourGuideFunctions.getTourGuidesByCity(destination);
+        doc.rect(20, doc.y, (page.width) - 40, doc.currentLineHeight()).fill('#4a8ab4');
+        doc.fillColor('white').font('Bold').fontSize(14).text("Tour guides", { lineBreak: true, align: 'left' });
+        doc.moveDown();
+        for(index in tourGuides) {
+            tourGuideLanguages = tourGuides[index].language.slice(0, tourGuides[index].language.length);
+            doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Name: ", { continued: true }).font('Regular').text(`${tourGuides[index].name}`);
+            doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Email: ", { continued: true }).font('Regular').text(`${tourGuides[index].email}`);
+            doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Phone: ", { continued: true }).font('Regular').text(`${tourGuides[index].phone}`);
+            doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Daily Cost: ", { continued: true }).font('Regular').text(`${tourGuides[index].dailyCost}` + " hr");
+            doc.fillColor('#ffaa00').font('SemiBold').fontSize(14).text("Languages ", { continued: true }).font('Regular').text(`${tourGuideLanguages}`);
+            doc.moveDown();
+        }
+    }
     doc.end();
 
     //Referred from https://mongodb.github.io/node-mongodb-native/3.0/tutorials/gridfs/streaming/

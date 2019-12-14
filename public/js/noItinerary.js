@@ -1,7 +1,7 @@
 const generateItineraryButton = document.getElementById("generateItineraryButton");
 
 generateItineraryButton.addEventListener("click", function(event){
-    $(".displayItinerary").hide();
+    $(".noItinerary").hide();
     $('#loader-itinerary-outer').show();
     $("title").text("Generating Itinerary");
         let opts = {
