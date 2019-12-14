@@ -25,13 +25,13 @@
     <main>
         <form id="editProfileForm" action="/editprofile" method="POST">
             <h1>{{title}}</h1>
-            <label>First Name:</label>
+            <label for="firstName">First Name:</label>
             <input type="text" name="firstName" id="firstName" value="" placeholder="Enter new first name">
             <br>
-            <label>Last Name:</label>
+            <label for="lastName">Last Name:</label>
             <input type="text" name="lastName" id="lastName" value="" placeholder="Enter new last name">
             <br>
-            <label>Email:</label>
+            <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="" placeholder="Enter new email">
             <br>
             <div class="error-msg" id="emailExists">
