@@ -18,7 +18,7 @@ router.get('/login', async (req, res) => {
             return res.render('pages/loginPage', { title: "Login", partial: "login-scripts" });
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong",  {title: "Something Went Wrong"});
     }
 });
 
@@ -89,7 +89,7 @@ router.post('/login', async (req, res) => {
             }
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong",  {title: "Something Went Wrong"});
     }
 });
 
@@ -100,7 +100,7 @@ router.get('/logout', async (req, res) => {
         //Expire the cookies and render the logoutPage
         req.session.destroy(res.render('pages/loginPage', { title: "Login" }));
     } catch (err) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong",  {title: "Something Went Wrong"});
     }
 });
 

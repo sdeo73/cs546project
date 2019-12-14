@@ -9,7 +9,7 @@ router.get('/home', async (req, res) => {
             title: "Home"
         });
     } catch (error) {
-        res.status(404).render("pages/error404");
+        res.status(404).render("pages/error404", {title: "404 Not Found"});
     }
 });
 
@@ -22,7 +22,7 @@ router.get('/userHome', async (req, res) => {
             name: userName
         });
     } catch (error) {
-        res.status(404).render("pages/error404");
+        res.status(404).render("pages/error404", {title: "404 Not Found"});
     }
 });
 

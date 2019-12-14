@@ -110,12 +110,12 @@
 
 
             <label for="travelStart-input">Travel Start Date: </label>
-            <input type="date" name="travelDateStart" id="travelStart-input"
+            <input data-placeholder="yyyy-mm-dd" type="date" name="travelDateStart" id="travelStart-input"
                 value={{userPreferences.travelDates.start}}><br>
 
 
             <label for="travelEnd-input">Travel End Date: </label>
-            <input type="date" name="travelDateEnd" id="travelEnd-input" value={{userPreferences.travelDates.end}}><br>
+            <input type="date" data-placeholder="yyyy-mm-dd" name="travelDateEnd" id="travelEnd-input" value={{userPreferences.travelDates.end}}><br>
 
             <div class="error-msg" id="invalid-dates">
                 <i class="fa fa-times-circle"></i>

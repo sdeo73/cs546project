@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const data = require('../data');
+const usersFunctions = data.users;
 
 router.get('/terms', async (req, res) => {
     try {
@@ -16,7 +18,7 @@ router.get('/terms', async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(404).render("pages/error404");
+        res.status(404).render("pages/error404", {title: "404 Not Found"});
     }
 });
 

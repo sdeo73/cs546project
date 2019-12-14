@@ -13,8 +13,8 @@ router.get('/generateItinerary', async (req, res) => {
     try {
         const destinationCollection = await destination();
         let userID = req.session.userID;
+        //let userPrefExists = await userPrefFunctions.checkUserPreferenceExists(userID);
         let userPref = await userPrefFunctions.getUserPreferences(userID);
-
         if (userPref == null || userPref == undefined) {
             return res.status(200).redirect('../preferences');
         } else {
@@ -58,7 +58,7 @@ router.get('/generateItinerary', async (req, res) => {
             }
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong", {title: "Something Went Wrong"});
     }
 });
 
@@ -75,7 +75,7 @@ router.get('/viewItinerary', async (req, res) => {
             res.status(404).render("pages/noItinerary", { title: "Your Itinerary" });
         }
     } catch (error) {
-        res.status(404).render("pages/somethingWentWrong");
+        res.status(404).render("pages/somethingWentWrong",  {title: "Something Went Wrong"});
     }
 });
 

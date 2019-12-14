@@ -23,7 +23,7 @@ const constructorMethod = app => {
     app.use("/", editProfileRoutes);
   
     app.use("*", (req, res) => {
-      res.status(404).render("pages/error404");
+      res.status(404).render("pages/error404", {title: "404 Not Found"});
     });
 };
 

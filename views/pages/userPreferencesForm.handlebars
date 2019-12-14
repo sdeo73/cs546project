@@ -27,9 +27,7 @@
         <form action="/preferences" method="POST" id="preferences-form">
             <h1>{{title}}</h1>
             <br>
-            <form action="/preferences" method="POST" id="preferences-form">
-                <label for="gender-input"> Gender: </label>
-
+                <label class="gender-input"> Gender: </label>
                 <label for="g1">Male</label>
                 <input type="radio" name="gender" value="male" id="g1">
                 <label for="g2">Female</label>
@@ -43,7 +41,7 @@
                 </div>
 
                 <label for="dob-input">Birthday: </label>
-                <input type="date" lang="en" name="dob" id="dob-input" placeholder="yyyy-mm-dd"><br>
+                <input type="date" lang="en" name="dob" id="dob-input" data-placeholder="yyyy-mm-dd"><br>
                 <div class="error-msg" id="birthday-missing">
                     <i class="fa fa-times-circle"></i>
                     Birthday is required!
@@ -150,14 +148,14 @@
                 </div>
 
                 <label for="travelStart-input">Travel Start Date: </label>
-                <input type="date" lang="en" name="travelDateStart" id="travelStart-input" placeholder="yyyy-mm-dd"><br>
+                <input type="date" lang="en" name="travelDateStart" id="travelStart-input" data-placeholder="yyyy-mm-dd"><br>
                 <div class="error-msg" id="startDate-missing">
                     <i class="fa fa-times-circle"></i>
                     Trip start date is required!
                 </div>
 
                 <label for="travelEnd-input">Travel End Date: </label>
-                <input type="date" lang="en" name="travelDateEnd" id="travelEnd-input" placeholder="yyyy-mm-dd"><br>
+                <input type="date" lang="en" name="travelDateEnd" id="travelEnd-input" data-placeholder="yyyy-mm-dd"><br>
                 <div class="error-msg" id="endDate-missing">
                     <i class="fa fa-times-circle"></i>
                     Trip end date is required!.
