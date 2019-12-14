@@ -319,6 +319,11 @@ a[href="terms"] {
      text-align: left;
 }
 
+.termsAndConditions h2 {
+     font-family: 'Titillium Web', sans-serif;
+     font-size: 20px;
+}
+
 #preferences-form {
      height: auto;
      width: 68%;
