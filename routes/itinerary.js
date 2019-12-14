@@ -7,6 +7,7 @@ const mongoCollections = require("./../config/mongoCollections");
 const destination = mongoCollections.destinations;
 const userPrefFunctions = data.userPreferences;
 const mongoConnection = require("./../config/mongoConnection");
+const usersFunctions = data.users;
 
 router.get('/generateItinerary', async (req, res) => {
     try {
@@ -48,7 +49,9 @@ router.get('/generateItinerary', async (req, res) => {
         const totalSpent = await itineraryFunctions.getTotalExpense();
         let done = await displayItineraryFunctions.generateItineraryPDF(result, userID, userPref.travelDates, userPref.destination,userPref.tourType,totalSpent,connection);
         if (done) {
-            return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+            let user = await usersFunctions.getUserById(req.session.userID);
+            let userName = user.firstName + " " + user.lastName; 
+            return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined", name: userName });
         }
     } catch (error) {
         res.status(404).render("pages/somethingWentWrong");
@@ -61,7 +64,9 @@ router.get('/viewItinerary', async (req, res) => {
         const connection = await mongoConnection();
         let done = await data.displayItinerary.fetchUserItinerary(userID, connection);
         if (done) {
-            return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined" });
+            let user = await usersFunctions.getUserById(req.session.userID);
+            let userName = user.firstName + " " + user.lastName;
+            return res.status(200).render("pages/viewItinerary", { title: "Your Itinerary", partial: "undefined", name: userName });
         } else {
             res.status(404).render("pages/somethingWentWrong");
         }
