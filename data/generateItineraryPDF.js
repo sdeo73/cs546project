@@ -54,7 +54,7 @@ async function generateItineraryPDF(itinerary, userID, travelDates, destination,
     doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Destination: " + `${destination}`);
     doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Travel Start Date: " + `${travelDates.start}`);
     doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Travel End Date: " + `${travelDates.end}`);
-    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Total Cost: $" + `${totalSpent}`);
+    doc.fillColor('#4a8ab4').font('Regular').fontSize(14).text("Total Cost Per Person: $" + `${totalSpent}`);
     doc.image('public/images/plane.jpg', 350, 35, { fit: [100, 100], align: 'right', valign: 'center' });
     doc.moveDown();
     let day = 1;
