@@ -41,7 +41,11 @@ form.addEventListener("submit", event => {
             $("#underage").show();
             $("#birthday-missing").hide();
             errors = true;
-        } else {
+        } else if(age > 120){
+            $("#invalidage").show();
+            $("#birthday-missing").hide();
+            errors = true;
+        }else {
             $("#birthday-missing").hide();
             $("#underage").hide();
         }
