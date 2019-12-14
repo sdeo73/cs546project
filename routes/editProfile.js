@@ -16,9 +16,12 @@ router.use('/editprofile', function (req, res, next) {
 
 router.get('/editprofile', async (req, res) => {
     try {
+        let user = await userData.getUserById(req.session.userID);
+        let userName = user.firstName + " " + user.lastName; 
         res.status(200).render("pages/editProfile", {
             partial: "edit-profile-scripts",
-            title: "Edit Profile"
+            title: "Edit Profile",
+            name: userName
         });
     } catch (error) {
         res.status(404).render("pages/somethingWentWrong");

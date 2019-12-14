@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const data = require('../data');
+const usersFunctions = data.users;
 
 router.get('/aboutus', async (req, res) => {
     try {
@@ -8,8 +10,11 @@ router.get('/aboutus', async (req, res) => {
                 title: "About Us"
             });
         } else {
+            let user = await usersFunctions.getUserById(req.session.userID);
+            let userName = user.firstName + " " + user.lastName; 
             res.status(200).render("pages/aboutus", {
-                title: "About Us"
+                title: "About Us",
+                name: userName
             });
         }
     } catch (error) {

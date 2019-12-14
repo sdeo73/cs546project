@@ -1,5 +1,5 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
-#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage, #destination-missing, #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing, #endDate-missing, #invalid-dates, #number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError, #duplicateNationalities, #specialneeds-missing, #terms-not-accepted {
+#firstNameMissing, #lastNameMissing, #emailMissing, #passwordMissing, #repasswordMissing, #nationalityMissing, #gender-missing, #birthday-missing, #underage, #destination-missing, #mealPref-missing, #tourType-missing, #activity-missing, #ntravelers-missing, #budget-missing, #startDate-missing, #endDate-missing, #invalid-dates, #number-of-dates, #noPassword, #noEmail, #no-edits, #noChangeError, #emailExists, #serverError, #duplicateNationalities, #specialneeds-missing, #terms-not-accepted, #invalidage {
      display: none;
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
@@ -18,7 +18,7 @@ html, body {
      font-size: 15px;
      font-family: 'Titillium Web', sans-serif;
      font-weight: bold;
-     color: green;
+     color: #005900;
      text-align: center;
 }
 

@@ -50,6 +50,10 @@
                         <i class="fa fa-times-circle"></i>
                         You must be at least 16 years old!
                     </div>
+                    <div class="error-msg" id="invalidage">
+                        <i class="fa fa-times-circle"></i>
+                        You cannot be more than 120 years old!
+                    </div>
 
                     <label for="countryId">Destination: </label>
                     <select name="country" class="countries" id="countryId">
@@ -120,7 +124,7 @@
 
                     <label for="travelers-input">Travelers: </label>
                     <input type="number" name="nTravelers" id="travelers-input" placeholder="Enter no. of travelers"
-                        min=0><br>
+                        min="1" max= "20"><br>
                     <div class="error-msg" id="ntravelers-missing">
                         <i class="fa fa-times-circle"></i>
                         Number of travelers is required!
@@ -176,4 +180,8 @@
                 <p class="paragraph-content"> &copy; 2019 TheLazyTraveller.com</p>
             </footer>
     </main>
+</div>
+<div class = "loader-spinner-outer" id = "loader-itinerary-outer">
+    <h1>{{title}}</h1>
+    <div class = "loader-spinner" id = "loader-itinerary">
 </div>
