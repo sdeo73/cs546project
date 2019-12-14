@@ -40,7 +40,7 @@ html, body {
      display: inline-block;
 }
 
-.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .editProfileForm, .editPreferenceForm {
+.homePage, .aboutUsDetails, .signupForm, .loginForm, .termsPage, .preferenceForm, .home, .displayItinerary, .noItinerary, .editProfileForm, .editPreferenceForm {
      min-height: 100%;
      background-image: url("../images/loggedInBackground.jpg");
      background-position: center;
@@ -188,8 +188,7 @@ h2 {
      width: 30%;
 }
 
-#viewItineraryButton, #generateItineraryButton {
-     font-family: 'Titillium', sans-serif;
+#viewItineraryButton {
      margin-top: 30px;
      font-family: 'Amatic SC', cursive;
      font-size: 20px;
@@ -213,7 +212,21 @@ h2 {
      font-size: 22px;
 }
 
-.download:hover, .backToHome:hover, #viewItineraryButton:hover, #generateItineraryButton:hover {
+.noItinerary #generateItineraryButton {
+     margin-bottom: 20px;
+     font-family: 'Amatic SC', cursive;
+     margin-top: 30px;
+     font-size: 20px;
+     font-weight: bold;
+     color: black;
+     padding: 5px;
+     background-color: #50cdd4;
+     width: 20%;
+     background-color: #ffcc00;
+     box-shadow: 5px 5px 5px #888888;
+}
+
+.download:hover, .backToHome:hover, #viewItineraryButton:hover, #generateItineraryButton:hover, .noItinerary #generateItineraryButton:hover {
      -webkit-transition-duration: 0.4s;
      transition-duration: 0.8s;
      background-color: white;
@@ -226,12 +239,12 @@ h2 {
      margin-top: 30px;
 }
 
-.signupForm, .loginForm, .preferenceForm, .editPreferenceForm, .editProfileForm, .termsPage, .home, .displayItinerary {
+.signupForm, .loginForm, .preferenceForm, .editPreferenceForm, .editProfileForm, .termsPage, .home, .displayItinerary, .noItinerary {
      display: block;
      text-align: center;
 }
 
-#loginForm, .termsAndConditions {
+#loginForm, .termsAndConditions, .noItineraryBlock {
      margin-top: 10%;
 }
 
@@ -311,6 +324,19 @@ a[href="terms"] {
      display: inline-block;
      margin-bottom: 100px;
      margin-top: 2%;
+}
+
+.noItineraryBlock {
+     height: auto;
+     width: 50%;
+     padding: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow: 5px 10px 18px #888888;
+     background-color: #50cdd4;
+     display: inline-block;
+     margin-bottom: 10%;
+     margin-top: 10%;
 }
 
 #editProfileForm {
@@ -469,13 +495,17 @@ input[id=dob-input], input[id=travelStart-input], input[id=travelEnd-input] {
      margin-top: 20px;
 }
 
-.displayItinerary object {
+.displayItinerary object, .noItinerary object {
      width: 100%;
      height: 100vh;
 }
 
-.displayItinerary h2 {
+.displayItinerary h2{
      font-size: 30px;
+}
+
+.noItinerary h2 {
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .column {
@@ -686,7 +716,7 @@ img {
      margin-left: auto;
 }
 
-.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .editProfileForm, .editPreferenceForm, .termsPage {
+.aboutUsDetails, .contactUsDetails, .homePage, .signupForm, .loginForm, .home, .preferenceForm, .displayItinerary, .noItinerary, .editProfileForm, .editPreferenceForm, .termsPage {
      width: 100%;
      margin-top: 50px;
      color: black;
