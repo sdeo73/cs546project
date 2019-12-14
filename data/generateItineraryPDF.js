@@ -197,15 +197,15 @@ async function fetchUserItinerary(userID, connection) {
     });
 
     //Fetch pdf from database
-    await bucket.openDownloadStreamByName(userID).
-        pipe(fs.createWriteStream('public/uploads/itinerary.pdf')).
-        on('error', function (error) {
+    let file = await bucket.find({ filename: userID }).toArray();
+    if (file.length!==0) {
+        await bucket.openDownloadStreamByName(userID).pipe(fs.createWriteStream('public/uploads/itinerary.pdf')).on("error", function (error) {
             assert.ifError(error);
-        }).
-        on('finish', function () {
-            assert.ok("Done");
         });
-    return true;
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**

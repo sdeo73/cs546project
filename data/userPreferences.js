@@ -69,7 +69,7 @@ async function addUserPreferences(gender, dob, mealPreference, tourType, tourAct
     }
 
     if (!Array.isArray(mealPreference)) {
-        mealPreference = mealPreference.split(" ");
+        mealPreference = mealPreference.split(",");
     }
 
     //Check if birthday is valid: 
@@ -140,7 +140,7 @@ async function updateUserMealPref(userID, newMealPreference) {
     }
 
     if (!Array.isArray(newMealPreference)) {
-        newMealPreference = newMealPreference.split();
+        newMealPreference = newMealPreference.split(',');
     }
 
     if (errors.length > 0) {
