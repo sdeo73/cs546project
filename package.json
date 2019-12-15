@@ -1,0 +1,36 @@
+{
+  "name": "lazytraveler",
+  "version": "1.0.0",
+  "description": "The Lazy Traveler",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "seed": "node tasks/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdeo73/cs546project.git"
+  },
+  "author": "Shiwani Deo, Sushrut Madhavi, Sakshi Naik, Lun-Wei Chang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdeo73/cs546project/issues"
+  },
+  "homepage": "https://github.com/sdeo73/cs546project#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "brfs": "^2.0.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "geodist": "^0.2.1",
+    "handlebars": "^4.5.2",
+    "mongodb": "^3.3.4",
+    "node-geocoder": "^3.25.0",
+    "password-hash": "^1.2.2",
+    "pdfkit": "^0.10.0",
+    "xss": "^1.0.6",
+    "zomato-api": "^0.1.2"
+  }
+}

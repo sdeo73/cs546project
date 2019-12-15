@@ -1,0 +1,137 @@
+[
+    {
+        "type": "hiking",
+        "items": [
+            "Backpack",
+            "Hiking boots",
+            "First Aid Kit",
+            "GPS or compass",
+            "Tent",
+            "Sunscreen",
+            "Extra Clothing",
+            "Flashlight",
+            "Batteries",
+            "Insect Repellant",
+            "Toilet Paper",
+            "Snacks",
+            "Water Bottle",
+            "Pocket Knife",
+            "Sanitizer",
+            "Power Bank"
+        ]
+    },
+    {
+        "type": "winter",
+        "items": [
+            "Heavy Winter Coat",
+            "Sweaters",
+            "Snow Boots",
+            "Rain Jacket",
+            "Thermals",
+            "Wool socks",
+            "Gloves",
+            "Scarf",
+            "Beanie",
+            "Balaclava",
+            "Moisturizer",
+            "Chapstick"
+        ]
+    },
+    {
+        "type": "business",
+        "items": [
+            "Formal shirts",
+            "Formal trousers",
+            "Leather shoes",
+            "Ties",
+            "Formal suits",
+            "Business cards",
+            "Formal socks",
+            "Laptop bag",
+            "File holder",
+            "Office pen",
+            "Notepad",
+            "Laptop",
+            "Pen-drive",
+            "Hard-drive",
+            "Wireless earbuds"
+        ]
+    },
+    {
+        "type": "summer",
+        "items": [
+            "Sunglasses",
+            "Sunscreen",
+            "Swimwear",
+            "Go-pro",
+            "Water",
+            "Wet-wipes",
+            "Hat",
+            "Thermos",
+            "White clothes",
+            "Beach Towel",
+            "Light Umbrella"
+        ]
+    },
+    {
+        "type": "rain",
+        "items": [
+            "Umbrella",
+            "Raincoat",
+            "Quickdry Clothes",
+            "Towels",
+            "Water-proof Backpack",
+            "Water-proof Cell Cover",
+            "Mosquito Repellent",
+            "Waterproof shoes",
+            "Waterproof duffel"
+        ]
+    },
+    {
+        "type": "basic",
+        "items": [
+            "Passport",
+            "Cash",
+            "Credit card",
+            "Photo-ID",
+            "VISA",
+            "Document Copies",
+            "Wallet",
+            "Cell phone",
+            "Phone charger",
+            "Personal medication",
+            "Eye Mask",
+            "Ear Plugs",
+            "Headphones",
+            "Water bottle",
+            "Toothbrush",
+            "Toothpaste",
+            "Body Wash",
+            "Shampoo",
+            "Deodorant",
+            "Face Wash",
+            "Lotion",
+            "Basic First-Aid",
+            "Watch",
+            "Belts",
+            "T-shirts",
+            "Jeans",
+            "Casual Pants",
+            "Underwears",
+            "Socks",
+            "Walking Shoes",
+            "Travel Pillow",
+            "Camera",
+            "Camera Memory card",
+            "Camera charger",
+            "External Battery",
+            "Luggage",
+            "Backpack",
+            "Sunglasses",
+            "Tissues",
+            "Power adapter",
+            "Nail file/clippers",
+            "Hand sanitizer"
+        ]
+    }
+]
